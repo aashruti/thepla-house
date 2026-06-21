@@ -1,0 +1,40 @@
+/* ============================================================
+   Thepla House — Motion Tokens
+   Warm & unhurried: things settle in like dough resting, never
+   snap. Entrances ease-out; gentle lift on hover; honour
+   prefers-reduced-motion everywhere.
+   ============================================================ */
+:root {
+  /* ---- Durations ---- */
+  --duration-instant: 80ms;  /* @kind other */
+  --duration-fast:    140ms; /* @kind other */
+  --duration-base:    220ms; /* @kind other */
+  --duration-slow:    360ms; /* @kind other */
+  --duration-slower:  520ms; /* @kind other */
+
+  /* ---- Easings ---- */
+  --ease-standard: cubic-bezier(0.2, 0.7, 0.2, 1); /* @kind other */
+  --ease-entrance: cubic-bezier(0.16, 1, 0.3, 1); /* @kind other */
+  --ease-exit:     cubic-bezier(0.4, 0, 1, 1); /* @kind other */
+  --ease-soft:     cubic-bezier(0.34, 1.2, 0.64, 1); /* @kind other */
+
+  /* ---- Common composed transitions ---- */
+  --transition-colors: color var(--duration-fast) var(--ease-standard),
+                       background-color var(--duration-fast) var(--ease-standard),
+                       border-color var(--duration-fast) var(--ease-standard); /* @kind other */
+  --transition-transform: transform var(--duration-base) var(--ease-soft); /* @kind other */
+  --transition-shadow: box-shadow var(--duration-base) var(--ease-standard); /* @kind other */
+
+  /* Hover lift distance */
+  --lift-sm: -2px; /* @kind other */
+  --lift-md: -4px; /* @kind other */
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

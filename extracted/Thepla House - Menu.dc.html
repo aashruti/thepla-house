@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/thepla-house-design-system-website-2c40d59f-1114-4a72-bb72-17048b22af0a/styles.css">
+<script src="_ds/thepla-house-design-system-website-2c40d59f-1114-4a72-bb72-17048b22af0a/_ds_bundle.js"></script>
+<style>
+  body { background: var(--ink-100); }
+  .seglabel { font-family: var(--font-body); font-size:0.75rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--color-primary); }
+  .noscroll::-webkit-scrollbar { height:6px; }
+  .noscroll::-webkit-scrollbar-thumb { background:var(--color-outline); border-radius:999px; }
+</style>
+</helmet>
+
+<div style="padding:40px 24px 90px;">
+
+  <!-- Page chrome -->
+  <div style="max-width:1340px; margin:0 auto 30px;">
+    <div class="seglabel">Step 3 · High-fidelity page · Menu</div>
+    <h1 style="font-family:var(--font-display); color:var(--color-headline); font-size:2.25rem; margin:6px 0 8px;">Menu</h1>
+    <p style="font-family:var(--font-body); color:var(--ink-600); font-size:1.0625rem; max-width:760px; margin:0 0 20px;">Category tabs and diet filters are live — tap a category or a diet chip and both screens update. Prices intentionally omitted (set per platform).</p>
+    <div style="background:var(--color-surface); border:1px solid var(--color-outline-variant); border-left:4px solid var(--gold-400); border-radius:var(--radius-lg); box-shadow:var(--shadow-xs); padding:18px 20px;">
+      <div class="seglabel" style="color:var(--ink-500);">SEO / GEO notes — Menu</div>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:10px 28px; margin-top:10px; font-family:var(--font-body); font-size:0.875rem; color:var(--ink-700);">
+        <div><strong style="color:var(--green-700);">&lt;title&gt;</strong> · Menu — 250+ home-style Gujarati dishes | Thepla House</div>
+        <div><strong style="color:var(--green-700);">canonical</strong> · https://theplahouse.com/menu</div>
+        <div style="grid-column:1/-1;"><strong style="color:var(--green-700);">meta</strong> · Explore 250+ vegetarian, whole-wheat dishes — theplas, thalis, farsan and sweets. Jain &amp; vegan options clearly tagged. Order on Swiggy, Zomato or WhatsApp.</div>
+        <div style="grid-column:1/-1;"><strong style="color:var(--green-700);">H1 (one)</strong> · "Our menu — 250+ home-style dishes" · <strong style="color:var(--green-700);">JSON-LD</strong> · Menu · MenuItem · BreadcrumbList</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== MOBILE ===== -->
+  <div style="max-width:1340px; margin:0 auto;">
+    <div style="display:flex; align-items:center; gap:12px; margin-bottom:16px;">
+      <span style="display:inline-flex; align-items:center; gap:8px; background:var(--maroon-600); color:var(--cream-50); font-family:var(--font-body); font-size:0.8125rem; font-weight:700; letter-spacing:0.06em; padding:6px 14px; border-radius:999px;">MOBILE · 360–767px</span>
+      <span style="height:1px; flex:1; background:var(--color-outline);"></span>
+      <span style="font-family:var(--font-body); font-size:0.8125rem; color:var(--ink-500);">compact list rows</span>
+    </div>
+    <div style="display:flex; justify-content:center; margin-bottom:8px;">
+      <div style="width:390px; height:780px; border-radius:34px; background:var(--color-surface); box-shadow:var(--shadow-xl); border:1px solid var(--color-outline-variant); overflow:hidden; position:relative;">
+        <div style="height:100%; overflow-y:auto; padding-bottom:86px;">
+          <x-import component-from-global-scope="TheplaHouseDesignSystem_2c40d5.Navbar" logo-src="assets/logo/theplahouse-logo.png" brand="Thepla House" links="{{ navLinks }}" cta-label="Order now" compact="{{ yes }}" hint-size="100%,64px"></x-import>
+
+          <section data-screen-label="Menu / Mobile / Hero" style="background:linear-gradient(165deg, var(--cream-50), var(--gold-50) 80%); padding:24px 20px 20px;">
+            <div class="seglabel" style="font-size:0.6875rem;">The menu</div>
+            <h1 style="font-family:var(--font-display); color:var(--color-headline); font-size:1.8rem; line-height:1.12; margin:8px 0 10px;">Our menu — 250+ home-style dishes</h1>
+            <p style="font-family:var(--font-body); color:var(--ink-600); font-size:0.9375rem; line-height:1.55; margin:0;">Every dish is 100% vegetarian and made with whole-wheat atta and sunflower oil. Jain and vegan options are tagged.</p>
+          </section>
+
+          <!-- category tabs -->
+          <div style="padding:6px 12px 0; border-bottom:1px solid var(--color-outline-variant); background:var(--color-surface);">
+            <x-import component-from-global-scope="TheplaHouseDesignSystem_2c40d5.Tabs" tabs="{{ catTabs }}" value="{{ activeCat }}" onChange="{{ setCat }}" hint-size="100%,52px"></x-import>
+          </div>
+
+          <!-- diet filters -->
+          <div class="noscroll" style="display:flex; gap:8px; overflow-x:auto; padding:14px 16px 6px; background:var(--color-surface);">
+            <sc-for list="{{ dietFilters }}" as="f" hint-placeholder-count="5">
+              <button onClick="{{ f.onClick }}" style="{{ f.chipStyle }}">{{ f.label }}</button>
+            </sc-for>
+          </div>
+
+          <section style="background:var(--cream-50); padding:14px 16px 24px;">
+            <div style="font-family:var(--font-body); font-size:0.8125rem; color:var(--ink-500); margin:0 0 12px;">{{ activeCatLabel }} · showing {{ visibleCount }}</div>
+            <div style="display:flex; flex-direction:column; gap:12px;">
+              <sc-for list="{{ visibleDishes }}" as="d" hint-placeholder-count="5">
+                <dc-import name="MenuRow" title="{{ d.title }}" desc="{{ d.desc }}" subject="{{ d.subject }}" alt="{{ d.alt }}" tags="{{ d.tags }}" hint-size="100%,98px" style="width:100%;"></dc-import>
+              </sc-for>
+            </div>
+            <sc-if value="{{ isEmpty }}" hint-placeholder-val="{{ false }}">
+              <div style="text-align:center; padding:30px 10px; color:var(--ink-500); font-family:var(--font-body);">No dishes match that filter in this category — try another.</div>
+            </sc-if>
+          </section>
+
+          <section style="background:var(--cream-50); padding:22px 16px;"><x-import component-from-global-scope="TheplaHouseDesignSystem_2c40d5.CTABanner" tone="maroon" eyebrow="Can't decide?" title="Order the best-sellers" body="Tap a delivery partner and we'll do the rest." primary-label="Order now" hint-size="100%,240px"></x-import></section>
+          <x-import component-from-global-scope="TheplaHouseDesignSystem_2c40d5.Footer" logo-src="assets/logo/theplahouse-logo.png" brand="Thepla House by Tejal's Kitchen" tagline="Junk the Junk Food." columns="{{ footerColumns }}" socials="{{ footerSocials }}" note="© 2026 Thepla House by Tejal's Kitchen · Mumbai · Instagram @tejals_kitchen" hint-size="100%,420px"></x-import>
+        </div>
+        <div style="position:absolute; left:0; right:0; bottom:0; background:var(--green-700); border-top:1px solid var(--green-800); padding:11px 14px; display:flex; gap:9px; align-items:center; box-shadow:0 -8px 22px -10px rgba(82,35,31,0.55); z-index:6;">
+          <a href="#" style="flex:1; text-align:center; padding:13px; font-family:var(--font-body); font-size:1rem; font-weight:700; color:var(--color-on-secondary); background:var(--color-secondary); border-radius:var(--radius-md); text-decoration:none;">Order now</a>
+          <a href="#" style="padding:13px 16px; font-family:var(--font-body); font-size:0.9rem; font-weight:600; color:var(--cream-100); background:rgba(255,255,255,0.14); border-radius:var(--radius-md); text-decoration:none;">WhatsApp</a>
+          <a href="#" style="padding:13px 16px; font-family:var(--font-body); font-size:0.9rem; font-weight:600; color:var(--cream-100); background:rgba(255,255,255,0.14); border-radius:var(--radius-md); text-decoration:none;">Call</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tablet note -->
+  <div style="max-width:1340px; margin:24px auto; background:var(--gold-50); border:1px solid var(--gold-200); border-radius:var(--radius-lg); padding:14px 18px; display:flex; gap:12px; align-items:flex-start;">
+    <span style="flex-shrink:0; width:26px;height:26px;border-radius:50%;background:var(--gold-400);color:var(--ink-900);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-weight:700;font-size:0.9rem;">i</span>
+    <p style="font-family:var(--font-body); font-size:0.9rem; color:var(--ink-700); margin:0;"><strong style="color:var(--green-700);">Tablet (768–1023px) reflow:</strong> compact list rows become a <strong>2-column card grid</strong>; the category tabs and diet chips sit in a single sticky control bar under the header. Order bar → inline navbar CTA.</p>
+  </div>
+
+  <!-- ===== DESKTOP ===== -->
+  <div style="margin:0 auto; max-width:1340px;">
+    <div style="display:flex; align-items:center; gap:12px; margin-bottom:16px;">
+      <span style="display:inline-flex; align-items:center; gap:8px; background:var(--green-700); color:var(--cream-50); font-family:var(--font-body); font-size:0.8125rem; font-weight:700; letter-spacing:0.06em; padding:6px 14px; border-radius:999px;">DESKTOP · 1024px+</span>
+      <span style="height:1px; flex:1; background:var(--color-outline);"></span>
+      <span style="font-family:var(--font-body); font-size:0.8125rem; color:var(--ink-500);">3-column card grid · shown at 1280px</span>
+    </div>
+  </div>
+
+  <div style="overflow-x:auto; padding-bottom:10px;">
+    <div style="width:1280px; margin:0 auto; border-radius:26px; overflow:hidden; box-shadow:var(--shadow-xl); border:1px solid var(--color-outline-variant); background:var(--color-surface);">
+      <x-import component-from-global-scope="TheplaHouseDesignSystem_2c40d5.Navbar" logo-src="assets/logo/theplahouse-logo.png" brand="Thepla House" links="{{ navLinks }}" cta-label="Order now" hint-size="100%,72px"></x-import>
+
+      <section data-screen-label="Menu / Desktop / Hero" style="background:linear-gradient(160deg, var(--cream-50), var(--gold-50) 74%); position:relative; overflow:hidden;">
+        <img src="assets/motifs/leaves-right.png" alt="" aria-hidden="true" style="position:absolute; top:-20px; right:-10px; width:200px; opacity:0.45;">
+        <div style="position:relative; max-width:1200px; margin:0 auto; padding:54px 48px 30px;">
+          <div class="seglabel">The menu</div>
+          <h1 style="font-family:var(--font-display); color:var(--color-headline); font-size:2.75rem; line-height:1.08; margin:10px 0 14px;">Our menu — 250+ home-style dishes</h1>
+          <p style="font-family:var(--font-body); color:var(--ink-600); font-size:1.1875rem; line-height:1.6; max-width:680px; margin:0;">Every dish is 100% vegetarian, made with whole-wheat atta and sunflower oil — no maida, no palm oil, no preservatives. Jain and vegan options are clearly tagged throughout.</p>
+        </div>
+      </section>
+
+      <!-- controls -->
+      <div style="max-width:1200px; margin:0 auto; padding:0 48px;">
+        <div style="border-bottom:1px solid var(--color-outline-variant);">
+          <x-import component-from-global-scope="TheplaHouseDesignSystem_2c40d5.Tabs" tabs="{{ catTabs }}" value="{{ activeCat }}" onChange="{{ setCat }}" hint-size="100%,56px"></x-import>
+        </div>
+        <div style="display:flex; align-items:center; justify-content:space-between; gap:16px; padding:20px 0 4px; flex-wrap:wrap;">
+          <div style="display:flex; gap:9px; flex-wrap:wrap;">
+            <sc-for list="{{ dietFilters }}" as="f" hint-placeholder-count="5">
+              <button onClick="{{ f.onClick }}" style="{{ f.chipStyle }}">{{ f.label }}</button>
+            </sc-for>
+          </div>
+          <span style="font-family:var(--font-body); font-size:0.9375rem; color:var(--ink-500);">{{ activeCatLabel }} · showing {{ visibleCount }}</span>
+        </div>
+      </div>
+
+      <section style="background:var(--cream-50);">
+        <div style="max-width:1200px; margin:0 auto; padding:28px 48px 64px;">
+          <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:24px;">
+            <sc-for list="{{ visibleDishes }}" as="d" hint-placeholder-count="6">
+              <dc-import name="MenuItemCard" title="{{ d.title }}" desc="{{ d.desc }}" subject="{{ d.subject }}" alt="{{ d.alt }}" tags="{{ d.tags }}" hint-size="100%,360px" style="height:100%; width:100%;"></dc-import>
+            </sc-for>
+          </div>
+          <sc-if value="{{ isEmpty }}" hint-placeholder-val="{{ false }}">
+            <div style="text-align:center; padding:48px 10px; color:var(--ink-500); font-family:var(--font-body); font-size:1.0625rem;">No dishes match that filter in this category — try another.</div>
+          </sc-if>
+          <p style="font-family:var(--font-body); color:var(--ink-500); font-size:0.9375rem; margin:28px 0 0;">This is a representative selection — the full kitchen runs to 250+ dishes across theplas, thalis, farsan, sweets and seasonal specials.</p>
+        </div>
+      </section>
+
+      <section style="background:var(--cream-50); padding:44px 48px;"><div style="max-width:1200px; margin:0 auto;"><x-import component-from-global-scope="TheplaHouseDesignSystem_2c40d5.CTABanner" tone="maroon" align="split" eyebrow="Can't decide?" title="Order our best-sellers" body="Pick a delivery partner and we'll roll it fresh — or call +91 98195 55065." primary-label="Order now" secondary-label="WhatsApp us" hint-size="100%,220px"></x-import></div></section>
+      <x-import component-from-global-scope="TheplaHouseDesignSystem_2c40d5.Footer" logo-src="assets/logo/theplahouse-logo.png" brand="Thepla House by Tejal's Kitchen" tagline="Junk the Junk Food." columns="{{ footerColumns }}" socials="{{ footerSocials }}" note="© 2026 Thepla House by Tejal's Kitchen · Mumbai · Instagram @tejals_kitchen" hint-size="100%,360px"></x-import>
+    </div>
+  </div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { cat: "theplas", diet: "all" };
+
+  renderVals() {
+    const T = {
+      ww:    { label: "100% whole wheat", bg: "var(--gold-100)",           fg: "var(--gold-700)" },
+      best:  { label: "Best-seller",      bg: "var(--color-bestseller-bg)", fg: "var(--color-bestseller)" },
+      jain:  { label: "Jain",             bg: "var(--color-jain-bg)",       fg: "var(--color-jain)" },
+      vegan: { label: "🌿 Vegan",         bg: "var(--color-vegan-bg)",      fg: "var(--color-vegan)" },
+    };
+
+    const categories = [
+      { id: "theplas", label: "Theplas & Rotis", count: 24, dishes: [
+        { title: "Methi Thepla", desc: "Soft whole-wheat flatbread rolled with fresh fenugreek and warm spices.", subject: "Stack of methi theplas on a brass plate", alt: "Methi theplas on a brass plate", keys: ["ww","best"] },
+        { title: "Plain Thepla", desc: "Everyday whole-wheat thepla, lightly spiced — perfect with chai.", subject: "Plain theplas folded on a plate", alt: "Plain theplas", keys: ["ww"] },
+        { title: "Methi-Garlic Thepla", desc: "Fenugreek thepla with a punch of roasted garlic.", subject: "Garlic methi theplas close-up", alt: "Methi garlic theplas", keys: ["ww"] },
+        { title: "Bajra Rotla", desc: "Rustic pearl-millet flatbread, naturally gluten-light and hearty.", subject: "Bajra rotla with white butter", alt: "Bajra rotla", keys: ["vegan"] },
+        { title: "Palak Thepla", desc: "Whole-wheat thepla folded with fresh spinach.", subject: "Green palak theplas stacked", alt: "Palak theplas", keys: ["ww","vegan"] },
+      ]},
+      { id: "thalis", label: "Thalis", count: 12, dishes: [
+        { title: "Gujarati Thali", desc: "A full home-style spread — dal, kadhi, sabzi, rotli, rice and a sweet.", subject: "Brass Gujarati thali, top-down", alt: "Gujarati thali", keys: ["best","jain"] },
+        { title: "Mini Thali", desc: "A lighter plate — two sabzi, dal, rotli and rice.", subject: "Mini thali on brass plate", alt: "Mini thali", keys: ["jain"] },
+        { title: "Jain Thali", desc: "Complete Jain spread — no onion, garlic or root vegetables.", subject: "Jain thali with labelled bowls", alt: "Jain thali", keys: ["jain"] },
+        { title: "Vegan Thali", desc: "Dairy-free home-style thali, ghee swapped for oil.", subject: "Vegan thali on brass plate", alt: "Vegan thali", keys: ["vegan"] },
+      ]},
+      { id: "farsan", label: "Farsan & Snacks", count: 62, dishes: [
+        { title: "Khaman Dhokla", desc: "Steamed, fluffy and tempered with mustard seeds and curry leaves.", subject: "Yellow khaman dhokla squares", alt: "Khaman dhokla", keys: ["vegan","best"] },
+        { title: "Khandvi", desc: "Silky gram-flour rolls with a coconut-coriander finish.", subject: "Rolled khandvi on a plate", alt: "Khandvi rolls", keys: ["jain"] },
+        { title: "Patra", desc: "Colocasia leaves rolled with spiced gram flour, steamed and tempered.", subject: "Sliced patra spirals", alt: "Patra slices", keys: ["vegan"] },
+        { title: "Handvo", desc: "Savoury baked lentil-and-rice cake with a crisp seeded crust.", subject: "Sliced handvo on a wooden board", alt: "Handvo slices", keys: ["ww"] },
+        { title: "Sabudana Khichdi", desc: "Light sago with roasted peanuts and potato — a fasting favourite.", subject: "Bowl of sabudana khichdi", alt: "Sabudana khichdi", keys: ["jain","vegan"] },
+      ]},
+      { id: "sweets", label: "Sweets", count: 40, dishes: [
+        { title: "Mohanthal", desc: "Rich gram-flour fudge with cardamom and slivered nuts.", subject: "Mohanthal diamonds on a plate", alt: "Mohanthal", keys: ["best"] },
+        { title: "Sukhdi (Gol Papdi)", desc: "Whole-wheat and jaggery squares — a homely winter sweet.", subject: "Sukhdi squares stacked", alt: "Sukhdi", keys: ["ww"] },
+        { title: "Basundi", desc: "Slow-reduced sweetened milk, scented with cardamom.", subject: "Bowl of basundi with nuts", alt: "Basundi", keys: ["jain"] },
+        { title: "Shrikhand", desc: "Thick strained-yoghurt dessert with saffron and cardamom.", subject: "Bowl of saffron shrikhand", alt: "Shrikhand", keys: ["jain"] },
+      ]},
+      { id: "seasonal", label: "Seasonal", count: 18, dishes: [
+        { title: "Undhiyu", desc: "Winter mixed-vegetable casserole, slow-cooked Surti style.", subject: "Earthen pot of undhiyu", alt: "Undhiyu", keys: ["vegan","jain"] },
+        { title: "Aamras", desc: "Summer Alphonso mango pulp, served chilled with puri.", subject: "Bowl of aamras with puris", alt: "Aamras", keys: ["vegan","jain"] },
+        { title: "Ponkh Vada", desc: "Winter fresh-jowar fritters, crisp and green.", subject: "Plate of ponkh vada", alt: "Ponkh vada", keys: ["vegan"] },
+      ]},
+    ];
+
+    const diet = this.state.diet;
+    const dietDefs = [
+      { key: "all",   label: "All" },
+      { key: "best",  label: "Best-sellers" },
+      { key: "jain",  label: "Jain" },
+      { key: "vegan", label: "Vegan" },
+      { key: "ww",    label: "100% whole wheat" },
+    ];
+    const base = "display:inline-flex;align-items:center;gap:6px;white-space:nowrap;padding:9px 16px;font-family:var(--font-body);font-size:0.875rem;font-weight:600;border-radius:999px;cursor:pointer;transition:var(--transition-colors);";
+    const dietFilters = dietDefs.map((d) => ({
+      label: d.label,
+      active: d.key === diet,
+      chipStyle: base + (d.key === diet
+        ? "background:var(--color-primary);color:var(--color-on-primary);border:1.5px solid var(--color-primary);"
+        : "background:var(--white);color:var(--ink-700);border:1.5px solid var(--color-outline);"),
+      onClick: () => this.setState({ diet: d.key }),
+    }));
+
+    const activeCategory = categories.find((c) => c.id === this.state.cat) || categories[0];
+    const filtered = activeCategory.dishes.filter((d) => diet === "all" || d.keys.includes(diet));
+    const visibleDishes = filtered.map((d) => ({ ...d, tags: d.keys.map((k) => T[k]) }));
+
+    return {
+      yes: true,
+      navLinks: [
+        { label: "Menu", href: "#", active: true },
+        { label: "Locations", href: "#" }, { label: "Catering", href: "#" },
+        { label: "Travel Packs", href: "#" }, { label: "Franchise", href: "#" }, { label: "About", href: "#" },
+      ],
+      footerColumns: [
+        { title: "Explore", links: [ { label: "Menu", href: "#" }, { label: "Locations", href: "#" }, { label: "Our story", href: "#" }, { label: "Gallery", href: "#" }, { label: "Blog", href: "#" } ] },
+        { title: "Order & services", links: [ { label: "Order now", href: "#" }, { label: "Catering", href: "#" }, { label: "Travel packs", href: "#" }, { label: "Franchise", href: "#" } ] },
+        { title: "Visit", links: [ { label: "Chandivali · Andheri East", href: "#" }, { label: "Lower Parel", href: "#" }, { label: "Mulund", href: "#" }, { label: "Thane", href: "#" }, { label: "Kandivali (dine-in)", href: "#" } ] },
+      ],
+      footerSocials: ["Instagram", "WhatsApp"],
+      catTabs: categories.map((c) => ({ id: c.id, label: c.label, count: c.count })),
+      activeCat: this.state.cat,
+      activeCatLabel: activeCategory.label,
+      setCat: (id) => this.setState({ cat: id }),
+      dietFilters,
+      visibleDishes,
+      visibleCount: visibleDishes.length,
+      isEmpty: visibleDishes.length === 0,
+    };
+  }
+}
+</script>
+</body>
+</html>

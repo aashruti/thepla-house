@@ -1,0 +1,66 @@
+/* ============================================================
+   Thepla House — Cultural Trims (decorative borders)
+   Indian-inspired geometric trims built from pure CSS gradients
+   so they stay crisp at any size and recolour via one variable.
+
+   Usage:
+     <div class="th-trim th-trim--toran"></div>
+     <div class="th-trim th-trim--bandhani" style="--trim-color:var(--gold-400)"></div>
+   Pair sparingly — section seams, CTA/footer edges, card tops.
+   ============================================================ */
+:root {
+  --trim-color: var(--maroon-600); /* @kind color */
+  --trim-size: 16px; /* @kind spacing */
+}
+
+.th-trim {
+  width: 100%;
+  height: var(--trim-size);
+  background-repeat: repeat-x;
+}
+
+/* Toran — temple/zigzag sawtooth (points down). The classic doorway trim. */
+.th-trim--toran {
+  background-image:
+    linear-gradient(-135deg, var(--trim-color) calc(var(--trim-size) / 2), transparent 0),
+    linear-gradient(135deg, var(--trim-color) calc(var(--trim-size) / 2), transparent 0);
+  background-position: left top;
+  background-size: var(--trim-size) var(--trim-size);
+}
+
+/* Bandhani — a row of evenly-spaced tie-dye dots. */
+.th-trim--bandhani {
+  background-image: radial-gradient(var(--trim-color) 30%, transparent 34%);
+  background-size: var(--trim-size) var(--trim-size);
+  background-position: center;
+}
+
+/* Block-print — a row of diamonds. */
+.th-trim--blockprint {
+  background-image:
+    linear-gradient(45deg, var(--trim-color) 25%, transparent 25.5%),
+    linear-gradient(-45deg, var(--trim-color) 25%, transparent 25.5%),
+    linear-gradient(45deg, transparent 74.5%, var(--trim-color) 75%),
+    linear-gradient(-45deg, transparent 74.5%, var(--trim-color) 75%);
+  background-size: var(--trim-size) var(--trim-size);
+  background-position: 0 0;
+}
+
+/* Scallop — a row of arches (domes up). Good on card / CTA tops. */
+.th-trim--scallop {
+  background-image: radial-gradient(circle at 50% 115%, var(--trim-color) 44%, transparent 46%);
+  background-size: var(--trim-size) var(--trim-size);
+  background-position: center bottom;
+}
+
+/* Kantha — a double running-stitch dashed line. */
+.th-trim--kantha {
+  background-image:
+    linear-gradient(90deg, var(--trim-color) 55%, transparent 0),
+    linear-gradient(90deg, var(--trim-color) 55%, transparent 0);
+  background-size: var(--trim-size) 2px, var(--trim-size) 2px;
+  background-position: 0 1px, calc(var(--trim-size) / 2) 5px;
+}
+
+/* Flip a trim to point the other way (e.g. a toran on a bottom edge). */
+.th-trim--flip { transform: scaleY(-1); }

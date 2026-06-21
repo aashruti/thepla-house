@@ -1,0 +1,10 @@
+/* ============================================================
+   Thepla House — Webfonts
+   Display:  Eczar   (warm high-contrast serif, Indian heritage)
+   Body:     Mukta   (humanist sans, ITF — excellent for Indian brands)
+   Accent:   Caveat  (handwritten script, echoes "by Tejal's Kitchen")
+   ------------------------------------------------------------
+   NOTE: served from Google Fonts. To ship fully offline, download
+   the .ttf binaries and replace this @import with @font-face rules.
+   ============================================================ */
+@import url('https://fonts.googleapis.com/css2?family=Eczar:wght@400;500;600;700;800&family=Mukta:wght@300;400;500;600;700;800&family=Caveat:wght@500;600;700&display=swap');

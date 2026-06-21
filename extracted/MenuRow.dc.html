@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/thepla-house-design-system-website-2c40d59f-1114-4a72-bb72-17048b22af0a/styles.css">
+</helmet>
+<div style="display:flex; gap:13px; align-items:center; background:var(--color-surface-container); border:1px solid var(--color-outline-variant); border-radius:var(--radius-lg); box-shadow:var(--shadow-xs); padding:11px 13px;">
+  <div style="flex-shrink:0; width:74px; height:74px; border-radius:var(--radius-md); overflow:hidden;">
+    <dc-import name="PhotoSlot" subject="{{ subject }}" alt="{{ alt }}" hint-size="74px,74px" style="height:74px; width:74px;"></dc-import>
+  </div>
+  <div style="flex:1; min-width:0;">
+    <h3 style="font-family:var(--font-display); color:var(--color-headline); font-size:1.0625rem; line-height:1.2; margin:0 0 3px;">{{ title }}</h3>
+    <p style="font-family:var(--font-body); color:var(--color-on-surface-variant); font-size:0.8125rem; line-height:1.4; margin:0 0 6px; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;">{{ desc }}</p>
+    <div style="display:flex; flex-wrap:wrap; gap:5px;">
+      <sc-for list="{{ tags }}" as="tag" hint-placeholder-count="2">
+        <span style="display:inline-flex; align-items:center; font-family:var(--font-body); font-size:0.6875rem; font-weight:600; padding:3px 8px; border-radius:999px; background:{{ tag.bg }}; color:{{ tag.fg }};">{{ tag.label }}</span>
+      </sc-for>
+    </div>
+  </div>
+  <span style="flex-shrink:0; align-self:center; color:var(--color-primary); font-size:1.3rem; font-weight:700;">›</span>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:340,&quot;height&quot;:98},&quot;title&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Methi Thepla&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;desc&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Soft whole-wheat flatbread rolled with fresh fenugreek and spices.&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;subject&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Methi thepla close-up&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;alt&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Methi thepla&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;tags&quot;:{&quot;editor&quot;:null,&quot;default&quot;:[{&quot;label&quot;:&quot;100% whole wheat&quot;,&quot;bg&quot;:&quot;var(--gold-100)&quot;,&quot;fg&quot;:&quot;var(--gold-700)&quot;}],&quot;tsType&quot;:&quot;Array&lt;{label:string;bg:string;fg:string}&gt;&quot;}}"></script>
+</body>
+</html>

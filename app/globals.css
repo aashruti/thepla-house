@@ -1,0 +1,258 @@
+/* ============================================================
+   Thepla House — global stylesheet
+   Imports the design-system tokens (the contract), then layers
+   Tailwind on top. Fonts come from next/font (see fonts.ts), so
+   tokens/fonts.css (the Google-Fonts @import) is intentionally skipped.
+   ============================================================ */
+@import "./tokens/colors.css";
+@import "./tokens/typography.css";
+@import "./tokens/spacing.css";
+@import "./tokens/elevation.css";
+@import "./tokens/motion.css";
+@import "./tokens/decoration.css";
+@import "./tokens/base.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Wire the design-system font tokens to the next/font CSS variables. */
+:root {
+  --font-display: var(--font-eczar), "Georgia", serif;
+  --font-body: var(--font-mukta), system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-script: var(--font-caveat), "Segoe Script", cursive;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100dvh;
+}
+
+/* Eyebrow / section label used throughout the page designs. */
+.seglabel {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+}
+
+/* Visually-hidden helper for a11y. */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Skip link surfaces only on focus. */
+.skip-link {
+  position: absolute;
+  left: 16px;
+  top: -48px;
+  z-index: 100;
+  padding: 10px 16px;
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+  border-radius: var(--radius-md);
+  font-family: var(--font-body);
+  font-weight: 600;
+  transition: top var(--duration-base) var(--ease-standard);
+}
+.skip-link:focus {
+  top: 16px;
+}
+
+/* ---- Gallery masonry: 2 → 3 → 4 columns ---- */
+.gallery-masonry {
+  column-count: 2;
+  column-gap: 12px;
+}
+@media (min-width: 768px) {
+  .gallery-masonry {
+    column-count: 3;
+    column-gap: 20px;
+  }
+}
+@media (min-width: 1024px) {
+  .gallery-masonry {
+    column-count: 4;
+    column-gap: 20px;
+  }
+}
+
+/* ---- Locations hub: map becomes a sticky rail on desktop ---- */
+.locations-map {
+  height: 280px;
+}
+@media (min-width: 1024px) {
+  .locations-map {
+    position: sticky;
+    top: 84px;
+    height: 520px;
+  }
+}
+
+/* ---- EnquiryForm: single column on mobile, two on tablet+ ---- */
+.enquiry-form {
+  grid-template-columns: 1fr;
+}
+@media (min-width: 640px) {
+  .enquiry-form {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* ---- PromiseStrip: stacked on mobile, divided row on desktop ---- */
+.promise-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.promise-item {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  text-align: left;
+}
+.promise-divider {
+  display: none;
+}
+@media (min-width: 768px) {
+  .promise-grid {
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: space-between;
+    gap: 18px;
+  }
+  .promise-item {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 8px;
+    flex: 1;
+  }
+  .promise-divider {
+    display: block;
+    width: 1px;
+    background: var(--green-600);
+    align-self: stretch;
+  }
+}
+
+/* ---- SiteHeader responsive states ----
+   mobile (<768): logo + hamburger (ordering via MobileOrderBar)
+   tablet (768–1023): logo + Order-now + hamburger
+   desktop (≥1024): logo + inline links + Order-now           */
+.nav-desktop {
+  display: none;
+  align-items: center;
+  gap: 22px;
+}
+.nav-cta {
+  display: none;
+}
+.nav-hamburger {
+  display: inline-flex;
+}
+@media (min-width: 768px) {
+  .nav-cta {
+    display: inline-flex;
+  }
+}
+@media (min-width: 1024px) {
+  .nav-desktop {
+    display: flex;
+  }
+  .nav-hamburger {
+    display: none;
+  }
+  .nav-sheet {
+    display: none !important;
+  }
+}
+
+/* ---- Hero: stacked on mobile, text + photo on desktop ---- */
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 28px;
+  padding-top: 32px;
+  padding-bottom: 36px;
+  position: relative;
+  align-items: center;
+}
+.hero-photo {
+  border-radius: var(--radius-2xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  height: 240px;
+}
+.hero-motif {
+  position: absolute;
+  top: -10px;
+  right: -14px;
+  width: 140px;
+  opacity: 0.5;
+  pointer-events: none;
+}
+@media (min-width: 768px) {
+  .hero-grid {
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 52px;
+    padding-top: 64px;
+    padding-bottom: 64px;
+  }
+  .hero-photo {
+    height: 480px;
+  }
+  .hero-motif {
+    width: 260px;
+    top: -30px;
+    right: -20px;
+  }
+}
+
+/* ---- MobileOrderBar: fixed bottom on mobile, hidden from tablet up ---- */
+.mobile-order-bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 40;
+  display: flex;
+  gap: 9px;
+  align-items: center;
+  padding: 11px 14px;
+  padding-bottom: calc(11px + env(safe-area-inset-bottom));
+  background: var(--green-700);
+  border-top: 1px solid var(--green-800);
+  box-shadow: 0 -8px 22px -10px rgba(82, 35, 31, 0.55);
+}
+/* Keep page content clear of the bar on mobile. */
+body {
+  padding-bottom: 76px;
+}
+@media (min-width: 768px) {
+  .mobile-order-bar {
+    display: none;
+  }
+  body {
+    padding-bottom: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}

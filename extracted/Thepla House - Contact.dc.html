@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/thepla-house-design-system-website-2c40d59f-1114-4a72-bb72-17048b22af0a/styles.css">
+<script src="_ds/thepla-house-design-system-website-2c40d59f-1114-4a72-bb72-17048b22af0a/_ds_bundle.js"></script>
+<style>
+  body { background: var(--ink-100); }
+  .seglabel { font-family: var(--font-body); font-size:0.75rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--color-primary); }
+</style>
+</helmet>
+
+<div style="padding:40px 24px 90px;">
+
+  <!-- Page chrome -->
+  <div style="max-width:1340px; margin:0 auto 30px;">
+    <div class="seglabel">Step 3 · High-fidelity page · Contact</div>
+    <h1 style="font-family:var(--font-display); color:var(--color-headline); font-size:2.25rem; margin:6px 0 8px;">Contact</h1>
+    <p style="font-family:var(--font-body); color:var(--ink-600); font-size:1.0625rem; max-width:760px; margin:0 0 20px;">All the ways to reach us — order line, WhatsApp, email and the dedicated catering &amp; franchise contacts — plus a general enquiry form.</p>
+    <div style="background:var(--color-surface); border:1px solid var(--color-outline-variant); border-left:4px solid var(--gold-400); border-radius:var(--radius-lg); box-shadow:var(--shadow-xs); padding:18px 20px;">
+      <div class="seglabel" style="color:var(--ink-500);">SEO / GEO notes — Contact</div>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:10px 28px; margin-top:10px; font-family:var(--font-body); font-size:0.875rem; color:var(--ink-700);">
+        <div><strong style="color:var(--green-700);">&lt;title&gt;</strong> · Contact us — order line, kitchens &amp; enquiries | Thepla House</div>
+        <div><strong style="color:var(--green-700);">canonical</strong> · https://theplahouse.com/contact</div>
+        <div style="grid-column:1/-1;"><strong style="color:var(--green-700);">meta</strong> · Get in touch with Thepla House by Tejal's Kitchen — order line +91 98195 55065, WhatsApp, catering and franchise enquiries. Seven kitchens across Mumbai.</div>
+        <div style="grid-column:1/-1;"><strong style="color:var(--green-700);">H1 (one)</strong> · "Contact us" · <strong style="color:var(--green-700);">JSON-LD</strong> · Organization · ContactPoint</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== MOBILE ===== -->
+  <div style="max-width:1340px; margin:0 auto;">
+    <div style="display:flex; align-items:center; gap:12px; margin-bottom:16px;">
+      <span style="display:inline-flex; align-items:center; gap:8px; background:var(--maroon-600); color:var(--cream-50); font-family:var(--font-body); font-size:0.8125rem; font-weight:700; letter-spacing:0.06em; padding:6px 14px; border-radius:999px;">MOBILE · 360–767px</span>
+      <span style="height:1px; flex:1; background:var(--color-outline);"></span>
+    </div>
+    <div style="display:flex; justify-content:center; margin-bottom:8px;">
+      <div style="width:390px; height:780px; border-radius:34px; background:var(--color-surface); box-shadow:var(--shadow-xl); border:1px solid var(--color-outline-variant); overflow:hidden; position:relative;">
+        <div style="height:100%; overflow-y:auto; padding-bottom:86px;">
+          <x-import component-from-global-scope="TheplaHouseDesignSystem_2c40d5.Navbar" logo-src="assets/logo/theplahouse-logo.png" brand="Thepla House" links="{{ navLinks }}" cta-label="Order now" compact="{{ yes }}" hint-size="100%,64px"></x-import>
+
+          <section data-screen-label="Contact / Mobile / Hero" style="background:linear-gradient(165deg, var(--cream-50), var(--gold-50) 80%); padding:24px 20px 16px;">
+            <div class="seglabel" style="font-size:0.6875rem;">Say hello</div>
+            <h1 style="font-family:var(--font-display); color:var(--color-headline); font-size:1.85rem; line-height:1.12; margin:8px 0 8px;">Contact us</h1>
+            <p style="font-family:var(--font-body); color:var(--ink-600); font-size:0.9375rem; line-height:1.55; margin:0;">Order, ask about catering or franchising, or just tell us what you'd love to see on the menu.</p>
+          </section>
+
+          <section style="background:var(--cream-50); padding:16px 20px;">
+            <div style="display:flex; flex-direction:column; gap:12px;">
+              <sc-for list="{{ methods }}" as="m" hint-placeholder-count="4">
+                <a href="#" style="display:flex; gap:13px; align-items:center; text-decoration:none; background:var(--color-surface-container); border:1px solid var(--color-outline-variant); border-radius:var(--radius-lg); box-shadow:var(--shadow-xs); padding:14px;"><span style="flex-shrink:0; width:40px;height:40px;border-radius:50%;background:var(--green-100);display:flex;align-items:center;justify-content:center;"><span style="width:12px;height:12px;border-radius:50% 50% 50% 0;background:var(--green-600);transform:rotate(45deg);"></span></span><div><div style="font-family:var(--font-body); color:var(--ink-500); font-size:0.6875rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase;">{{ m.label }}</div><div style="font-family:var(--font-display); color:var(--color-headline); font-weight:600; font-size:1.0625rem;">{{ m.value }}</div></div></a>
+              </sc-for>
+            </div>
+          </section>
+
+          <section id="contact-form-m" style="background:var(--cream-100); padding:22px 20px;">
+            <div class="seglabel" style="font-size:0.6875rem;">Drop us a line</div>
+            <h2 style="font-family:var(--font-display); color:var(--color-headline); font-size:1.5rem; margin:6px 0 14px;">Send a message</h2>
+            <div style="background:var(--color-surface); border:1px solid var(--color-outline-variant); border-radius:var(--radius-xl); box-shadow:var(--shadow-sm); padding:18px; display:flex; flex-direction:column; gap:14px;">
+              <x-import component-from-global-scope="TheplaHouseDesignSystem_2c40d5.Input" label="Your name" placeholder="e.g. Priya" required="{{ yes }}" hint-size="100%,78px"></x-import>
+              <x-import component-from-global-scope="TheplaHouseDesignSystem_2c40d5.Input" label="Email or phone" placeholder="How can we reach you?" required="{{ yes }}" hint-size="100%,78px"></x-import>
+              <x-import component-from-global-scope="TheplaHouseDesignSystem_2c40d5.Select" label="Topic" options="{{ topics }}" placeholder="What's this about?" hint-size="100%,78px"></x-import>
+              <x-import component-from-global-scope="TheplaHouseDesignSystem_2c40d5.Textarea" label="Message" placeholder="Tell us a little more…" rows="3" hint-size="100%,120px"></x-import>
+              <a href="#" style="display:inline-flex; align-items:center; justify-content:center; gap:8px; min-height:48px; padding:13px; font-family:var(--font-body); font-size:1rem; font-weight:600; color:var(--color-on-primary); background:var(--color-primary); border-radius:var(--radius-md); box-shadow:var(--shadow-sm); text-decoration:none;">Send message</a>
+            </div>
+          </section>
+
+          <section style="background:var(--cream-50); padding:14px 20px;">
+            <div style="border-radius:var(--radius-xl); overflow:hidden; box-shadow:var(--shadow-md); height:170px;">
+              <dc-import name="MapSlot" label="Map: 7 Thepla House kitchens across Mumbai" hint-size="100%,170px" style="height:100%; width:100%;"></dc-import>
+            </div>
+          </section>
+
+          <section style="background:var(--cream-50); padding:8px 16px 22px;"><x-import component-from-global-scope="TheplaHouseDesignSystem_2c40d5.CTABanner" tone="maroon" eyebrow="Hungry already?" title="Skip the form — just order" body="Swiggy, Zomato or WhatsApp." primary-label="Order now" hint-size="100%,240px"></x-import></section>
+          <x-import component-from-global-scope="TheplaHouseDesignSystem_2c40d5.Footer" logo-src="assets/logo/theplahouse-logo.png" brand="Thepla House by Tejal's Kitchen" tagline="Junk the Junk Food." columns="{{ footerColumns }}" socials="{{ footerSocials }}" note="© 2026 Thepla House by Tejal's Kitchen · Mumbai · Instagram @tejals_kitchen" hint-size="100%,420px"></x-import>
+        </div>
+        <div style="position:absolute; left:0; right:0; bottom:0; background:var(--green-700); border-top:1px solid var(--green-800); padding:11px 14px; display:flex; gap:9px; align-items:center; box-shadow:0 -8px 22px -10px rgba(82,35,31,0.55); z-index:6;">
+          <a href="#" style="flex:1; text-align:center; padding:13px; font-family:var(--font-body); font-size:1rem; font-weight:700; color:var(--color-on-secondary); background:var(--color-secondary); border-radius:var(--radius-md); text-decoration:none;">Order now</a>
+          <a href="#" style="padding:13px 16px; font-family:var(--font-body); font-size:0.9rem; font-weight:600; color:var(--cream-100); background:rgba(255,255,255,0.14); border-radius:var(--radius-md); text-decoration:none;">WhatsApp</a>
+          <a href="#" style="padding:13px 16px; font-family:var(--font-body); font-size:0.9rem; font-weight:600; color:var(--cream-100); background:rgba(255,255,255,0.14); border-radius:var(--radius-md); text-decoration:none;">Call</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tablet note -->
+  <div style="max-width:1340px; margin:24px auto; background:var(--gold-50); border:1px solid var(--gold-200); border-radius:var(--radius-lg); padding:14px 18px; display:flex; gap:12px; align-items:flex-start;">
+    <span style="flex-shrink:0; width:26px;height:26px;border-radius:50%;background:var(--gold-400);color:var(--ink-900);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-weight:700;font-size:0.9rem;">i</span>
+    <p style="font-family:var(--font-body); font-size:0.9rem; color:var(--ink-700); margin:0;"><strong style="color:var(--green-700);">Tablet (768–1023px) reflow:</strong> contact-method cards go 2-up; the form and map sit side by side; at ≥1024px the desktop layout splits into method cards + form on the left and a sticky map on the right.</p>
+  </div>
+
+  <!-- ===== DESKTOP ===== -->
+  <div style="margin:0 auto; max-width:1340px;">
+    <div style="display:flex; align-items:center; gap:12px; margin-bottom:16px;">
+      <span style="display:inline-flex; align-items:center; gap:8px; background:var(--green-700); color:var(--cream-50); font-family:var(--font-body); font-size:0.8125rem; font-weight:700; letter-spacing:0.06em; padding:6px 14px; border-radius:999px;">DESKTOP · 1024px+</span>
+      <span style="height:1px; flex:1; background:var(--color-outline);"></span>
+      <span style="font-family:var(--font-body); font-size:0.8125rem; color:var(--ink-500);">shown at 1280px</span>
+    </div>
+  </div>
+
+  <div style="overflow-x:auto; padding-bottom:10px;">
+    <div style="width:1280px; margin:0 auto; border-radius:26px; overflow:hidden; box-shadow:var(--shadow-xl); border:1px solid var(--color-outline-variant); background:var(--color-surface);">
+      <x-import component-from-global-scope="TheplaHouseDesignSystem_2c40d5.Navbar" logo-src="assets/logo/theplahouse-logo.png" brand="Thepla House" links="{{ navLinks }}" cta-label="Order now" hint-size="100%,72px"></x-import>
+
+      <section data-screen-label="Contact / Desktop / Hero" style="background:linear-gradient(160deg, var(--cream-50), var(--gold-50) 74%); position:relative; overflow:hidden;">
+        <img src="assets/motifs/leaves-right.png" alt="" aria-hidden="true" style="position:absolute; top:-20px; right:-10px; width:180px; opacity:0.4;">
+        <div style="position:relative; max-width:1200px; margin:0 auto; padding:48px 48px 36px;">
+          <div class="seglabel">Say hello</div>
+          <h1 style="font-family:var(--font-display); color:var(--color-headline); font-size:2.75rem; line-height:1.08; margin:10px 0 12px;">Contact us</h1>
+          <p style="font-family:var(--font-body); color:var(--ink-600); font-size:1.1875rem; line-height:1.6; max-width:620px; margin:0;">Order, ask about catering or franchising, or just tell us what you'd love to see on the menu — we read every message.</p>
+        </div>
+      </section>
+
+      <section style="background:var(--cream-50);">
+        <div style="max-width:1200px; margin:0 auto; padding:56px 48px; display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:start;">
+          <!-- left: methods + form -->
+          <div>
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:28px;">
+              <sc-for list="{{ methods }}" as="m" hint-placeholder-count="4">
+                <a href="#" style="display:flex; gap:13px; align-items:center; text-decoration:none; background:var(--color-surface-container); border:1px solid var(--color-outline-variant); border-radius:var(--radius-lg); box-shadow:var(--shadow-xs); padding:16px;"><span style="flex-shrink:0; width:42px;height:42px;border-radius:50%;background:var(--green-100);display:flex;align-items:center;justify-content:center;"><span style="width:13px;height:13px;border-radius:50% 50% 50% 0;background:var(--green-600);transform:rotate(45deg);"></span></span><div style="min-width:0;"><div style="font-family:var(--font-body); color:var(--ink-500); font-size:0.6875rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase;">{{ m.label }}</div><div style="font-family:var(--font-display); color:var(--color-headline); font-weight:600; font-size:1.0625rem;">{{ m.value }}</div></div></a>
+              </sc-for>
+            </div>
+            <div id="contact-form-d" style="background:var(--color-surface); border:1px solid var(--color-outline-variant); border-radius:var(--radius-2xl); box-shadow:var(--shadow-md); padding:28px;">
+              <h2 style="font-family:var(--font-display); color:var(--color-headline); font-size:1.5rem; margin:0 0 16px;">Send a message</h2>
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+                <x-import component-from-global-scope="TheplaHouseDesignSystem_2c40d5.Input" label="Your name" placeholder="e.g. Priya" required="{{ yes }}" hint-size="100%,78px"></x-import>
+                <x-import component-from-global-scope="TheplaHouseDesignSystem_2c40d5.Input" label="Email or phone" placeholder="How can we reach you?" required="{{ yes }}" hint-size="100%,78px"></x-import>
+              </div>
+              <div style="margin-top:16px;">
+                <x-import component-from-global-scope="TheplaHouseDesignSystem_2c40d5.Select" label="Topic" options="{{ topics }}" placeholder="What's this about?" hint-size="100%,78px"></x-import>
+              </div>
+              <div style="margin-top:16px;">
+                <x-import component-from-global-scope="TheplaHouseDesignSystem_2c40d5.Textarea" label="Message" placeholder="Tell us a little more…" rows="4" hint-size="100%,140px"></x-import>
+              </div>
+              <a href="#" style="display:inline-flex; align-items:center; justify-content:center; gap:8px; width:100%; min-height:52px; padding:14px; margin-top:18px; font-family:var(--font-body); font-size:1.0625rem; font-weight:600; color:var(--color-on-primary); background:var(--color-primary); border-radius:var(--radius-md); box-shadow:var(--shadow-sm); text-decoration:none;">Send message</a>
+            </div>
+          </div>
+          <!-- right: map + hours -->
+          <div style="position:sticky; top:20px;">
+            <div style="border-radius:var(--radius-2xl); overflow:hidden; box-shadow:var(--shadow-lg); height:380px; margin-bottom:20px;">
+              <dc-import name="MapSlot" label="Map: 7 Thepla House kitchens across Mumbai" hint-size="100%,380px" style="height:100%; width:100%;"></dc-import>
+            </div>
+            <div style="background:var(--green-700); border-radius:var(--radius-xl); padding:24px; color:var(--cream-100);">
+              <div class="seglabel" style="color:var(--gold-300); font-size:0.6875rem;">Kitchen hours</div>
+              <div style="font-family:var(--font-display); color:var(--cream-50); font-size:1.25rem; margin:8px 0 4px;">Mon–Sun · 9am – 10pm</div>
+              <div style="font-family:var(--font-body); font-size:0.9375rem; color:var(--green-200);">Order before 11am for same-day lunch. Kandivali dine-in opens 8am.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section style="background:var(--cream-50); padding:8px 48px 52px;"><div style="max-width:1200px; margin:0 auto;"><x-import component-from-global-scope="TheplaHouseDesignSystem_2c40d5.CTABanner" tone="maroon" align="split" eyebrow="Hungry already?" title="Skip the form — just order" body="Order on Swiggy, Zomato or WhatsApp — or call +91 98195 55065." primary-label="Order now" secondary-label="See the menu" hint-size="100%,220px"></x-import></div></section>
+      <x-import component-from-global-scope="TheplaHouseDesignSystem_2c40d5.Footer" logo-src="assets/logo/theplahouse-logo.png" brand="Thepla House by Tejal's Kitchen" tagline="Junk the Junk Food." columns="{{ footerColumns }}" socials="{{ footerSocials }}" note="© 2026 Thepla House by Tejal's Kitchen · Mumbai · Instagram @tejals_kitchen" hint-size="100%,360px"></x-import>
+    </div>
+  </div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      yes: true,
+      navLinks: [
+        { label: "Menu", href: "#" }, { label: "Locations", href: "#" },
+        { label: "Catering", href: "#" }, { label: "Travel Packs", href: "#" },
+        { label: "Franchise", href: "#" }, { label: "About", href: "#" },
+      ],
+      footerColumns: [
+        { title: "Explore", links: [ { label: "Menu", href: "#" }, { label: "Locations", href: "#" }, { label: "Our story", href: "#" }, { label: "Gallery", href: "#" }, { label: "Blog", href: "#" } ] },
+        { title: "Order & services", links: [ { label: "Order now", href: "#" }, { label: "Catering", href: "#" }, { label: "Travel packs", href: "#" }, { label: "Franchise", href: "#" } ] },
+        { title: "Visit", links: [ { label: "Chandivali · Andheri East", href: "#" }, { label: "Lower Parel", href: "#" }, { label: "Mulund", href: "#" }, { label: "Thane", href: "#" }, { label: "Kandivali (dine-in)", href: "#" } ] },
+      ],
+      footerSocials: ["Instagram", "WhatsApp"],
+      methods: [
+        { label: "Order line", value: "+91 98195 55065" },
+        { label: "WhatsApp", value: "+91 98195 55065" },
+        { label: "Catering & franchise", value: "Mr. Dhaval Shah · 98 33 44 3014" },
+        { label: "Instagram", value: "@tejals_kitchen" },
+      ],
+      topics: ["General enquiry", "Order help", "Catering", "Travel packs", "Franchise", "Feedback"],
+    };
+  }
+}
+</script>
+</body>
+</html>

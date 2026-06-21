@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/thepla-house-design-system-website-2c40d59f-1114-4a72-bb72-17048b22af0a/styles.css">
+<style>
+  body { background: var(--cream-100); }
+  .wrap { width:100%; max-width:1160px; margin-inline:auto; padding-inline:24px; }
+  .seglabel { font-family: var(--font-body); font-size:0.75rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--color-primary); }
+  .pcard { display:flex; flex-direction:column; gap:10px; background:var(--color-surface); border:1px solid var(--color-outline-variant); border-radius:var(--radius-xl); box-shadow:var(--shadow-sm); padding:0; overflow:hidden; text-decoration:none; transition:transform var(--duration-base) var(--ease-soft), box-shadow var(--duration-base) var(--ease-standard); }
+  .pcard:hover { transform:translateY(-4px); box-shadow:var(--shadow-lg); }
+  .pchip { display:inline-flex; align-items:center; gap:6px; font-family:var(--font-body); font-size:0.6875rem; font-weight:700; letter-spacing:0.04em; text-transform:uppercase; padding:4px 10px; border-radius:999px; }
+</style>
+</helmet>
+
+<div style="padding-bottom:80px;">
+
+  <!-- Cover -->
+  <header style="background:var(--green-700); color:var(--cream-100); position:relative; overflow:hidden;">
+    <div style="position:absolute; inset:0; background-image:radial-gradient(circle at 16% 18%, rgba(248,176,64,0.18), transparent 38%), radial-gradient(circle at 86% 82%, rgba(0,168,88,0.14), transparent 42%);"></div>
+    <div class="wrap" style="position:relative; padding-top:44px; padding-bottom:46px; display:flex; gap:26px; align-items:center; flex-wrap:wrap;">
+      <div style="width:92px; height:92px; border-radius:50%; background:var(--cream-50); display:flex; align-items:center; justify-content:center; box-shadow:var(--shadow-md); flex-shrink:0;">
+        <img src="assets/logo/theplahouse-logo.png" alt="Thepla House by Tejal's Kitchen" style="width:80px; height:80px; object-fit:contain;">
+      </div>
+      <div style="flex:1; min-width:280px;">
+        <div class="seglabel" style="color:var(--gold-300);">High-fidelity website · handoff index</div>
+        <h1 style="color:var(--cream-50); font-size:clamp(2rem,1.4rem + 2.6vw,2.85rem); margin:8px 0 6px;">The full Thepla House website</h1>
+        <p style="color:var(--cream-200); font-size:1.0625rem; margin:0; max-width:660px;">Every page below is a high-fidelity screen with a <strong style="color:var(--gold-300);">mobile</strong> and a <strong style="color:var(--gold-300);">desktop</strong> layout, built entirely on the design system, with SEO/JSON-LD and tablet-reflow notes for clean Next.js conversion.</p>
+        <div style="font-family:var(--font-script); font-size:1.8rem; color:var(--gold-300); margin-top:10px; line-height:1;">Junk the Junk Food.</div>
+      </div>
+    </div>
+    <div class="th-trim th-trim--toran" style="--trim-color: var(--gold-400); --trim-size:18px;"></div>
+  </header>
+
+  <!-- Order-first core -->
+  <section class="wrap" style="padding-top:44px;">
+    <div class="seglabel">Order-first core</div>
+    <h2 style="margin:6px 0 18px;">Home · Menu · Locations</h2>
+    <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(250px,1fr)); gap:18px;">
+
+      <a class="pcard" href="Thepla House — Home.dc.html">
+        <div style="height:70px; background:linear-gradient(135deg, var(--gold-300), var(--maroon-500));"></div>
+        <div style="padding:0 18px 18px; margin-top:-2px;"><span class="pchip" style="background:var(--maroon-100); color:var(--maroon-700);">Home</span><h3 style="margin:10px 0 4px;">Home</h3><p style="font-family:var(--font-body); color:var(--ink-600); font-size:0.9rem; margin:0;">Hero, order channels, promise strip, best-sellers, kitchens, travel packs, story.</p></div>
+      </a>
+
+      <a class="pcard" href="Thepla House — Menu.dc.html">
+        <div style="height:70px; background:linear-gradient(135deg, var(--gold-400), var(--gold-600));"></div>
+        <div style="padding:0 18px 18px;"><span class="pchip" style="background:var(--gold-100); color:var(--gold-700);">Interactive</span><h3 style="margin:10px 0 4px;">Menu</h3><p style="font-family:var(--font-body); color:var(--ink-600); font-size:0.9rem; margin:0;">250+ dishes with live category tabs and diet filters.</p></div>
+      </a>
+
+      <a class="pcard" href="Thepla House — Locations.dc.html">
+        <div style="height:70px; background:linear-gradient(135deg, var(--green-500), var(--green-700));"></div>
+        <div style="padding:0 18px 18px;"><span class="pchip" style="background:var(--green-100); color:var(--green-700);">Hub</span><h3 style="margin:10px 0 4px;">Locations hub</h3><p style="font-family:var(--font-body); color:var(--ink-600); font-size:0.9rem; margin:0;">All 7 Mumbai kitchens with a map rail and cards.</p></div>
+      </a>
+
+      <a class="pcard" href="Thepla House — Kitchen Area.dc.html">
+        <div style="height:70px; background:linear-gradient(135deg, var(--green-600), var(--green-800));"></div>
+        <div style="padding:0 18px 18px;"><span class="pchip" style="background:var(--green-100); color:var(--green-700);">Template · Local SEO</span><h3 style="margin:10px 0 4px;">Kitchen-area page</h3><p style="font-family:var(--font-body); color:var(--ink-600); font-size:0.9rem; margin:0;">Chandivali — drives all 7. Restaurant geo+hours.</p></div>
+      </a>
+    </div>
+  </section>
+
+  <!-- Offerings -->
+  <section class="wrap" style="padding-top:40px;">
+    <div class="seglabel">Offerings</div>
+    <h2 style="margin:6px 0 18px;">Catering · Travel Packs · Franchise</h2>
+    <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(250px,1fr)); gap:18px;">
+      <a class="pcard" href="Thepla House — Catering.dc.html">
+        <div style="height:70px; background:linear-gradient(135deg, var(--maroon-400), var(--maroon-600));"></div>
+        <div style="padding:0 18px 18px;"><span class="pchip" style="background:var(--maroon-100); color:var(--maroon-700);">Form</span><h3 style="margin:10px 0 4px;">Catering</h3><p style="font-family:var(--font-body); color:var(--ink-600); font-size:0.9rem; margin:0;">Event &amp; pooja, full Jain menus, enquiry form.</p></div>
+      </a>
+      <a class="pcard" href="Thepla House — Travel Packs.dc.html">
+        <div style="height:70px; background:linear-gradient(135deg, var(--green-600), var(--gold-500));"></div>
+        <div style="padding:0 18px 18px;"><span class="pchip" style="background:var(--green-100); color:var(--green-700);">Product</span><h3 style="margin:10px 0 4px;">Travel Packs</h3><p style="font-family:var(--font-body); color:var(--ink-600); font-size:0.9rem; margin:0;">Vacuum-packed methi thepla, ships to Singapore.</p></div>
+      </a>
+      <a class="pcard" href="Thepla House — Franchise.dc.html">
+        <div style="height:70px; background:linear-gradient(135deg, var(--gold-400), var(--maroon-500));"></div>
+        <div style="padding:0 18px 18px;"><span class="pchip" style="background:var(--gold-100); color:var(--gold-700);">Lead-gen</span><h3 style="margin:10px 0 4px;">Franchise</h3><p style="font-family:var(--font-body); color:var(--ink-600); font-size:0.9rem; margin:0;">Why partner, the model, and Mr. Dhaval Shah's contact.</p></div>
+      </a>
+    </div>
+  </section>
+
+  <!-- Brand & content -->
+  <section class="wrap" style="padding-top:40px;">
+    <div class="seglabel">Brand &amp; content</div>
+    <h2 style="margin:6px 0 18px;">About · Blog · Gallery · Contact</h2>
+    <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(250px,1fr)); gap:18px;">
+      <a class="pcard" href="Thepla House — About.dc.html">
+        <div style="height:70px; background:linear-gradient(135deg, var(--cream-400), var(--green-600));"></div>
+        <div style="padding:0 18px 18px;"><span class="pchip" style="background:var(--green-100); color:var(--green-700);">Story</span><h3 style="margin:10px 0 4px;">About / Our Story</h3><p style="font-family:var(--font-body); color:var(--ink-600); font-size:0.9rem; margin:0;">Founder narrative, timeline, values, stats.</p></div>
+      </a>
+      <a class="pcard" href="Thepla House — Blog Index.dc.html">
+        <div style="height:70px; background:linear-gradient(135deg, var(--gold-300), var(--green-500));"></div>
+        <div style="padding:0 18px 18px;"><span class="pchip" style="background:var(--gold-100); color:var(--gold-700);">Interactive</span><h3 style="margin:10px 0 4px;">Blog index</h3><p style="font-family:var(--font-body); color:var(--ink-600); font-size:0.9rem; margin:0;">Featured post + filterable article grid.</p></div>
+      </a>
+      <a class="pcard" href="Thepla House — Blog Post.dc.html">
+        <div style="height:70px; background:linear-gradient(135deg, var(--green-500), var(--green-700));"></div>
+        <div style="padding:0 18px 18px;"><span class="pchip" style="background:var(--green-100); color:var(--green-700);">Template</span><h3 style="margin:10px 0 4px;">Blog post</h3><p style="font-family:var(--font-body); color:var(--ink-600); font-size:0.9rem; margin:0;">Article layout — BlogPosting, author bio, related.</p></div>
+      </a>
+      <a class="pcard" href="Thepla House — Gallery.dc.html">
+        <div style="height:70px; background:linear-gradient(135deg, var(--gold-400), var(--maroon-400));"></div>
+        <div style="padding:0 18px 18px;"><span class="pchip" style="background:var(--gold-100); color:var(--gold-700);">Interactive</span><h3 style="margin:10px 0 4px;">Gallery</h3><p style="font-family:var(--font-body); color:var(--ink-600); font-size:0.9rem; margin:0;">Filterable masonry of labelled photo slots.</p></div>
+      </a>
+      <a class="pcard" href="Thepla House — Contact.dc.html">
+        <div style="height:70px; background:linear-gradient(135deg, var(--green-600), var(--maroon-500));"></div>
+        <div style="padding:0 18px 18px;"><span class="pchip" style="background:var(--green-100); color:var(--green-700);">Form</span><h3 style="margin:10px 0 4px;">Contact</h3><p style="font-family:var(--font-body); color:var(--ink-600); font-size:0.9rem; margin:0;">Method cards, enquiry form, map and hours.</p></div>
+      </a>
+    </div>
+  </section>
+
+  <!-- SEO/GEO + plan -->
+  <section class="wrap" style="padding-top:40px;">
+    <div class="seglabel">SEO/GEO &amp; planning</div>
+    <h2 style="margin:6px 0 18px;">Programmatic landing &amp; the plan</h2>
+    <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(250px,1fr)); gap:18px;">
+      <a class="pcard" href="Thepla House — GEO Landing.dc.html">
+        <div style="height:70px; background:linear-gradient(135deg, var(--gold-500), var(--green-600));"></div>
+        <div style="padding:0 18px 18px;"><span class="pchip" style="background:var(--gold-100); color:var(--gold-700);">Template · GEO</span><h3 style="margin:10px 0 4px;">GEO landing</h3><p style="font-family:var(--font-body); color:var(--ink-600); font-size:0.9rem; margin:0;">"Gujarati food delivery in {area}" — one template, many pages.</p></div>
+      </a>
+      <a class="pcard" href="Thepla House — IA & Plan.dc.html">
+        <div style="height:70px; background:linear-gradient(135deg, var(--green-700), var(--gold-400));"></div>
+        <div style="padding:0 18px 18px;"><span class="pchip" style="background:var(--green-100); color:var(--green-700);">Reference</span><h3 style="margin:10px 0 4px;">IA &amp; Plan</h3><p style="font-family:var(--font-body); color:var(--ink-600); font-size:0.9rem; margin:0;">Sitemap, nav, named components, SEO scheme.</p></div>
+      </a>
+    </div>
+  </section>
+
+  <!-- Components -->
+  <section class="wrap" style="padding-top:40px;">
+    <div class="seglabel">Reusable components</div>
+    <h2 style="margin:6px 0 6px;">New blocks (map 1:1 to React components)</h2>
+    <p style="font-family:var(--font-body); color:var(--ink-600); font-size:0.95rem; max-width:700px; margin:0 0 18px;">Authored in the system's language, on top of the existing Navbar · Footer · CTABanner · Accordion · Tabs · Button · DietTag · form fields.</p>
+    <div style="display:flex; flex-wrap:wrap; gap:10px;">
+      <a href="PhotoSlot.dc.html" style="text-decoration:none;"><span class="pchip" style="background:var(--color-surface); color:var(--green-700); border:1px solid var(--color-outline); padding:9px 16px; font-size:0.8125rem;">PhotoSlot →</span></a>
+      <a href="MapSlot.dc.html" style="text-decoration:none;"><span class="pchip" style="background:var(--color-surface); color:var(--green-700); border:1px solid var(--color-outline); padding:9px 16px; font-size:0.8125rem;">MapSlot →</span></a>
+      <a href="MenuItemCard.dc.html" style="text-decoration:none;"><span class="pchip" style="background:var(--color-surface); color:var(--green-700); border:1px solid var(--color-outline); padding:9px 16px; font-size:0.8125rem;">MenuItemCard →</span></a>
+      <a href="MenuRow.dc.html" style="text-decoration:none;"><span class="pchip" style="background:var(--color-surface); color:var(--green-700); border:1px solid var(--color-outline); padding:9px 16px; font-size:0.8125rem;">MenuRow →</span></a>
+      <a href="KitchenCard.dc.html" style="text-decoration:none;"><span class="pchip" style="background:var(--color-surface); color:var(--green-700); border:1px solid var(--color-outline); padding:9px 16px; font-size:0.8125rem;">KitchenCard →</span></a>
+      <a href="BlogPostCard.dc.html" style="text-decoration:none;"><span class="pchip" style="background:var(--color-surface); color:var(--green-700); border:1px solid var(--color-outline); padding:9px 16px; font-size:0.8125rem;">BlogPostCard →</span></a>
+    </div>
+  </section>
+
+</div>
+</x-dc>
+</body>
+</html>

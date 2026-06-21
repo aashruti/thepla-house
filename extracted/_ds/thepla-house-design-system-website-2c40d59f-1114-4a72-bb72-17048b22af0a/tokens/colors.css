@@ -1,0 +1,200 @@
+/* ============================================================
+   Thepla House — Color Tokens
+   Derived from the logo: golden thepla, deep-green lettering,
+   brick-maroon rolling-pin ribbon, fresh leaf-green accents.
+
+   Naming maps cleanly to Tailwind:
+     --gold-500  -> colors.gold.500
+     --color-primary -> semantic alias
+   Anchors: gold #F8B040 · green #286850 · maroon #983830 · leaf #00A858
+   ============================================================ */
+:root {
+  /* ---- GOLD (thepla) — primary accent / highlights / CTAs ---- */
+  --gold-50:  #FEF6E7;
+  --gold-100: #FDEBC6;
+  --gold-200: #FBDA98;
+  --gold-300: #FAC76A;
+  --gold-400: #F8B040; /* ANCHOR */
+  --gold-500: #F49E1E;
+  --gold-600: #DB8512;
+  --gold-700: #B6680F;
+  --gold-800: #8F5113;
+  --gold-900: #6E3F12;
+
+  /* ---- GREEN (lettering) — headlines / trust / health cues ---- */
+  --green-50:  #ECF6F0;
+  --green-100: #D2EADD;
+  --green-200: #A6D5BD;
+  --green-300: #71BA98;
+  --green-400: #469A76;
+  --green-500: #2F7E5C;
+  --green-600: #286850; /* ANCHOR */
+  --green-700: #205340;
+  --green-800: #1B4234;
+  --green-900: #16362B;
+
+  /* ---- MAROON (rolling pin) — primary buttons / links / footer ---- */
+  --maroon-50:  #FBEEEC;
+  --maroon-100: #F6D8D3;
+  --maroon-200: #ECB1A9;
+  --maroon-300: #E08578;
+  --maroon-400: #D15E4D;
+  --maroon-500: #B8412F;
+  --maroon-600: #983830; /* ANCHOR */
+  --maroon-700: #7C2E27;
+  --maroon-800: #642822;
+  --maroon-900: #52231F;
+
+  /* ---- LEAF (mint leaves) — small organic / vegan accents only ---- */
+  --leaf-50:  #E5F8ED;
+  --leaf-100: #C2EFD4;
+  --leaf-200: #8AE0AF;
+  --leaf-300: #4FCE87;
+  --leaf-400: #19BA66;
+  --leaf-500: #00A858; /* ANCHOR */
+  --leaf-600: #00904B;
+  --leaf-700: #00733C;
+  --leaf-800: #045E33;
+  --leaf-900: #074D2B;
+
+  /* ---- CREAM — warm neutral, for backgrounds & surfaces ---- */
+  --cream-50:  #FFFDF9;
+  --cream-100: #FDF6E9;
+  --cream-200: #F7ECD6;
+  --cream-300: #EFDFC0;
+  --cream-400: #E3CDA3;
+  --cream-500: #D2B681;
+  --cream-600: #B89761;
+  --cream-700: #8F7449;
+  --cream-800: #614E31;
+  --cream-900: #3A2E1C;
+
+  /* ---- INK — warm-tinted true-neutral text scale ---- */
+  --ink-50:  #F6F4F1;
+  --ink-100: #E7E3DD;
+  --ink-200: #CBC4B9;
+  --ink-300: #A89E8F;
+  --ink-400: #847A6B;
+  --ink-500: #655B4D;
+  --ink-600: #4B4337;
+  --ink-700: #383127;
+  --ink-800: #26211A;
+  --ink-900: #171310;
+
+  --white: #FFFFFF;
+
+  /* =========================================================
+     SEMANTIC TOKENS — light (default)
+     ========================================================= */
+  /* Brand actions */
+  --color-primary:          var(--maroon-600);   /* buttons, links, footer */
+  --color-primary-hover:    var(--maroon-700);
+  --color-primary-active:   var(--maroon-800);
+  --color-on-primary:       var(--cream-50);
+
+  --color-secondary:        var(--gold-400);      /* accent / CTA highlight */
+  --color-secondary-hover:  var(--gold-500);
+  --color-secondary-active: var(--gold-600);
+  --color-on-secondary:     var(--ink-900);       /* dark text on gold */
+
+  --color-headline:         var(--green-600);     /* headings / trust */
+  --color-accent:           var(--leaf-500);      /* organic / vegan only */
+  --color-on-accent:        var(--white);
+
+  /* Surfaces */
+  --color-surface:               var(--cream-50);
+  --color-surface-container:     var(--cream-100);
+  --color-surface-container-high:var(--cream-200);
+  --color-surface-inverse:       var(--green-800);
+  --color-on-surface:            var(--ink-900);
+  --color-on-surface-variant:    var(--ink-500);
+  --color-on-surface-inverse:    var(--cream-100);
+
+  /* Lines */
+  --color-outline:          var(--cream-400);
+  --color-outline-variant:  var(--cream-300);
+  --color-outline-strong:   var(--ink-300);
+
+  /* Status */
+  --color-success:          var(--leaf-600);
+  --color-on-success:       var(--white);
+  --color-success-container:var(--leaf-50);
+  --color-on-success-container: var(--leaf-800);
+
+  --color-warning:          var(--gold-600);
+  --color-on-warning:       var(--ink-900);
+  --color-warning-container:var(--gold-50);
+  --color-on-warning-container: var(--gold-900);
+
+  --color-error:            #C0392B;
+  --color-on-error:         var(--white);
+  --color-error-container:  var(--maroon-50);
+  --color-on-error-container: var(--maroon-800);
+
+  /* Focus ring */
+  --color-focus:            var(--gold-500);
+
+  /* Diet tags */
+  --color-jain:             var(--gold-700);
+  --color-jain-bg:          var(--gold-100);
+  --color-vegan:            var(--leaf-700);
+  --color-vegan-bg:         var(--leaf-100);
+  --color-bestseller:       var(--maroon-700);
+  --color-bestseller-bg:    var(--maroon-100);
+}
+
+/* =========================================================
+   SEMANTIC TOKENS — dark (optional)
+   Apply with <html data-theme="dark"> or .dark
+   ========================================================= */
+[data-theme="dark"], .dark {
+  --color-primary:          var(--maroon-400);
+  --color-primary-hover:    var(--maroon-300);
+  --color-primary-active:   var(--maroon-200);
+  --color-on-primary:       #2A0E0A;
+
+  --color-secondary:        var(--gold-400);
+  --color-secondary-hover:  var(--gold-300);
+  --color-secondary-active: var(--gold-200);
+  --color-on-secondary:     var(--ink-900);
+
+  --color-headline:         var(--green-200);
+  --color-accent:           var(--leaf-400);
+  --color-on-accent:        #062815;
+
+  --color-surface:               #1A130D;
+  --color-surface-container:     #221A12;
+  --color-surface-container-high:#2C221788;
+  --color-surface-inverse:       var(--cream-100);
+  --color-on-surface:            var(--cream-100);
+  --color-on-surface-variant:    var(--cream-400);
+  --color-on-surface-inverse:    var(--ink-900);
+
+  --color-outline:          #4A3A28;
+  --color-outline-variant:  #36291C;
+  --color-outline-strong:   var(--cream-600);
+
+  --color-success:          var(--leaf-400);
+  --color-on-success:       #062815;
+  --color-success-container:#0C3A22;
+  --color-on-success-container: var(--leaf-100);
+
+  --color-warning:          var(--gold-400);
+  --color-on-warning:       var(--ink-900);
+  --color-warning-container:#3A2A0C;
+  --color-on-warning-container: var(--gold-100);
+
+  --color-error:            #E07A6E;
+  --color-on-error:         #2A0E0A;
+  --color-error-container:  #45201A;
+  --color-on-error-container: var(--maroon-100);
+
+  --color-focus:            var(--gold-400);
+
+  --color-jain:             var(--gold-200);
+  --color-jain-bg:          #3A2A0C;
+  --color-vegan:            var(--leaf-200);
+  --color-vegan-bg:         #0C3A22;
+  --color-bestseller:       var(--maroon-200);
+  --color-bestseller-bg:    #45201A;
+}

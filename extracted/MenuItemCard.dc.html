@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/thepla-house-design-system-website-2c40d59f-1114-4a72-bb72-17048b22af0a/styles.css">
+</helmet>
+<div style="display:flex; flex-direction:column; background:var(--color-surface-container); border:1px solid var(--color-outline-variant); border-radius:var(--radius-xl); box-shadow:var(--shadow-sm); overflow:hidden; height:100%;">
+  <dc-import name="PhotoSlot" subject="{{ subject }}" alt="{{ alt }}" hint-size="100%,166px" style="height:166px; width:100%;"></dc-import>
+  <div style="padding:16px 16px 18px; display:flex; flex-direction:column; gap:8px; flex:1;">
+    <h3 style="font-family:var(--font-display); color:var(--color-headline); font-size:1.1875rem; line-height:1.2; margin:0;">{{ title }}</h3>
+    <p style="font-family:var(--font-body); color:var(--color-on-surface-variant); font-size:0.875rem; line-height:1.5; margin:0; flex:1;">{{ desc }}</p>
+    <div style="display:flex; flex-wrap:wrap; gap:6px; margin-top:2px;">
+      <sc-for list="{{ tags }}" as="tag" hint-placeholder-count="2">
+        <span style="display:inline-flex; align-items:center; font-family:var(--font-body); font-size:0.75rem; font-weight:600; padding:4px 10px; border-radius:999px; background:{{ tag.bg }}; color:{{ tag.fg }};">{{ tag.label }}</span>
+      </sc-for>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:300,&quot;height&quot;:360},&quot;title&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Methi Thepla&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;desc&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Soft whole-wheat flatbread rolled with fresh fenugreek and spices.&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;subject&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Stack of methi theplas on a brass plate&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;alt&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Methi theplas&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;tags&quot;:{&quot;editor&quot;:null,&quot;default&quot;:[{&quot;label&quot;:&quot;100% whole wheat&quot;,&quot;bg&quot;:&quot;var(--gold-100)&quot;,&quot;fg&quot;:&quot;var(--gold-700)&quot;},{&quot;label&quot;:&quot;Best-seller&quot;,&quot;bg&quot;:&quot;var(--color-bestseller-bg)&quot;,&quot;fg&quot;:&quot;var(--color-bestseller)&quot;}],&quot;tsType&quot;:&quot;Array&lt;{label:string;bg:string;fg:string}&gt;&quot;}}"></script>
+</body>
+</html>

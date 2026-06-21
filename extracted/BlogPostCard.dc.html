@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/thepla-house-design-system-website-2c40d59f-1114-4a72-bb72-17048b22af0a/styles.css">
+</helmet>
+<div style="display:flex; flex-direction:column; background:var(--color-surface-container); border:1px solid var(--color-outline-variant); border-radius:var(--radius-xl); box-shadow:var(--shadow-sm); overflow:hidden; height:100%;">
+  <div style="position:relative; height:170px;">
+    <dc-import name="PhotoSlot" subject="{{ subject }}" alt="{{ alt }}" hint-size="100%,170px" style="height:170px; width:100%;"></dc-import>
+    <span style="position:absolute; top:12px; left:12px; font-family:var(--font-body); font-size:0.6875rem; font-weight:700; letter-spacing:0.04em; text-transform:uppercase; padding:5px 11px; border-radius:999px; background:var(--green-700); color:var(--cream-50);">{{ category }}</span>
+  </div>
+  <div style="padding:16px 17px 18px; display:flex; flex-direction:column; gap:8px; flex:1;">
+    <h3 style="font-family:var(--font-display); color:var(--color-headline); font-size:1.25rem; line-height:1.22; margin:0;">{{ title }}</h3>
+    <p style="font-family:var(--font-body); color:var(--color-on-surface-variant); font-size:0.9rem; line-height:1.5; margin:0; flex:1;">{{ excerpt }}</p>
+    <div style="display:flex; align-items:center; gap:8px; font-family:var(--font-body); color:var(--ink-500); font-size:0.8125rem; margin-top:2px;"><span>{{ date }}</span><span style="width:3px;height:3px;border-radius:50%;background:var(--ink-300);"></span><span>{{ read }}</span></div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:320,&quot;height&quot;:360},&quot;title&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Why we'll never use maida&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;excerpt&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;The case for 100% whole wheat — and what maida really does to your everyday roti.&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;category&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Health&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;date&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;May 2026&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;read&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;4 min read&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;subject&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Whole wheat atta and rolling pin on a wooden board&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;alt&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Whole wheat atta&quot;,&quot;tsType&quot;:&quot;string&quot;}}"></script>
+</body>
+</html>

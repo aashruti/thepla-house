@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/thepla-house-design-system-website-2c40d59f-1114-4a72-bb72-17048b22af0a/styles.css">
+<script src="_ds/thepla-house-design-system-website-2c40d59f-1114-4a72-bb72-17048b22af0a/_ds_bundle.js"></script>
+<style>
+  body { background: var(--ink-100); }
+  .seglabel { font-family: var(--font-body); font-size:0.75rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--color-primary); }
+</style>
+</helmet>
+
+<div style="padding:40px 24px 90px;">
+
+  <!-- Page chrome -->
+  <div style="max-width:1340px; margin:0 auto 30px;">
+    <div class="seglabel">Step 3 · High-fidelity page · Blog index</div>
+    <h1 style="font-family:var(--font-display); color:var(--color-headline); font-size:2.25rem; margin:6px 0 8px;">Blog index</h1>
+    <p style="font-family:var(--font-body); color:var(--ink-600); font-size:1.0625rem; max-width:760px; margin:0 0 20px;">Recipes, health and Gujarati food culture — with a featured post and live category filtering (both screens share state).</p>
+    <div style="background:var(--color-surface); border:1px solid var(--color-outline-variant); border-left:4px solid var(--gold-400); border-radius:var(--radius-lg); box-shadow:var(--shadow-xs); padding:18px 20px;">
+      <div class="seglabel" style="color:var(--ink-500);">SEO / GEO notes — Blog index</div>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:10px 28px; margin-top:10px; font-family:var(--font-body); font-size:0.875rem; color:var(--ink-700);">
+        <div><strong style="color:var(--green-700);">&lt;title&gt;</strong> · Kitchen notes — recipes, health &amp; Gujarati food | Thepla House</div>
+        <div><strong style="color:var(--green-700);">canonical</strong> · https://theplahouse.com/blog</div>
+        <div style="grid-column:1/-1;"><strong style="color:var(--green-700);">meta</strong> · Recipes, health notes and Gujarati food culture from Tejal's kitchen — whole-wheat cooking, Jain &amp; vegan tips, and the stories behind our dishes.</div>
+        <div style="grid-column:1/-1;"><strong style="color:var(--green-700);">H1 (one)</strong> · "Kitchen notes" · <strong style="color:var(--green-700);">JSON-LD</strong> · Blog · BreadcrumbList</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== MOBILE ===== -->
+  <div style="max-width:1340px; margin:0 auto;">
+    <div style="display:flex; align-items:center; gap:12px; margin-bottom:16px;">
+      <span style="display:inline-flex; align-items:center; gap:8px; background:var(--maroon-600); color:var(--cream-50); font-family:var(--font-body); font-size:0.8125rem; font-weight:700; letter-spacing:0.06em; padding:6px 14px; border-radius:999px;">MOBILE · 360–767px</span>
+      <span style="height:1px; flex:1; background:var(--color-outline);"></span>
+    </div>
+    <div style="display:flex; justify-content:center; margin-bottom:8px;">
+      <div style="width:390px; height:780px; border-radius:34px; background:var(--color-surface); box-shadow:var(--shadow-xl); border:1px solid var(--color-outline-variant); overflow:hidden; position:relative;">
+        <div style="height:100%; overflow-y:auto; padding-bottom:86px;">
+          <x-import component-from-global-scope="TheplaHouseDesignSystem_2c40d5.Navbar" logo-src="assets/logo/theplahouse-logo.png" brand="Thepla House" links="{{ navLinks }}" cta-label="Order now" compact="{{ yes }}" hint-size="100%,64px"></x-import>
+
+          <section data-screen-label="Blog / Mobile / Hero" style="background:linear-gradient(165deg, var(--cream-50), var(--gold-50) 80%); padding:24px 20px 16px;">
+            <div class="seglabel" style="font-size:0.6875rem;">From the kitchen</div>
+            <h1 style="font-family:var(--font-display); color:var(--color-headline); font-size:1.85rem; line-height:1.12; margin:8px 0 8px;">Kitchen notes</h1>
+            <p style="font-family:var(--font-body); color:var(--ink-600); font-size:0.9375rem; line-height:1.55; margin:0;">Recipes, health and the stories behind our food — straight from Tejal's kitchen.</p>
+          </section>
+
+          <!-- featured -->
+          <section style="background:var(--cream-50); padding:14px 20px;">
+            <div style="background:var(--color-surface-container); border:1px solid var(--color-outline-variant); border-radius:var(--radius-xl); box-shadow:var(--shadow-sm); overflow:hidden;">
+              <div style="position:relative; height:180px;">
+                <dc-import name="PhotoSlot" subject="{{ featured.subject }}" alt="{{ featured.alt }}" hint-size="100%,180px" style="height:180px; width:100%;"></dc-import>
+                <span style="position:absolute; top:12px; left:12px; font-family:var(--font-body); font-size:0.6875rem; font-weight:700; text-transform:uppercase; padding:5px 11px; border-radius:999px; background:var(--maroon-600); color:var(--cream-50);">Featured · {{ featured.category }}</span>
+              </div>
+              <div style="padding:16px;">
+                <h2 style="font-family:var(--font-display); color:var(--color-headline); font-size:1.375rem; line-height:1.2; margin:0 0 6px;">{{ featured.title }}</h2>
+                <p style="font-family:var(--font-body); color:var(--ink-600); font-size:0.9rem; line-height:1.5; margin:0 0 10px;">{{ featured.excerpt }}</p>
+                <a href="#" style="font-family:var(--font-body); font-weight:600; color:var(--color-primary); text-decoration:none;">Read article →</a>
+              </div>
+            </div>
+          </section>
+
+          <!-- filter -->
+          <div style="padding:4px 12px 0; border-bottom:1px solid var(--color-outline-variant); background:var(--color-surface);">
+            <x-import component-from-global-scope="TheplaHouseDesignSystem_2c40d5.Tabs" tabs="{{ catTabs }}" value="{{ activeCat }}" onChange="{{ setCat }}" hint-size="100%,52px"></x-import>
+          </div>
+
+          <section style="background:var(--cream-50); padding:18px 20px 24px;">
+            <div style="display:flex; flex-direction:column; gap:16px;">
+              <sc-for list="{{ visiblePosts }}" as="p" hint-placeholder-count="4">
+                <dc-import name="BlogPostCard" title="{{ p.title }}" excerpt="{{ p.excerpt }}" category="{{ p.category }}" date="{{ p.date }}" read="{{ p.read }}" subject="{{ p.subject }}" alt="{{ p.alt }}" hint-size="100%,360px" style="width:100%;"></dc-import>
+              </sc-for>
+            </div>
+          </section>
+
+          <section style="background:var(--cream-50); padding:8px 16px 22px;"><x-import component-from-global-scope="TheplaHouseDesignSystem_2c40d5.CTABanner" tone="maroon" eyebrow="Hungry now?" title="Order the food you just read about" body="Fresh, home-style and a few taps away." primary-label="Order now" hint-size="100%,240px"></x-import></section>
+          <x-import component-from-global-scope="TheplaHouseDesignSystem_2c40d5.Footer" logo-src="assets/logo/theplahouse-logo.png" brand="Thepla House by Tejal's Kitchen" tagline="Junk the Junk Food." columns="{{ footerColumns }}" socials="{{ footerSocials }}" note="© 2026 Thepla House by Tejal's Kitchen · Mumbai · Instagram @tejals_kitchen" hint-size="100%,420px"></x-import>
+        </div>
+        <div style="position:absolute; left:0; right:0; bottom:0; background:var(--green-700); border-top:1px solid var(--green-800); padding:11px 14px; display:flex; gap:9px; align-items:center; box-shadow:0 -8px 22px -10px rgba(82,35,31,0.55); z-index:6;">
+          <a href="#" style="flex:1; text-align:center; padding:13px; font-family:var(--font-body); font-size:1rem; font-weight:700; color:var(--color-on-secondary); background:var(--color-secondary); border-radius:var(--radius-md); text-decoration:none;">Order now</a>
+          <a href="#" style="padding:13px 16px; font-family:var(--font-body); font-size:0.9rem; font-weight:600; color:var(--cream-100); background:rgba(255,255,255,0.14); border-radius:var(--radius-md); text-decoration:none;">WhatsApp</a>
+          <a href="#" style="padding:13px 16px; font-family:var(--font-body); font-size:0.9rem; font-weight:600; color:var(--cream-100); background:rgba(255,255,255,0.14); border-radius:var(--radius-md); text-decoration:none;">Call</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tablet note -->
+  <div style="max-width:1340px; margin:24px auto; background:var(--gold-50); border:1px solid var(--gold-200); border-radius:var(--radius-lg); padding:14px 18px; display:flex; gap:12px; align-items:flex-start;">
+    <span style="flex-shrink:0; width:26px;height:26px;border-radius:50%;background:var(--gold-400);color:var(--ink-900);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-weight:700;font-size:0.9rem;">i</span>
+    <p style="font-family:var(--font-body); font-size:0.9rem; color:var(--ink-700); margin:0;"><strong style="color:var(--green-700);">Tablet (768–1023px) reflow:</strong> the featured post becomes a 2-column hero (image + copy side by side); the post grid goes from one column to two; category tabs stay inline above the grid.</p>
+  </div>
+
+  <!-- ===== DESKTOP ===== -->
+  <div style="margin:0 auto; max-width:1340px;">
+    <div style="display:flex; align-items:center; gap:12px; margin-bottom:16px;">
+      <span style="display:inline-flex; align-items:center; gap:8px; background:var(--green-700); color:var(--cream-50); font-family:var(--font-body); font-size:0.8125rem; font-weight:700; letter-spacing:0.06em; padding:6px 14px; border-radius:999px;">DESKTOP · 1024px+</span>
+      <span style="height:1px; flex:1; background:var(--color-outline);"></span>
+      <span style="font-family:var(--font-body); font-size:0.8125rem; color:var(--ink-500);">shown at 1280px</span>
+    </div>
+  </div>
+
+  <div style="overflow-x:auto; padding-bottom:10px;">
+    <div style="width:1280px; margin:0 auto; border-radius:26px; overflow:hidden; box-shadow:var(--shadow-xl); border:1px solid var(--color-outline-variant); background:var(--color-surface);">
+      <x-import component-from-global-scope="TheplaHouseDesignSystem_2c40d5.Navbar" logo-src="assets/logo/theplahouse-logo.png" brand="Thepla House" links="{{ navLinks }}" cta-label="Order now" hint-size="100%,72px"></x-import>
+
+      <section data-screen-label="Blog / Desktop / Hero" style="background:linear-gradient(160deg, var(--cream-50), var(--gold-50) 74%); position:relative; overflow:hidden;">
+        <img src="assets/motifs/leaves-right.png" alt="" aria-hidden="true" style="position:absolute; top:-20px; right:-10px; width:180px; opacity:0.4;">
+        <div style="position:relative; max-width:1200px; margin:0 auto; padding:48px 48px 36px;">
+          <div class="seglabel">From the kitchen</div>
+          <h1 style="font-family:var(--font-display); color:var(--color-headline); font-size:2.75rem; line-height:1.08; margin:10px 0 12px;">Kitchen notes</h1>
+          <p style="font-family:var(--font-body); color:var(--ink-600); font-size:1.1875rem; line-height:1.6; max-width:640px; margin:0;">Recipes, health notes and Gujarati food culture — the thinking and the stories behind everything we cook.</p>
+        </div>
+      </section>
+
+      <!-- featured -->
+      <section style="background:var(--cream-50);">
+        <div style="max-width:1200px; margin:0 auto; padding:40px 48px 8px;">
+          <div style="display:grid; grid-template-columns:1.1fr 0.9fr; gap:40px; align-items:center; background:var(--color-surface-container); border:1px solid var(--color-outline-variant); border-radius:var(--radius-2xl); box-shadow:var(--shadow-md); overflow:hidden;">
+            <div style="height:360px;"><dc-import name="PhotoSlot" subject="{{ featured.subject }}" alt="{{ featured.alt }}" hint-size="100%,360px" style="height:100%; width:100%;"></dc-import></div>
+            <div style="padding:36px 40px 36px 4px;">
+              <span style="display:inline-block; font-family:var(--font-body); font-size:0.6875rem; font-weight:700; text-transform:uppercase; letter-spacing:0.04em; padding:5px 12px; border-radius:999px; background:var(--maroon-100); color:var(--maroon-700); margin-bottom:14px;">Featured · {{ featured.category }}</span>
+              <h2 style="font-family:var(--font-display); color:var(--color-headline); font-size:2rem; line-height:1.15; margin:0 0 12px;">{{ featured.title }}</h2>
+              <p style="font-family:var(--font-body); color:var(--ink-600); font-size:1.0625rem; line-height:1.6; margin:0 0 18px;">{{ featured.excerpt }}</p>
+              <div style="display:flex; align-items:center; gap:8px; font-family:var(--font-body); color:var(--ink-500); font-size:0.9rem; margin-bottom:18px;"><span>By Tejal</span><span style="width:3px;height:3px;border-radius:50%;background:var(--ink-300);"></span><span>{{ featured.date }}</span><span style="width:3px;height:3px;border-radius:50%;background:var(--ink-300);"></span><span>{{ featured.read }}</span></div>
+              <a href="#" style="display:inline-flex; align-items:center; justify-content:center; gap:8px; min-height:48px; padding:13px 24px; font-family:var(--font-body); font-size:1rem; font-weight:600; color:var(--color-on-primary); background:var(--color-primary); border-radius:var(--radius-md); box-shadow:var(--shadow-sm); text-decoration:none;">Read article</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- filter + grid -->
+      <section style="background:var(--cream-50);">
+        <div style="max-width:1200px; margin:0 auto; padding:24px 48px 64px;">
+          <div style="border-bottom:1px solid var(--color-outline-variant); margin-bottom:28px;">
+            <x-import component-from-global-scope="TheplaHouseDesignSystem_2c40d5.Tabs" tabs="{{ catTabs }}" value="{{ activeCat }}" onChange="{{ setCat }}" hint-size="100%,56px"></x-import>
+          </div>
+          <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:24px;">
+            <sc-for list="{{ visiblePosts }}" as="p" hint-placeholder-count="6">
+              <dc-import name="BlogPostCard" title="{{ p.title }}" excerpt="{{ p.excerpt }}" category="{{ p.category }}" date="{{ p.date }}" read="{{ p.read }}" subject="{{ p.subject }}" alt="{{ p.alt }}" hint-size="100%,360px" style="height:100%; width:100%;"></dc-import>
+            </sc-for>
+          </div>
+        </div>
+      </section>
+
+      <section style="background:var(--cream-50); padding:8px 48px 52px;"><div style="max-width:1200px; margin:0 auto;"><x-import component-from-global-scope="TheplaHouseDesignSystem_2c40d5.CTABanner" tone="maroon" align="split" eyebrow="Hungry now?" title="Order the food you just read about" body="Fresh, home-style and a few taps away — Swiggy, Zomato or WhatsApp." primary-label="Order now" secondary-label="See the menu" hint-size="100%,220px"></x-import></div></section>
+      <x-import component-from-global-scope="TheplaHouseDesignSystem_2c40d5.Footer" logo-src="assets/logo/theplahouse-logo.png" brand="Thepla House by Tejal's Kitchen" tagline="Junk the Junk Food." columns="{{ footerColumns }}" socials="{{ footerSocials }}" note="© 2026 Thepla House by Tejal's Kitchen · Mumbai · Instagram @tejals_kitchen" hint-size="100%,360px"></x-import>
+    </div>
+  </div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { cat: "all" };
+
+  renderVals() {
+    const posts = [
+      { title: "Why we'll never use maida", excerpt: "The case for 100% whole wheat — and what refined flour really does to your everyday roti.", cat: "health", category: "Health", date: "May 2026", read: "4 min read", subject: "Whole-wheat atta and a rolling pin on a wooden board", alt: "Whole-wheat atta and rolling pin" },
+      { title: "Methi thepla: the science of 15-day freshness", excerpt: "How a humble flatbread travels halfway across the world and still tastes just-made.", cat: "health", category: "Health", date: "Apr 2026", read: "5 min read", subject: "Vacuum-sealed methi thepla pack beside fresh theplas", alt: "Methi thepla freshness" },
+      { title: "A beginner's guide to the Gujarati thali", excerpt: "Dal, kadhi, shaak, rotli and a sweet — how the perfect home-style plate comes together.", cat: "culture", category: "Food culture", date: "Apr 2026", read: "6 min read", subject: "A full Gujarati thali, top-down on brass", alt: "Gujarati thali guide" },
+      { title: "Jain cooking, explained", excerpt: "No onion, no garlic, no root vegetables — and still endlessly flavourful. Here's how.", cat: "culture", category: "Food culture", date: "Mar 2026", read: "5 min read", subject: "Jain thali with labelled bowls", alt: "Jain cooking" },
+      { title: "5 ways to use leftover theplas", excerpt: "Rolls, chaat, croutons and more — quick ideas so nothing goes to waste.", cat: "recipes", category: "Recipes", date: "Mar 2026", read: "3 min read", subject: "Thepla rolls and chaat made from leftovers", alt: "Leftover thepla ideas" },
+      { title: "Undhiyu: winter on a plate", excerpt: "The Surti classic that brings the whole market into one earthen pot.", cat: "seasonal", category: "Seasonal", date: "Feb 2026", read: "4 min read", subject: "Earthen pot of undhiyu with winter vegetables", alt: "Undhiyu" },
+      { title: "Sunflower vs palm oil: why it matters", excerpt: "The quiet ingredient that decides how good — and how honest — your food really is.", cat: "health", category: "Health", date: "Feb 2026", read: "4 min read", subject: "Bottle of sunflower oil beside fresh ingredients", alt: "Sunflower oil" },
+    ];
+
+    const cat = this.state.cat;
+    const categories = [
+      { id: "all", label: "All" }, { id: "health", label: "Health" },
+      { id: "recipes", label: "Recipes" }, { id: "culture", label: "Food culture" },
+      { id: "seasonal", label: "Seasonal" },
+    ];
+    const featured = posts[0];
+    const rest = posts.slice(1);
+    const visible = rest.filter((p) => cat === "all" || p.cat === cat);
+
+    return {
+      yes: true,
+      navLinks: [
+        { label: "Menu", href: "#" }, { label: "Locations", href: "#" },
+        { label: "Catering", href: "#" }, { label: "Travel Packs", href: "#" },
+        { label: "Franchise", href: "#" }, { label: "About", href: "#" },
+      ],
+      footerColumns: [
+        { title: "Explore", links: [ { label: "Menu", href: "#" }, { label: "Locations", href: "#" }, { label: "Our story", href: "#" }, { label: "Gallery", href: "#" }, { label: "Blog", href: "#" } ] },
+        { title: "Order & services", links: [ { label: "Order now", href: "#" }, { label: "Catering", href: "#" }, { label: "Travel packs", href: "#" }, { label: "Franchise", href: "#" } ] },
+        { title: "Visit", links: [ { label: "Chandivali · Andheri East", href: "#" }, { label: "Lower Parel", href: "#" }, { label: "Mulund", href: "#" }, { label: "Thane", href: "#" }, { label: "Kandivali (dine-in)", href: "#" } ] },
+      ],
+      footerSocials: ["Instagram", "WhatsApp"],
+      featured,
+      catTabs: categories.map((c) => ({ id: c.id, label: c.label })),
+      activeCat: cat,
+      setCat: (id) => this.setState({ cat: id }),
+      visiblePosts: visible,
+    };
+  }
+}
+</script>
+</body>
+</html>

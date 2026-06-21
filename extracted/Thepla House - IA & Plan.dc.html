@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/thepla-house-design-system-website-2c40d59f-1114-4a72-bb72-17048b22af0a/styles.css">
+<style>
+  body { background: var(--cream-100); }
+  .planwrap { width: 100%; max-width: 1120px; margin-inline: auto; padding-inline: 24px; }
+  .seglabel { font-family: var(--font-body); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-primary); }
+  .card { background: var(--color-surface); border: 1px solid var(--color-outline-variant); border-radius: var(--radius-xl); box-shadow: var(--shadow-sm); }
+  .chip { display:inline-flex; align-items:center; gap:6px; font-family: var(--font-body); font-size: 0.8125rem; font-weight: 600; padding: 5px 12px; border-radius: 999px; }
+  a.plink { color: var(--color-primary); font-weight: 600; text-decoration: none; }
+</style>
+</helmet>
+
+<div style="padding-bottom: 80px;">
+
+  <!-- ===== Cover ===== -->
+  <header style="background: var(--green-700); color: var(--cream-100); position: relative; overflow: hidden;">
+    <div style="position:absolute; inset:0; background-image: radial-gradient(circle at 18% 20%, rgba(248,176,64,0.18), transparent 38%), radial-gradient(circle at 88% 80%, rgba(0,168,88,0.14), transparent 42%);"></div>
+    <div class="planwrap" style="position:relative; padding-top: 44px; padding-bottom: 48px; display:flex; gap:28px; align-items:center; flex-wrap:wrap;">
+      <div style="width:96px; height:96px; border-radius:50%; background:var(--cream-50); display:flex; align-items:center; justify-content:center; box-shadow: var(--shadow-md); flex-shrink:0;">
+        <img src="assets/logo/theplahouse-logo.png" alt="Thepla House by Tejal's Kitchen" style="width:84px; height:84px; object-fit:contain;">
+      </div>
+      <div style="flex:1; min-width:280px;">
+        <div class="seglabel" style="color: var(--gold-300);">Website project · Step 1 of 3 — for your sign-off</div>
+        <h1 style="color: var(--cream-50); font-size: clamp(2rem, 1.4rem + 2.6vw, 3rem); margin: 8px 0 6px;">Information architecture &amp; build plan</h1>
+        <p style="color: var(--cream-200); font-size: 1.0625rem; margin:0; max-width: 640px;">The full site map, navigation, named components, homepage outline and SEO/GEO scheme — all built in the Thepla House design language. Approve this and I'll design <strong style="color:var(--gold-300);">Home (mobile → desktop)</strong> next.</p>
+        <div style="font-family: var(--font-script); font-size: 1.9rem; color: var(--gold-300); margin-top: 10px; line-height:1;">Junk the Junk Food.</div>
+      </div>
+    </div>
+    <div class="th-trim th-trim--toran" style="--trim-color: var(--gold-400); --trim-size: 18px;"></div>
+  </header>
+
+  <!-- ===== 0. Mood & type confirmation ===== -->
+  <section class="planwrap" style="padding-top: 48px;">
+    <div class="seglabel">Confirming the system</div>
+    <h2 style="margin-top:6px;">Type &amp; mood — locked to your design system</h2>
+    <p class="th-body" style="max-width: 760px; color: var(--color-on-surface-variant);">No new colors or fonts will be introduced. Every screen is built from your tokens, type scale and components. Here's the palette and type I'll be designing with, so we're agreed before pixels.</p>
+
+    <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap:16px; margin-top: 20px;">
+      <div class="card" style="padding:20px;">
+        <div class="seglabel" style="color: var(--color-on-surface-variant);">Type</div>
+        <div style="font-family: var(--font-display); font-size: 2.1rem; color: var(--color-headline); line-height:1.1; margin-top:6px;">Eczar</div>
+        <div class="th-caption">Display — headlines, prices, numerals</div>
+        <div style="font-family: var(--font-body); font-size: 1.5rem; color: var(--color-on-surface); margin-top:14px;">Mukta</div>
+        <div class="th-caption">Body — UI, paragraphs, labels</div>
+        <div style="font-family: var(--font-script); font-size: 1.9rem; color: var(--color-primary); margin-top:10px; line-height:1;">Caveat</div>
+        <div class="th-caption">Accent — the tagline lockup &amp; signatures only</div>
+      </div>
+      <div class="card" style="padding:20px;">
+        <div class="seglabel" style="color: var(--color-on-surface-variant);">Palette</div>
+        <div style="display:flex; flex-direction:column; gap:8px; margin-top:10px;">
+          <div style="display:flex; align-items:center; gap:10px;"><span style="width:34px;height:34px;border-radius:8px;background:var(--gold-400);"></span><div><div style="font-weight:600; font-size:0.875rem;">Gold #F8B040</div><div class="th-caption">accents · secondary CTAs</div></div></div>
+          <div style="display:flex; align-items:center; gap:10px;"><span style="width:34px;height:34px;border-radius:8px;background:var(--green-600);"></span><div><div style="font-weight:600; font-size:0.875rem;">Green #286850</div><div class="th-caption">headlines · trust · dark bands</div></div></div>
+          <div style="display:flex; align-items:center; gap:10px;"><span style="width:34px;height:34px;border-radius:8px;background:var(--maroon-600);"></span><div><div style="font-weight:600; font-size:0.875rem;">Maroon #983830</div><div class="th-caption">primary buttons · links · footer</div></div></div>
+          <div style="display:flex; align-items:center; gap:10px;"><span style="width:34px;height:34px;border-radius:8px;background:var(--leaf-500);"></span><div><div style="font-weight:600; font-size:0.875rem;">Leaf #00A858</div><div class="th-caption">vegan/organic accents only</div></div></div>
+          <div style="display:flex; align-items:center; gap:10px;"><span style="width:34px;height:34px;border-radius:8px;background:var(--cream-100); border:1px solid var(--color-outline);"></span><div><div style="font-weight:600; font-size:0.875rem;">Cream / Ink</div><div class="th-caption">warm backgrounds · text</div></div></div>
+        </div>
+      </div>
+      <div class="card" style="padding:20px;">
+        <div class="seglabel" style="color: var(--color-on-surface-variant);">Mood</div>
+        <p class="th-body-sm" style="margin-top:10px;">Warm, homely, proudly-Indian, health-first. Soft rounded cards, warm-tinted shadows like kitchen light, cream fields with the occasional deep-green or gold band.</p>
+        <p class="th-body-sm" style="margin-bottom:0;">Cultural trims at seams only — toran, bandhani, scallop:</p>
+        <div style="margin-top:10px; display:flex; flex-direction:column; gap:8px;">
+          <div class="th-trim th-trim--toran" style="--trim-color: var(--maroon-600); --trim-size:14px;"></div>
+          <div class="th-trim th-trim--bandhani" style="--trim-color: var(--gold-500); --trim-size:14px;"></div>
+          <div class="th-trim th-trim--scallop" style="--trim-color: var(--green-600); --trim-size:14px;"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 1. Sitemap / IA ===== -->
+  <section class="planwrap" style="padding-top: 56px;">
+    <div class="seglabel">1 — Information architecture</div>
+    <h2 style="margin-top:6px;">The site map</h2>
+    <p class="th-body" style="max-width: 760px; color: var(--color-on-surface-variant);">Twelve core pages plus two templates and one GEO landing template. Structure leads with food and ordering for the hungry local diner; Catering and Franchise get strong dedicated pages without crowding the homepage.</p>
+
+    <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap:16px; margin-top:20px;">
+
+      <div class="card" style="padding:20px; border-top: 4px solid var(--maroon-600);">
+        <span class="chip" style="background:var(--maroon-100); color:var(--maroon-700);">Order-first core</span>
+        <ul style="list-style:none; padding:0; margin:14px 0 0; display:flex; flex-direction:column; gap:10px;">
+          <li><strong style="font-family:var(--font-display); color:var(--color-headline);">Home</strong> <span class="th-caption">/</span><div class="th-caption">Food, order channels, nearest kitchen</div></li>
+          <li><strong style="font-family:var(--font-display); color:var(--color-headline);">Menu</strong> <span class="th-caption">/menu</span><div class="th-caption">250+ dishes, diet filters, prices hidden</div></li>
+          <li><strong style="font-family:var(--font-display); color:var(--color-headline);">Locations hub</strong> <span class="th-caption">/locations</span><div class="th-caption">7 Mumbai kitchens + dine-in</div></li>
+          <li style="padding-left:14px; border-left:2px solid var(--color-outline);"><strong style="font-family:var(--font-display); color:var(--color-headline);">Kitchen-area page</strong> <span class="th-caption">/locations/{area}</span><div class="th-caption">Template · local SEO</div></li>
+        </ul>
+      </div>
+
+      <div class="card" style="padding:20px; border-top: 4px solid var(--gold-400);">
+        <span class="chip" style="background:var(--gold-100); color:var(--gold-700);">Offerings</span>
+        <ul style="list-style:none; padding:0; margin:14px 0 0; display:flex; flex-direction:column; gap:10px;">
+          <li><strong style="font-family:var(--font-display); color:var(--color-headline);">Catering</strong> <span class="th-caption">/catering</span><div class="th-caption">Event &amp; pooja, full Jain menus</div></li>
+          <li><strong style="font-family:var(--font-display); color:var(--color-headline);">Travel Packs</strong> <span class="th-caption">/travel-packs</span><div class="th-caption">Vacuum-packed methi thepla, ships abroad</div></li>
+          <li><strong style="font-family:var(--font-display); color:var(--color-headline);">Franchise</strong> <span class="th-caption">/franchise</span><div class="th-caption">Dedicated lead-gen page</div></li>
+        </ul>
+      </div>
+
+      <div class="card" style="padding:20px; border-top: 4px solid var(--green-600);">
+        <span class="chip" style="background:var(--green-100); color:var(--green-700);">Brand &amp; trust</span>
+        <ul style="list-style:none; padding:0; margin:14px 0 0; display:flex; flex-direction:column; gap:10px;">
+          <li><strong style="font-family:var(--font-display); color:var(--color-headline);">About / Our Story</strong> <span class="th-caption">/about</span><div class="th-caption">Founder-led by Tejal, since 2018</div></li>
+          <li><strong style="font-family:var(--font-display); color:var(--color-headline);">Blog index</strong> <span class="th-caption">/blog</span><div class="th-caption">Recipes, health, Gujarati food culture</div></li>
+          <li style="padding-left:14px; border-left:2px solid var(--color-outline);"><strong style="font-family:var(--font-display); color:var(--color-headline);">Blog post</strong> <span class="th-caption">/blog/{slug}</span><div class="th-caption">Template · BlogPosting</div></li>
+          <li><strong style="font-family:var(--font-display); color:var(--color-headline);">Gallery</strong> <span class="th-caption">/gallery</span><div class="th-caption">Food &amp; kitchen photography</div></li>
+          <li><strong style="font-family:var(--font-display); color:var(--color-headline);">Contact</strong> <span class="th-caption">/contact</span><div class="th-caption">Order line, kitchens, form</div></li>
+        </ul>
+      </div>
+
+      <div class="card" style="padding:20px; border-top: 4px dashed var(--gold-500); background: var(--gold-50);">
+        <span class="chip" style="background:var(--white); color:var(--gold-700); border:1px solid var(--gold-300);">Proposed · SEO/GEO</span>
+        <ul style="list-style:none; padding:0; margin:14px 0 0; display:flex; flex-direction:column; gap:10px;">
+          <li><strong style="font-family:var(--font-display); color:var(--color-headline);">Area landing template</strong> <span class="th-caption">/gujarati-food-delivery-{area}</span><div class="th-caption">"Gujarati food delivery in Andheri", Mulund, Thane… One template, many indexable pages targeting local search.</div></li>
+          <li><strong style="font-family:var(--font-display); color:var(--color-headline);">/llms.txt</strong><div class="th-caption">Plain-text brand summary for AI assistants (see §5).</div></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 2. Navigation ===== -->
+  <section class="planwrap" style="padding-top: 56px;">
+    <div class="seglabel">2 — Navigation</div>
+    <h2 style="margin-top:6px;">Global nav &amp; the persistent order action</h2>
+
+    <div style="display:grid; grid-template-columns: 1fr; gap:18px; margin-top:18px;">
+      <!-- Desktop nav mock -->
+      <div class="card" style="padding:0; overflow:hidden;">
+        <div style="padding:12px 18px; background:var(--color-surface-container); border-bottom:1px solid var(--color-outline-variant);"><span class="seglabel" style="color:var(--color-on-surface-variant);">Desktop header (≥1024px)</span></div>
+        <div style="display:flex; align-items:center; gap:18px; padding:14px 22px; flex-wrap:wrap;">
+          <img src="assets/logo/theplahouse-logo.png" alt="Thepla House" style="height:42px;">
+          <nav style="display:flex; gap:20px; flex:1; flex-wrap:wrap; font-family:var(--font-body); font-weight:600; font-size:0.95rem; color:var(--color-on-surface);">
+            <span>Menu</span><span>Locations</span><span>Catering</span><span>Travel Packs</span><span>Franchise</span><span>About</span>
+          </nav>
+          <span style="display:inline-flex; align-items:center; padding:10px 20px; background:var(--maroon-600); color:var(--cream-50); border-radius:var(--radius-md); font-weight:600; font-size:0.95rem; box-shadow:var(--shadow-sm);">Order now</span>
+        </div>
+        <div style="padding:10px 22px 16px;"><span class="th-caption">Blog · Gallery · Contact live in the footer. <strong>Tablet (768–1023px):</strong> nav collapses to a hamburger sheet; the logo + Order-now CTA stay inline.</span></div>
+      </div>
+
+      <!-- Mobile nav mock -->
+      <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); gap:18px;">
+        <div class="card" style="padding:0; overflow:hidden;">
+          <div style="padding:12px 18px; background:var(--color-surface-container); border-bottom:1px solid var(--color-outline-variant);"><span class="seglabel" style="color:var(--color-on-surface-variant);">Mobile header (360–767px)</span></div>
+          <div style="display:flex; align-items:center; justify-content:space-between; padding:12px 16px;">
+            <img src="assets/logo/theplahouse-logo.png" alt="Thepla House" style="height:38px;">
+            <div style="display:flex; gap:10px; align-items:center;">
+              <span style="display:inline-flex; align-items:center; padding:8px 14px; background:var(--maroon-600); color:var(--cream-50); border-radius:var(--radius-md); font-weight:600; font-size:0.85rem;">Order</span>
+              <span style="display:inline-flex; flex-direction:column; gap:4px; width:40px; height:40px; padding:11px 9px; border:1.5px solid var(--color-outline); border-radius:var(--radius-md);"><span style="height:2px;background:var(--maroon-600);border-radius:2px;"></span><span style="height:2px;background:var(--maroon-600);border-radius:2px;"></span><span style="height:2px;background:var(--maroon-600);border-radius:2px;"></span></span>
+            </div>
+          </div>
+          <div style="padding:10px 16px 16px;"><span class="th-caption">Hamburger opens a full-height sheet with every page + order channels.</span></div>
+        </div>
+        <div class="card" style="padding:16px; background:var(--green-700);">
+          <span class="seglabel" style="color:var(--gold-300);">Named: MobileOrderBar</span>
+          <p class="th-body-sm" style="color:var(--cream-100); margin:10px 0 12px;">A persistent bottom bar on every mobile screen — always one tap from ordering.</p>
+          <div style="display:flex; gap:8px;">
+            <span style="flex:1; text-align:center; padding:11px; background:var(--gold-400); color:var(--ink-900); border-radius:var(--radius-md); font-weight:700; font-size:0.85rem;">Order now</span>
+            <span style="padding:11px 14px; background:rgba(255,255,255,0.14); color:var(--cream-100); border-radius:var(--radius-md); font-weight:600; font-size:0.85rem;">WhatsApp</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 3. Named components ===== -->
+  <section class="planwrap" style="padding-top: 56px;">
+    <div class="seglabel">3 — Reusable blocks</div>
+    <h2 style="margin-top:6px;">Named components (so the Next.js map is clean)</h2>
+    <p class="th-body" style="max-width:760px; color:var(--color-on-surface-variant);">Every recurring block has a name and maps to one React component. Items marked <span class="chip" style="background:var(--gold-100); color:var(--gold-700); padding:2px 8px;">new</span> extend your system in its own language — I'll flag them as new components when they first appear.</p>
+
+    <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap:12px; margin-top:18px;">
+      <div class="card" style="padding:16px;"><strong style="font-family:var(--font-display); color:var(--color-headline);">SiteHeader</strong><div class="th-caption">Navbar — existing</div></div>
+      <div class="card" style="padding:16px;"><strong style="font-family:var(--font-display); color:var(--color-headline);">Footer</strong><div class="th-caption">Footer — existing</div></div>
+      <div class="card" style="padding:16px;"><strong style="font-family:var(--font-display); color:var(--color-headline);">Hero</strong> <span class="chip" style="background:var(--gold-100); color:var(--gold-700); padding:2px 8px;">new</span><div class="th-caption">Full-bleed food + H1 + order channels</div></div>
+      <div class="card" style="padding:16px;"><strong style="font-family:var(--font-display); color:var(--color-headline);">OrderChannels</strong> <span class="chip" style="background:var(--gold-100); color:var(--gold-700); padding:2px 8px;">new</span><div class="th-caption">Swiggy · Zomato · WhatsApp · call</div></div>
+      <div class="card" style="padding:16px;"><strong style="font-family:var(--font-display); color:var(--color-headline);">PromiseStrip</strong> <span class="chip" style="background:var(--gold-100); color:var(--gold-700); padding:2px 8px;">new</span><div class="th-caption">The health claims, icon row</div></div>
+      <div class="card" style="padding:16px;"><strong style="font-family:var(--font-display); color:var(--color-headline);">MenuItemCard</strong><div class="th-caption">Card + CardMedia + DietTag</div></div>
+      <div class="card" style="padding:16px;"><strong style="font-family:var(--font-display); color:var(--color-headline);">CategoryTabs</strong><div class="th-caption">Tabs — existing</div></div>
+      <div class="card" style="padding:16px;"><strong style="font-family:var(--font-display); color:var(--color-headline);">KitchenCard</strong> <span class="chip" style="background:var(--gold-100); color:var(--gold-700); padding:2px 8px;">new</span><div class="th-caption">Location card w/ hours + map link</div></div>
+      <div class="card" style="padding:16px;"><strong style="font-family:var(--font-display); color:var(--color-headline);">SectionHeader</strong> <span class="chip" style="background:var(--gold-100); color:var(--gold-700); padding:2px 8px;">new</span><div class="th-caption">Eyebrow + heading + link</div></div>
+      <div class="card" style="padding:16px;"><strong style="font-family:var(--font-display); color:var(--color-headline);">CTABanner</strong><div class="th-caption">CTABanner — existing</div></div>
+      <div class="card" style="padding:16px;"><strong style="font-family:var(--font-display); color:var(--color-headline);">FAQ</strong><div class="th-caption">Accordion — existing</div></div>
+      <div class="card" style="padding:16px;"><strong style="font-family:var(--font-display); color:var(--color-headline);">BlogPostCard</strong> <span class="chip" style="background:var(--gold-100); color:var(--gold-700); padding:2px 8px;">new</span><div class="th-caption">Card variant for articles</div></div>
+    </div>
+  </section>
+
+  <!-- ===== 4. Homepage outline ===== -->
+  <section class="planwrap" style="padding-top: 56px;">
+    <div class="seglabel">4 — Homepage</div>
+    <h2 style="margin-top:6px;">Section-by-section outline</h2>
+    <p class="th-body" style="max-width:760px; color:var(--color-on-surface-variant);">One H1 only. An "answer-shaped" intro paragraph an AI assistant could quote verbatim. Food and ordering lead; Catering and Franchise are teasers that link out.</p>
+
+    <ol style="list-style:none; counter-reset:step; padding:0; margin:20px 0 0; display:flex; flex-direction:column; gap:10px;">
+      <li class="card" style="padding:16px 18px; display:flex; gap:14px; align-items:flex-start;"><span style="counter-increment:step; flex-shrink:0; width:30px; height:30px; border-radius:50%; background:var(--maroon-600); color:var(--cream-50); display:flex; align-items:center; justify-content:center; font-weight:700; font-family:var(--font-display);">1</span><div><strong>Hero</strong> — single <strong>H1</strong>, hero food plate, answer-intro, OrderChannels. <span class="th-caption">"100% vegetarian, whole-wheat home-style Gujarati food, made fresh daily in Mumbai since 2018."</span></div></li>
+      <li class="card" style="padding:16px 18px; display:flex; gap:14px; align-items:flex-start;"><span style="counter-increment:step; flex-shrink:0; width:30px; height:30px; border-radius:50%; background:var(--maroon-600); color:var(--cream-50); display:flex; align-items:center; justify-content:center; font-weight:700; font-family:var(--font-display);">2</span><div><strong>PromiseStrip</strong> — no maida · no palm oil · no preservatives · Jain &amp; vegan · made fresh daily.</div></li>
+      <li class="card" style="padding:16px 18px; display:flex; gap:14px; align-items:flex-start;"><span style="counter-increment:step; flex-shrink:0; width:30px; height:30px; border-radius:50%; background:var(--maroon-600); color:var(--cream-50); display:flex; align-items:center; justify-content:center; font-weight:700; font-family:var(--font-display);">3</span><div><strong>Popular dishes</strong> — best-seller MenuItemCards with diet tags → "See the full menu".</div></li>
+      <li class="card" style="padding:16px 18px; display:flex; gap:14px; align-items:flex-start;"><span style="counter-increment:step; flex-shrink:0; width:30px; height:30px; border-radius:50%; background:var(--maroon-600); color:var(--cream-50); display:flex; align-items:center; justify-content:center; font-weight:700; font-family:var(--font-display);">4</span><div><strong>Find your nearest kitchen</strong> — 7 Mumbai kitchens as KitchenCards → Locations.</div></li>
+      <li class="card" style="padding:16px 18px; display:flex; gap:14px; align-items:flex-start;"><span style="counter-increment:step; flex-shrink:0; width:30px; height:30px; border-radius:50%; background:var(--maroon-600); color:var(--cream-50); display:flex; align-items:center; justify-content:center; font-weight:700; font-family:var(--font-display);">5</span><div><strong>Travel Packs feature</strong> — vacuum-packed methi thepla, 15+ days fresh, ships to Singapore.</div></li>
+      <li class="card" style="padding:16px 18px; display:flex; gap:14px; align-items:flex-start;"><span style="counter-increment:step; flex-shrink:0; width:30px; height:30px; border-radius:50%; background:var(--maroon-600); color:var(--cream-50); display:flex; align-items:center; justify-content:center; font-weight:700; font-family:var(--font-display);">6</span><div><strong>Our story strip</strong> — founder-led by Tejal since 2018, with her signature in Caveat.</div></li>
+      <li class="card" style="padding:16px 18px; display:flex; gap:14px; align-items:flex-start;"><span style="counter-increment:step; flex-shrink:0; width:30px; height:30px; border-radius:50%; background:var(--maroon-600); color:var(--cream-50); display:flex; align-items:center; justify-content:center; font-weight:700; font-family:var(--font-display);">7</span><div><strong>Catering &amp; Franchise teasers</strong> — two split cards linking to their dedicated pages.</div></li>
+      <li class="card" style="padding:16px 18px; display:flex; gap:14px; align-items:flex-start;"><span style="counter-increment:step; flex-shrink:0; width:30px; height:30px; border-radius:50%; background:var(--maroon-600); color:var(--cream-50); display:flex; align-items:center; justify-content:center; font-weight:700; font-family:var(--font-display);">8</span><div><strong>FAQ</strong> (Accordion) → <strong>CTABanner</strong> "Order now" → <strong>Footer</strong>.</div></li>
+    </ol>
+  </section>
+
+  <!-- ===== 5. SEO / GEO ===== -->
+  <section class="planwrap" style="padding-top: 56px;">
+    <div class="seglabel">5 — SEO / GEO scheme</div>
+    <h2 style="margin-top:6px;">Per-page metadata &amp; structured data</h2>
+    <p class="th-body" style="max-width:760px; color:var(--color-on-surface-variant);">Exactly one H1 per page, clean heading hierarchy, canonical URLs, and the JSON-LD that applies. I'll note the intended &lt;title&gt; and meta description alongside each screen as I design it.</p>
+
+    <div class="card" style="margin-top:18px; padding:0; overflow:hidden;">
+      <div style="overflow-x:auto;">
+        <table style="width:100%; border-collapse:collapse; font-family:var(--font-body); font-size:0.9rem; min-width:640px;">
+          <thead>
+            <tr style="background:var(--green-700); color:var(--cream-100); text-align:left;">
+              <th style="padding:12px 16px; font-weight:600;">Page</th>
+              <th style="padding:12px 16px; font-weight:600;">H1</th>
+              <th style="padding:12px 16px; font-weight:600;">JSON-LD</th>
+            </tr>
+          </thead>
+          <tbody style="color:var(--color-on-surface);">
+            <tr style="border-bottom:1px solid var(--color-outline-variant);"><td style="padding:11px 16px; font-weight:600;">Home</td><td style="padding:11px 16px;">Real ghar ka khana — made fresh, delivered today</td><td style="padding:11px 16px;"><span class="th-caption">Organization · WebSite · Restaurant (geo+hours) · FAQPage</span></td></tr>
+            <tr style="border-bottom:1px solid var(--color-outline-variant); background:var(--cream-50);"><td style="padding:11px 16px; font-weight:600;">Menu</td><td style="padding:11px 16px;">Our menu — 250+ home-style dishes</td><td style="padding:11px 16px;"><span class="th-caption">Menu · MenuItem · BreadcrumbList</span></td></tr>
+            <tr style="border-bottom:1px solid var(--color-outline-variant);"><td style="padding:11px 16px; font-weight:600;">Locations hub</td><td style="padding:11px 16px;">7 kitchens across Mumbai</td><td style="padding:11px 16px;"><span class="th-caption">ItemList · BreadcrumbList</span></td></tr>
+            <tr style="border-bottom:1px solid var(--color-outline-variant); background:var(--cream-50);"><td style="padding:11px 16px; font-weight:600;">Kitchen-area</td><td style="padding:11px 16px;">Thepla House {area} — order &amp; visit</td><td style="padding:11px 16px;"><span class="th-caption">Restaurant (geo+hours) · BreadcrumbList</span></td></tr>
+            <tr style="border-bottom:1px solid var(--color-outline-variant);"><td style="padding:11px 16px; font-weight:600;">About</td><td style="padding:11px 16px;">Our story — Tejal's kitchen, since 2018</td><td style="padding:11px 16px;"><span class="th-caption">AboutPage · Organization</span></td></tr>
+            <tr style="border-bottom:1px solid var(--color-outline-variant); background:var(--cream-50);"><td style="padding:11px 16px; font-weight:600;">Catering</td><td style="padding:11px 16px;">Catering for events &amp; pooja — full Jain menus</td><td style="padding:11px 16px;"><span class="th-caption">Service · FAQPage · BreadcrumbList</span></td></tr>
+            <tr style="border-bottom:1px solid var(--color-outline-variant);"><td style="padding:11px 16px; font-weight:600;">Travel Packs</td><td style="padding:11px 16px;">Vacuum-packed theplas that travel</td><td style="padding:11px 16px;"><span class="th-caption">Product · FAQPage · BreadcrumbList</span></td></tr>
+            <tr style="border-bottom:1px solid var(--color-outline-variant); background:var(--cream-50);"><td style="padding:11px 16px; font-weight:600;">Franchise</td><td style="padding:11px 16px;">Open a Thepla House franchise</td><td style="padding:11px 16px;"><span class="th-caption">FAQPage · BreadcrumbList</span></td></tr>
+            <tr style="border-bottom:1px solid var(--color-outline-variant);"><td style="padding:11px 16px; font-weight:600;">Blog index / post</td><td style="padding:11px 16px;">Kitchen notes / {post title}</td><td style="padding:11px 16px;"><span class="th-caption">Blog · BlogPosting · BreadcrumbList</span></td></tr>
+            <tr style="border-bottom:1px solid var(--color-outline-variant); background:var(--cream-50);"><td style="padding:11px 16px; font-weight:600;">Gallery / Contact</td><td style="padding:11px 16px;">A look inside / Contact us</td><td style="padding:11px 16px;"><span class="th-caption">ImageGallery / Organization · ContactPoint</span></td></tr>
+            <tr style="background:var(--gold-50);"><td style="padding:11px 16px; font-weight:600;">GEO landing</td><td style="padding:11px 16px;">Gujarati food delivery in {area}</td><td style="padding:11px 16px;"><span class="th-caption">Restaurant (geo) · FAQPage · BreadcrumbList</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <p class="th-body-sm" style="margin-top:14px; color:var(--color-on-surface-variant);"><strong>Site-wide /llms.txt:</strong> a short plain-text summary — who we are (100% vegetarian Mumbai cloud kitchen, founder Tejal, since 2018), what we make, the health promise, the 7 kitchens, and how to order — so AI assistants can quote us accurately.</p>
+  </section>
+
+  <!-- ===== Next step ===== -->
+  <section class="planwrap" style="padding-top: 56px;">
+    <div class="card" style="padding:0; overflow:hidden; border:none;">
+      <div class="th-trim th-trim--scallop" style="--trim-color: var(--gold-400); --trim-size:18px;"></div>
+      <div style="background:var(--maroon-600); color:var(--cream-50); padding:28px 28px 30px;">
+        <div class="seglabel" style="color:var(--gold-300);">Your sign-off</div>
+        <h2 style="color:var(--cream-50); margin:6px 0 10px;">Approve this and I'll design Home next</h2>
+        <p class="th-body" style="color:var(--maroon-100); max-width:680px; margin-bottom:16px;">Per our workflow: once you're happy with the IA, nav and homepage outline, I'll build <strong style="color:var(--gold-300);">Home in high fidelity — mobile first, then desktop</strong> — and pause for your feedback before moving page by page.</p>
+        <div style="display:flex; flex-direction:column; gap:6px;">
+          <span class="th-body-sm" style="color:var(--cream-200);"><strong style="color:var(--cream-50);">A few things to confirm or redirect:</strong></span>
+          <span class="th-body-sm" style="color:var(--cream-100);">· Nav order &amp; what sits in nav vs. footer (I've led with Menu/Locations/Catering/Travel Packs/Franchise/About).</span>
+          <span class="th-body-sm" style="color:var(--cream-100);">· The proposed GEO landing template + /llms.txt — in or out?</span>
+          <span class="th-body-sm" style="color:var(--cream-100);">· Homepage section order — anything you'd promote or drop?</span>
+          <span class="th-body-sm" style="color:var(--cream-100);">· Photography: I'll use labelled image slots (subject + alt) until you supply real food photos.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+</x-dc>
+</body>
+</html>
