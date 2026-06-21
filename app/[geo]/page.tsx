@@ -30,8 +30,8 @@ export async function generateMetadata({ params }: { params: Promise<{ geo: stri
   const a = areaFromGeo(geo);
   if (!a) return {};
   return pageMetadata({
-    title: `Gujarati food delivery in ${a.name} — theplas, thalis & farsan`,
-    description: `Order home-style Gujarati food delivery in ${a.name} — methi theplas, thalis, farsan and sweets. 100% vegetarian, whole wheat, Jain & vegan. Swiggy, Zomato & WhatsApp.`,
+    title: `Home-style Gujarati food delivery in ${a.name} — healthy veg tiffin`,
+    description: `Looking for home-style food or a tiffin near you in ${a.name}? Order healthy, 100% vegetarian Gujarati theplas, thalis, farsan & sweets — whole wheat, made fresh to order. Jain & vegan. Swiggy, Zomato & WhatsApp.`,
     path: `/${geo}`,
   });
 }
@@ -74,10 +74,10 @@ export default async function GeoLandingPage({ params }: { params: Promise<{ geo
           <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-11 items-center">
             <div>
               <h1 style={{ fontFamily: "var(--font-display)", color: "var(--color-headline)", fontSize: "var(--fs-display-lg)", lineHeight: 1.06, margin: "0 0 16px" }}>
-                Gujarati food delivery in {a.name}
+                Home-style Gujarati food delivery in {a.name}
               </h1>
               <p style={{ fontFamily: "var(--font-body)", color: "var(--ink-600)", fontSize: "var(--fs-body-lg)", lineHeight: 1.62, margin: "0 0 24px", maxWidth: 540 }}>
-                Order home-style theplas, thalis, farsan and sweets to anywhere in {a.name} — 100% vegetarian, whole wheat, sunflower oil and no preservatives, with Jain and vegan options on every menu.
+                Order healthy, home-style theplas, thalis, farsan and sweets anywhere in {a.name} — 100% vegetarian, whole wheat and made fresh to order, like a home tiffin at your door. Jain and vegan options on every menu.
               </p>
               <div style={{ display: "flex", gap: 12, alignItems: "center", flexWrap: "wrap", marginBottom: 18 }}>
                 <Link href="/menu" style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", minHeight: 52, padding: "14px 28px", fontFamily: "var(--font-body)", fontSize: "1.0625rem", fontWeight: 600, color: "var(--color-on-primary)", background: "var(--color-primary)", borderRadius: "var(--radius-md)", boxShadow: "var(--shadow-sm)", textDecoration: "none" }}>
@@ -100,6 +100,9 @@ export default async function GeoLandingPage({ params }: { params: Promise<{ geo
         <div style={{ position: "relative", maxWidth: 900, margin: "0 auto", padding: "48px 24px", textAlign: "center" }}>
           <div className="seglabel" style={{ color: "var(--gold-300)" }}>Delivering to {a.name}</div>
           <p style={{ fontFamily: "var(--font-body)", color: "var(--cream-100)", fontSize: "1.25rem", lineHeight: 1.6, margin: "12px 0 0" }}>{a.localCopy}</p>
+          <Link href="/tiffin-service-mumbai" style={{ display: "inline-block", marginTop: 18, fontFamily: "var(--font-body)", fontSize: "1rem", fontWeight: 600, color: "var(--gold-300)", textDecoration: "none" }}>
+            Home-style food &amp; healthy tiffin in Mumbai →
+          </Link>
         </div>
       </section>
 

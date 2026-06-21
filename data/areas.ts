@@ -32,6 +32,7 @@ function geoFaqs(area: string, kitchen: string, served: string, hours = "9am to 
   return [
     { q: `Do you deliver Gujarati food across ${area}?`, a: `Yes — we deliver across ${served} from our ${kitchen} kitchen via Swiggy, Zomato and WhatsApp.` },
     { q: `What are your ${area} delivery timings?`, a: `We're open Monday to Sunday, ${hours}. Order before 11am for same-day lunch delivery.` },
+    { q: `Is this healthy, home-style food in ${area}?`, a: `It's real ghar ka khana — cooked with whole-wheat atta, sunflower oil and no preservatives or maida. A healthy, home-style alternative to a regular tiffin, made fresh to order.` },
     { q: "Is the food Jain and vegan friendly?", a: "Absolutely — Jain (no onion, garlic or root vegetables) and vegan options are clearly tagged across the menu." },
     { q: "Is everything vegetarian and made without maida?", a: "Yes. We're a 100% vegetarian kitchen, cooking with whole-wheat atta and sunflower oil — never maida or palm oil — with no preservatives." },
   ];

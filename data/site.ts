@@ -12,7 +12,7 @@ export const SITE = {
   city: "Mumbai",
   url: "https://theplahouse.com",
   description:
-    "100% vegetarian, whole-wheat Gujarati food made fresh in Mumbai since 2018. Order theplas, thalis & snacks on Swiggy, Zomato or WhatsApp. Jain & vegan options.",
+    "Home-style Gujarati food in Mumbai since 2018 — 100% vegetarian, whole-wheat and healthy, made fresh to order. Theplas, thalis, farsan & sweets delivered like a home tiffin via Swiggy, Zomato or WhatsApp. Jain & vegan options.",
   logo: "/logo/theplahouse-logo.png",
 } as const;
 
@@ -86,6 +86,7 @@ export const FOOTER_COLUMNS = [
     title: "Order & services",
     links: [
       { label: "Order now", href: "/menu" },
+      { label: "Home-style food & tiffin", href: "/tiffin-service-mumbai" },
       { label: "Catering", href: "/catering" },
       { label: "Travel packs", href: "/travel-packs" },
       { label: "Franchise", href: "/franchise" },

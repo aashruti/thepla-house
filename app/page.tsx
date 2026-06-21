@@ -17,9 +17,9 @@ import { ORDER_PHONE, FRANCHISE_CONTACT } from "@/data/site";
 import { img } from "@/data/images";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Thepla House by Tejal's Kitchen — Home-style Gujarati food, Mumbai",
+  title: "Thepla House by Tejal's Kitchen — Home-style Gujarati food & healthy veg tiffin, Mumbai",
   description:
-    "100% vegetarian, whole-wheat Gujarati food made fresh in Mumbai since 2018. Order theplas, thalis & snacks on Swiggy, Zomato or WhatsApp. Jain & vegan options.",
+    "Home-style Gujarati food in Mumbai — healthy, 100% vegetarian and made fresh to order since 2018. Theplas, thalis & farsan delivered like a home tiffin on Swiggy, Zomato or WhatsApp. Jain & vegan options.",
   path: "/",
 });
 
@@ -40,7 +40,7 @@ export default function HomePage() {
       <Hero
         eyebrow="Mumbai · 100% vegetarian · since 2018"
         title="Real ghar ka khana, made fresh and delivered today"
-        intro="Thepla House by Tejal's Kitchen is a 100% vegetarian cloud kitchen in Mumbai, serving home-style Gujarati food made with whole-wheat atta, sunflower oil and no preservatives — cooked fresh every morning since 2018."
+        intro="Thepla House by Tejal's Kitchen is a 100% vegetarian kitchen in Mumbai serving healthy, home-style Gujarati food — whole-wheat atta, sunflower oil and no preservatives, cooked fresh to order. Real ghar ka khana, delivered like a home tiffin since 2018."
         photo={{
           subject: "Hero: brass thali of methi thepla, dal, sabzi & achar, warm side light",
           alt: "A home-style Gujarati spread on a brass thali",

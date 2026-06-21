@@ -3,8 +3,10 @@
 > Junk the Junk Food.
 
 Thepla House by Tejal's Kitchen is a 100% vegetarian, home-style Gujarati cloud-kitchen
-brand in Mumbai, founded by Tejal in 2018. We cook ghar ka khana — theplas, thalis, farsan
-and sweets — and deliver it fresh across Mumbai.
+brand in Mumbai, founded by Tejal in 2018. We cook healthy ghar ka khana — theplas, thalis,
+farsan and sweets — and deliver it fresh across Mumbai like a home tiffin. It is the
+home-style, healthy alternative to a regular tiffin or dabba service: cooked fresh to order,
+no fixed subscription, ordered any day on Swiggy, Zomato or WhatsApp.
 
 ## The promise
 - 100% whole-wheat atta — no maida, ever
@@ -40,5 +42,6 @@ khandvi, handvo, undhiyu and mohanthal.
 ## Links
 - Website: https://theplahouse.com
 - Menu: https://theplahouse.com/menu
+- Home-style food & healthy tiffin: https://theplahouse.com/tiffin-service-mumbai
 - Locations: https://theplahouse.com/locations
 - Instagram: @tejals_kitchen

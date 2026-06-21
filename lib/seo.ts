@@ -52,13 +52,41 @@ export function pageMetadata({
 export function organizationLd() {
   return {
     "@context": "https://schema.org",
-    "@type": "Organization",
+    "@type": ["Organization", "FoodEstablishment"],
     name: SITE.name,
+    alternateName: ["Thepla House", "Tejal's Kitchen", "Thepla House Mumbai"],
     url: BASE,
     logo: absUrl(SITE.logo),
+    image: absUrl(SITE.logo),
+    slogan: SITE.tagline,
     foundingDate: String(SITE.since),
     founder: { "@type": "Person", name: SITE.founder },
     description: SITE.description,
+    servesCuisine: ["Gujarati", "Indian", "Vegetarian", "Jain"],
+    priceRange: "₹₹",
+    keywords:
+      "home-style food, healthy food, vegetarian tiffin, tiffin service, home food delivery, ghar ka khana, Gujarati food, thepla, Jain food, vegan food, Mumbai",
+    knowsAbout: [
+      "Home-style Gujarati food",
+      "Healthy vegetarian food",
+      "Vegetarian tiffin and home meal delivery",
+      "Whole-wheat theplas",
+      "Jain food",
+      "Vegan food",
+    ],
+    areaServed: [
+      { "@type": "City", name: "Mumbai" },
+      { "@type": "City", name: "Navi Mumbai" },
+      { "@type": "City", name: "Thane" },
+    ],
+    makesOffer: {
+      "@type": "Offer",
+      itemOffered: {
+        "@type": "Service",
+        name: "Home-style Gujarati meal delivery (tiffin-style)",
+        serviceType: "Meal delivery",
+      },
+    },
     address: {
       "@type": "PostalAddress",
       addressLocality: "Mumbai",
@@ -243,15 +271,28 @@ export function blogPostingLd(post: {
   };
 }
 
-export function serviceLd(opts: { name: string; description: string; path: string }) {
+export function serviceLd(opts: {
+  name: string;
+  description: string;
+  path: string;
+  serviceType?: string;
+  areaServed?: string[];
+}) {
+  const areas = opts.areaServed && opts.areaServed.length ? opts.areaServed : ["Mumbai"];
   return {
     "@context": "https://schema.org",
     "@type": "Service",
     name: opts.name,
+    ...(opts.serviceType ? { serviceType: opts.serviceType } : {}),
     description: opts.description,
     url: absUrl(opts.path),
-    provider: { "@type": "Organization", name: SITE.name },
-    areaServed: { "@type": "City", name: "Mumbai" },
+    provider: {
+      "@type": "Organization",
+      name: SITE.name,
+      url: BASE,
+      telephone: ORDER_PHONE,
+    },
+    areaServed: areas.map((a) => ({ "@type": "Place", name: a })),
   };
 }
 

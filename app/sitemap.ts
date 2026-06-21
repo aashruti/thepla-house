@@ -10,6 +10,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/",
     "/menu",
     "/locations",
+    "/tiffin-service-mumbai",
     "/about",
     "/catering",
     "/travel-packs",
@@ -22,7 +23,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const entries: MetadataRoute.Sitemap = staticPaths.map((p) => ({
     url: `${base}${p === "/" ? "" : p}`,
     changeFrequency: "weekly",
-    priority: p === "/" ? 1 : 0.8,
+    priority: p === "/" ? 1 : p === "/tiffin-service-mumbai" ? 0.9 : 0.8,
   }));
 
   for (const k of KITCHENS) {
