@@ -130,18 +130,18 @@ export const KITCHENS: Kitchen[] = [
   {
     slug: "thane",
     title: "Thane",
-    area: "Ghodbunder Road",
-    note: "Fresh theplas and thalis delivered right across Thane.",
+    area: "Manpada",
+    note: "Fresh theplas and thalis delivered right across Thane, from our Manpada kitchen.",
     hours: "Mon–Sun · 9am–10pm",
     address: "Gala No 1, Omkar Compound, Bhavani Nagar, opp. Dosti Imperia, Manpada, Thane, Mumbai, Maharashtra 400610",
     mapQuery: "19.2333642,72.9748825",
     lat: 19.2333642,
     lng: 72.9748825,
-    areasServed: ["Thane West", "Ghodbunder Road", "Manpada", "Kasarvadavali", "Majiwada", "Vartak Nagar"],
+    areasServed: ["Thane West", "Manpada", "Kasarvadavali", "Majiwada", "Vartak Nagar", "Hiranandani Estate"],
     popular: DEFAULT_POPULAR,
     localCopy:
-      "Thepla House Thane delivers fresh, home-style Gujarati food across Thane from our Ghodbunder Road kitchen — whole-wheat theplas, thalis and farsan, 100% vegetarian with Jain and vegan options. Open daily 9am–10pm.",
-    faqs: defaultFaqs("Thane", "Ghodbunder Road", "Thane West, Ghodbunder Road, Manpada, Kasarvadavali and Majiwada", "Open Monday to Sunday, 9am to 10pm"),
+      "Thepla House Thane delivers fresh, home-style Gujarati food across Thane from our Manpada kitchen — whole-wheat theplas, thalis and farsan, 100% vegetarian with Jain and vegan options. Open daily 9am–10pm.",
+    faqs: defaultFaqs("Thane", "Manpada", "Thane West, Manpada, Kasarvadavali, Majiwada and Hiranandani Estate", "Open Monday to Sunday, 9am to 10pm"),
   },
   {
     slug: "navi-mumbai",

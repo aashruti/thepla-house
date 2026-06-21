@@ -24,6 +24,10 @@ export const metadata: Metadata = pageMetadata({
 });
 
 export default function HomePage() {
+  // Featured on the home grid — Kandivali dine-in leads; Mulund/Thane/Navi Mumbai live on /locations.
+  const homeKitchens = ["kandivali", "chandivali", "kalina", "lower-parel"].map(
+    (s) => KITCHENS.find((k) => k.slug === s)!,
+  );
   return (
     <>
       <JsonLd
@@ -87,12 +91,12 @@ export default function HomePage() {
             </Link>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
-            {KITCHENS.slice(0, 4).map((k) => (
+            {homeKitchens.map((k) => (
               <KitchenCard key={k.slug} title={k.title} area={k.area} note={k.address} hours={k.hours} detailHref={`/locations/${k.slug}`} directionsHref={`https://www.google.com/maps?q=${encodeURIComponent(k.mapQuery)}`} orderHref="/menu" />
             ))}
           </div>
           <p style={{ fontFamily: "var(--font-body)", color: "var(--ink-500)", fontSize: "0.9375rem", margin: "20px 0 0" }}>
-            Plus Thane (Ghodbunder Road), Navi Mumbai (Airport) and a Kandivali dine-in outlet.
+            Plus Mulund (Mulund West), Thane (Manpada) and our Navi Mumbai Airport outlet.
           </p>
         </div>
       </section>

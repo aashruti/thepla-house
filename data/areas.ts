@@ -76,11 +76,11 @@ export const AREAS: Area[] = [
     name: "Thane",
     servingKitchenSlug: "thane",
     servingKitchenName: "Thepla House Thane",
-    areasServed: ["Thane West", "Ghodbunder Road", "Manpada", "Kasarvadavali", "Majiwada", "Vartak Nagar"],
+    areasServed: ["Thane West", "Manpada", "Kasarvadavali", "Majiwada", "Vartak Nagar", "Hiranandani Estate"],
     localCopy:
-      "Thepla House delivers fresh, home-style Gujarati food across Thane from our Ghodbunder Road kitchen — whole-wheat theplas, thalis, farsan and sweets, 100% vegetarian with Jain and vegan options. Open daily 9am–10pm.",
+      "Thepla House delivers fresh, home-style Gujarati food across Thane from our Manpada kitchen — whole-wheat theplas, thalis, farsan and sweets, 100% vegetarian with Jain and vegan options. Open daily 9am–10pm.",
     popular: popularFor("Thane"),
-    faqs: geoFaqs("Thane", "Thane", "Thane West, Ghodbunder Road, Manpada, Kasarvadavali and Majiwada"),
+    faqs: geoFaqs("Thane", "Thane", "Thane West, Manpada, Kasarvadavali, Majiwada and Hiranandani Estate"),
   },
   {
     slug: "lower-parel",

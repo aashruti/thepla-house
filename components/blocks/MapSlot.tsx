@@ -10,11 +10,25 @@ export interface MapSlotProps {
   label: string;
   /** A place / address query to embed a real map, e.g. "Thepla House Chandivali Mumbai" */
   query?: string;
+  /** A full embed URL (e.g. a Google My Maps "embed" iframe src) — takes precedence over query */
+  embedSrc?: string;
   style?: CSSProperties;
   className?: string;
 }
 
-export function MapSlot({ label, query, style, className }: MapSlotProps) {
+export function MapSlot({ label, query, embedSrc, style, className }: MapSlotProps) {
+  if (embedSrc) {
+    return (
+      <iframe
+        title={label}
+        className={className}
+        src={embedSrc}
+        loading="lazy"
+        referrerPolicy="no-referrer-when-downgrade"
+        style={{ border: 0, width: "100%", height: "100%", minHeight: 120, display: "block", ...style }}
+      />
+    );
+  }
   if (query) {
     return (
       <iframe

@@ -5,7 +5,7 @@ import { CTABanner } from "@/components/ds/CTABanner";
 import { JsonLd } from "@/components/JsonLd";
 import { pageMetadata, breadcrumbLd, absUrl } from "@/lib/seo";
 import { KITCHENS } from "@/data/kitchens";
-import { ORDER_PHONE } from "@/data/site";
+import { ORDER_PHONE, LOCATIONS_MAP_EMBED } from "@/data/site";
 
 export const metadata: Metadata = pageMetadata({
   title: "Our Mumbai kitchens — 7 locations",
@@ -15,6 +15,8 @@ export const metadata: Metadata = pageMetadata({
 });
 
 export default function LocationsPage() {
+  const cityKitchens = KITCHENS.filter((k) => k.slug !== "navi-mumbai");
+  const airport = KITCHENS.find((k) => k.slug === "navi-mumbai");
   return (
     <>
       <JsonLd
@@ -55,12 +57,12 @@ export default function LocationsPage() {
         <div className="th-container" style={{ paddingTop: 40, paddingBottom: 56 }}>
           <div className="grid grid-cols-1 lg:grid-cols-[0.92fr_1.08fr] gap-10 items-start">
             <div className="locations-map" style={{ borderRadius: "var(--radius-2xl)", overflow: "hidden", boxShadow: "var(--shadow-lg)" }}>
-              <MapSlot label="Map: 7 Thepla House kitchens across Mumbai & Navi Mumbai" query="Thepla House Mumbai" />
+              <MapSlot label="Thepla House — our kitchens across Mumbai & Navi Mumbai" embedSrc={LOCATIONS_MAP_EMBED || undefined} query="Thepla House By Tejal's Kitchen Mumbai" />
             </div>
             <div>
               <h2 style={{ fontFamily: "var(--font-display)", color: "var(--color-headline)", fontSize: "1.75rem", margin: "0 0 20px" }}>All locations</h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                {KITCHENS.map((k) => (
+                {cityKitchens.map((k) => (
                   <KitchenCard
                     key={k.slug}
                     title={k.title}
@@ -77,6 +79,47 @@ export default function LocationsPage() {
           </div>
         </div>
       </section>
+
+      {airport && (
+        <section style={{ background: "var(--green-700)", position: "relative", overflow: "hidden" }}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/motifs/leaf-left.png" alt="" aria-hidden="true" style={{ position: "absolute", bottom: -22, left: -18, width: 180, opacity: 0.28 }} />
+          <div className="th-container" style={{ position: "relative", paddingTop: 52, paddingBottom: 52 }}>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+              <div>
+                <div className="seglabel" style={{ color: "var(--gold-300)" }}>Now at the airport</div>
+                <h2 style={{ fontFamily: "var(--font-display)", color: "var(--cream-50)", fontSize: "var(--fs-h2)", margin: "8px 0 14px" }}>
+                  Thepla House at Navi Mumbai International Airport
+                </h2>
+                <p style={{ fontFamily: "var(--font-body)", color: "var(--cream-200)", fontSize: "1.0625rem", lineHeight: 1.65, margin: "0 0 18px", maxWidth: 520 }}>
+                  {airport.localCopy}
+                </p>
+                <div style={{ display: "flex", flexWrap: "wrap", gap: 24, marginBottom: 22 }}>
+                  <div>
+                    <div className="seglabel" style={{ color: "var(--gold-300)" }}>Location</div>
+                    <div style={{ fontFamily: "var(--font-body)", color: "var(--cream-50)", fontSize: "0.9375rem", marginTop: 4, maxWidth: 320 }}>{airport.address}</div>
+                  </div>
+                  <div>
+                    <div className="seglabel" style={{ color: "var(--gold-300)" }}>Hours</div>
+                    <div style={{ fontFamily: "var(--font-body)", color: "var(--cream-50)", fontSize: "0.9375rem", marginTop: 4 }}>{airport.hours}</div>
+                  </div>
+                </div>
+                <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
+                  <a href="/menu" style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", minHeight: 48, padding: "13px 26px", fontFamily: "var(--font-body)", fontSize: "1rem", fontWeight: 600, color: "var(--color-on-secondary)", background: "var(--color-secondary)", borderRadius: "var(--radius-md)", boxShadow: "var(--shadow-md)", textDecoration: "none" }}>
+                    Order now
+                  </a>
+                  <a href={`https://www.google.com/maps?q=${encodeURIComponent(airport.mapQuery)}`} target="_blank" rel="noopener noreferrer" style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", minHeight: 48, padding: "13px 24px", fontFamily: "var(--font-body)", fontSize: "1rem", fontWeight: 600, color: "var(--cream-50)", border: "1.5px solid var(--cream-100)", borderRadius: "var(--radius-md)", textDecoration: "none" }}>
+                    Get directions
+                  </a>
+                </div>
+              </div>
+              <div style={{ borderRadius: "var(--radius-2xl)", overflow: "hidden", boxShadow: "var(--shadow-lg)", height: 300 }}>
+                <MapSlot label="Map: Thepla House at Navi Mumbai International Airport, Ulwe" query={airport.mapQuery} />
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
 
       <section style={{ background: "var(--cream-50)" }}>
         <div className="th-container" style={{ paddingBottom: 56 }}>

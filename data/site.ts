@@ -16,6 +16,13 @@ export const SITE = {
   logo: "/logo/theplahouse-logo.png",
 } as const;
 
+// ---- Maps -----------------------------------------------------------------
+// Google "My Maps" embed URL for the /locations hub map — shows ONLY our own
+// outlets (no competitors, no stale Google listings). Create a My Map with a
+// pin per outlet, then Share → Embed on my site and paste the iframe `src` here.
+// Leave empty ("") to fall back to the stylised placeholder map.
+export const LOCATIONS_MAP_EMBED = "";
+
 // ---- Contacts -------------------------------------------------------------
 export const ORDER_PHONE = "+91 98195 55065";
 export const ORDER_PHONE_TEL = "tel:+919819555065";

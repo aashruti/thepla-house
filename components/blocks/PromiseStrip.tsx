@@ -14,7 +14,7 @@ export const DEFAULT_PROMISES: PromiseItem[] = [
   { title: "Sunflower oil only", detail: "No palm oil" },
   { title: "Zero preservatives", detail: "No artificial colours" },
   { title: "Jain & vegan", detail: "Clearly tagged" },
-  { title: "Made fresh daily", detail: "Rolled this morning" },
+  { title: "Made fresh after order", detail: "Cooked when you order" },
 ];
 
 function Check() {
