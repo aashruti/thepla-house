@@ -5,6 +5,24 @@ import { SITE, ORDER_PHONE, INSTAGRAM_HANDLE } from "@/data/site";
 export const runtime = "nodejs";
 
 /**
+ * Diagnostic: reports whether SMTP env is present in this deployment.
+ * Exposes booleans only — no secret values. Safe to leave in place.
+ */
+export async function GET() {
+  return NextResponse.json({
+    ok: true,
+    configured: isEmailConfigured(),
+    has: {
+      SMTP_HOST: Boolean(process.env.SMTP_HOST),
+      SMTP_USER: Boolean(process.env.SMTP_USER),
+      SMTP_PASS: Boolean(process.env.SMTP_PASS),
+      EMAIL_FROM: Boolean(process.env.EMAIL_FROM),
+      ENQUIRY_EMAILS: Boolean(process.env.ENQUIRY_EMAILS),
+    },
+  });
+}
+
+/**
  * Enquiry handler for the catering / franchise / contact forms.
  * Emails every submission to the enquiry inbox(es) and sends the enquirer a
  * confirmation. SMTP is configured via env (see lib/email.ts + .env.example).
