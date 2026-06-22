@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { sendEmail, isEmailConfigured } from "@/lib/email";
 import { absUrl } from "@/lib/seo";
-import { SITE, ORDER_PHONE, INSTAGRAM_HANDLE, FRANCHISE_CONTACT } from "@/data/site";
+import { SITE, ORDER_PHONE, INSTAGRAM_HANDLE, CONTACT_EMAIL } from "@/data/site";
 
 export const runtime = "nodejs";
 
@@ -99,7 +99,7 @@ function emailShell(innerHtml: string): string {
         Call / WhatsApp: <strong>${escapeHtml(ORDER_PHONE)}</strong><br/>
         <a href="${SITE.url}" style="color:#F3B53C;text-decoration:none;">theplahouse.com</a>
         &middot; Instagram ${escapeHtml(INSTAGRAM_HANDLE)}
-        &middot; <a href="mailto:${escapeHtml(FRANCHISE_CONTACT.email)}" style="color:#F3B53C;text-decoration:none;">${escapeHtml(FRANCHISE_CONTACT.email)}</a>
+        &middot; <a href="mailto:${escapeHtml(CONTACT_EMAIL)}" style="color:#F3B53C;text-decoration:none;">${escapeHtml(CONTACT_EMAIL)}</a>
       </div>
     </div>
     <div style="max-width:600px;margin:12px auto 0;text-align:center;color:#9a8f86;font-size:11px;">7 kitchens across Mumbai, Thane &amp; Navi Mumbai &middot; 100% vegetarian</div>

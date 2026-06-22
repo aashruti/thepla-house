@@ -29,6 +29,7 @@ export const ORDER_PHONE_TEL = "tel:+919819555065";
 export const WHATSAPP_LINK = "https://wa.me/919819555065";
 export const INSTAGRAM_HANDLE = "@tejals_kitchen";
 export const INSTAGRAM_LINK = "https://instagram.com/tejals_kitchen";
+export const CONTACT_EMAIL = "tejal@theplahouse.com";
 
 export const FRANCHISE_CONTACT = {
   name: "Mr. Dhaval Shah",
