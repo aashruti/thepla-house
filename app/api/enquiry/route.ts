@@ -145,15 +145,6 @@ function recipients(): string[] {
 
 /* -------------------------------------------------------------------- routes */
 
-/** Diagnostic: booleans only, no secret values. */
-export async function GET() {
-  return NextResponse.json({
-    ok: true,
-    configured: isEmailConfigured(),
-    captcha: Boolean(process.env.TURNSTILE_SECRET_KEY),
-  });
-}
-
 export async function POST(request: Request) {
   let payload: { kind?: string; data?: Record<string, string> };
   try {
