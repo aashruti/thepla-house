@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useState, useEffect, useRef, type FormEvent } from "react";
 import { Input } from "@/components/ds/Input";
 import { Select } from "@/components/ds/Select";
 import { Textarea } from "@/components/ds/Textarea";
@@ -25,11 +25,66 @@ export interface EnquiryFormProps {
 }
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const TURNSTILE_SITE_KEY = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
+const TURNSTILE_SCRIPT = "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit";
+
+declare global {
+  interface Window {
+    turnstile?: {
+      render: (el: HTMLElement, opts: Record<string, unknown>) => string;
+      reset: (id?: string) => void;
+    };
+  }
+}
 
 export function EnquiryForm({ kind, fields, submitLabel = "Send enquiry" }: EnquiryFormProps) {
   const [values, setValues] = useState<Record<string, string>>({});
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+  const [honeypot, setHoneypot] = useState("");
+  const [captchaToken, setCaptchaToken] = useState("");
+  const [captchaError, setCaptchaError] = useState(false);
+  const turnstileRef = useRef<HTMLDivElement>(null);
+  const widgetId = useRef<string | null>(null);
+
+  // Render the Cloudflare Turnstile widget (only when a site key is configured).
+  useEffect(() => {
+    if (!TURNSTILE_SITE_KEY) return;
+    let poll: ReturnType<typeof setInterval> | undefined;
+    const renderWidget = () => {
+      if (!turnstileRef.current || widgetId.current || !window.turnstile) return;
+      widgetId.current = window.turnstile.render(turnstileRef.current, {
+        sitekey: TURNSTILE_SITE_KEY,
+        callback: (t: string) => {
+          setCaptchaToken(t);
+          setCaptchaError(false);
+        },
+        "error-callback": () => setCaptchaToken(""),
+        "expired-callback": () => setCaptchaToken(""),
+        theme: "light",
+      });
+    };
+    if (window.turnstile) {
+      renderWidget();
+    } else if (!document.querySelector(`script[src="${TURNSTILE_SCRIPT}"]`)) {
+      const s = document.createElement("script");
+      s.src = TURNSTILE_SCRIPT;
+      s.async = true;
+      s.defer = true;
+      s.onload = renderWidget;
+      document.head.appendChild(s);
+    } else {
+      poll = setInterval(() => {
+        if (window.turnstile) {
+          clearInterval(poll);
+          renderWidget();
+        }
+      }, 200);
+    }
+    return () => {
+      if (poll) clearInterval(poll);
+    };
+  }, []);
 
   const setField = (name: string, value: string) => {
     setValues((v) => ({ ...v, [name]: value }));
@@ -50,16 +105,22 @@ export function EnquiryForm({ kind, fields, submitLabel = "Send enquiry" }: Enqu
   const onSubmit = async (e: FormEvent) => {
     e.preventDefault();
     if (!validate()) return;
+    if (TURNSTILE_SITE_KEY && !captchaToken) {
+      setCaptchaError(true);
+      return;
+    }
     setStatus("submitting");
     try {
       const res = await fetch("/api/enquiry", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ kind, data: values }),
+        body: JSON.stringify({ kind, data: { ...values, company: honeypot, turnstileToken: captchaToken } }),
       });
       if (!res.ok) throw new Error("Request failed");
       setStatus("success");
       setValues({});
+      if (window.turnstile && widgetId.current) window.turnstile.reset(widgetId.current);
+      setCaptchaToken("");
     } catch {
       setStatus("error");
     }
@@ -110,6 +171,33 @@ export function EnquiryForm({ kind, fields, submitLabel = "Send enquiry" }: Enqu
           </div>
         );
       })}
+
+      {/* Honeypot — hidden from people, tempting to bots. Leave it empty. */}
+      <div aria-hidden="true" style={{ position: "absolute", left: "-9999px", width: 1, height: 1, overflow: "hidden" }}>
+        <label>
+          Company
+          <input
+            type="text"
+            name="company"
+            tabIndex={-1}
+            autoComplete="off"
+            value={honeypot}
+            onChange={(e) => setHoneypot(e.target.value)}
+          />
+        </label>
+      </div>
+
+      {TURNSTILE_SITE_KEY && (
+        <div style={{ gridColumn: "1 / -1" }}>
+          <div ref={turnstileRef} />
+          {captchaError && (
+            <span role="alert" style={{ fontFamily: "var(--font-body)", color: "var(--color-error)", fontSize: "0.875rem" }}>
+              Please complete the verification above.
+            </span>
+          )}
+        </div>
+      )}
+
       <div style={{ gridColumn: "1 / -1", display: "flex", alignItems: "center", gap: 16, flexWrap: "wrap" }}>
         <Button as="button" type="submit" variant="primary" size="lg" disabled={status === "submitting"}>
           {status === "submitting" ? "Sending…" : submitLabel}
