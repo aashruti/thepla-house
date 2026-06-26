@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { PdfMenu } from "@/components/blocks/PdfMenu";
 import { MenuExplorer } from "@/components/blocks/MenuExplorer";
 import { CTABanner } from "@/components/ds/CTABanner";
 import { JsonLd } from "@/components/JsonLd";
@@ -46,7 +47,20 @@ export default function MenuPage() {
       </section>
 
       <section style={{ background: "var(--cream-50)" }}>
+        <div className="th-container" style={{ paddingTop: 8, paddingBottom: 40, maxWidth: 1000 }}>
+          <PdfMenu />
+        </div>
+      </section>
+
+      <section style={{ background: "var(--cream-50)" }}>
         <div className="th-container" style={{ paddingTop: 8, paddingBottom: 56 }}>
+          <div className="seglabel">Browse the dishes</div>
+          <h2 style={{ fontFamily: "var(--font-display)", color: "var(--color-headline)", fontSize: "var(--fs-title)", lineHeight: 1.12, margin: "8px 0 6px" }}>
+            Explore by category
+          </h2>
+          <p style={{ fontFamily: "var(--font-body)", color: "var(--ink-600)", fontSize: "var(--fs-body-lg)", lineHeight: 1.6, maxWidth: 680, margin: "0 0 20px" }}>
+            Tap a category or filter for Jain, vegan and best-seller picks. For current prices, see the menu above.
+          </p>
           <MenuExplorer />
         </div>
       </section>

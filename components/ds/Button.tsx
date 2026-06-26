@@ -19,6 +19,7 @@ export interface ButtonProps {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   as?: any;
   href?: string;
+  download?: string | boolean;
   type?: "button" | "submit" | "reset";
   onClick?: () => void;
   style?: CSSProperties;
