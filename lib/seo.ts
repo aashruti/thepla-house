@@ -129,6 +129,16 @@ export interface RestaurantGeo {
   areaServed?: string[];
   opens?: string;
   closes?: string;
+  /**
+   * Canonical Google Maps / Business Profile listing URL for THIS outlet.
+   * Emitted as `hasMap` + added to `sameAs` so Google reconciles this page's
+   * Restaurant entity with the exact verified GBP listing (not a competitor).
+   */
+  mapsUrl?: string;
+  /** Outlet-specific phone; falls back to the central order line. Keep it identical to the GBP phone (NAP consistency). */
+  telephone?: string;
+  /** Extra profiles that prove this is the same real-world business (aggregators, socials). */
+  sameAs?: string[];
 }
 
 export function restaurantLd(geo: RestaurantGeo) {
@@ -141,10 +151,15 @@ export function restaurantLd(geo: RestaurantGeo) {
     image: absUrl(SITE.logo),
     servesCuisine: ["Gujarati", "Indian", "Vegetarian", "Jain"],
     priceRange: "₹₹",
-    telephone: ORDER_PHONE,
+    telephone: geo.telephone || ORDER_PHONE,
     description: SITE.description,
     hasMenu: absUrl("/menu"),
     acceptsReservations: Boolean(geo.dineIn),
+    // Tie this outlet's entity to its verified Google Business Profile listing.
+    ...(geo.mapsUrl ? { hasMap: geo.mapsUrl } : {}),
+    ...((geo.sameAs && geo.sameAs.length) || geo.mapsUrl
+      ? { sameAs: [...(geo.mapsUrl ? [geo.mapsUrl] : []), ...(geo.sameAs || [])] }
+      : {}),
     address: {
       "@type": "PostalAddress",
       streetAddress: geo.streetAddress,
@@ -210,8 +225,14 @@ export function breadcrumbLd(items: { name: string; path: string }[]) {
   };
 }
 
+/** Pulls the digits out of a price string like "₹ 235" or "₹1,234" → "235". */
+function parsePriceValue(price: string): string | undefined {
+  const digits = price.replace(/[^\d]/g, "");
+  return digits || undefined;
+}
+
 export function menuLd(
-  sections: { name: string; items: { name: string; description?: string }[] }[],
+  sections: { name: string; items: { name: string; description?: string; price?: string }[] }[],
 ) {
   return {
     "@context": "https://schema.org",
@@ -221,11 +242,17 @@ export function menuLd(
     hasMenuSection: sections.map((s) => ({
       "@type": "MenuSection",
       name: s.name,
-      hasMenuItem: s.items.map((it) => ({
-        "@type": "MenuItem",
-        name: it.name,
-        ...(it.description ? { description: it.description } : {}),
-      })),
+      hasMenuItem: s.items.map((it) => {
+        const priceValue = it.price ? parsePriceValue(it.price) : undefined;
+        return {
+          "@type": "MenuItem",
+          name: it.name,
+          ...(it.description ? { description: it.description } : {}),
+          ...(priceValue
+            ? { offers: { "@type": "Offer", price: priceValue, priceCurrency: "INR" } }
+            : {}),
+        };
+      }),
     })),
   };
 }

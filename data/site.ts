@@ -10,7 +10,11 @@ export const SITE = {
   founder: "Tejal Shah",
   since: 2018,
   city: "Mumbai",
-  url: "https://theplahouse.com",
+  // Canonical host MUST match where the site actually serves. The domain
+  // 308-redirects non-www → www, so www is canonical; using non-www here made
+  // every canonical/sitemap/OG/JSON-LD URL point at a redirect, which left pages
+  // stuck "Discovered – currently not indexed" in Google.
+  url: "https://www.theplahouse.com",
   description:
     "Home-style Gujarati food in Mumbai since 2018 — 100% vegetarian, whole-wheat and healthy, made fresh to order. Theplas, thalis, farsan & sweets delivered like a home tiffin via Swiggy, Zomato or WhatsApp. Jain & vegan options.",
   logo: "/logo/theplahouse-logo.png",

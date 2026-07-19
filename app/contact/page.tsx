@@ -267,8 +267,9 @@ export default function ContactPage() {
                 }}
               >
                 <MapSlot
-                  label="Map: 7 Thepla House kitchens across Mumbai"
-                  query="Thepla House Chandivali, Andheri East, Mumbai"
+                  label="Map: Thepla House flagship kitchen, Chandivali (Andheri East)"
+                  lat={19.1145}
+                  lng={72.8889}
                 />
               </div>
               <div

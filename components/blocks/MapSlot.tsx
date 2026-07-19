@@ -8,33 +8,39 @@ import type { CSSProperties } from "react";
  */
 export interface MapSlotProps {
   label: string;
-  /** A place / address query to embed a real map, e.g. "Thepla House Chandivali Mumbai" */
+  /**
+   * A place / address query to embed a real map.
+   * ⚠️ SEO WARNING: `?q=<text>` renders Google's SEARCH RESULTS for that phrase,
+   * so a brand/keyword query (e.g. "Thepla House ... Mumbai") embeds the whole
+   * competitor cluster onto our own page. Only pass a precise place name here —
+   * for our own outlets prefer `lat`/`lng` (a single pin, no competitors) or a
+   * My Maps `embedSrc`.
+   */
   query?: string;
-  /** A full embed URL (e.g. a Google My Maps "embed" iframe src) — takes precedence over query */
+  /** Precise coordinates → drops a single pin with NO competitor search cluster. Preferred for our outlets. */
+  lat?: number;
+  lng?: number;
+  /** A full embed URL (e.g. a Google My Maps "embed" iframe src) — takes precedence over lat/lng and query */
   embedSrc?: string;
   style?: CSSProperties;
   className?: string;
 }
 
-export function MapSlot({ label, query, embedSrc, style, className }: MapSlotProps) {
-  if (embedSrc) {
+export function MapSlot({ label, query, lat, lng, embedSrc, style, className }: MapSlotProps) {
+  // Precedence: explicit embed → precise coordinate pin → text query → placeholder.
+  const src = embedSrc
+    ? embedSrc
+    : typeof lat === "number" && typeof lng === "number"
+      ? `https://www.google.com/maps?q=${lat},${lng}&z=16&output=embed`
+      : query
+        ? `https://www.google.com/maps?q=${encodeURIComponent(query)}&output=embed`
+        : undefined;
+  if (src) {
     return (
       <iframe
         title={label}
         className={className}
-        src={embedSrc}
-        loading="lazy"
-        referrerPolicy="no-referrer-when-downgrade"
-        style={{ border: 0, width: "100%", height: "100%", minHeight: 120, display: "block", ...style }}
-      />
-    );
-  }
-  if (query) {
-    return (
-      <iframe
-        title={label}
-        className={className}
-        src={`https://www.google.com/maps?q=${encodeURIComponent(query)}&output=embed`}
+        src={src}
         loading="lazy"
         referrerPolicy="no-referrer-when-downgrade"
         style={{ border: 0, width: "100%", height: "100%", minHeight: 120, display: "block", ...style }}

@@ -17,6 +17,9 @@ export const metadata: Metadata = pageMetadata({
 export default function LocationsPage() {
   const cityKitchens = KITCHENS.filter((k) => k.slug !== "navi-mumbai");
   const airport = KITCHENS.find((k) => k.slug === "navi-mumbai");
+  // Fallback pin for the hub map = our flagship, so the embed never renders a
+  // brand text-search (which would pull competitors onto our own page).
+  const flagship = KITCHENS.find((k) => k.flagship) ?? KITCHENS[0];
   return (
     <>
       <JsonLd
@@ -57,7 +60,7 @@ export default function LocationsPage() {
         <div className="th-container" style={{ paddingTop: 40, paddingBottom: 56 }}>
           <div className="grid grid-cols-1 lg:grid-cols-[0.92fr_1.08fr] gap-10 items-start">
             <div className="locations-map" style={{ borderRadius: "var(--radius-2xl)", overflow: "hidden", boxShadow: "var(--shadow-lg)" }}>
-              <MapSlot label="Thepla House — our kitchens across Mumbai & Navi Mumbai" embedSrc={LOCATIONS_MAP_EMBED || undefined} query="Thepla House By Tejal's Kitchen Mumbai" />
+              <MapSlot label="Thepla House — our kitchens across Mumbai & Navi Mumbai" embedSrc={LOCATIONS_MAP_EMBED || undefined} lat={flagship.lat} lng={flagship.lng} />
             </div>
             <div>
               <h2 style={{ fontFamily: "var(--font-display)", color: "var(--color-headline)", fontSize: "1.75rem", margin: "0 0 20px" }}>All locations</h2>
