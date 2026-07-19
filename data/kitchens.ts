@@ -78,6 +78,8 @@ export const KITCHENS: Kitchen[] = [
     mapQuery: "Chandivali Industrial Estate, Andheri East, Mumbai",
     lat: 19.1145,
     lng: 72.8889,
+    zomatoUrl: "https://www.zomato.com/mumbai/thepla-house-by-tejals-kitchen-chandivali",
+    swiggyUrl: "https://www.swiggy.com/city/mumbai/thepla-house-by-tejals-kitchen-powai-andheri-east-rest59034",
     flagship: true,
     areasServed: ["Powai", "Saki Naka", "Marol", "JB Nagar", "Chakala", "Andheri East", "Sakinaka Metro", "Kurla West"],
     popular: [
@@ -105,6 +107,8 @@ export const KITCHENS: Kitchen[] = [
     mapQuery: "19.0815338,72.8565508",
     lat: 19.0815338,
     lng: 72.8565508,
+    zomatoUrl: "https://www.zomato.com/mumbai/thepla-house-by-tejals-kitchen-santacruz-east",
+    swiggyUrl: "https://www.swiggy.com/city/mumbai/thepla-house-by-tejals-kitchen-next-to-raj-auto-garage-yashwant-nagar-kalina-santacruz-east-rest324194",
     areasServed: ["Kalina", "Vakola", "Santacruz East", "Vidyanagari", "Kurla West", "BKC"],
     popular: DEFAULT_POPULAR,
     localCopy:
@@ -121,6 +125,8 @@ export const KITCHENS: Kitchen[] = [
     mapQuery: "19.0054158,72.8364362",
     lat: 19.0054158,
     lng: 72.8364362,
+    zomatoUrl: "https://www.zomato.com/mumbai/thepla-house-by-tejals-kitchen-parel",
+    swiggyUrl: "https://www.swiggy.com/city/mumbai/thepla-house-by-tejals-kitchen-elphinstone-bridge-road-parel-rest427766",
     areasServed: ["Lower Parel", "Worli", "Prabhadevi", "Elphinstone", "Mahalaxmi", "Parel"],
     popular: DEFAULT_POPULAR,
     localCopy:
@@ -137,6 +143,8 @@ export const KITCHENS: Kitchen[] = [
     mapQuery: "19.1651303,72.9417104",
     lat: 19.1651303,
     lng: 72.9417104,
+    zomatoUrl: "https://www.zomato.com/mumbai/thepla-house-by-tejals-kitchen-mulund-west",
+    swiggyUrl: "https://www.swiggy.com/city/mumbai/thepla-house-by-tejals-kitchen-mulund-raja-industrial-estate-rest605792",
     areasServed: ["Mulund West", "Mulund East", "Bhandup", "Nahur", "Airoli", "Vikhroli"],
     popular: DEFAULT_POPULAR,
     localCopy:
@@ -153,6 +161,9 @@ export const KITCHENS: Kitchen[] = [
     mapQuery: "19.2333642,72.9748825",
     lat: 19.2333642,
     lng: 72.9748825,
+    zomatoUrl: "https://www.zomato.com/mumbai/thepla-house-by-tejals-kitchen-manpada-thane-west-thane",
+    // ⚠️ Swiggy labels this "Thane Panchpakhadi" while the outlet address is Manpada — same brand & city; confirm it's this kitchen.
+    swiggyUrl: "https://www.swiggy.com/city/mumbai/thepla-house-by-tejals-kitchen-thane-panchpakhadi-rest1316580",
     areasServed: ["Thane West", "Manpada", "Kasarvadavali", "Majiwada", "Vartak Nagar", "Hiranandani Estate"],
     popular: DEFAULT_POPULAR,
     localCopy:
