@@ -108,7 +108,7 @@ export const KITCHENS: Kitchen[] = [
     lat: 19.0815338,
     lng: 72.8565508,
     zomatoUrl: "https://www.zomato.com/mumbai/thepla-house-by-tejals-kitchen-santacruz-east",
-    // No Swiggy listing found for this outlet as of 2026-07.
+    swiggyUrl: "https://www.swiggy.com/city/mumbai/thepla-house-by-tejals-kitchen-next-to-raj-auto-garage-yashwant-nagar-kalina-santacruz-east-rest324194",
     areasServed: ["Kalina", "Vakola", "Santacruz East", "Vidyanagari", "Kurla West", "BKC"],
     popular: DEFAULT_POPULAR,
     localCopy:
