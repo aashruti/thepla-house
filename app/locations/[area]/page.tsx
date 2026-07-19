@@ -9,7 +9,7 @@ import { JsonLd } from "@/components/JsonLd";
 import { pageMetadata, restaurantLd, faqPageLd, breadcrumbLd } from "@/lib/seo";
 import { KITCHENS, getKitchen } from "@/data/kitchens";
 import { tagsFor } from "@/data/menu";
-import { ORDER_PHONE, ORDER_PHONE_TEL } from "@/data/site";
+import { ORDER_PHONE, ORDER_PHONE_TEL, INSTAGRAM_LINK } from "@/data/site";
 
 export function generateStaticParams() {
   return KITCHENS.map((k) => ({ area: k.slug }));
@@ -42,7 +42,9 @@ export default async function KitchenAreaPage({ params }: { params: Promise<{ ar
   const k = getKitchen(area);
   if (!k) notFound();
 
-  const directions = `https://www.google.com/maps?q=${encodeURIComponent(k.mapQuery)}`;
+  // Prefer the verified GBP listing so directions clicks land on (and engage)
+  // OUR listing; fall back to a precise coordinate/place query otherwise.
+  const directions = k.mapsUrl || `https://www.google.com/maps?q=${encodeURIComponent(k.mapQuery)}`;
 
   return (
     <>
@@ -60,6 +62,17 @@ export default async function KitchenAreaPage({ params }: { params: Promise<{ ar
             areaServed: k.areasServed,
             opens: k.slug === "kandivali" ? "08:00" : undefined,
             closes: k.slug === "kandivali" ? "22:30" : k.slug === "lower-parel" ? "21:00" : undefined,
+            mapsUrl: k.mapsUrl || undefined,
+            telephone: k.phone,
+            // Only REAL, outlet-matching profiles belong in sameAs (the GBP mapsUrl is
+            // prepended automatically). Generic swiggy.com/zomato.com homepages are
+            // excluded — outlet-specific listings come from the kitchen data.
+            sameAs: [
+              INSTAGRAM_LINK,
+              ...(k.zomatoUrl ? [k.zomatoUrl] : []),
+              ...(k.swiggyUrl ? [k.swiggyUrl] : []),
+              ...(k.profiles ?? []),
+            ],
           }),
           faqPageLd(k.faqs),
           breadcrumbLd([

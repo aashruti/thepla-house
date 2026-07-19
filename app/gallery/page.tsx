@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { GalleryMasonry } from "@/components/blocks/GalleryMasonry";
 import { CTABanner } from "@/components/ds/CTABanner";
 import { JsonLd } from "@/components/JsonLd";
-import { pageMetadata, breadcrumbLd } from "@/lib/seo";
+import { pageMetadata, breadcrumbLd, absUrl } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
   title: "A look inside — food & kitchen gallery",
@@ -16,7 +16,7 @@ export default function GalleryPage() {
     <>
       <JsonLd
         data={[
-          { "@context": "https://schema.org", "@type": "ImageGallery", name: "Thepla House gallery", url: "https://theplahouse.com/gallery" },
+          { "@context": "https://schema.org", "@type": "ImageGallery", name: "Thepla House gallery", url: absUrl("/gallery") },
           breadcrumbLd([
             { name: "Home", path: "/" },
             { name: "Gallery", path: "/gallery" },

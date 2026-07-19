@@ -28,6 +28,22 @@ export interface Kitchen {
   lng?: number;
   /** dine-in outlet (adds eat-in / reservation signals) */
   dineIn?: boolean;
+  /**
+   * Canonical Google Business Profile / Maps listing URL for this outlet.
+   * PASTE THE REAL VERIFIED LISTING URL HERE (Maps → your listing → Share → Copy link,
+   * e.g. https://maps.app.goo.gl/xxxx or a .../maps/place/...!.../data=... URL).
+   * When set it powers the "Get directions" button AND the `hasMap`/`sameAs`
+   * schema that ties this page to the exact GBP listing (keeps competitors out
+   * of Google's entity understanding for this branch).
+   */
+  mapsUrl?: string;
+  /** Outlet-specific phone shown on the page; must match the GBP phone exactly (NAP consistency). */
+  phone?: string;
+  /** Real per-outlet aggregator listing URLs (NOT the generic swiggy.com/zomato.com homepages). Emitted in this outlet's `sameAs`. */
+  zomatoUrl?: string;
+  swiggyUrl?: string;
+  /** Other real profiles for this outlet (Justdial, Facebook, …) → added to `sameAs`. */
+  profiles?: string[];
   /** per-kitchen SEO overrides */
   seoTitle?: string;
   seoDescription?: string;
@@ -170,6 +186,11 @@ export const KITCHENS: Kitchen[] = [
     lat: 19.2018106,
     lng: 72.8397144,
     dineIn: true,
+    // Verified GBP listing → "Thepla House by Tejal's Kitchen - Kandivali"
+    // (19.2018106, 72.8397144). Powers hasMap/sameAs schema + the directions link.
+    mapsUrl: "https://maps.app.goo.gl/4s6gDkKQ3mV9uvLfA",
+    zomatoUrl: "https://www.zomato.com/mumbai/thepla-house-by-tejals-kitchen-kandivali-west",
+    swiggyUrl: "https://www.swiggy.com/city/mumbai/thepla-house-by-tejals-kitchen-west-kandivali-rest1193204",
     seoTitle: "Thepla House Kandivali — Gujarati Thepla Dine-In in Kandivali West",
     seoDescription:
       "Fresh home-style Gujarati theplas, thalis & farsan — dine in, take away or order in Kandivali West (near Mahavir Nagar). 100% vegetarian, whole wheat, Jain & vegan. Open daily 8am–10:30pm.",
