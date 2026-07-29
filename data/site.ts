@@ -35,6 +35,13 @@ export const INSTAGRAM_HANDLE = "@tejals_kitchen";
 export const INSTAGRAM_LINK = "https://instagram.com/tejals_kitchen";
 export const CONTACT_EMAIL = "tejal@theplahouse.com";
 
+// ---- Legal / app-store compliance -----------------------------------------
+export const LEGAL_ENTITY_NAME = "Thepla House By Tejal's Kitchen Pvt Ltd";
+export const LEGAL_REGISTERED_ADDRESS =
+  "Gala No 6, Haria Shree Guppy Industrial Estate, Saki Vihar Rd, Ganesh Nagar, Chandivali, Andheri East, Mumbai, Maharashtra 400072";
+export const SUPPORT_EMAIL = "reports@theplahouse.com";
+export const PRIVACY_CONTACT_EMAIL = SUPPORT_EMAIL;
+
 export const FRANCHISE_CONTACT = {
   name: "Mr. Dhaval Shah",
   phone: "+91 98 33 44 3014",
@@ -105,6 +112,14 @@ export const FOOTER_COLUMNS = [
       { label: "Mulund", href: "/locations/mulund" },
       { label: "Thane", href: "/locations/thane" },
       { label: "Kandivali (dine-in)", href: "/locations/kandivali" },
+    ],
+  },
+  {
+    title: "Legal",
+    links: [
+      { label: "Contact", href: "/contact" },
+      { label: "Privacy policy", href: "/privacy-policy" },
+      { label: "Delete your account", href: "/delete-account" },
     ],
   },
 ];
