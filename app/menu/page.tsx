@@ -6,6 +6,7 @@ import { JsonLd } from "@/components/JsonLd";
 import { pageMetadata, menuLd, breadcrumbLd } from "@/lib/seo";
 import { MENU_CATEGORIES } from "@/data/menu";
 import { ORDER_PHONE, WHATSAPP_LINK } from "@/data/site";
+import menuExtracted from "@/data/menu-extracted.json";
 
 export const metadata: Metadata = pageMetadata({
   title: "Menu — 250+ home-style Gujarati dishes",
@@ -14,17 +15,40 @@ export const metadata: Metadata = pageMetadata({
   path: "/menu",
 });
 
+/**
+ * Real prices straight from public/menu.pdf, via `npm run menu:extract`.
+ * Kept as its own set of menuLd() sections rather than merged into
+ * MENU_CATEGORIES below — the two are named independently (curated marketing
+ * copy vs. the PDF's own item names) and don't line up 1:1, so joining them
+ * would mean guessing which curated dish a PDF entry refers to. Only the
+ * script's "clean" bucket is used; "needsReview" entries aren't sourced here
+ * since a few are known layout-parsing merges — check
+ * data/menu-extracted.json's needsReview list after re-running the script.
+ */
+function pricedMenuSections() {
+  const bySection = new Map<string, { name: string; price: string }[]>();
+  for (const page of menuExtracted.pages) {
+    for (const entry of page.entries) {
+      const items = bySection.get(entry.section) ?? [];
+      items.push({ name: entry.name, price: entry.price });
+      bySection.set(entry.section, items);
+    }
+  }
+  return Array.from(bySection, ([name, items]) => ({ name, items }));
+}
+
 export default function MenuPage() {
   return (
     <>
       <JsonLd
         data={[
-          menuLd(
-            MENU_CATEGORIES.map((c) => ({
+          menuLd([
+            ...MENU_CATEGORIES.map((c) => ({
               name: c.label,
               items: c.dishes.map((d) => ({ name: d.title, description: d.desc })),
             })),
-          ),
+            ...pricedMenuSections(),
+          ]),
           breadcrumbLd([
             { name: "Home", path: "/" },
             { name: "Menu", path: "/menu" },
