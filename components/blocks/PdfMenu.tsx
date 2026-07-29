@@ -27,8 +27,10 @@ pdfjsLib.GlobalWorkerOptions.workerSrc = new URL(
 const PDF_URL = "/menu.pdf";
 const DOWNLOAD_NAME = "Thepla-House-Menu.pdf";
 
-/** Backing-store width per page (px). High enough that pinch-zoom stays sharp. */
-const RENDER_WIDTH = 2200;
+/** Cap on backing-store width per page (px), so a 4x-DPR phone doesn't over-render. */
+const MAX_RENDER_WIDTH = 2200;
+/** Extra factor over CSS size so pinch-zoom still stays sharp. */
+const ZOOM_HEADROOM = 1.5;
 
 type Status = "loading" | "ready" | "error";
 
@@ -76,6 +78,15 @@ export function PdfMenu() {
     let cancelled = false;
     const tasks: RenderTask[] = [];
 
+    // Render at the page's actual on-screen size (+ headroom for pinch-zoom),
+    // not a flat width for every device — a 2200px backing store per page is
+    // wasted decode/raster cost on a ~360px-wide phone screen.
+    const cssWidth = container.clientWidth || MAX_RENDER_WIDTH;
+    const renderWidth = Math.min(
+      MAX_RENDER_WIDTH,
+      Math.round(cssWidth * (window.devicePixelRatio || 1) * ZOOM_HEADROOM),
+    );
+
     (async () => {
       for (let n = 1; n <= doc.numPages; n++) {
         if (cancelled) return;
@@ -89,7 +100,7 @@ export function PdfMenu() {
         const page = await doc.getPage(n);
         if (cancelled) return;
         const base = page.getViewport({ scale: 1 });
-        const scale = RENDER_WIDTH / base.width;
+        const scale = renderWidth / base.width;
         const viewport = page.getViewport({ scale });
         canvas.width = Math.floor(viewport.width);
         canvas.height = Math.floor(viewport.height);
