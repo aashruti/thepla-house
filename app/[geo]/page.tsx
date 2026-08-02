@@ -17,7 +17,7 @@ const PREFIX = "gujarati-food-delivery-";
 export const dynamicParams = false;
 
 export function generateStaticParams() {
-  return AREAS.map((a) => ({ geo: `${PREFIX}${a.slug}` }));
+  return AREAS.filter((a) => !a.redirectTo).map((a) => ({ geo: `${PREFIX}${a.slug}` }));
 }
 
 function areaFromGeo(geo: string) {

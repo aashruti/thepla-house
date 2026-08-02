@@ -21,6 +21,7 @@ export interface Post {
   seoTitle?: string;
   seoDescription?: string;
   keywords?: string[];
+  relatedLocation?: { href: string; label: string };
 }
 
 export const BLOG_CATEGORIES = [
@@ -244,10 +245,14 @@ export const POSTS: Post[] = [
     read: "5 min read",
     subject: "Stack of fresh green methi theplas on a brass plate, Kandivali dine-in",
     alt: "Best thepla in Kandivali West",
-    seoTitle: "Best Thepla in Kandivali West — Gujarati Dine-In | Thepla House",
+    seoTitle: "Fresh Thepla in Kandivali West",
     seoDescription:
-      "Looking for the best thepla in Kandivali West? Thepla House by Tejal's Kitchen — 100% vegetarian Gujarati dine-in near Mahavir Nagar. Methi theplas, thalis, farsan. Open 8am–10:30pm.",
+      "Where to eat fresh thepla in Kandivali West: whole-wheat methi thepla, Gujarati thali and farsan near Mahavir Nagar, with Jain and vegan options.",
     keywords: ["best thepla Kandivali", "thepla Kandivali West", "Gujarati restaurant Kandivali", "thepla dine-in Kandivali", "Gujarati food Mahavir Nagar", "thepla near me Kandivali"],
+    relatedLocation: {
+      href: "/locations/kandivali",
+      label: "Thepla House Kandivali menu, timings and directions",
+    },
     body: [
       { type: "lead", text: "If you're in Kandivali West and craving real, home-style Gujarati food, you don't have to settle for the usual. Thepla House by Tejal's Kitchen is a 100% vegetarian dine-in outlet serving fresh methi theplas, full thalis and farsan — a short walk from Mahavir Nagar and the MHADA Colony." },
       { type: "h2", text: "What makes our thepla different" },

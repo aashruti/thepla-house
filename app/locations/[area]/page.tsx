@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: { params: Promise<{ area: str
   const k = getKitchen(area);
   if (!k) return {};
   const meta = pageMetadata({
-    title: k.seoTitle || `Thepla House ${k.title} (${k.area}) — Gujarati food delivery & dine-in`,
+    title: k.seoTitle || `Thepla House ${k.title} — Menu, Timings & Delivery`,
     description:
       k.seoDescription ||
       `Order home-style Gujarati food in ${k.title}, ${k.area} — theplas, thalis, farsan, Jain & vegan. Delivery via Swiggy, Zomato & WhatsApp. ${k.hours}.`,

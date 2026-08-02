@@ -3,7 +3,7 @@ import { EnquiryForm } from "@/components/blocks/EnquiryForm";
 import { MapSlot } from "@/components/blocks/MapSlot";
 import { CTABanner } from "@/components/ds/CTABanner";
 import { JsonLd } from "@/components/JsonLd";
-import { pageMetadata, organizationLd, breadcrumbLd, absUrl } from "@/lib/seo";
+import { pageMetadata, breadcrumbLd, absUrl } from "@/lib/seo";
 import {
   SITE,
   ORDER_PHONE,
@@ -117,6 +117,7 @@ export default function ContactPage() {
       "Get in touch with Thepla House by Tejal's Kitchen — order line, WhatsApp, catering and franchise enquiries.",
     mainEntity: {
       "@type": "Organization",
+      "@id": `${SITE.url}/#organization`,
       name: SITE.name,
       url: SITE.url,
       contactPoint: [
@@ -143,7 +144,6 @@ export default function ContactPage() {
     <>
       <JsonLd
         data={[
-          organizationLd(),
           contactPageLd,
           breadcrumbLd([
             { name: "Home", path: "/" },
