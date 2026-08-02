@@ -1,21 +1,24 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { KitchenCard } from "@/components/blocks/KitchenCard";
 import { MapSlot } from "@/components/blocks/MapSlot";
 import { CTABanner } from "@/components/ds/CTABanner";
 import { JsonLd } from "@/components/JsonLd";
 import { pageMetadata, breadcrumbLd, absUrl } from "@/lib/seo";
 import { KITCHENS } from "@/data/kitchens";
+import { AREAS } from "@/data/areas";
 import { ORDER_PHONE, LOCATIONS_MAP_EMBED } from "@/data/site";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Our Mumbai kitchens — 7 locations",
+  title: "Thepla House Near You — 7 Mumbai Locations",
   description:
-    "Find your nearest Thepla House kitchen — Chandivali, Kalina, Lower Parel, Mulund, Thane, Navi Mumbai and our Kandivali dine-in. Order on Swiggy, Zomato or WhatsApp.",
+    "Find fresh thepla and Gujarati food near you at Thepla House in Chandivali, Kalina, Lower Parel, Mulund, Thane, Navi Mumbai and Kandivali.",
   path: "/locations",
 });
 
 export default function LocationsPage() {
   const cityKitchens = KITCHENS.filter((k) => k.slug !== "navi-mumbai");
+  const deliveryAreas = AREAS.filter((area) => !area.redirectTo);
   const airport = KITCHENS.find((k) => k.slug === "navi-mumbai");
   // Fallback pin for the hub map = our flagship, so the embed never renders a
   // brand text-search (which would pull competitors onto our own page).
@@ -48,7 +51,7 @@ export default function LocationsPage() {
         <div className="th-container" style={{ position: "relative", paddingTop: 48, paddingBottom: 36 }}>
           <div className="seglabel">Find us</div>
           <h1 style={{ fontFamily: "var(--font-display)", color: "var(--color-headline)", fontSize: "var(--fs-display-lg)", lineHeight: 1.08, margin: "10px 0 14px" }}>
-            7 kitchens across Mumbai
+            Find a Thepla House near you in Mumbai
           </h1>
           <p style={{ fontFamily: "var(--font-body)", color: "var(--ink-600)", fontSize: "var(--fs-body-lg)", lineHeight: 1.6, maxWidth: 680, margin: 0 }}>
             Thepla House cooks from six cloud kitchens across Mumbai and Navi Mumbai — plus a Kandivali dine-in outlet. Order home-style Gujarati food fresh from the kitchen nearest you.
@@ -78,6 +81,22 @@ export default function LocationsPage() {
                   />
                 ))}
               </div>
+            </div>
+          </div>
+
+          <div style={{ marginTop: 40, padding: "24px 26px", background: "var(--gold-50)", border: "1px solid var(--gold-200)", borderRadius: "var(--radius-xl)" }}>
+            <h2 style={{ fontFamily: "var(--font-display)", color: "var(--color-headline)", fontSize: "1.5rem", margin: "0 0 8px" }}>
+              Gujarati food delivery near you
+            </h2>
+            <p style={{ fontFamily: "var(--font-body)", color: "var(--ink-600)", lineHeight: 1.6, margin: "0 0 14px" }}>
+              See delivery details, nearby neighbourhoods and popular dishes for areas served by our Chandivali kitchen.
+            </p>
+            <div style={{ display: "flex", flexWrap: "wrap", gap: 12 }}>
+              {deliveryAreas.map((area) => (
+                <Link key={area.slug} href={`/gujarati-food-delivery-${area.slug}`} style={{ display: "inline-flex", padding: "10px 15px", background: "var(--white)", border: "1px solid var(--color-outline-variant)", borderRadius: "var(--radius-md)", color: "var(--color-primary)", fontFamily: "var(--font-body)", fontWeight: 700, textDecoration: "none" }}>
+                  Gujarati food delivery in {area.name} →
+                </Link>
+              ))}
             </div>
           </div>
         </div>

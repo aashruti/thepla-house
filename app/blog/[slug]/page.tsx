@@ -27,6 +27,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     description: p.seoDescription || p.excerpt,
     path: `/blog/${p.slug}`,
     ogType: "article",
+    image: img(`blog:${p.slug}`),
+    publishedTime: p.datePublished,
+    modifiedTime: p.datePublished,
   });
   if (p.keywords) meta.keywords = p.keywords;
   return meta;
@@ -68,7 +71,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     <>
       <JsonLd
         data={[
-          blogPostingLd(post),
+          blogPostingLd({ ...post, image: img(`blog:${post.slug}`) }),
           breadcrumbLd([
             { name: "Home", path: "/" },
             { name: "Blog", path: "/blog" },
@@ -117,6 +120,15 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             {post.body.map((b, i) => (
               <ArticleBlock key={i} block={b} />
             ))}
+            {post.relatedLocation && (
+              <aside style={{ margin: "28px 0 8px", padding: "18px 20px", background: "var(--gold-50)", border: "1px solid var(--gold-200)", borderRadius: "var(--radius-lg)", fontFamily: "var(--font-body)", color: "var(--ink-700)", lineHeight: 1.6 }}>
+                Planning a visit? See{" "}
+                <Link href={post.relatedLocation.href} style={{ color: "var(--color-primary)", fontWeight: 700 }}>
+                  {post.relatedLocation.label}
+                </Link>
+                .
+              </aside>
+            )}
           </div>
         </section>
 

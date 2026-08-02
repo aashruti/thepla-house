@@ -3,7 +3,7 @@ import { PhotoSlot } from "@/components/blocks/PhotoSlot";
 import { CTABanner } from "@/components/ds/CTABanner";
 import { TrimBorder } from "@/components/ds/TrimBorder";
 import { JsonLd } from "@/components/JsonLd";
-import { pageMetadata, organizationLd, breadcrumbLd, absUrl } from "@/lib/seo";
+import { pageMetadata, breadcrumbLd, absUrl } from "@/lib/seo";
 import { SITE } from "@/data/site";
 import { img } from "@/data/images";
 
@@ -46,7 +46,7 @@ const aboutPageLd = {
   url: absUrl("/about"),
   description:
     "The founder-led brand story of Thepla House by Tejal's Kitchen — Mumbai, since 2018 — and the food philosophy behind \"Junk the Junk Food.\"",
-  about: { "@type": "Organization", name: SITE.name },
+  about: { "@id": `${SITE.url}/#organization` },
 };
 
 export default function AboutPage() {
@@ -55,7 +55,6 @@ export default function AboutPage() {
       <JsonLd
         data={[
           aboutPageLd,
-          organizationLd(),
           breadcrumbLd([
             { name: "Home", path: "/" },
             { name: "Our story", path: "/about" },

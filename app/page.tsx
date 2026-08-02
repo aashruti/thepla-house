@@ -9,7 +9,7 @@ import { Accordion } from "@/components/ds/Accordion";
 import { CTABanner } from "@/components/ds/CTABanner";
 import { TrimBorder } from "@/components/ds/TrimBorder";
 import { JsonLd } from "@/components/JsonLd";
-import { pageMetadata, restaurantLd, faqPageLd } from "@/lib/seo";
+import { pageMetadata, faqPageLd } from "@/lib/seo";
 import { POPULAR_DISHES, tagsFor } from "@/data/menu";
 import { KITCHENS } from "@/data/kitchens";
 import { HOME_FAQS } from "@/data/faqs";
@@ -17,9 +17,9 @@ import { ORDER_PHONE, FRANCHISE_CONTACT } from "@/data/site";
 import { img } from "@/data/images";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Thepla House by Tejal's Kitchen — Home-style Gujarati food & healthy veg tiffin, Mumbai",
+  title: "Thepla House Mumbai — Fresh Thepla, Gujarati Thali & Tiffin",
   description:
-    "Home-style Gujarati food in Mumbai — healthy, 100% vegetarian and made fresh to order since 2018. Theplas, thalis & farsan delivered like a home tiffin on Swiggy, Zomato or WhatsApp. Jain & vegan options.",
+    "Find fresh thepla, Gujarati thali and vegetarian tiffin near you at seven Thepla House locations across Mumbai. Whole-wheat, Jain and vegan options; order online.",
   path: "/",
 });
 
@@ -31,15 +31,12 @@ export default function HomePage() {
   return (
     <>
       <JsonLd
-        data={[
-          restaurantLd({ url: "/", locality: "Mumbai", latitude: 19.1136, longitude: 72.8697 }),
-          faqPageLd(HOME_FAQS),
-        ]}
+        data={faqPageLd(HOME_FAQS)}
       />
 
       <Hero
         eyebrow="Mumbai · 100% vegetarian · since 2018"
-        title="Real ghar ka khana, made fresh and delivered today"
+        title="Fresh thepla and Gujarati thali, made like home"
         intro="Thepla House by Tejal's Kitchen is a 100% vegetarian kitchen in Mumbai serving healthy, home-style Gujarati food — whole-wheat atta, sunflower oil and no preservatives, cooked fresh to order. Real ghar ka khana, delivered like a home tiffin since 2018."
         photo={{
           subject: "Hero: brass thali of methi thepla, dal, sabzi & achar, warm side light",

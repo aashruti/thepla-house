@@ -4,11 +4,11 @@ import {
   ORDER_PHONE,
   INSTAGRAM_LINK,
   WHATSAPP_LINK,
-  SWIGGY_LINK,
-  ZOMATO_LINK,
 } from "@/data/site";
 
 const BASE = SITE.url;
+const ORGANIZATION_ID = `${BASE}/#organization`;
+const WEBSITE_ID = `${BASE}/#website`;
 
 export function absUrl(path = "/"): string {
   return new URL(path, BASE).toString();
@@ -20,15 +20,27 @@ export function pageMetadata({
   description,
   path = "/",
   ogType = "website",
+  image,
+  publishedTime,
+  modifiedTime,
 }: {
   title: string;
   description: string;
   path?: string;
   ogType?: "website" | "article";
+  image?: string;
+  publishedTime?: string;
+  modifiedTime?: string;
 }): Metadata {
   const canonical = absUrl(path);
+  const imageUrl = image ? absUrl(image) : undefined;
+  // The root layout appends "· Thepla House" to ordinary child titles. Pages
+  // that already name the brand should stay absolute instead of repeating it.
+  const metadataTitle = title.toLowerCase().includes(SITE.shortName.toLowerCase())
+    ? { absolute: title }
+    : title;
   return {
-    title,
+    title: metadataTitle,
     description,
     alternates: { canonical },
     openGraph: {
@@ -38,11 +50,16 @@ export function pageMetadata({
       siteName: SITE.name,
       type: ogType,
       locale: "en_IN",
+      ...(imageUrl ? { images: [{ url: imageUrl }] } : {}),
+      ...(ogType === "article" && publishedTime ? { publishedTime } : {}),
+      ...(ogType === "article" && modifiedTime ? { modifiedTime } : {}),
+      ...(ogType === "article" ? { authors: [SITE.founder] } : {}),
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
+      ...(imageUrl ? { images: [imageUrl] } : {}),
     },
   };
 }
@@ -52,7 +69,8 @@ export function pageMetadata({
 export function organizationLd() {
   return {
     "@context": "https://schema.org",
-    "@type": ["Organization", "FoodEstablishment"],
+    "@type": "Organization",
+    "@id": ORGANIZATION_ID,
     name: SITE.name,
     alternateName: ["Thepla House", "Tejal's Kitchen", "Thepla House Mumbai"],
     url: BASE,
@@ -60,10 +78,8 @@ export function organizationLd() {
     image: absUrl(SITE.logo),
     slogan: SITE.tagline,
     foundingDate: String(SITE.since),
-    founder: { "@type": "Person", name: SITE.founder },
+    founder: { "@type": "Person", name: SITE.founder, url: absUrl("/about") },
     description: SITE.description,
-    servesCuisine: ["Gujarati", "Indian", "Vegetarian", "Jain"],
-    priceRange: "₹₹",
     keywords:
       "home-style food, healthy food, vegetarian tiffin, tiffin service, home food delivery, ghar ka khana, Gujarati food, thepla, Jain food, vegan food, Mumbai",
     knowsAbout: [
@@ -93,7 +109,9 @@ export function organizationLd() {
       addressRegion: "Maharashtra",
       addressCountry: "IN",
     },
-    sameAs: [INSTAGRAM_LINK, SWIGGY_LINK, ZOMATO_LINK],
+    // Only link profiles that identify this business. Generic marketplace
+    // homepages are not valid sameAs references and can confuse entity matching.
+    sameAs: [INSTAGRAM_LINK],
     contactPoint: {
       "@type": "ContactPoint",
       telephone: ORDER_PHONE,
@@ -108,10 +126,11 @@ export function websiteLd() {
   return {
     "@context": "https://schema.org",
     "@type": "WebSite",
+    "@id": WEBSITE_ID,
     name: SITE.name,
     url: BASE,
     inLanguage: "en-IN",
-    publisher: { "@type": "Organization", name: SITE.name },
+    publisher: { "@id": ORGANIZATION_ID },
   };
 }
 
@@ -144,7 +163,7 @@ export interface RestaurantGeo {
 export function restaurantLd(geo: RestaurantGeo) {
   return {
     "@context": "https://schema.org",
-    "@type": geo.dineIn ? ["Restaurant", "LocalBusiness"] : "Restaurant",
+    "@type": "Restaurant",
     "@id": `${absUrl(geo.url)}#restaurant`,
     name: geo.name || SITE.name,
     url: absUrl(geo.url),
@@ -155,6 +174,7 @@ export function restaurantLd(geo: RestaurantGeo) {
     description: SITE.description,
     hasMenu: absUrl("/menu"),
     acceptsReservations: Boolean(geo.dineIn),
+    parentOrganization: { "@id": ORGANIZATION_ID },
     // Tie this outlet's entity to its verified Google Business Profile listing.
     ...(geo.mapsUrl ? { hasMap: geo.mapsUrl } : {}),
     ...((geo.sameAs && geo.sameAs.length) || geo.mapsUrl
@@ -257,19 +277,24 @@ export function menuLd(
   };
 }
 
-export function blogLd(posts: { title: string; slug: string; excerpt: string; date: string }[]) {
+export function blogLd(
+  posts: { title: string; slug: string; excerpt: string; datePublished: string }[],
+) {
   return {
     "@context": "https://schema.org",
     "@type": "Blog",
+    "@id": `${absUrl("/blog")}#blog`,
     name: `${SITE.name} — Blog`,
     url: absUrl("/blog"),
+    publisher: { "@id": ORGANIZATION_ID },
     blogPost: posts.map((p) => ({
       "@type": "BlogPosting",
+      "@id": `${absUrl(`/blog/${p.slug}`)}#article`,
       headline: p.title,
       url: absUrl(`/blog/${p.slug}`),
       description: p.excerpt,
-      datePublished: p.date,
-      author: { "@type": "Organization", name: SITE.name },
+      datePublished: p.datePublished,
+      author: { "@type": "Person", name: SITE.founder, url: absUrl("/about") },
     })),
   };
 }
@@ -278,23 +303,25 @@ export function blogPostingLd(post: {
   title: string;
   slug: string;
   excerpt: string;
-  date: string;
+  datePublished: string;
+  image?: string;
 }) {
+  const articleUrl = absUrl(`/blog/${post.slug}`);
   return {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
+    "@id": `${articleUrl}#article`,
     headline: post.title,
-    url: absUrl(`/blog/${post.slug}`),
+    url: articleUrl,
     description: post.excerpt,
-    datePublished: post.date,
-    image: absUrl(SITE.logo),
-    author: { "@type": "Organization", name: SITE.name },
-    publisher: {
-      "@type": "Organization",
-      name: SITE.name,
-      logo: { "@type": "ImageObject", url: absUrl(SITE.logo) },
-    },
-    mainEntityOfPage: { "@type": "WebPage", "@id": absUrl(`/blog/${post.slug}`) },
+    datePublished: post.datePublished,
+    dateModified: post.datePublished,
+    image: absUrl(post.image || SITE.logo),
+    inLanguage: "en-IN",
+    author: { "@type": "Person", name: SITE.founder, url: absUrl("/about") },
+    publisher: { "@id": ORGANIZATION_ID },
+    isPartOf: { "@id": `${absUrl("/blog")}#blog` },
+    mainEntityOfPage: { "@type": "WebPage", "@id": articleUrl },
   };
 }
 
@@ -314,9 +341,7 @@ export function serviceLd(opts: {
     description: opts.description,
     url: absUrl(opts.path),
     provider: {
-      "@type": "Organization",
-      name: SITE.name,
-      url: BASE,
+      "@id": ORGANIZATION_ID,
       telephone: ORDER_PHONE,
     },
     areaServed: areas.map((a) => ({ "@type": "Place", name: a })),

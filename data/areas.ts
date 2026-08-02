@@ -11,6 +11,8 @@ export interface AreaDish {
 export interface Area {
   slug: string; // -> /gujarati-food-delivery-[slug]
   name: string;
+  /** Existing location page to consolidate into when both URLs target the same intent. */
+  redirectTo?: string;
   servingKitchenSlug: string;
   servingKitchenName: string;
   areasServed: string[];
@@ -64,6 +66,7 @@ export const AREAS: Area[] = [
   {
     slug: "mulund",
     name: "Mulund",
+    redirectTo: "/locations/mulund",
     servingKitchenSlug: "mulund",
     servingKitchenName: "Thepla House Mulund",
     areasServed: ["Mulund West", "Mulund East", "Bhandup", "Nahur", "Vikhroli", "Airoli"],
@@ -75,6 +78,7 @@ export const AREAS: Area[] = [
   {
     slug: "thane",
     name: "Thane",
+    redirectTo: "/locations/thane",
     servingKitchenSlug: "thane",
     servingKitchenName: "Thepla House Thane",
     areasServed: ["Thane West", "Manpada", "Kasarvadavali", "Majiwada", "Vartak Nagar", "Hiranandani Estate"],
@@ -86,6 +90,7 @@ export const AREAS: Area[] = [
   {
     slug: "lower-parel",
     name: "Lower Parel",
+    redirectTo: "/locations/lower-parel",
     servingKitchenSlug: "lower-parel",
     servingKitchenName: "Thepla House Lower Parel",
     areasServed: ["Lower Parel", "Worli", "Prabhadevi", "Elphinstone", "Mahalaxmi", "Parel"],
@@ -97,6 +102,7 @@ export const AREAS: Area[] = [
   {
     slug: "kandivali",
     name: "Kandivali",
+    redirectTo: "/locations/kandivali",
     servingKitchenSlug: "kandivali",
     servingKitchenName: "Thepla House Kandivali",
     areasServed: ["Kandivali West", "Kandivali East", "Borivali", "Malad", "Charkop", "Poisar"],

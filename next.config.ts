@@ -22,6 +22,13 @@ const nextConfig: NextConfig = {
       { source: "/menu/:path+", destination: "/menu", permanent: true },
       // Removed blog post.
       { source: "/blog/tips-for-planning-a-menu", destination: "/blog", permanent: true },
+      // Consolidate delivery landings that duplicate an established location
+      // page. The location URL is the stronger destination for menu, hours,
+      // directions and local-business signals.
+      { source: "/gujarati-food-delivery-mulund", destination: "/locations/mulund", permanent: true },
+      { source: "/gujarati-food-delivery-thane", destination: "/locations/thane", permanent: true },
+      { source: "/gujarati-food-delivery-lower-parel", destination: "/locations/lower-parel", permanent: true },
+      { source: "/gujarati-food-delivery-kandivali", destination: "/locations/kandivali", permanent: true },
     ];
   },
 };

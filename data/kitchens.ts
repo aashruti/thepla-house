@@ -202,7 +202,7 @@ export const KITCHENS: Kitchen[] = [
     mapsUrl: "https://maps.app.goo.gl/4s6gDkKQ3mV9uvLfA",
     zomatoUrl: "https://www.zomato.com/mumbai/thepla-house-by-tejals-kitchen-kandivali-west",
     swiggyUrl: "https://www.swiggy.com/city/mumbai/thepla-house-by-tejals-kitchen-west-kandivali-rest1193204",
-    seoTitle: "Thepla House Kandivali — Gujarati Thepla Dine-In in Kandivali West",
+    seoTitle: "Thepla House Kandivali — Menu, Timings & Directions",
     seoDescription:
       "Fresh home-style Gujarati theplas, thalis & farsan — dine in, take away or order in Kandivali West (near Mahavir Nagar). 100% vegetarian, whole wheat, Jain & vegan. Open daily 8am–10:30pm.",
     seoParagraphs: [

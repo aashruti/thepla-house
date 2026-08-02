@@ -55,7 +55,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en">
+    <html lang="en-IN">
       <body className={fontVariables}>
         <JsonLd data={[organizationLd(), websiteLd()]} />
         <a href="#main" className="skip-link">
