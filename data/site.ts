@@ -42,10 +42,12 @@ export const LEGAL_REGISTERED_ADDRESS =
 export const SUPPORT_EMAIL = "reports@theplahouse.com";
 export const PRIVACY_CONTACT_EMAIL = SUPPORT_EMAIL;
 
+// Franchise lead. Deliberately email-only: the direct number was published on the
+// franchise, contact and home pages and drew far more unqualified calls than it was
+// worth. Franchise enquiries now come through the application form on /franchise,
+// and we call the applicant back.
 export const FRANCHISE_CONTACT = {
   name: "Mr. Dhaval Shah",
-  phone: "+91 98 33 44 3014",
-  phoneTel: "tel:+919833443014",
   email: "Dhaval@theplahouse.com",
 } as const;
 

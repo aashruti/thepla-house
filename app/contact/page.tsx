@@ -26,8 +26,8 @@ const CONTACT_METHODS: { label: string; value: string; href: string; external?: 
   { label: "WhatsApp", value: ORDER_PHONE, href: WHATSAPP_LINK, external: true },
   {
     label: "Catering & franchise",
-    value: `${FRANCHISE_CONTACT.name} · ${FRANCHISE_CONTACT.phone}`,
-    href: FRANCHISE_CONTACT.phoneTel,
+    value: FRANCHISE_CONTACT.email,
+    href: `mailto:${FRANCHISE_CONTACT.email}`,
   },
   { label: "Instagram", value: INSTAGRAM_HANDLE, href: INSTAGRAM_LINK, external: true },
 ];
@@ -130,7 +130,6 @@ export default function ContactPage() {
         },
         {
           "@type": "ContactPoint",
-          telephone: FRANCHISE_CONTACT.phone,
           email: FRANCHISE_CONTACT.email,
           contactType: "sales",
           areaServed: "IN",
