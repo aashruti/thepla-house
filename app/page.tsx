@@ -184,10 +184,10 @@ export default function HomePage() {
                 <div className="seglabel">Franchise</div>
                 <h3 style={{ fontFamily: "var(--font-display)", color: "var(--color-headline)", fontSize: "1.5rem", margin: "6px 0 8px" }}>Open a Thepla House franchise</h3>
                 <p style={{ fontFamily: "var(--font-body)", color: "var(--ink-600)", fontSize: "0.9375rem", lineHeight: 1.55, margin: "0 0 14px" }}>
-                  Bring Tejal&apos;s kitchen to your city. Talk to {FRANCHISE_CONTACT.name} · {FRANCHISE_CONTACT.phone} · {FRANCHISE_CONTACT.email}
+                  Bring Tejal&apos;s kitchen to your city. Tell us about your city, site and investment in a short application — {FRANCHISE_CONTACT.name} and the team read every one.
                 </p>
                 <Link href="/franchise" style={{ fontFamily: "var(--font-body)", fontWeight: 600, color: "var(--color-primary)", textDecoration: "none" }}>
-                  Franchise enquiry →
+                  Apply for a franchise →
                 </Link>
               </div>
             </article>

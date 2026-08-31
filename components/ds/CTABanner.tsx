@@ -145,7 +145,12 @@ export function CTABanner({
             </p>
           )}
         </div>
-        <div style={{ display: "flex", gap: 12, flexWrap: "wrap", justifyContent: "center", flexShrink: 0 }}>
+        <div
+          // flexShrink:0 keeps the buttons on one line beside the copy on desktop; maxWidth
+          // caps the row at the container so the wrap actually engages on narrow screens
+          // instead of the second button overflowing and being clipped.
+          style={{ display: "flex", gap: 12, flexWrap: "wrap", justifyContent: "center", flexShrink: 0, maxWidth: "100%" }}
+        >
           <Link href={primaryHref} style={primaryStyle}>
             {primaryLabel}
           </Link>

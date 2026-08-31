@@ -7,6 +7,7 @@ export { Accordion, type AccordionProps, type AccordionItem } from "./Accordion"
 export { Input, type InputProps } from "./Input";
 export { Select, type SelectProps, type SelectOption } from "./Select";
 export { Textarea, type TextareaProps } from "./Textarea";
+export { ChoiceGroup, type ChoiceGroupProps, type ChoiceOption } from "./ChoiceGroup";
 export { Tabs, type TabsProps, type TabItem } from "./Tabs";
 export { CTABanner, type CTABannerProps } from "./CTABanner";
 export { Navbar, type NavbarProps, type NavLink } from "./Navbar";

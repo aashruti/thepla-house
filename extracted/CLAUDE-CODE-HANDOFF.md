@@ -1,5 +1,11 @@
 # Claude Code build prompt — Thepla House website
 
+> **Outdated — franchise phone.** The franchise number listed below is no longer
+> published anywhere on the site. It drew far more unqualified calls than it was worth.
+> Franchise enquiries now go through the multi-step application form on `/franchise`
+> (see `FRANCHISE_STEPS` in `app/franchise/page.tsx`); `FRANCHISE_CONTACT` in
+> `data/site.ts` deliberately carries only a name and an email. Do not re-add it.
+
 > Paste everything below the line into Claude Code, with this project's files available in the repo
 > (the `Thepla House — *.dc.html` screens, the `_ds/` design-system folder, and `assets/`).
 

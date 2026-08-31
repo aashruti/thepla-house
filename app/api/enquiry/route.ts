@@ -17,7 +17,7 @@ const HONEYPOT_FIELD = "company"; // hidden field; only bots fill it
 const TOKEN_FIELD = "turnstileToken";
 const EXCLUDED_KEYS = new Set([HONEYPOT_FIELD, TOKEN_FIELD]);
 
-const MAX_FIELDS = 25;
+const MAX_FIELDS = 40; // the franchise application alone asks ~22 questions
 const MAX_VALUE_LEN = 5000;
 const MAX_TOTAL_LEN = 20000;
 
@@ -84,6 +84,41 @@ function fieldsTable(data: Record<string, string>): string {
   return `<table role="presentation" style="width:100%;border-collapse:collapse;background:#fff;border:1px solid #efeae0;border-radius:10px;overflow:hidden;font-size:14px;">${rows}</table>`;
 }
 
+/**
+ * The handful of answers that decide whether a franchise enquiry is worth a call.
+ * Shown as a strip at the top of the internal email so the team can triage without
+ * reading all 22 answers.
+ */
+const FRANCHISE_HIGHLIGHTS: { key: string; label: string }[] = [
+  { key: "targetCity", label: "City" },
+  { key: "investmentCapacity", label: "Investment" },
+  { key: "ownFundsShare", label: "Own funds" },
+  { key: "launchTimeline", label: "Timeline" },
+  { key: "siteStatus", label: "Site" },
+  { key: "foodBusinessExperience", label: "F&B experience" },
+  { key: "dayToDayInvolvement", label: "Involvement" },
+];
+
+function highlightStrip(kind: string, data: Record<string, string>): string {
+  if (kind !== "franchise") return "";
+  const cells = FRANCHISE_HIGHLIGHTS.map(({ key, label }) => {
+    const v = String(data[key] ?? "").trim();
+    if (!v) return "";
+    return `<td style="padding:8px 12px;vertical-align:top;">
+      <div style="font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#9a8f86;">${escapeHtml(label)}</div>
+      <div style="font-size:13px;font-weight:700;color:#205340;line-height:1.35;margin-top:2px;">${escapeHtml(v)}</div>
+    </td>`;
+  }).filter(Boolean);
+  if (cells.length === 0) return "";
+  // Two per row keeps it readable in narrow mobile mail clients.
+  const rows: string[] = [];
+  for (let i = 0; i < cells.length; i += 2) {
+    rows.push(`<tr>${cells.slice(i, i + 2).join("")}</tr>`);
+  }
+  return `<div style="margin:0 0 6px;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#9a8f86;">At a glance</div>
+    <table role="presentation" style="width:100%;border-collapse:collapse;background:#f7f4ee;border:1px solid #efeae0;border-radius:10px;margin-bottom:18px;">${rows.join("")}</table>`;
+}
+
 /** Branded wrapper used by both emails. */
 function emailShell(innerHtml: string): string {
   const logo = absUrl("/logo/theplahouse-logo.png");
@@ -129,6 +164,7 @@ function renderNotification(kind: string, data: Record<string, string>, replyTo?
   const title = KIND_LABEL[kind] || "Website enquiry";
   return emailShell(
     `<p style="margin:0 0 14px;font-size:16px;">New <strong>${escapeHtml(title)}</strong> from the website${name ? ` — <strong>${escapeHtml(name)}</strong>` : ""}.</p>
+     ${highlightStrip(kind, data)}
      ${fieldsTable(data)}
      <p style="margin:16px 0 0;color:#888;font-size:12px;">Reply directly to this email to respond${replyTo ? ` to ${escapeHtml(replyTo)}` : ""}. Sent from the ${escapeHtml(kind)} form on ${escapeHtml(SITE.url)}.</p>`,
   );
