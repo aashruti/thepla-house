@@ -113,7 +113,10 @@ function highlightStrip(kind: string, data: Record<string, string>): string {
   // Two per row keeps it readable in narrow mobile mail clients.
   const rows: string[] = [];
   for (let i = 0; i < cells.length; i += 2) {
-    rows.push(`<tr>${cells.slice(i, i + 2).join("")}</tr>`);
+    const pair = cells.slice(i, i + 2);
+    // Pad an odd final row so the last cell doesn't sit alone against a blank column.
+    if (pair.length === 1) pair.push('<td style="padding:8px 12px;"></td>');
+    rows.push(`<tr>${pair.join("")}</tr>`);
   }
   return `<div style="margin:0 0 6px;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#9a8f86;">At a glance</div>
     <table role="presentation" style="width:100%;border-collapse:collapse;background:#f7f4ee;border:1px solid #efeae0;border-radius:10px;margin-bottom:18px;">${rows.join("")}</table>`;

@@ -136,6 +136,13 @@ export function EnquiryForm({ kind, fields, steps, submitLabel = "Send enquiry",
     };
   }, [isLast]);
 
+  /** Drop the used/failed Turnstile token and re-arm the widget for another attempt. */
+  const resetCaptcha = () => {
+    if (window.turnstile && widgetId.current) window.turnstile.reset(widgetId.current);
+    setCaptchaToken("");
+    setCaptchaError(false);
+  };
+
   const setField = (name: string, value: string | string[]) => {
     setValues((v) => ({ ...v, [name]: value }));
     if (errors[name]) setErrors((e) => ({ ...e, [name]: "" }));
@@ -233,10 +240,14 @@ export function EnquiryForm({ kind, fields, steps, submitLabel = "Send enquiry",
       if (!res.ok) throw new Error("Request failed");
       setStatus("success");
       setValues({});
-      if (window.turnstile && widgetId.current) window.turnstile.reset(widgetId.current);
-      setCaptchaToken("");
+      resetCaptcha();
     } catch {
+      // The server consumes the Turnstile token before it can fail (e.g. the mail send
+      // dies), and tokens are single-use. Without a reset here the retry re-sends a spent
+      // token, gets a 403 every time, and the applicant is stuck with no way back except
+      // a reload that discards every answer.
       setStatus("error");
+      resetCaptcha();
     }
   };
 
@@ -330,7 +341,20 @@ export function EnquiryForm({ kind, fields, steps, submitLabel = "Send enquiry",
   };
 
   return (
-    <form onSubmit={onSubmit} noValidate style={{ display: "grid", gap: 18 }} className="enquiry-form">
+    <form
+      onSubmit={onSubmit}
+      // A step whose only implicit-submission-blocking input is the hidden honeypot (e.g. a
+      // step of just radios and selects) would otherwise submit the whole form on Enter,
+      // throwing the person forward onto errors for questions they have not been shown.
+      onKeyDown={(e) => {
+        if (e.key === "Enter" && !isLast && !(e.target instanceof HTMLTextAreaElement)) {
+          e.preventDefault();
+        }
+      }}
+      noValidate
+      style={{ display: "grid", gap: 18 }}
+      className="enquiry-form"
+    >
       <div ref={topRef} style={{ scrollMarginTop: 90 }} />
 
       {multiStep && (
