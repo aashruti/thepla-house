@@ -7,7 +7,7 @@ import { OrderChannels } from "@/components/blocks/OrderChannels";
 import { Accordion } from "@/components/ds/Accordion";
 import { CTABanner } from "@/components/ds/CTABanner";
 import { JsonLd } from "@/components/JsonLd";
-import { pageMetadata, restaurantLd, faqPageLd, breadcrumbLd } from "@/lib/seo";
+import { pageMetadata, serviceLd, faqPageLd, breadcrumbLd } from "@/lib/seo";
 import { AREAS, getArea } from "@/data/areas";
 import { tagsFor } from "@/data/menu";
 import { img, dishImage } from "@/data/images";
@@ -45,10 +45,12 @@ export default async function GeoLandingPage({ params }: { params: Promise<{ geo
     <>
       <JsonLd
         data={[
-          restaurantLd({
-            name: `Thepla House — ${a.servingKitchenName.replace("Thepla House ", "")}`,
-            url: `/${geo}`,
-            locality: a.name,
+          serviceLd({
+            name: `Gujarati food delivery in ${a.name} from ${a.servingKitchenName}`,
+            description: a.localCopy,
+            path: `/${geo}`,
+            serviceType: "Home-style Gujarati food delivery",
+            areaServed: a.areasServed,
           }),
           faqPageLd(a.faqs),
           breadcrumbLd([

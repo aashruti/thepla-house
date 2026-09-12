@@ -2,19 +2,35 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { KitchenCard } from "@/components/blocks/KitchenCard";
 import { MapSlot } from "@/components/blocks/MapSlot";
+import { Accordion } from "@/components/ds/Accordion";
 import { CTABanner } from "@/components/ds/CTABanner";
 import { JsonLd } from "@/components/JsonLd";
-import { pageMetadata, breadcrumbLd, absUrl } from "@/lib/seo";
+import { pageMetadata, faqPageLd, breadcrumbLd, absUrl } from "@/lib/seo";
 import { KITCHENS } from "@/data/kitchens";
 import { AREAS } from "@/data/areas";
 import { ORDER_PHONE, LOCATIONS_MAP_EMBED } from "@/data/site";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Thepla House Near You — 7 Mumbai Locations",
+  title: "Thepla Near Me in Mumbai — 7 Thepla House Locations",
   description:
-    "Find fresh thepla and Gujarati food near you at Thepla House in Chandivali, Kalina, Lower Parel, Mulund, Thane, Navi Mumbai and Kandivali.",
+    "Looking for fresh thepla near you? Find the nearest Thepla House in Chandivali, Kalina, Lower Parel, Mulund, Thane, Navi Mumbai or Kandivali.",
   path: "/locations",
 });
+
+const LOCATION_FAQS = [
+  {
+    q: "Where can I find fresh thepla near me in Mumbai?",
+    a: "Thepla House has seven Mumbai-area locations: Chandivali in Andheri East, Kalina in Santacruz East, Lower Parel, Mulund West, Manpada in Thane, Kandivali West and Navi Mumbai International Airport. Choose the closest location below for its address, timings and delivery area.",
+  },
+  {
+    q: "Which Thepla House location has dine-in?",
+    a: "Our Kandivali West outlet offers dine-in and takeaway. The other Mumbai kitchens primarily serve delivery and takeaway orders.",
+  },
+  {
+    q: "Can I order Gujarati thali and thepla for home delivery?",
+    a: "Yes. Order fresh thepla, Gujarati thali, farsan and sweets from your nearest kitchen through Swiggy, Zomato or WhatsApp. Jain and vegan choices are available across the menu.",
+  },
+];
 
 export default function LocationsPage() {
   const cityKitchens = KITCHENS.filter((k) => k.slug !== "navi-mumbai");
@@ -38,6 +54,7 @@ export default function LocationsPage() {
               item: absUrl(`/locations/${k.slug}`),
             })),
           },
+          faqPageLd(LOCATION_FAQS),
           breadcrumbLd([
             { name: "Home", path: "/" },
             { name: "Locations", path: "/locations" },
@@ -51,10 +68,10 @@ export default function LocationsPage() {
         <div className="th-container" style={{ position: "relative", paddingTop: 48, paddingBottom: 36 }}>
           <div className="seglabel">Find us</div>
           <h1 style={{ fontFamily: "var(--font-display)", color: "var(--color-headline)", fontSize: "var(--fs-display-lg)", lineHeight: 1.08, margin: "10px 0 14px" }}>
-            Find a Thepla House near you in Mumbai
+            Fresh thepla near you across Mumbai
           </h1>
           <p style={{ fontFamily: "var(--font-body)", color: "var(--ink-600)", fontSize: "var(--fs-body-lg)", lineHeight: 1.6, maxWidth: 680, margin: 0 }}>
-            Thepla House cooks from six cloud kitchens across Mumbai and Navi Mumbai — plus a Kandivali dine-in outlet. Order home-style Gujarati food fresh from the kitchen nearest you.
+            Looking for thepla near you? Choose from seven Thepla House locations across Mumbai, Thane and Navi Mumbai. Order fresh, home-style Gujarati food from the nearest kitchen, or dine in at Kandivali West.
           </p>
         </div>
       </section>
@@ -76,7 +93,7 @@ export default function LocationsPage() {
                     note={k.address}
                     hours={k.hours}
                     detailHref={`/locations/${k.slug}`}
-                    directionsHref={`https://www.google.com/maps?q=${encodeURIComponent(k.mapQuery)}`}
+                    directionsHref={k.mapsUrl || `https://www.google.com/maps?q=${encodeURIComponent(k.mapQuery)}`}
                     orderHref="/menu"
                   />
                 ))}
@@ -142,6 +159,18 @@ export default function LocationsPage() {
           </div>
         </section>
       )}
+
+      <section style={{ background: "var(--cream-50)" }}>
+        <div style={{ maxWidth: 820, margin: "0 auto", padding: "56px 24px", textAlign: "center" }}>
+          <div className="seglabel">Finding your nearest kitchen</div>
+          <h2 style={{ fontFamily: "var(--font-display)", color: "var(--color-headline)", fontSize: "1.875rem", margin: "6px 0 24px" }}>
+            Thepla near me: questions answered
+          </h2>
+          <div style={{ textAlign: "left" }}>
+            <Accordion items={LOCATION_FAQS} defaultOpen={[0]} />
+          </div>
+        </div>
+      </section>
 
       <section style={{ background: "var(--cream-50)" }}>
         <div className="th-container" style={{ paddingBottom: 56 }}>
