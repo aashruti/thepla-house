@@ -157,7 +157,7 @@ export default function LocationsPage() {
                 </div>
               </div>
               <div style={{ borderRadius: "var(--radius-2xl)", overflow: "hidden", boxShadow: "var(--shadow-lg)", height: 300 }}>
-                <MapSlot label="Map: Thepla House at Navi Mumbai International Airport, Ulwe" query={airport.mapQuery} />
+                <MapSlot label="Map: Thepla House at Navi Mumbai International Airport, Ulwe" lat={airport.lat} lng={airport.lng} />
               </div>
             </div>
           </div>

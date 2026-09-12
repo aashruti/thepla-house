@@ -175,7 +175,7 @@ export default async function KitchenAreaPage({ params }: { params: Promise<{ ar
               )}
             </div>
             <div style={{ borderRadius: "var(--radius-2xl)", overflow: "hidden", boxShadow: "var(--shadow-lg)", height: 320 }}>
-              <MapSlot label={`Map: Thepla House ${k.title}, ${k.area}`} query={k.mapQuery} />
+              <MapSlot label={`Map: Thepla House ${k.title}, ${k.area}`} lat={k.lat} lng={k.lng} query={k.mapQuery} />
             </div>
           </div>
         </div>

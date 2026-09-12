@@ -21,10 +21,20 @@ export const SITE = {
 } as const;
 
 // ---- Maps -----------------------------------------------------------------
-// Google "My Maps" embed URL for the /locations hub map — shows ONLY our own
-// outlets (no competitors, no stale Google listings). Create a My Map with a
-// pin per outlet, then Share → Embed on my site and paste the iframe `src` here.
-// Leave empty ("") to fall back to the stylised placeholder map.
+// Google "My Maps" embed URL for the /locations hub map — the only way to show
+// every outlet on one map: a keyless Google embed renders a single place, and a
+// text query (?q=Thepla House Mumbai) renders Google's SEARCH RESULTS, i.e. our
+// competitors, on our own locations page.
+//
+// To fill this in:
+//   1. google.com/mymaps → Create a new map, name it "Thepla House — Outlets"
+//   2. Add one pin per outlet (paste each address, then correct the pin to the
+//      exact coordinates in data/kitchens.ts if Google drops it loosely)
+//   3. Share → "Anyone with the link" (the embed is blank if it stays private)
+//   4. ⋮ → Embed on my site → copy ONLY the src="..." value from the iframe
+//
+// Expect a URL of the form https://www.google.com/maps/d/embed?mid=...
+// While this is empty, the hub map falls back to a single pin on the flagship.
 export const LOCATIONS_MAP_EMBED = "";
 
 // ---- Contacts -------------------------------------------------------------
