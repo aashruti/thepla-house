@@ -63,10 +63,10 @@ const GROWTH = [
   },
   {
     stat: "200+",
-    title: "Technology-enabled operations",
+    title: "One system, every kitchen",
     paras: [
-      "Technology runs through procurement, sourcing and kitchen operations, so ingredients and supplies are managed across locations with far greater efficiency.",
-      "A streamlined sourcing model works with a small set of trusted suppliers for the 200+ raw materials the kitchens need — sourcing to requirement rather than stockpiling inventory at each location.",
+      "Buying, sourcing and the kitchens themselves all run on one system. Every kitchen can see what it has and what it needs, instead of each one keeping its own count on paper.",
+      "The kitchens get through 200+ raw materials, and they come from a deliberately short list of suppliers we trust. Each kitchen orders what it is about to cook, rather than sitting on a storeroom of stock.",
     ],
   },
   {
@@ -182,7 +182,7 @@ export default function AboutPage() {
               &ldquo;Junk the Junk Food&rdquo;
             </h2>
             <p style={{ fontFamily: "var(--font-body)", color: "var(--ink-700)", fontSize: "var(--fs-body-lg)", lineHeight: 1.75, margin: 0 }}>
-              This philosophy became the foundation of the brand — bringing the comfort and goodness of <em>ghar ka khana</em> into a professional food-service environment.
+              That belief became the whole brand: cook the <em>ghar ka khana</em> people grew up on, and cook it the same way every day, in every kitchen.
             </p>
           </div>
           <ul style={{ listStyle: "none", display: "flex", flexWrap: "wrap", justifyContent: "center", gap: 10, padding: 0, margin: 0, maxWidth: 860, marginInline: "auto" }}>
