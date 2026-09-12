@@ -3,12 +3,15 @@ import { JsonLd } from "@/components/JsonLd";
 import { pageMetadata, breadcrumbLd, absUrl } from "@/lib/seo";
 import { SITE, PRIVACY_CONTACT_EMAIL } from "@/data/site";
 
-export const metadata: Metadata = pageMetadata({
-  title: "Delete your account | Thepla House",
-  description:
-    "How to delete your Thepla House app account — in the app under Profile → Delete account, or by emailing us. What gets erased, what is retained anonymized, and the 7-day processing window.",
-  path: "/delete-account",
-});
+export const metadata: Metadata = {
+  ...pageMetadata({
+    title: "Delete your account | Thepla House",
+    description:
+      "How to delete your Thepla House app account — in the app under Profile → Delete account, or by emailing us. What gets erased, what is retained anonymized, and the 7-day processing window.",
+    path: "/delete-account",
+  }),
+  robots: { index: false, follow: true },
+};
 
 const deletePageLd = {
   "@context": "https://schema.org",

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { PdfMenu } from "@/components/blocks/PdfMenu";
 import { MenuExplorer } from "@/components/blocks/MenuExplorer";
 import { CTABanner } from "@/components/ds/CTABanner";
@@ -9,11 +10,28 @@ import { ORDER_PHONE, WHATSAPP_LINK } from "@/data/site";
 import menuExtracted from "@/data/menu-extracted.json";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Menu — 250+ home-style Gujarati dishes",
+  title: "Thepla House Menu — Thepla, Gujarati Thali & Prices",
   description:
-    "Explore 250+ vegetarian, whole-wheat dishes — theplas, thalis, farsan and sweets. Jain & vegan options clearly tagged. Order on Swiggy, Zomato or WhatsApp.",
+    "See the Thepla House menu and current prices for fresh thepla, Gujarati thali, farsan, sweets and upvas food. Jain and vegan options; order across Mumbai.",
   path: "/menu",
 });
+
+const UPVAS_MENU_ITEM_NAMES = [
+  "Tejal's Kitchen Special Upwas Thali",
+  "Sabudana Khichdi (450ml)",
+  "Sabudana Vada - 2 Piece",
+  "Upwas Farali Mishal",
+  "Aloo Sabji with Rajgira Puri (300ml, 4 Piece)",
+  "Samo with Curd (Bhagar) (600ml, 100ml curd)",
+] as const;
+
+function upvasMenuItems() {
+  const order = new Map(UPVAS_MENU_ITEM_NAMES.map((name, index) => [name, index]));
+  return menuExtracted.pages
+    .flatMap((page) => page.entries)
+    .filter((entry) => order.has(entry.name as (typeof UPVAS_MENU_ITEM_NAMES)[number]))
+    .sort((a, b) => (order.get(a.name as (typeof UPVAS_MENU_ITEM_NAMES)[number]) ?? 0) - (order.get(b.name as (typeof UPVAS_MENU_ITEM_NAMES)[number]) ?? 0));
+}
 
 /**
  * Real prices straight from public/menu.pdf, via `npm run menu:extract`.
@@ -38,6 +56,7 @@ function pricedMenuSections() {
 }
 
 export default function MenuPage() {
+  const upvasItems = upvasMenuItems();
   return (
     <>
       <JsonLd
@@ -62,7 +81,7 @@ export default function MenuPage() {
         <div className="th-container" style={{ position: "relative", paddingTop: 48, paddingBottom: 28 }}>
           <div className="seglabel">The menu</div>
           <h1 style={{ fontFamily: "var(--font-display)", color: "var(--color-headline)", fontSize: "var(--fs-display-lg)", lineHeight: 1.08, margin: "10px 0 14px" }}>
-            Our menu — 250+ home-style dishes
+            Thepla House menu — 250+ home-style dishes
           </h1>
           <p style={{ fontFamily: "var(--font-body)", color: "var(--ink-600)", fontSize: "var(--fs-body-lg)", lineHeight: 1.6, maxWidth: 680, margin: 0 }}>
             Every dish is 100% vegetarian, made with whole-wheat atta and sunflower oil — no maida, no palm oil, no preservatives. Jain and vegan options are clearly tagged throughout.
@@ -73,6 +92,33 @@ export default function MenuPage() {
       <section style={{ background: "var(--cream-50)" }}>
         <div className="th-container" style={{ paddingTop: 8, paddingBottom: 40, maxWidth: 1000 }}>
           <PdfMenu />
+        </div>
+      </section>
+
+      <section id="upvas-food" style={{ background: "var(--cream-100)" }}>
+        <div className="th-container" style={{ paddingTop: 52, paddingBottom: 52 }}>
+          <div className="seglabel">Fasting favourites</div>
+          <h2 style={{ fontFamily: "var(--font-display)", color: "var(--color-headline)", fontSize: "var(--fs-title)", lineHeight: 1.12, margin: "8px 0 10px" }}>
+            Upvas food and fasting thali in Mumbai
+          </h2>
+          <p style={{ fontFamily: "var(--font-body)", color: "var(--ink-600)", fontSize: "var(--fs-body-lg)", lineHeight: 1.6, maxWidth: 760, margin: "0 0 24px" }}>
+            Looking for upvas food near you? Our current menu includes a complete Upwas Thali, sabudana favourites, rajgira puri and farali dishes. Availability can vary by kitchen and fasting day.
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {upvasItems.map((item) => (
+              <article key={item.name} style={{ background: "var(--white)", border: "1px solid var(--color-outline-variant)", borderRadius: "var(--radius-lg)", padding: "18px 20px", boxShadow: "var(--shadow-sm)" }}>
+                <h3 style={{ fontFamily: "var(--font-display)", color: "var(--color-headline)", fontSize: "1.125rem", lineHeight: 1.3, margin: "0 0 8px" }}>
+                  {item.name}
+                </h3>
+                <div style={{ fontFamily: "var(--font-body)", color: "var(--color-primary)", fontWeight: 700 }}>
+                  {item.price}
+                </div>
+              </article>
+            ))}
+          </div>
+          <Link href="/locations" style={{ display: "inline-flex", marginTop: 22, fontFamily: "var(--font-body)", color: "var(--color-primary)", fontWeight: 700, textDecoration: "none" }}>
+            Find your nearest Thepla House kitchen →
+          </Link>
         </div>
       </section>
 

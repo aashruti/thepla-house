@@ -11,12 +11,15 @@ import {
 const EFFECTIVE_DATE = "29 July 2026";
 const LAST_UPDATED = "29 July 2026";
 
-export const metadata: Metadata = pageMetadata({
-  title: "Privacy policy | Thepla House",
-  description:
-    "How the Thepla House app collects, uses and protects your data — account details, delivery addresses, location, payments via Razorpay, and your rights under India's DPDP Act 2023.",
-  path: "/privacy-policy",
-});
+export const metadata: Metadata = {
+  ...pageMetadata({
+    title: "Privacy policy | Thepla House",
+    description:
+      "How the Thepla House app collects, uses and protects your data — account details, delivery addresses, location, payments via Razorpay, and your rights under India's DPDP Act 2023.",
+    path: "/privacy-policy",
+  }),
+  robots: { index: false, follow: true },
+};
 
 const privacyPageLd = {
   "@context": "https://schema.org",
