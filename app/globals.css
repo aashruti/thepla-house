@@ -20,6 +20,8 @@
 :root {
   --font-display: var(--font-eczar), "Georgia", serif;
   --font-body: var(--font-mukta), system-ui, -apple-system, "Segoe UI", sans-serif;
+  /* Gujarati script — Mukta has no Gujarati glyphs, Mukta Vaani is its counterpart. */
+  --font-gujarati: var(--font-mukta-vaani), var(--font-mukta), system-ui, sans-serif;
   --font-script: var(--font-caveat), "Segoe Script", cursive;
 }
 
