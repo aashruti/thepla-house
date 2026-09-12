@@ -55,8 +55,12 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en-IN">
-      <body className={fontVariables}>
+    // The next/font variables must land on <html>: globals.css wires the design
+    // tokens to them at :root, and a var() that is undefined there is invalid at
+    // computed-value time — which silently voided --font-display/--font-body and
+    // dropped the whole site to Tailwind's fallback sans.
+    <html lang="en-IN" className={fontVariables}>
+      <body>
         <JsonLd data={[organizationLd(), websiteLd()]} />
         <a href="#main" className="skip-link">
           Skip to content
