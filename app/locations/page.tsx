@@ -4,6 +4,7 @@ import { KitchenCard } from "@/components/blocks/KitchenCard";
 import { MapSlot } from "@/components/blocks/MapSlot";
 import { Accordion } from "@/components/ds/Accordion";
 import { CTABanner } from "@/components/ds/CTABanner";
+import { TrimBorder } from "@/components/ds/TrimBorder";
 import { JsonLd } from "@/components/JsonLd";
 import { pageMetadata, faqPageLd, breadcrumbLd, absUrl } from "@/lib/seo";
 import { KITCHENS } from "@/data/kitchens";
@@ -34,6 +35,16 @@ const LOCATION_FAQS = [
 
 export default function LocationsPage() {
   const cityKitchens = KITCHENS.filter((k) => k.slug !== "navi-mumbai");
+  // Counted, not written down: the write-up's "8 locations, 7 cloud kitchens"
+  // is the same split as airside vs the rest, so let the data say it.
+  const cloudKitchens = KITCHENS.filter((k) => !k.airside);
+  const dineInOutlets = KITCHENS.filter((k) => k.dineIn);
+  const NETWORK_STATS = [
+    { n: `${KITCHENS.length}`, l: "Locations" },
+    { n: `${cloudKitchens.length}`, l: "Cloud kitchens" },
+    { n: `${dineInOutlets.length}`, l: "Dine-in outlets" },
+    { n: "250", l: "Banquet hall seats" },
+  ];
   const deliveryAreas = AREAS.filter((area) => !area.redirectTo);
   const airport = KITCHENS.find((k) => k.slug === "navi-mumbai");
   // Fallback pin for the hub map = our flagship, so the embed never renders a
@@ -74,6 +85,31 @@ export default function LocationsPage() {
             Looking for authentic Gujarati, Rajasthani and Marwadi food in Mumbai? Thepla House by Tejal&apos;s Kitchen brings wholesome, traditional flavours closer to you through eight locations across Mumbai and Navi Mumbai.
           </p>
         </div>
+      </section>
+
+      <section style={{ background: "var(--gold-50)" }}>
+        <TrimBorder pattern="bandhani" color="var(--gold-400)" size={16} />
+        <div className="th-container" style={{ paddingTop: 40, paddingBottom: 40 }}>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center" style={{ marginBottom: 28 }}>
+            {NETWORK_STATS.map((stat) => (
+              <div key={stat.l}>
+                <div style={{ fontFamily: "var(--font-display)", color: "var(--color-headline)", fontSize: "2.5rem", fontWeight: 600, lineHeight: 1 }}>
+                  {stat.n}
+                </div>
+                <div style={{ fontFamily: "var(--font-body)", color: "var(--ink-600)", fontSize: "0.9375rem", marginTop: 6 }}>{stat.l}</div>
+              </div>
+            ))}
+          </div>
+          <div style={{ maxWidth: 820, margin: "0 auto", textAlign: "center" }}>
+            <p style={{ fontFamily: "var(--font-body)", color: "var(--ink-700)", fontSize: "1.0625rem", lineHeight: 1.7, margin: "0 0 12px" }}>
+              Our network includes {cloudKitchens.length} cloud kitchens and one outlet at Navi Mumbai International Airport, in the international departure terminal — so your favourite meals are close by wherever you are.
+            </p>
+            <p style={{ fontFamily: "var(--font-body)", color: "var(--ink-700)", fontSize: "1.0625rem", lineHeight: 1.7, margin: 0 }}>
+              For a sit-down meal, visit our Kandivali and Thane — Dadoji Konddev Stadium outlets. Dadoji Konddev Stadium also has a banquet hall seating up to 250 guests, for family functions, celebrations, corporate gatherings and community events.
+            </p>
+          </div>
+        </div>
+        <TrimBorder pattern="bandhani" color="var(--gold-400)" size={16} flip />
       </section>
 
       <section style={{ background: "var(--cream-50)" }}>
