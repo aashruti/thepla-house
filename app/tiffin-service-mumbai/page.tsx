@@ -40,7 +40,7 @@ const FAQS = [
   },
   {
     q: "Can I order home-style lunch every day?",
-    a: "Of course. Order before 11am for same-day lunch delivery, as often as you like. Most kitchens are open Monday to Sunday, 9am to 10pm.",
+    a: "Of course. Order before 11am for same-day lunch delivery, as often as you like. Most kitchens are open every day, 7:30am to 10:30pm — a few close at 3pm on one weekday, so check your nearest outlet's page.",
   },
   {
     q: "Is the food fully vegetarian, Jain and vegan friendly?",

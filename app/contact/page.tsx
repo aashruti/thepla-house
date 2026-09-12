@@ -290,7 +290,7 @@ export default function ContactPage() {
                     margin: "8px 0 4px",
                   }}
                 >
-                  Mon–Sun · 9am – 10pm
+                  Mon–Sun · 7:30am – 10:30pm
                 </div>
                 <div
                   style={{
@@ -299,7 +299,7 @@ export default function ContactPage() {
                     color: "var(--green-200)",
                   }}
                 >
-                  Order before 11am for same-day lunch. Kandivali dine-in opens 8am.
+                  Order before 11am for same-day lunch. Some kitchens close at 3pm one day a week — check your outlet's page for its timings.
                 </div>
               </div>
             </div>

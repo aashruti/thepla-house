@@ -47,8 +47,8 @@ export async function generateMetadata({ params }: { params: Promise<{ area: str
     description:
       k.seoDescription ||
       (k.airside
-        ? `Home-style Gujarati food at Thepla House inside ${k.title} departures — theplas, thalis, farsan, Jain & vegan, to take on board. Takeaway only, no delivery. ${k.hours}.`
-        : `Order home-style Gujarati food in ${k.title}, ${k.area} — theplas, thalis, farsan, Jain & vegan. Delivery via Swiggy, Zomato & WhatsApp. ${k.hours}.`),
+        ? `Home-style Gujarati food at Thepla House inside ${k.title} departures — theplas, thalis, farsan, Jain & vegan, to take on board. Takeaway only, no delivery.`
+        : `Order home-style Gujarati food in ${k.title}, ${k.area} — theplas, thalis, farsan, Jain & vegan. Delivery via Swiggy, Zomato & WhatsApp.${k.hours ? ` ${k.hours}.` : ""}`),
     path: `/locations/${k.slug}`,
   });
   meta.keywords = [
@@ -94,8 +94,7 @@ export default async function KitchenAreaPage({ params }: { params: Promise<{ ar
             // Google surfacing delivery for an outlet that cannot deliver.
             areaServed: k.airside ? undefined : k.areasServed,
             noDelivery: k.airside,
-            opens: k.opens,
-            closes: k.closes,
+            openingHours: k.openingHours,
             mapsUrl: k.mapsUrl || undefined,
             telephone: k.phone,
             // Only REAL, outlet-matching profiles belong in sameAs (the GBP mapsUrl is
@@ -131,10 +130,12 @@ export default async function KitchenAreaPage({ params }: { params: Promise<{ ar
           </nav>
           <div className="grid grid-cols-1 lg:grid-cols-[1.15fr_0.85fr] gap-11 items-center">
             <div>
-              <div style={{ display: "inline-flex", alignItems: "center", gap: 7, background: "var(--leaf-100)", color: "var(--leaf-700)", fontFamily: "var(--font-body)", fontSize: "0.8125rem", fontWeight: 700, padding: "5px 12px", borderRadius: "999px", marginBottom: 12 }}>
-                <span style={{ width: 8, height: 8, borderRadius: "50%", background: "var(--leaf-500)" }} />
-                {k.hours}
-              </div>
+              {k.hours && (
+                <div style={{ display: "inline-flex", alignItems: "center", gap: 7, background: "var(--leaf-100)", color: "var(--leaf-700)", fontFamily: "var(--font-body)", fontSize: "0.8125rem", fontWeight: 700, padding: "5px 12px", borderRadius: "999px", marginBottom: 12 }}>
+                  <span style={{ width: 8, height: 8, borderRadius: "50%", background: "var(--leaf-500)" }} />
+                  {k.hours}
+                </div>
+              )}
               <h1 style={{ fontFamily: "var(--font-display)", color: "var(--color-headline)", fontSize: "var(--fs-display-lg)", lineHeight: 1.06, margin: "0 0 10px" }}>
                 Thepla House {k.title}
               </h1>
@@ -187,10 +188,12 @@ export default async function KitchenAreaPage({ params }: { params: Promise<{ ar
             <div className="seglabel" style={{ color: "var(--gold-300)" }}>Address</div>
             <div style={{ fontFamily: "var(--font-body)", color: "var(--cream-50)", fontSize: "1.0625rem", marginTop: 4 }}>{k.address}</div>
           </div>
-          <div style={{ flex: 1, minWidth: 170 }}>
-            <div className="seglabel" style={{ color: "var(--gold-300)" }}>Hours</div>
-            <div style={{ fontFamily: "var(--font-body)", color: "var(--cream-50)", fontSize: "1.0625rem", marginTop: 4 }}>{k.hours}</div>
-          </div>
+          {k.hours && (
+            <div style={{ flex: 1, minWidth: 170 }}>
+              <div className="seglabel" style={{ color: "var(--gold-300)" }}>Hours</div>
+              <div style={{ fontFamily: "var(--font-body)", color: "var(--cream-50)", fontSize: "1.0625rem", marginTop: 4 }}>{k.hours}</div>
+            </div>
+          )}
           <div style={{ flex: 1, minWidth: 170 }}>
             <div className="seglabel" style={{ color: "var(--gold-300)" }}>{k.airside ? "Brand line" : "Order line"}</div>
             <a href={outletPhoneTel} style={{ fontFamily: "var(--font-body)", color: "var(--cream-50)", fontSize: "1.0625rem", marginTop: 4, display: "block", textDecoration: "none" }}>{outletPhone}</a>

@@ -15,7 +15,8 @@ export interface Kitchen {
   area: string;
   /** short blurb for the locations hub card */
   note: string;
-  hours: string;
+  /** Human-readable hours for the page. Omitted when we publish none. */
+  hours?: string;
   address: string;
   mapQuery: string;
   flagship?: boolean;
@@ -34,9 +35,13 @@ export interface Kitchen {
    * copy, delivery areas and the delivery OrderAction.
    */
   airside?: boolean;
-  /** Outlet trading hours as 24h "HH:MM", for openingHoursSpecification. Default 09:00–22:00. */
-  opens?: string;
-  closes?: string;
+  /**
+   * Trading hours, one entry per distinct pattern. An outlet that shuts early on
+   * one weekday, or splits its day into two shifts, needs more than one entry —
+   * so this is a list rather than a single opens/closes pair.
+   * Omit entirely when we don't publish hours for the outlet.
+   */
+  openingHours?: OpeningHours[];
   /**
    * Canonical Google Business Profile / Maps listing URL for this outlet.
    * PASTE THE REAL VERIFIED LISTING URL HERE (Maps → your listing → Share → Copy link,
@@ -60,6 +65,33 @@ export interface Kitchen {
   seoParagraphs?: string[];
 }
 
+export type Weekday =
+  | "Monday"
+  | "Tuesday"
+  | "Wednesday"
+  | "Thursday"
+  | "Friday"
+  | "Saturday"
+  | "Sunday";
+
+export interface OpeningHours {
+  days: Weekday[];
+  /** 24h "HH:MM" */
+  opens: string;
+  closes: string;
+}
+
+const ALL_DAYS: Weekday[] = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+
+/** Open 7:30am–10:30pm every day — the common pattern. */
+const FULL_WEEK: OpeningHours[] = [{ days: ALL_DAYS, opens: "07:30", closes: "22:30" }];
+
+/** Full days, except one weekday when the kitchen closes at 3pm. */
+const shortDayOn = (day: Weekday): OpeningHours[] => [
+  { days: ALL_DAYS.filter((d) => d !== day), opens: "07:30", closes: "22:30" },
+  { days: [day], opens: "07:30", closes: "15:00" },
+];
+
 const DEFAULT_POPULAR: KitchenDish[] = [
   { title: "Methi Thepla", desc: "Soft whole-wheat flatbread with fresh fenugreek — the local favourite.", subject: "Methi theplas on a brass plate", alt: "Methi theplas", keys: ["ww", "best"] },
   { title: "Gujarati Thali", desc: "A full home-style spread, cooked fresh through the day.", subject: "Gujarati thali, top-down", alt: "Gujarati thali", keys: ["best", "jain"] },
@@ -82,7 +114,8 @@ export const KITCHENS: Kitchen[] = [
     title: "Chandivali",
     area: "Andheri East",
     note: "Our flagship kitchen — full menu, catering and travel packs. Serves Powai, Saki Naka and Marol.",
-    hours: "Mon–Sun · 9am–10pm",
+    hours: "Mon–Sun · 7:30am–10:30pm",
+    openingHours: FULL_WEEK,
     address: "Gala No 6, Haria Shree Guppy Industrial Estate, Saki Vihar Rd, Ganesh Nagar, Chandivali, Andheri East, Mumbai, Maharashtra 400072",
     mapQuery: "Chandivali Industrial Estate, Andheri East, Mumbai",
     lat: 19.1145,
@@ -98,7 +131,7 @@ export const KITCHENS: Kitchen[] = [
       { title: "Sabudana Khichdi", desc: "Light sago with peanuts — a popular fasting-day order here.", subject: "Bowl of sabudana khichdi", alt: "Sabudana khichdi", keys: ["jain", "vegan"] },
     ],
     localCopy:
-      "Looking for Gujarati food delivery in Chandivali or Andheri East? Thepla House Chandivali is a 100% vegetarian kitchen serving home-style theplas, thalis, farsan and sweets — whole wheat, sunflower oil and no preservatives — with Jain and vegan options, open daily 9am–10pm.",
+      "Looking for Gujarati food delivery in Chandivali or Andheri East? Thepla House Chandivali is a 100% vegetarian kitchen serving home-style theplas, thalis, farsan and sweets — whole wheat, sunflower oil and no preservatives — with Jain and vegan options, open daily 7:30am to 10:30pm.",
     faqs: [
       { q: "Which areas does the Chandivali kitchen deliver to?", a: "We deliver across Andheri East — Powai, Saki Naka, Marol, JB Nagar, Chakala and Kurla West — via Swiggy, Zomato and WhatsApp." },
       { q: "What are the Chandivali timings?", a: "Open Monday to Sunday, 9:00am to 10:00pm. Order before 11am for same-day lunch." },
@@ -111,7 +144,8 @@ export const KITCHENS: Kitchen[] = [
     title: "Kalina",
     area: "Santacruz East",
     note: "Quick lunches and full thalis for the Kalina–Vakola–Santacruz belt.",
-    hours: "Mon–Sun · 9am–10pm",
+    hours: "Mon–Sun · 7:30am–10:30pm · Wed till 3pm",
+    openingHours: shortDayOn("Wednesday"),
     address: "Shop No 3/4, Garib Nawaz Manjil, Pandit Jawaharlal Nehru Rd, Patel Park, Vakola, Santacruz East, Mumbai, Maharashtra 400055",
     mapQuery: "19.0815338,72.8565508",
     lat: 19.0815338,
@@ -121,16 +155,16 @@ export const KITCHENS: Kitchen[] = [
     areasServed: ["Kalina", "Vakola", "Santacruz East", "Vidyanagari", "Kurla West", "BKC"],
     popular: DEFAULT_POPULAR,
     localCopy:
-      "Thepla House Kalina serves the Santacruz East and Vakola belt with fresh, home-style Gujarati food — whole-wheat theplas, full thalis and farsan, all 100% vegetarian with Jain and vegan options. Open daily 9am–10pm.",
-    faqs: defaultFaqs("Kalina", "Santacruz East", "Kalina, Vakola, Santacruz East, Vidyanagari and BKC", "Open Monday to Sunday, 9am to 10pm"),
+      "Thepla House Kalina serves the Santacruz East and Vakola belt with fresh, home-style Gujarati food — whole-wheat theplas, full thalis and farsan, all 100% vegetarian with Jain and vegan options. Open daily 7:30am to 10:30pm, and until 3pm on Wednesdays.",
+    faqs: defaultFaqs("Kalina", "Santacruz East", "Kalina, Vakola, Santacruz East, Vidyanagari and BKC", "Open every day 7:30am to 10:30pm, and 7:30am to 3pm on Wednesdays"),
   },
   {
     slug: "lower-parel",
-    closes: "21:00",
     title: "Lower Parel",
     area: "Senapati Bapat Marg",
     note: "Weekday lunches and farsan for the Lower Parel and Worli office crowd.",
-    hours: "Mon–Sat · 9am–9pm",
+    hours: "Mon–Sun · 7:30am–10:30pm · Fri till 3pm",
+    openingHours: shortDayOn("Friday"),
     address: "9/D, Cotton Press Compound (PCPF), Unit 4/C, Elphinstone Bridge, near St. Mary's Church, Parel East, Parel, Mumbai, Maharashtra 400012",
     mapQuery: "19.0054158,72.8364362",
     lat: 19.0054158,
@@ -148,7 +182,8 @@ export const KITCHENS: Kitchen[] = [
     title: "Mulund",
     area: "Mulund West",
     note: "Home-style meals and theplas for the central suburbs.",
-    hours: "Mon–Sun · 9am–10pm",
+    hours: "Mon–Sun · 7:30am–10:30pm · Wed till 3pm",
+    openingHours: shortDayOn("Wednesday"),
     address: "Gala No 77, Raja Industrial Estate, Mulund–Goregaon Link Rd, near D-Mart, Salpa Devi Pada, Mulund West, Mumbai, Maharashtra 400080",
     mapQuery: "19.1651303,72.9417104",
     lat: 19.1651303,
@@ -158,15 +193,16 @@ export const KITCHENS: Kitchen[] = [
     areasServed: ["Mulund West", "Mulund East", "Bhandup", "Nahur", "Airoli", "Vikhroli"],
     popular: DEFAULT_POPULAR,
     localCopy:
-      "Thepla House Mulund brings home-style Gujarati food to the central suburbs — whole-wheat theplas, thalis, farsan and sweets, all 100% vegetarian with Jain and vegan options. Open daily 9am–10pm.",
-    faqs: defaultFaqs("Mulund", "Mulund West", "Mulund West, Mulund East, Bhandup, Nahur and Vikhroli", "Open Monday to Sunday, 9am to 10pm"),
+      "Thepla House Mulund brings home-style Gujarati food to the central suburbs — whole-wheat theplas, thalis, farsan and sweets, all 100% vegetarian with Jain and vegan options. Open daily 7:30am to 10:30pm, and until 3pm on Wednesdays.",
+    faqs: defaultFaqs("Mulund", "Mulund West", "Mulund West, Mulund East, Bhandup, Nahur and Vikhroli", "Open every day 7:30am to 10:30pm, and 7:30am to 3pm on Wednesdays"),
   },
   {
     slug: "thane",
     title: "Thane",
     area: "Manpada",
     note: "Fresh theplas and thalis delivered right across Thane, from our Manpada kitchen.",
-    hours: "Mon–Sun · 9am–10pm",
+    hours: "Mon–Sun · 7:30am–10:30pm · Fri till 3pm",
+    openingHours: shortDayOn("Friday"),
     address: "Gala No 1, Omkar Compound, Bhavani Nagar, opp. Dosti Imperia, Manpada, Thane, Mumbai, Maharashtra 400610",
     mapQuery: "19.2333642,72.9748825",
     lat: 19.2333642,
@@ -180,20 +216,20 @@ export const KITCHENS: Kitchen[] = [
     areasServed: ["Thane West", "Manpada", "Kasarvadavali", "Majiwada", "Vartak Nagar", "Hiranandani Estate"],
     popular: DEFAULT_POPULAR,
     localCopy:
-      "Thepla House Thane delivers fresh, home-style Gujarati food across Thane from our Manpada kitchen — whole-wheat theplas, thalis and farsan, 100% vegetarian with Jain and vegan options. Open daily 9am–10pm.",
-    faqs: defaultFaqs("Thane", "Manpada", "Thane West, Manpada, Kasarvadavali, Majiwada and Hiranandani Estate", "Open Monday to Sunday, 9am to 10pm"),
+      "Thepla House Thane delivers fresh, home-style Gujarati food across Thane from our Manpada kitchen — whole-wheat theplas, thalis and farsan, 100% vegetarian with Jain and vegan options. Open daily 7:30am to 10:30pm, and until 3pm on Fridays.",
+    faqs: defaultFaqs("Thane", "Manpada", "Thane West, Manpada, Kasarvadavali, Majiwada and Hiranandani Estate", "Open every day 7:30am to 10:30pm, and 7:30am to 3pm on Fridays"),
   },
   {
     slug: "thane-stadium",
     title: "Thane Stadium",
     area: "Dadoji Konddev Stadium · Naupada",
     note: "Our Naupada kitchen inside the Dadoji Konddev Stadium canteen — evening orders across Thane West.",
-    // ⚠️ PROVISIONAL CLOSING TIME. Opening (5pm) is confirmed by both the Zomato and
-    // Swiggy listings; neither publishes a closing time. Confirm with the outlet and
-    // correct `closes` + `hours` — the schema currently states 22:00.
-    hours: "Mon–Sun · from 5pm",
-    opens: "17:00",
-    closes: "22:00",
+    // Split shift: the aggregator listings only ever show the evening one.
+    hours: "Mon–Sun · 8am–3pm & 5pm–10pm",
+    openingHours: [
+      { days: ALL_DAYS, opens: "08:00", closes: "15:00" },
+      { days: ALL_DAYS, opens: "17:00", closes: "22:00" },
+    ],
     address: "Canteen Dadoji, Kondev Stadium, Jambil Naka, Zone 1, Old Muncipal Road, Naupada, Thane West, Thane, Maharashtra 400601",
     mapQuery: "19.191686,72.979006",
     lat: 19.191686,
@@ -208,8 +244,8 @@ export const KITCHENS: Kitchen[] = [
     areasServed: ["Naupada", "Panchpakhadi", "Tembhi Naka", "Khopat", "Jambli Naka", "Thane Station"],
     popular: DEFAULT_POPULAR,
     localCopy:
-      "Thepla House Thane Stadium cooks from the Dadoji Konddev Stadium canteen at Jambli Naka, Naupada — whole-wheat theplas, thalis and farsan delivered across Thane West, 100% vegetarian with Jain and vegan options. Open daily from 5pm.",
-    faqs: defaultFaqs("Thane Stadium", "Naupada", "Naupada, Panchpakhadi, Tembhi Naka, Khopat and Thane Station", "Open Monday to Sunday, from 5pm"),
+      "Thepla House Thane Stadium cooks from the Dadoji Konddev Stadium canteen at Jambli Naka, Naupada — whole-wheat theplas, thalis and farsan delivered across Thane West, 100% vegetarian with Jain and vegan options. Open daily 8am to 3pm and 5pm to 10pm.",
+    faqs: defaultFaqs("Thane Stadium", "Naupada", "Naupada, Panchpakhadi, Tembhi Naka, Khopat and Thane Station", "Open every day 8am to 3pm and again 5pm to 10pm"),
   },
   {
     slug: "navi-mumbai",
@@ -217,7 +253,9 @@ export const KITCHENS: Kitchen[] = [
     area: "Departures · NMIA",
     airside: true,
     note: "Our franchise counter inside Navi Mumbai International Airport departures — takeaway for passengers, no delivery.",
-    hours: "Mon–Sun · 9am–10pm",
+    // No hours published: a terminal counter runs to the flight schedule, and a
+    // wrong time here is worse than none. `hours`/`openingHours` are both omitted,
+    // so the badge, the Hours column and openingHoursSpecification all drop out.
     address: "Departures terminal, Navi Mumbai International Airport, Ulwe, Pargaon Dungi, Navi Mumbai, Maharashtra 410206",
     // Coordinates, not a text search — a brand/place text query pulls competitors
     // into the embed and into Google's entity understanding for this outlet.
@@ -250,12 +288,11 @@ export const KITCHENS: Kitchen[] = [
   },
   {
     slug: "kandivali",
-    opens: "08:00",
-    closes: "22:30",
     title: "Kandivali",
     area: "Kandivali West · Dine-in",
     note: "Our dine-in outlet — eat it fresh, hot off the tawa, or take away.",
-    hours: "Mon–Sun · 8am–10:30pm",
+    hours: "Mon–Sun · 7:30am–10:30pm",
+    openingHours: FULL_WEEK,
     address: "Shop No 1 & 2, Shreenath Enclave, Hemukalani Cross Rd No. 3, Sambhav Darshan, Hemu Colony, Irani Wadi, Kandivali West, Mumbai, Maharashtra 400067",
     mapQuery: "19.2018106,72.8397144",
     lat: 19.2018106,
@@ -268,7 +305,7 @@ export const KITCHENS: Kitchen[] = [
     swiggyUrl: "https://www.swiggy.com/city/mumbai/thepla-house-by-tejals-kitchen-west-kandivali-rest1193204",
     seoTitle: "Thepla House Kandivali — Menu, Timings & Directions",
     seoDescription:
-      "Fresh home-style Gujarati theplas, thalis & farsan — dine in, take away or order in Kandivali West (near Mahavir Nagar). 100% vegetarian, whole wheat, Jain & vegan. Open daily 8am–10:30pm.",
+      "Fresh home-style Gujarati theplas, thalis & farsan — dine in, take away or order in Kandivali West (near Mahavir Nagar). 100% vegetarian, whole wheat, Jain & vegan. Open daily 7:30am to 10:30pm.",
     seoParagraphs: [
       "Looking for fresh thepla in Kandivali West? Thepla House by Tejal's Kitchen is a 100% vegetarian, home-style Gujarati dine-in outlet in Kandivali West, a short walk from Mahavir Nagar and the MHADA Colony. Eat in hot off the tawa, take away, or order delivery — we serve methi theplas, full Gujarati thalis, farsan and sweets, all made with whole-wheat atta and sunflower oil, never maida or palm oil.",
       "Our Kandivali outlet keeps the longest hours of any Thepla House — daily from 8am to 10:30pm — so you can grab a thepla-and-chai breakfast, a wholesome thali for lunch, or farsan and sweets through the evening. We're a neighbourhood favourite for ghar ka khana across Kandivali West, Kandivali East, Charkop, Borivali and Malad, with Jain and vegan options clearly tagged on every dish.",
@@ -277,7 +314,7 @@ export const KITCHENS: Kitchen[] = [
     areasServed: ["Kandivali West", "Kandivali East", "Borivali", "Malad", "Charkop", "Poisar"],
     popular: DEFAULT_POPULAR,
     localCopy:
-      "Thepla House Kandivali is our dine-in outlet in Kandivali West — eat home-style Gujarati food fresh off the tawa, take away, or order delivery. 100% vegetarian, whole wheat, with Jain and vegan options. Open daily 8am–10:30pm.",
+      "Thepla House Kandivali is our dine-in outlet in Kandivali West — eat home-style Gujarati food fresh off the tawa, take away, or order delivery. 100% vegetarian, whole wheat, with Jain and vegan options. Open daily 7:30am to 10:30pm.",
     faqs: [
       { q: "Where is Thepla House in Kandivali?", a: "We're at Shop No 1 & 2, Shreenath Enclave, Hemukalani Cross Road No. 3, Hemu Colony, Irani Wadi, Kandivali West — close to Mahavir Nagar and the MHADA Colony, easy to reach from Kandivali East, Charkop, Borivali and Malad." },
       { q: "Where can I get the best thepla in Kandivali West?", a: "Thepla House by Tejal's Kitchen serves fresh, home-style methi theplas, thalis and farsan in Kandivali West — 100% vegetarian, 100% whole wheat, no maida and no palm oil. Dine in hot off the tawa, take away, or order delivery." },

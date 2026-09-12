@@ -146,8 +146,11 @@ export interface RestaurantGeo {
   dineIn?: boolean;
   /** localities served, for areaServed */
   areaServed?: string[];
-  opens?: string;
-  closes?: string;
+  /**
+   * One entry per distinct trading pattern — a weekday that closes early, or a
+   * split shift, needs more than one. Omit to publish no hours at all.
+   */
+  openingHours?: { days: string[]; opens: string; closes: string }[];
   /**
    * Canonical Google Maps / Business Profile listing URL for THIS outlet.
    * Emitted as `hasMap` + added to `sameAs` so Google reconciles this page's
@@ -200,14 +203,16 @@ export function restaurantLd(geo: RestaurantGeo) {
     ...(geo.areaServed && geo.areaServed.length
       ? { areaServed: geo.areaServed.map((a) => ({ "@type": "Place", name: a })) }
       : {}),
-    openingHoursSpecification: [
-      {
-        "@type": "OpeningHoursSpecification",
-        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-        opens: geo.opens || "09:00",
-        closes: geo.closes || "22:00",
-      },
-    ],
+    ...(geo.openingHours && geo.openingHours.length
+      ? {
+          openingHoursSpecification: geo.openingHours.map((h) => ({
+            "@type": "OpeningHoursSpecification",
+            dayOfWeek: h.days,
+            opens: h.opens,
+            closes: h.closes,
+          })),
+        }
+      : {}),
     ...(geo.dineIn
       ? {
           amenityFeature: [

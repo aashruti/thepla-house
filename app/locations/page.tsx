@@ -140,10 +140,12 @@ export default function LocationsPage() {
                     <div className="seglabel" style={{ color: "var(--gold-300)" }}>Location</div>
                     <div style={{ fontFamily: "var(--font-body)", color: "var(--cream-50)", fontSize: "0.9375rem", marginTop: 4, maxWidth: 320 }}>{airport.address}</div>
                   </div>
-                  <div>
-                    <div className="seglabel" style={{ color: "var(--gold-300)" }}>Hours</div>
-                    <div style={{ fontFamily: "var(--font-body)", color: "var(--cream-50)", fontSize: "0.9375rem", marginTop: 4 }}>{airport.hours}</div>
-                  </div>
+                  {airport.hours && (
+                    <div>
+                      <div className="seglabel" style={{ color: "var(--gold-300)" }}>Hours</div>
+                      <div style={{ fontFamily: "var(--font-body)", color: "var(--cream-50)", fontSize: "0.9375rem", marginTop: 4 }}>{airport.hours}</div>
+                    </div>
+                  )}
                 </div>
                 <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
                   <a href="/menu" style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", minHeight: 48, padding: "13px 26px", fontFamily: "var(--font-body)", fontSize: "1rem", fontWeight: 600, color: "var(--color-on-secondary)", background: "var(--color-secondary)", borderRadius: "var(--radius-md)", boxShadow: "var(--shadow-md)", textDecoration: "none" }}>
