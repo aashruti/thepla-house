@@ -119,7 +119,10 @@ export default function LocationsPage() {
               <MapSlot label="Thepla House by Tejal's Kitchen — our kitchens across Mumbai &amp; Navi Mumbai" embedSrc={LOCATIONS_MAP_EMBED || undefined} lat={flagship.lat} lng={flagship.lng} />
             </div>
             <div>
-              <h2 style={{ fontFamily: "var(--font-display)", color: "var(--color-headline)", fontSize: "1.75rem", margin: "0 0 20px" }}>All locations</h2>
+              <h2 style={{ fontFamily: "var(--font-display)", color: "var(--color-headline)", fontSize: "1.75rem", margin: "0 0 8px" }}>All locations</h2>
+              <p style={{ fontFamily: "var(--font-body)", color: "var(--ink-600)", fontSize: "1rem", lineHeight: 1.6, margin: "0 0 20px" }}>
+                Find your nearest Thepla House by Tejal&apos;s Kitchen and taste traditional food, served with warmth.
+              </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                 {cityKitchens.map((k) => (
                   <KitchenCard
