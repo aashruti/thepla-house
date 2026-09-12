@@ -10,9 +10,9 @@ import { WHATSAPP_LINK } from "@/data/site";
 import { img } from "@/data/images";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Vacuum-packed methi thepla travel packs — fresh 7+ days | Thepla House",
+  title: "Methi thepla travel packs — fresh 7+ days",
   description:
-    "Vacuum-packed methi thepla travel packs — 100% whole wheat, no preservatives, fresh for 7+ days. Made to carry on any journey. Buy at any Thepla House kitchen in Mumbai.",
+    "Vacuum-packed methi thepla travel packs — 100% whole wheat, no preservatives, fresh for 7+ days. Made to carry on any journey. Buy at any Thepla House by Tejal's Kitchen kitchen in Mumbai.",
   path: "/travel-packs",
 });
 
@@ -65,7 +65,7 @@ const FAQS = [
   },
   {
     q: "Do you ship the travel packs?",
-    a: "We don't ship — travel packs are made to carry. Buy them at any Thepla House kitchen (or order on WhatsApp for pickup) and take them with you. Vacuum-sealed, they stay fresh 7+ days, so customers regularly carry them across India and abroad.",
+    a: "We don't ship — travel packs are made to carry. Buy them at any Thepla House by Tejal's Kitchen kitchen (or order on WhatsApp for pickup) and take them with you. Vacuum-sealed, they stay fresh 7+ days, so customers regularly carry them across India and abroad.",
   },
   {
     q: "Is the packaging food-safe?",

@@ -47,7 +47,7 @@ export const POSTS: Post[] = [
     alt: "Whole-wheat atta and rolling pin",
     seoTitle: "Why we'll never use maida — the whole-wheat thepla difference",
     seoDescription:
-      "Maida vs whole-wheat atta: what refined flour strips out, why 100% whole wheat matters, and why every Thepla House thepla in Mumbai is made without maida or palm oil.",
+      "Maida vs whole-wheat atta: what refined flour strips out, why 100% whole wheat matters, and why every Thepla House by Tejal's Kitchen thepla in Mumbai is made without maida or palm oil.",
     keywords: ["maida vs whole wheat", "whole wheat thepla", "no maida food Mumbai", "whole-wheat atta benefits", "healthy thepla", "Gujarati food whole wheat"],
     body: [
       { type: "lead", text: "Ask anyone what makes a roti feel light and fluffy at a restaurant, and the honest answer is often the same: maida. Refined white flour is cheap, soft and forgiving. It's also stripped of the bran and germ — the parts of the wheat that actually do you good." },
@@ -84,12 +84,12 @@ export const POSTS: Post[] = [
       { type: "h2", text: "Freshness starts with moisture" },
       { type: "p", text: "Spoilage needs water. A thepla destined to travel is rolled thinner and cooked a little longer and drier than a thepla for the table, so very little moisture is left for mould or bacteria to use. Fresh fenugreek (methi) is folded right into the dough, where its natural oils season and gently protect the bread." },
       { type: "h2", text: "Why whole wheat and sunflower oil matter here" },
-      { type: "p", text: "Whole-wheat atta holds its structure for days where maida would turn stale and crumbly. Sunflower oil — never palm — stays clean and doesn't go rancid the way cheaper fats can. Together they're the reason a Thepla House methi thepla keeps its taste and texture long after it leaves the tawa." },
+      { type: "p", text: "Whole-wheat atta holds its structure for days where maida would turn stale and crumbly. Sunflower oil — never palm — stays clean and doesn't go rancid the way cheaper fats can. Together they're the reason a Thepla House by Tejal's Kitchen methi thepla keeps its taste and texture long after it leaves the tawa." },
       { type: "ul", items: ["Low moisture: rolled thin and cooked dry", "100% whole-wheat atta that doesn't go crumbly", "Sunflower oil that resists rancidity — no palm oil", "Vacuum packing that locks out air and humidity", "Zero preservatives, ever"] },
       { type: "h2", text: "A taste of home, anywhere" },
       { type: "p", text: "That keeping quality is why our vacuum-packed methi thepla travel packs have become a quiet favourite — students heading to hostels, families travelling, and Gujaratis carrying a taste of home abroad. They're made to travel — pick them up at any kitchen and they stay as good as the morning they were made, days into your journey." },
       { type: "quote", text: "The best preservative was never a chemical. It's care, whole wheat and a tight seal." },
-      { type: "p", text: "Order travel packs from any Thepla House kitchen in Mumbai — and send a little home wherever you're going." },
+      { type: "p", text: "Order travel packs from any Thepla House by Tejal's Kitchen kitchen in Mumbai — and send a little home wherever you're going." },
     ],
   },
   {
@@ -117,7 +117,7 @@ export const POSTS: Post[] = [
       { type: "h2", text: "How to actually eat it" },
       { type: "p", text: "There's no wrong way, but locals tend to start with a little of everything, tear off some rotli, and mix dal with rice towards the end. Servers traditionally keep refilling the bowls, so pace yourself — a thali is meant to be lingered over." },
       { type: "h2", text: "Jain and vegan thalis" },
-      { type: "p", text: "At Thepla House we serve full Jain thalis (no onion, garlic or root vegetables) and vegan thalis (dairy swapped for oil), each clearly tagged. So whether you eat satvik, plant-based or everything, the home-style Gujarati thali is built for you." },
+      { type: "p", text: "At Thepla House by Tejal's Kitchen we serve full Jain thalis (no onion, garlic or root vegetables) and vegan thalis (dairy swapped for oil), each clearly tagged. So whether you eat satvik, plant-based or everything, the home-style Gujarati thali is built for you." },
       { type: "quote", text: "A thali isn't a dish. It's a whole afternoon, served on one plate." },
     ],
   },
@@ -144,7 +144,7 @@ export const POSTS: Post[] = [
       { type: "h2", text: "Where the flavour comes from instead" },
       { type: "p", text: "Take away onion and garlic and you lean harder on everything else — and the food gets more interesting, not less. Asafoetida (hing) brings a savoury, almost garlicky depth. Tomato, yoghurt and a careful hand with whole spices build body. Roasting, tempering (vaghaar) and fresh herbs do the rest." },
       { type: "ul", items: ["Asafoetida (hing) for savoury depth", "Tomato and yoghurt for richness and tang", "Whole-spice tempering — cumin, mustard, curry leaves", "Fresh coriander, green chilli and lemon to finish"] },
-      { type: "h2", text: "Jain food at Thepla House" },
+      { type: "h2", text: "Jain food at Thepla House by Tejal's Kitchen" },
       { type: "p", text: "We cook full Jain menus every day — Jain thalis, Jain farsan and Jain sweets — all 100% vegetarian, whole wheat and free of palm oil and preservatives. They're clearly tagged on every menu, and our kitchens handle full Jain catering for poojas, festivals and functions across Mumbai." },
       { type: "quote", text: "Constraints don't dull a kitchen. They sharpen it." },
     ],
@@ -203,7 +203,7 @@ export const POSTS: Post[] = [
       { type: "p", text: "Undhiyu is a celebration of the winter market, when Gujarat's vegetables are at their sweetest." },
       { type: "ul", items: ["Surti papdi (the prized winter beans)", "Purple yam (ratalu) and sweet potato", "Baby potatoes and small brinjals", "Muthiya — soft fenugreek-and-flour dumplings", "A green masala of coriander, coconut, green chilli and ginger"] },
       { type: "h2", text: "Why it's worth the wait" },
-      { type: "p", text: "Because it's seasonal, undhiyu carries a sense of occasion — it appears around Uttarayan (the kite festival) and disappears with the cold. It's naturally vegan, deeply satisfying, and best eaten with hot puris. At Thepla House we cook it fresh, Surti style, only while the winter vegetables are in their prime." },
+      { type: "p", text: "Because it's seasonal, undhiyu carries a sense of occasion — it appears around Uttarayan (the kite festival) and disappears with the cold. It's naturally vegan, deeply satisfying, and best eaten with hot puris. At Thepla House by Tejal's Kitchen we cook it fresh, Surti style, only while the winter vegetables are in their prime." },
       { type: "quote", text: "Some dishes you can have any day. Undhiyu makes you wait — and rewards you for it." },
     ],
   },
@@ -220,7 +220,7 @@ export const POSTS: Post[] = [
     alt: "Sunflower oil",
     seoTitle: "Sunflower oil vs palm oil — why we cook with sunflower only",
     seoDescription:
-      "Why Thepla House cooks every dish in sunflower oil and never palm oil — the difference for your health, your food's taste, and the planet. No palm oil, no preservatives.",
+      "Why Thepla House by Tejal's Kitchen cooks every dish in sunflower oil and never palm oil — the difference for your health, your food's taste, and the planet. No palm oil, no preservatives.",
     keywords: ["sunflower oil vs palm oil", "no palm oil food", "healthy cooking oil", "palm oil free Mumbai", "sunflower oil cooking", "clean Gujarati food"],
     body: [
       { type: "lead", text: "Oil is the ingredient nobody talks about — and the one that quietly decides how a dish sits with you afterwards. We cook with sunflower oil only, never palm. Here's why that one choice matters more than it looks." },
@@ -251,7 +251,7 @@ export const POSTS: Post[] = [
     keywords: ["best thepla Kandivali", "thepla Kandivali West", "Gujarati restaurant Kandivali", "thepla dine-in Kandivali", "Gujarati food Mahavir Nagar", "thepla near me Kandivali"],
     relatedLocation: {
       href: "/locations/kandivali",
-      label: "Thepla House Kandivali menu, timings and directions",
+      label: "Thepla House by Tejal's Kitchen Kandivali menu, timings and directions",
     },
     body: [
       { type: "lead", text: "If you're in Kandivali West and craving real, home-style Gujarati food, you don't have to settle for the usual. Thepla House by Tejal's Kitchen is a 100% vegetarian dine-in outlet serving fresh methi theplas, full thalis and farsan — a short walk from Mahavir Nagar and the MHADA Colony." },
@@ -261,7 +261,7 @@ export const POSTS: Post[] = [
       { type: "h2", text: "Dine in, take away, or order" },
       { type: "p", text: "Our Kandivali West outlet is open daily from 7:30am to 10:30pm. Drop in for a thepla-and-chai breakfast, sit down for a thali lunch with family, grab farsan on the way home, or order delivery on Swiggy, Zomato and WhatsApp." },
       { type: "h2", text: "Find us in Kandivali West" },
-      { type: "p", text: "Thepla House Kandivali is at Shop No 1 & 2, Shreenath Enclave, Hemukalani Cross Road No. 3, Hemu Colony, Irani Wadi, Kandivali West — easy to reach from Kandivali East, Charkop, Borivali and Malad. Whether it's a quick bite or a full family meal, this is home-style Gujarati food done honestly." },
+      { type: "p", text: "Thepla House by Tejal's Kitchen Kandivali is at Shop No 1 & 2, Shreenath Enclave, Hemukalani Cross Road No. 3, Hemu Colony, Irani Wadi, Kandivali West — easy to reach from Kandivali East, Charkop, Borivali and Malad. Whether it's a quick bite or a full family meal, this is home-style Gujarati food done honestly." },
       { type: "quote", text: "The best thepla isn't the fanciest one. It's the one made like home — whole wheat, fresh, no shortcuts." },
     ],
   },

@@ -13,9 +13,9 @@ const LAST_UPDATED = "29 July 2026";
 
 export const metadata: Metadata = {
   ...pageMetadata({
-    title: "Privacy policy | Thepla House",
+    title: "Privacy policy | Thepla House by Tejal's Kitchen",
     description:
-      "How the Thepla House app collects, uses and protects your data — account details, delivery addresses, location, payments via Razorpay, and your rights under India's DPDP Act 2023.",
+      "How the Thepla House by Tejal's Kitchen app collects, uses and protects your data — account details, delivery addresses, location, payments via Razorpay, and your rights under India's DPDP Act 2023.",
     path: "/privacy-policy",
   }),
   robots: { index: false, follow: true },
@@ -24,10 +24,10 @@ export const metadata: Metadata = {
 const privacyPageLd = {
   "@context": "https://schema.org",
   "@type": "WebPage",
-  name: "Privacy policy — Thepla House",
+  name: "Privacy policy — Thepla House by Tejal's Kitchen",
   url: absUrl("/privacy-policy"),
   description:
-    "Privacy policy for the Thepla House customer app and website, governed by the Digital Personal Data Protection Act, 2023 (India).",
+    "Privacy policy for the Thepla House by Tejal's Kitchen customer app and website, governed by the Digital Personal Data Protection Act, 2023 (India).",
   dateModified: "2026-07-29",
 };
 
@@ -84,7 +84,7 @@ export default function PrivacyPolicyPage() {
         <div style={{ maxWidth: 760, margin: "0 auto", padding: "8px 20px 64px" }}>
           <p style={body}>
             This policy explains how <strong>{LEGAL_ENTITY_NAME}</strong> (&ldquo;{SITE.shortName}&rdquo;, &ldquo;we&rdquo;, &ldquo;us&rdquo;), registered at{" "}
-            <strong>{LEGAL_REGISTERED_ADDRESS}</strong>, collects and uses your personal data when you use the {SITE.shortName} customer
+            <strong>{LEGAL_REGISTERED_ADDRESS}</strong>, collects and uses your personal data when you use the {SITE.name} customer
             app and website to order food. It is governed by Indian law, including the Digital Personal Data Protection Act, 2023
             (&ldquo;DPDP Act&rdquo;).
           </p>

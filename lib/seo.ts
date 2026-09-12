@@ -72,7 +72,7 @@ export function organizationLd() {
     "@type": "Organization",
     "@id": ORGANIZATION_ID,
     name: SITE.name,
-    alternateName: ["Thepla House", "Tejal's Kitchen", "Thepla House Mumbai"],
+    alternateName: ["Thepla House by Tejal's Kitchen", "Tejal's Kitchen", "Thepla House by Tejal's Kitchen Mumbai"],
     url: BASE,
     logo: absUrl(SITE.logo),
     image: absUrl(SITE.logo),

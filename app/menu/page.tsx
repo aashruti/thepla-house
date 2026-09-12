@@ -10,9 +10,9 @@ import { ORDER_PHONE, WHATSAPP_LINK } from "@/data/site";
 import menuExtracted from "@/data/menu-extracted.json";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Thepla House Menu — Thepla, Gujarati Thali & Prices",
+  title: "Thepla House by Tejal's Kitchen — Menu & Prices",
   description:
-    "See the Thepla House menu and current prices for fresh thepla, Gujarati thali, farsan, sweets and upvas food. Jain and vegan options; order across Mumbai.",
+    "See the Thepla House by Tejal's Kitchen menu and current prices for fresh thepla, Gujarati thali, farsan, sweets and upvas food. Jain and vegan options; order across Mumbai.",
   path: "/menu",
 });
 
@@ -81,7 +81,7 @@ export default function MenuPage() {
         <div className="th-container" style={{ position: "relative", paddingTop: 48, paddingBottom: 28 }}>
           <div className="seglabel">The menu</div>
           <h1 style={{ fontFamily: "var(--font-display)", color: "var(--color-headline)", fontSize: "var(--fs-display-lg)", lineHeight: 1.08, margin: "10px 0 14px" }}>
-            Thepla House menu — 250+ home-style dishes
+            Thepla House by Tejal&apos;s Kitchen menu — 250+ home-style dishes
           </h1>
           <p style={{ fontFamily: "var(--font-body)", color: "var(--ink-600)", fontSize: "var(--fs-body-lg)", lineHeight: 1.6, maxWidth: 680, margin: 0 }}>
             Every dish is 100% vegetarian, made with whole-wheat atta and sunflower oil — no maida, no palm oil, no preservatives. Jain and vegan options are clearly tagged throughout.
@@ -117,7 +117,7 @@ export default function MenuPage() {
             ))}
           </div>
           <Link href="/locations" style={{ display: "inline-flex", marginTop: 22, fontFamily: "var(--font-body)", color: "var(--color-primary)", fontWeight: 700, textDecoration: "none" }}>
-            Find your nearest Thepla House kitchen →
+            Find your nearest Thepla House by Tejal&apos;s Kitchen kitchen →
           </Link>
         </div>
       </section>

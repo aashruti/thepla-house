@@ -16,7 +16,7 @@ export default function GalleryPage() {
     <>
       <JsonLd
         data={[
-          { "@context": "https://schema.org", "@type": "ImageGallery", name: "Thepla House gallery", url: absUrl("/gallery") },
+          { "@context": "https://schema.org", "@type": "ImageGallery", name: "Thepla House by Tejal's Kitchen gallery", url: absUrl("/gallery") },
           breadcrumbLd([
             { name: "Home", path: "/" },
             { name: "Gallery", path: "/gallery" },

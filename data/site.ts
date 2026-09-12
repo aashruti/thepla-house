@@ -5,6 +5,11 @@
 
 export const SITE = {
   name: "Thepla House by Tejal's Kitchen",
+  // Short form, used ONLY as the title-tag suffix the root layout appends and as
+  // the home-screen app label. Not a leftover: the suffix sits at the end of every
+  // title, and the full name there costs 34 characters — enough to push most
+  // titles past what Google shows, cutting the brand off entirely. Everything a
+  // reader actually sees uses `name`.
   shortName: "Thepla House",
   tagline: "Junk the Junk Food.",
   founder: "Tejal Shah",

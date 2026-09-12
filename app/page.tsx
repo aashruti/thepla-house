@@ -17,9 +17,9 @@ import { ORDER_PHONE, FRANCHISE_CONTACT } from "@/data/site";
 import { img } from "@/data/images";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Thepla House Mumbai — Fresh Thepla, Gujarati Thali & Tiffin",
+  title: "Thepla House by Tejal's Kitchen — Thepla & Gujarati Thali",
   description:
-    "Find fresh thepla, Gujarati thali and vegetarian tiffin near you at seven Thepla House locations across Mumbai. Whole-wheat, Jain and vegan options; order online.",
+    "Find fresh thepla, Gujarati thali and vegetarian tiffin near you at eight Thepla House by Tejal's Kitchen locations across Mumbai. Whole-wheat, Jain and vegan options; order online.",
   path: "/",
 });
 
@@ -144,7 +144,7 @@ export default function HomePage() {
                 Made by Tejal, like she makes it at home
               </h2>
               <p style={{ fontFamily: "var(--font-body)", color: "var(--ink-600)", fontSize: "1.0625rem", lineHeight: 1.65, margin: "0 0 14px", maxWidth: 560 }}>
-                Thepla House started in Tejal&apos;s Mumbai kitchen in 2018 with one belief: eating out shouldn&apos;t mean eating junk. Every dish is still cooked the way she&apos;d make it for her own family — whole wheat, sunflower oil, no shortcuts.
+                Thepla House by Tejal&apos;s Kitchen started in Tejal&apos;s Mumbai kitchen in 2018 with one belief: eating out shouldn&apos;t mean eating junk. Every dish is still cooked the way she&apos;d make it for her own family — whole wheat, sunflower oil, no shortcuts.
               </p>
               <div style={{ fontFamily: "var(--font-script)", color: "var(--color-primary)", fontSize: "2.25rem", lineHeight: 1, marginBottom: 18 }}>
                 — Tejal Shah
@@ -178,11 +178,11 @@ export default function HomePage() {
             </article>
             <article style={{ background: "var(--color-surface)", border: "1px solid var(--color-outline-variant)", borderRadius: "var(--radius-xl)", boxShadow: "var(--shadow-sm)", overflow: "hidden" }}>
               <div style={{ height: 160 }}>
-                <PhotoSlot subject="A bright Thepla House dine-in counter / storefront" alt="Thepla House outlet counter" src={img("franchise")} style={{ height: 160, width: "100%" }} />
+                <PhotoSlot subject="A bright Thepla House by Tejal's Kitchen dine-in counter / storefront" alt="Thepla House by Tejal's Kitchen outlet counter" src={img("franchise")} style={{ height: 160, width: "100%" }} />
               </div>
               <div style={{ padding: 24 }}>
                 <div className="seglabel">Franchise</div>
-                <h3 style={{ fontFamily: "var(--font-display)", color: "var(--color-headline)", fontSize: "1.5rem", margin: "6px 0 8px" }}>Open a Thepla House franchise</h3>
+                <h3 style={{ fontFamily: "var(--font-display)", color: "var(--color-headline)", fontSize: "1.5rem", margin: "6px 0 8px" }}>Open a Thepla House by Tejal&apos;s Kitchen franchise</h3>
                 <p style={{ fontFamily: "var(--font-body)", color: "var(--ink-600)", fontSize: "0.9375rem", lineHeight: 1.55, margin: "0 0 14px" }}>
                   Bring Tejal&apos;s kitchen to your city. Tell us about your city, site and investment in a short application — {FRANCHISE_CONTACT.name} and the team read every one.
                 </p>

@@ -9,9 +9,9 @@ import { ORDER_PHONE, ORDER_PHONE_TEL, WHATSAPP_LINK } from "@/data/site";
 import { img } from "@/data/images";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Catering for events & pooja — full Jain menus | Thepla House",
+  title: "Gujarati catering, Mumbai | Thepla House by Tejal's Kitchen",
   description:
-    "Home-style Gujarati catering in Mumbai for poojas, weddings, corporate events and house parties. Full Jain menus, 100% vegetarian, cooked fresh. Plan your order with Thepla House.",
+    "Home-style Gujarati catering in Mumbai for poojas, weddings, corporate events and house parties. Full Jain menus, 100% vegetarian, cooked fresh. Plan your order with Thepla House by Tejal's Kitchen.",
   path: "/catering",
 });
 
@@ -139,7 +139,7 @@ export default function CateringPage() {
             <div className="hero-photo" style={{ height: 420, boxShadow: "var(--shadow-lg)", borderRadius: "var(--radius-2xl)" }}>
               <PhotoSlot
                 subject="Catering spread — large brass platters of thali items, sweets and farsan for an event"
-                alt="Thepla House catering platters laid out for an event"
+                alt="Thepla House by Tejal's Kitchen catering platters laid out for an event"
                 src={img("catering")}
                 style={{ height: "100%", width: "100%" }}
               />

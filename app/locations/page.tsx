@@ -8,22 +8,22 @@ import { JsonLd } from "@/components/JsonLd";
 import { pageMetadata, faqPageLd, breadcrumbLd, absUrl } from "@/lib/seo";
 import { KITCHENS } from "@/data/kitchens";
 import { AREAS } from "@/data/areas";
-import { ORDER_PHONE, LOCATIONS_MAP_EMBED } from "@/data/site";
+import { SITE, ORDER_PHONE, LOCATIONS_MAP_EMBED } from "@/data/site";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Thepla Near Me in Mumbai — 8 Thepla House Locations",
+  title: "Thepla Near Me — 8 Thepla House by Tejal's Kitchen Outlets",
   description:
-    "Looking for fresh thepla near you? Find the nearest Thepla House in Chandivali, Kalina, Lower Parel, Mulund, Thane, Navi Mumbai or Kandivali.",
+    "Looking for fresh thepla near you? Find the nearest Thepla House by Tejal's Kitchen in Chandivali, Kalina, Lower Parel, Mulund, Thane, Navi Mumbai or Kandivali.",
   path: "/locations",
 });
 
 const LOCATION_FAQS = [
   {
     q: "Where can I find fresh thepla near me in Mumbai?",
-    a: "Thepla House has eight Mumbai-area locations: Chandivali in Andheri East, Kalina in Santacruz East, Lower Parel, Mulund West, Manpada in Thane, the Dadoji Konddev Stadium kitchen at Naupada in Thane West, Kandivali West, and a takeaway counter inside Navi Mumbai International Airport departures. Choose the closest location below for its address, timings and delivery area.",
+    a: "Thepla House by Tejal's Kitchen has eight Mumbai-area locations: Chandivali in Andheri East, Kalina in Santacruz East, Lower Parel, Mulund West, Manpada in Thane, the Dadoji Konddev Stadium kitchen at Naupada in Thane West, Kandivali West, and a takeaway counter inside Navi Mumbai International Airport departures. Choose the closest location below for its address, timings and delivery area.",
   },
   {
-    q: "Which Thepla House location has dine-in?",
+    q: "Which Thepla House by Tejal's Kitchen location has dine-in?",
     a: "Two of them: Kandivali West, and Dadoji Konddev Stadium in Thane West — which also has a banquet hall seating up to 250 guests. The other kitchens serve delivery and takeaway, and our Navi Mumbai International Airport counter is takeaway only, inside the departures terminal.",
   },
   {
@@ -46,11 +46,11 @@ export default function LocationsPage() {
           {
             "@context": "https://schema.org",
             "@type": "ItemList",
-            name: "Thepla House kitchens",
+            name: "Thepla House by Tejal's Kitchen — kitchens",
             itemListElement: KITCHENS.map((k, i) => ({
               "@type": "ListItem",
               position: i + 1,
-              name: `Thepla House ${k.title}`,
+              name: `${SITE.name} — ${k.title}`,
               item: absUrl(`/locations/${k.slug}`),
             })),
           },
@@ -71,7 +71,7 @@ export default function LocationsPage() {
             Fresh thepla near you across Mumbai
           </h1>
           <p style={{ fontFamily: "var(--font-body)", color: "var(--ink-600)", fontSize: "var(--fs-body-lg)", lineHeight: 1.6, maxWidth: 680, margin: 0 }}>
-            Looking for thepla near you? Choose from eight Thepla House locations across Mumbai, Thane and Navi Mumbai. Order fresh, home-style Gujarati food from the nearest kitchen, or dine in at Kandivali West and Dadoji Konddev Stadium, Thane.
+            Looking for thepla near you? Choose from eight Thepla House by Tejal's Kitchen locations across Mumbai, Thane and Navi Mumbai. Order fresh, home-style Gujarati food from the nearest kitchen, or dine in at Kandivali West and Dadoji Konddev Stadium, Thane.
           </p>
         </div>
       </section>
@@ -80,7 +80,7 @@ export default function LocationsPage() {
         <div className="th-container" style={{ paddingTop: 40, paddingBottom: 56 }}>
           <div className="grid grid-cols-1 lg:grid-cols-[0.92fr_1.08fr] gap-10 items-start">
             <div className="locations-map" style={{ borderRadius: "var(--radius-2xl)", overflow: "hidden", boxShadow: "var(--shadow-lg)" }}>
-              <MapSlot label="Thepla House — our kitchens across Mumbai & Navi Mumbai" embedSrc={LOCATIONS_MAP_EMBED || undefined} lat={flagship.lat} lng={flagship.lng} />
+              <MapSlot label="Thepla House by Tejal's Kitchen — our kitchens across Mumbai &amp; Navi Mumbai" embedSrc={LOCATIONS_MAP_EMBED || undefined} lat={flagship.lat} lng={flagship.lng} />
             </div>
             <div>
               <h2 style={{ fontFamily: "var(--font-display)", color: "var(--color-headline)", fontSize: "1.75rem", margin: "0 0 20px" }}>All locations</h2>
@@ -130,7 +130,7 @@ export default function LocationsPage() {
               <div>
                 <div className="seglabel" style={{ color: "var(--gold-300)" }}>Now at the airport</div>
                 <h2 style={{ fontFamily: "var(--font-display)", color: "var(--cream-50)", fontSize: "var(--fs-h2)", margin: "8px 0 14px" }}>
-                  Thepla House at Navi Mumbai International Airport
+                  Thepla House by Tejal&apos;s Kitchen at Navi Mumbai International Airport
                 </h2>
                 <p style={{ fontFamily: "var(--font-body)", color: "var(--cream-200)", fontSize: "1.0625rem", lineHeight: 1.65, margin: "0 0 18px", maxWidth: 520 }}>
                   {airport.localCopy}
@@ -157,7 +157,7 @@ export default function LocationsPage() {
                 </div>
               </div>
               <div style={{ borderRadius: "var(--radius-2xl)", overflow: "hidden", boxShadow: "var(--shadow-lg)", height: 300 }}>
-                <MapSlot label="Map: Thepla House at Navi Mumbai International Airport, Ulwe" lat={airport.lat} lng={airport.lng} />
+                <MapSlot label="Map: Thepla House by Tejal's Kitchen at Navi Mumbai International Airport, Ulwe" lat={airport.lat} lng={airport.lng} />
               </div>
             </div>
           </div>

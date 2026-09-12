@@ -128,7 +128,7 @@ function emailShell(innerHtml: string): string {
   return `<div style="background:#f4f1ea;padding:24px 12px;font-family:Arial,Helvetica,sans-serif;">
     <div style="max-width:600px;margin:0 auto;background:#fff;border-radius:14px;overflow:hidden;border:1px solid #e7e1d5;">
       <div style="background:linear-gradient(135deg,#205340,#143026);padding:28px 24px;text-align:center;">
-        <img src="${logo}" alt="${escapeHtml(SITE.shortName)}" width="96" height="96" style="display:inline-block;border:0;outline:none;" />
+        <img src="${logo}" alt="${escapeHtml(SITE.name)}" width="96" height="96" style="display:inline-block;border:0;outline:none;" />
         <div style="font-size:24px;font-weight:800;color:#FFF8EC;letter-spacing:1px;margin-top:10px;">THEPLA HOUSE</div>
         <div style="font-size:13px;color:#F3B53C;font-style:italic;margin-top:3px;">by Tejal's Kitchen &middot; Junk the Junk Food.</div>
       </div>
@@ -158,7 +158,7 @@ function renderConfirmation(kind: string, data: Record<string, string>): string 
      ${fieldsTable(data)}
      <p style="margin:18px 0 14px;">If it's urgent, call or WhatsApp us on <strong>${escapeHtml(ORDER_PHONE)}</strong>.</p>
      <div style="text-align:center;margin:22px 0 6px;">${ctaButton(`${SITE.url}/menu`, "Browse the menu")}</div>
-     <p style="margin:18px 0 0;">Warm regards,<br/>Team Thepla House</p>`,
+     <p style="margin:18px 0 0;">Warm regards,<br/>Team Thepla House by Tejal's Kitchen</p>`,
   );
 }
 

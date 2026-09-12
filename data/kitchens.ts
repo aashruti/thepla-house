@@ -131,7 +131,7 @@ export const KITCHENS: Kitchen[] = [
       { title: "Sabudana Khichdi", desc: "Light sago with peanuts — a popular fasting-day order here.", subject: "Bowl of sabudana khichdi", alt: "Sabudana khichdi", keys: ["jain", "vegan"] },
     ],
     localCopy:
-      "Looking for Gujarati food delivery in Chandivali or Andheri East? Thepla House Chandivali is a 100% vegetarian kitchen serving home-style theplas, thalis, farsan and sweets — whole wheat, sunflower oil and no preservatives — with Jain and vegan options, open daily 7:30am to 10:30pm.",
+      "Looking for Gujarati food delivery in Chandivali or Andheri East? Thepla House by Tejal's Kitchen Chandivali is a 100% vegetarian kitchen serving home-style theplas, thalis, farsan and sweets — whole wheat, sunflower oil and no preservatives — with Jain and vegan options, open daily 7:30am to 10:30pm.",
     faqs: [
       { q: "Which areas does the Chandivali kitchen deliver to?", a: "We deliver across Andheri East — Powai, Saki Naka, Marol, JB Nagar, Chakala and Kurla West — via Swiggy, Zomato and WhatsApp." },
       { q: "What are the Chandivali timings?", a: "Open Monday to Sunday, 9:00am to 10:00pm. Order before 11am for same-day lunch." },
@@ -155,7 +155,7 @@ export const KITCHENS: Kitchen[] = [
     areasServed: ["Kalina", "Vakola", "Santacruz East", "Vidyanagari", "Kurla West", "BKC"],
     popular: DEFAULT_POPULAR,
     localCopy:
-      "Thepla House Kalina serves the Santacruz East and Vakola belt with fresh, home-style Gujarati food — whole-wheat theplas, full thalis and farsan, all 100% vegetarian with Jain and vegan options. Open daily 7:30am to 10:30pm, and until 3pm on Wednesdays.",
+      "Thepla House by Tejal's Kitchen Kalina serves the Santacruz East and Vakola belt with fresh, home-style Gujarati food — whole-wheat theplas, full thalis and farsan, all 100% vegetarian with Jain and vegan options. Open daily 7:30am to 10:30pm, and until 3pm on Wednesdays.",
     faqs: defaultFaqs("Kalina", "Santacruz East", "Kalina, Vakola, Santacruz East, Vidyanagari and BKC", "Open every day 7:30am to 10:30pm, and 7:30am to 3pm on Wednesdays"),
   },
   {
@@ -174,7 +174,7 @@ export const KITCHENS: Kitchen[] = [
     areasServed: ["Lower Parel", "Worli", "Prabhadevi", "Elphinstone", "Mahalaxmi", "Parel"],
     popular: DEFAULT_POPULAR,
     localCopy:
-      "Thepla House Lower Parel keeps the Senapati Bapat Marg and Worli office crowd fed with quick, home-style weekday lunches — whole-wheat theplas, thalis and farsan, 100% vegetarian with Jain and vegan options. Open Monday to Saturday, 9am–9pm.",
+      "Thepla House by Tejal's Kitchen Lower Parel keeps the Senapati Bapat Marg and Worli office crowd fed with quick, home-style weekday lunches — whole-wheat theplas, thalis and farsan, 100% vegetarian with Jain and vegan options. Open Monday to Saturday, 9am–9pm.",
     faqs: defaultFaqs("Lower Parel", "Senapati Bapat Marg", "Lower Parel, Worli, Prabhadevi, Elphinstone and Mahalaxmi", "Open Monday to Saturday, 9am to 9pm"),
   },
   {
@@ -193,7 +193,7 @@ export const KITCHENS: Kitchen[] = [
     areasServed: ["Mulund West", "Mulund East", "Bhandup", "Nahur", "Airoli", "Vikhroli"],
     popular: DEFAULT_POPULAR,
     localCopy:
-      "Thepla House Mulund brings home-style Gujarati food to the central suburbs — whole-wheat theplas, thalis, farsan and sweets, all 100% vegetarian with Jain and vegan options. Open daily 7:30am to 10:30pm, and until 3pm on Wednesdays.",
+      "Thepla House by Tejal's Kitchen Mulund brings home-style Gujarati food to the central suburbs — whole-wheat theplas, thalis, farsan and sweets, all 100% vegetarian with Jain and vegan options. Open daily 7:30am to 10:30pm, and until 3pm on Wednesdays.",
     faqs: defaultFaqs("Mulund", "Mulund West", "Mulund West, Mulund East, Bhandup, Nahur and Vikhroli", "Open every day 7:30am to 10:30pm, and 7:30am to 3pm on Wednesdays"),
   },
   {
@@ -216,7 +216,7 @@ export const KITCHENS: Kitchen[] = [
     areasServed: ["Thane West", "Manpada", "Kasarvadavali", "Majiwada", "Vartak Nagar", "Hiranandani Estate"],
     popular: DEFAULT_POPULAR,
     localCopy:
-      "Thepla House Thane delivers fresh, home-style Gujarati food across Thane from our Manpada kitchen — whole-wheat theplas, thalis and farsan, 100% vegetarian with Jain and vegan options. Open daily 7:30am to 10:30pm, and until 3pm on Fridays.",
+      "Thepla House by Tejal's Kitchen Thane delivers fresh, home-style Gujarati food across Thane from our Manpada kitchen — whole-wheat theplas, thalis and farsan, 100% vegetarian with Jain and vegan options. Open daily 7:30am to 10:30pm, and until 3pm on Fridays.",
     faqs: defaultFaqs("Thane", "Manpada", "Thane West, Manpada, Kasarvadavali, Majiwada and Hiranandani Estate", "Open every day 7:30am to 10:30pm, and 7:30am to 3pm on Fridays"),
   },
   {
@@ -248,10 +248,10 @@ export const KITCHENS: Kitchen[] = [
     areasServed: ["Naupada", "Panchpakhadi", "Tembhi Naka", "Khopat", "Jambli Naka", "Thane Station"],
     popular: DEFAULT_POPULAR,
     localCopy:
-      "Thepla House at Dadoji Konddev Stadium, Jambli Naka, Naupada is our Thane dine-in outlet — eat in, take away, or get whole-wheat theplas, thalis and farsan delivered across Thane West. It also has a banquet hall seating up to 250 guests for family functions, celebrations and corporate events. 100% vegetarian, with Jain and vegan options. Open daily 8am to 3pm and 5pm to 10pm.",
+      "Thepla House by Tejal's Kitchen at Dadoji Konddev Stadium, Jambli Naka, Naupada is our Thane dine-in outlet — eat in, take away, or get whole-wheat theplas, thalis and farsan delivered across Thane West. It also has a banquet hall seating up to 250 guests for family functions, celebrations and corporate events. 100% vegetarian, with Jain and vegan options. Open daily 8am to 3pm and 5pm to 10pm.",
     faqs: [
       {
-        q: "Can I dine in at Thepla House Dadoji Konddev Stadium?",
+        q: "Can I dine in at Thepla House by Tejal's Kitchen Dadoji Konddev Stadium?",
         a: "Yes. This is a dine-in outlet at the stadium in Naupada, Thane West, near Thane railway station — eat in, take away, or order delivery across Thane West.",
       },
       {
@@ -287,15 +287,15 @@ export const KITCHENS: Kitchen[] = [
     areasServed: [],
     popular: DEFAULT_POPULAR,
     localCopy:
-      "Thepla House at Navi Mumbai International Airport is a franchise counter inside the departures terminal — fresh, home-style Gujarati food to take on board, whole-wheat theplas, thalis and farsan, 100% vegetarian with Jain and vegan options. Takeaway for departing passengers only; this outlet does not deliver.",
+      "Thepla House by Tejal's Kitchen at Navi Mumbai International Airport is a franchise counter inside the departures terminal — fresh, home-style Gujarati food to take on board, whole-wheat theplas, thalis and farsan, 100% vegetarian with Jain and vegan options. Takeaway for departing passengers only; this outlet does not deliver.",
     faqs: [
       {
-        q: "Where exactly is Thepla House at Navi Mumbai airport?",
+        q: "Where exactly is Thepla House by Tejal's Kitchen at Navi Mumbai airport?",
         a: "Inside the departures terminal at Navi Mumbai International Airport, Ulwe. It is past security, so it is reachable only by passengers departing from NMIA — not from the landside pick-up area.",
       },
       {
         q: "Does the airport outlet deliver?",
-        a: "No. This is a takeaway counter for departing passengers and does not deliver, so it is not on Swiggy or Zomato. For delivery across Navi Mumbai, order from your nearest Thepla House kitchen on our locations page.",
+        a: "No. This is a takeaway counter for departing passengers and does not deliver, so it is not on Swiggy or Zomato. For delivery across Navi Mumbai, order from your nearest Thepla House by Tejal's Kitchen kitchen on our locations page.",
       },
       {
         q: "Can I order ahead or collect from the airport counter?",
@@ -324,23 +324,23 @@ export const KITCHENS: Kitchen[] = [
     mapsUrl: "https://maps.app.goo.gl/4s6gDkKQ3mV9uvLfA",
     zomatoUrl: "https://www.zomato.com/mumbai/thepla-house-by-tejals-kitchen-kandivali-west",
     swiggyUrl: "https://www.swiggy.com/city/mumbai/thepla-house-by-tejals-kitchen-west-kandivali-rest1193204",
-    seoTitle: "Thepla House Kandivali — Menu, Timings & Directions",
+    seoTitle: "Thepla House by Tejal's Kitchen, Kandivali — Dine-in",
     seoDescription:
       "Fresh home-style Gujarati theplas, thalis & farsan — dine in, take away or order in Kandivali West (near Mahavir Nagar). 100% vegetarian, whole wheat, Jain & vegan. Open daily 7:30am to 10:30pm.",
     seoParagraphs: [
       "Looking for fresh thepla in Kandivali West? Thepla House by Tejal's Kitchen is a 100% vegetarian, home-style Gujarati dine-in outlet in Kandivali West, a short walk from Mahavir Nagar and the MHADA Colony. Eat in hot off the tawa, take away, or order delivery — we serve methi theplas, full Gujarati thalis, farsan and sweets, all made with whole-wheat atta and sunflower oil, never maida or palm oil.",
-      "Our Kandivali outlet keeps the longest hours of any Thepla House — daily from 8am to 10:30pm — so you can grab a thepla-and-chai breakfast, a wholesome thali for lunch, or farsan and sweets through the evening. We're a neighbourhood favourite for ghar ka khana across Kandivali West, Kandivali East, Charkop, Borivali and Malad, with Jain and vegan options clearly tagged on every dish.",
-      "Whether you want to sit down with family, pick up a stack of theplas on the way home, or order a Gujarati thali to your door, Thepla House Kandivali serves honest, home-style Gujarati food made fresh every day. Junk the junk food — eat real ghar ka khana instead.",
+      "Our Kandivali outlet keeps the longest hours of any Thepla House by Tejal's Kitchen — daily from 8am to 10:30pm — so you can grab a thepla-and-chai breakfast, a wholesome thali for lunch, or farsan and sweets through the evening. We're a neighbourhood favourite for ghar ka khana across Kandivali West, Kandivali East, Charkop, Borivali and Malad, with Jain and vegan options clearly tagged on every dish.",
+      "Whether you want to sit down with family, pick up a stack of theplas on the way home, or order a Gujarati thali to your door, Thepla House by Tejal's Kitchen Kandivali serves honest, home-style Gujarati food made fresh every day. Junk the junk food — eat real ghar ka khana instead.",
     ],
     areasServed: ["Kandivali West", "Kandivali East", "Borivali", "Malad", "Charkop", "Poisar"],
     popular: DEFAULT_POPULAR,
     localCopy:
-      "Thepla House Kandivali is our dine-in outlet in Kandivali West — eat home-style Gujarati food fresh off the tawa, take away, or order delivery. 100% vegetarian, whole wheat, with Jain and vegan options. Open daily 7:30am to 10:30pm.",
+      "Thepla House by Tejal's Kitchen Kandivali is our dine-in outlet in Kandivali West — eat home-style Gujarati food fresh off the tawa, take away, or order delivery. 100% vegetarian, whole wheat, with Jain and vegan options. Open daily 7:30am to 10:30pm.",
     faqs: [
-      { q: "Where is Thepla House in Kandivali?", a: "We're at Shop No 1 & 2, Shreenath Enclave, Hemukalani Cross Road No. 3, Hemu Colony, Irani Wadi, Kandivali West — close to Mahavir Nagar and the MHADA Colony, easy to reach from Kandivali East, Charkop, Borivali and Malad." },
+      { q: "Where is Thepla House by Tejal's Kitchen in Kandivali?", a: "We're at Shop No 1 & 2, Shreenath Enclave, Hemukalani Cross Road No. 3, Hemu Colony, Irani Wadi, Kandivali West — close to Mahavir Nagar and the MHADA Colony, easy to reach from Kandivali East, Charkop, Borivali and Malad." },
       { q: "Where can I get the best thepla in Kandivali West?", a: "Thepla House by Tejal's Kitchen serves fresh, home-style methi theplas, thalis and farsan in Kandivali West — 100% vegetarian, 100% whole wheat, no maida and no palm oil. Dine in hot off the tawa, take away, or order delivery." },
       { q: "Is Kandivali a dine-in outlet?", a: "Yes — Kandivali West is our dine-in and takeaway outlet. Eat fresh off the tawa, take away, or order delivery on Swiggy, Zomato and WhatsApp." },
-      { q: "What are the Kandivali timings?", a: "Open Monday to Sunday, 8:00am to 10:30pm — the longest hours of any Thepla House kitchen." },
+      { q: "What are the Kandivali timings?", a: "Open Monday to Sunday, 8:00am to 10:30pm — the longest hours of any Thepla House by Tejal's Kitchen kitchen." },
       { q: "Do you have Jain and vegan options here?", a: "Yes — Jain (no onion, garlic or root vegetables) and vegan dishes are clearly tagged across the menu." },
       { q: "Is everything vegetarian and made without maida?", a: "Always. 100% vegetarian, whole-wheat atta and sunflower oil — never maida or palm oil — with no preservatives." },
     ],

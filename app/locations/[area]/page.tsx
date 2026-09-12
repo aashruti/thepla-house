@@ -10,7 +10,7 @@ import { JsonLd } from "@/components/JsonLd";
 import { pageMetadata, restaurantLd, faqPageLd, breadcrumbLd } from "@/lib/seo";
 import { KITCHENS, getKitchen } from "@/data/kitchens";
 import { tagsFor } from "@/data/menu";
-import { ORDER_PHONE, ORDER_PHONE_TEL, INSTAGRAM_LINK } from "@/data/site";
+import { SITE, ORDER_PHONE, ORDER_PHONE_TEL, INSTAGRAM_LINK } from "@/data/site";
 
 const OUTLET_ORDER_LINK: CSSProperties = {
   display: "inline-flex",
@@ -42,12 +42,12 @@ export async function generateMetadata({ params }: { params: Promise<{ area: str
     title:
       k.seoTitle ||
       (k.airside
-        ? `Thepla House ${k.title} — Menu, Timings & Terminal`
-        : `Thepla House ${k.title} — Menu, Timings & Delivery`),
+        ? `${SITE.name} — ${k.title} Terminal`
+        : `${SITE.name}, ${k.title} — Timings & Menu`),
     description:
       k.seoDescription ||
       (k.airside
-        ? `Home-style Gujarati food at Thepla House inside ${k.title} departures — theplas, thalis, farsan, Jain & vegan, to take on board. Takeaway only, no delivery.`
+        ? `Home-style Gujarati food at ${SITE.name} inside ${k.title} departures — theplas, thalis, farsan, Jain & vegan, to take on board. Takeaway only, no delivery.`
         : `Order home-style Gujarati food in ${k.title}, ${k.area} — theplas, thalis, farsan, Jain & vegan. Delivery via Swiggy, Zomato & WhatsApp.${k.hours ? ` ${k.hours}.` : ""}`),
     path: `/locations/${k.slug}`,
   });
@@ -82,7 +82,8 @@ export default async function KitchenAreaPage({ params }: { params: Promise<{ ar
       <JsonLd
         data={[
           restaurantLd({
-            name: `Thepla House ${k.title}`,
+            // Matches how each outlet is named on its Google Business Profile.
+            name: `${SITE.name} — ${k.title}`,
             url: `/locations/${k.slug}`,
             streetAddress: k.address,
             locality: k.area,
@@ -137,7 +138,7 @@ export default async function KitchenAreaPage({ params }: { params: Promise<{ ar
                 </div>
               )}
               <h1 style={{ fontFamily: "var(--font-display)", color: "var(--color-headline)", fontSize: "var(--fs-display-lg)", lineHeight: 1.06, margin: "0 0 10px" }}>
-                Thepla House {k.title}
+                {SITE.name} — {k.title}
               </h1>
               <p style={{ fontFamily: "var(--font-body)", color: "var(--ink-600)", fontSize: "var(--fs-body-lg)", lineHeight: 1.6, maxWidth: 540, margin: "0 0 22px" }}>
                 {k.airside
@@ -175,7 +176,7 @@ export default async function KitchenAreaPage({ params }: { params: Promise<{ ar
               )}
             </div>
             <div style={{ borderRadius: "var(--radius-2xl)", overflow: "hidden", boxShadow: "var(--shadow-lg)", height: 320 }}>
-              <MapSlot label={`Map: Thepla House ${k.title}, ${k.area}`} lat={k.lat} lng={k.lng} query={k.mapQuery} />
+              <MapSlot label={`Map: ${SITE.name}, ${k.title}, ${k.area}`} lat={k.lat} lng={k.lng} query={k.mapQuery} />
             </div>
           </div>
         </div>
@@ -264,7 +265,7 @@ export default async function KitchenAreaPage({ params }: { params: Promise<{ ar
         <section style={{ background: "var(--cream-50)" }}>
           <div style={{ maxWidth: 820, margin: "0 auto", padding: "56px 24px" }}>
             <h2 style={{ fontFamily: "var(--font-display)", color: "var(--color-headline)", fontSize: "1.875rem", margin: "0 0 18px" }}>
-              Thepla House {k.title} — home-style Gujarati food in {k.area}
+              {SITE.name} — {k.title}, home-style Gujarati food in {k.area}
             </h2>
             {k.seoParagraphs.map((p, i) => (
               <p key={i} style={{ fontFamily: "var(--font-body)", color: "var(--ink-700)", fontSize: "1.0625rem", lineHeight: 1.75, margin: "0 0 1.1em" }}>

@@ -15,7 +15,7 @@ import {
 } from "@/data/site";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Contact us — order line, kitchens & enquiries | Thepla House",
+  title: "Contact Thepla House by Tejal's Kitchen — Mumbai",
   description:
     "Get in touch with Thepla House by Tejal's Kitchen — order line +91 98195 55065, WhatsApp, catering and franchise enquiries. Seven kitchens across Mumbai.",
   path: "/contact",
@@ -266,7 +266,7 @@ export default function ContactPage() {
                 }}
               >
                 <MapSlot
-                  label="Map: Thepla House flagship kitchen, Chandivali (Andheri East)"
+                  label="Map: Thepla House by Tejal's Kitchen flagship kitchen, Chandivali (Andheri East)"
                   lat={19.1145}
                   lng={72.8889}
                 />

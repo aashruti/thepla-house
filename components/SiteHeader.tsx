@@ -33,7 +33,7 @@ export function SiteHeader() {
         className="th-container"
         style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 16, paddingTop: 10, paddingBottom: 10 }}
       >
-        <Link href="/" style={{ display: "inline-flex", alignItems: "center", gap: 10, textDecoration: "none" }} aria-label={`${SITE.shortName} — home`}>
+        <Link href="/" style={{ display: "inline-flex", alignItems: "center", gap: 10, textDecoration: "none" }} aria-label={`${SITE.name} — home`}>
           <Image src={SITE.logo} alt={SITE.name} width={88} height={48} priority style={{ height: 48, width: "auto", display: "block" }} />
         </Link>
 

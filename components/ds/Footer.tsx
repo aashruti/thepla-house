@@ -42,7 +42,7 @@ function SocialGlyph({ label }: { label: string }) {
 
 export function Footer({
   logoSrc,
-  brand = "Thepla House",
+  brand = "Thepla House by Tejal's Kitchen",
   tagline = "Junk the Junk Food.",
   columns = [],
   socials = [],

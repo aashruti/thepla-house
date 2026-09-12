@@ -17,7 +17,7 @@ const PATH = "/tiffin-service-mumbai";
 export const metadata: Metadata = pageMetadata({
   title: "Home-style food & healthy vegetarian tiffin in Mumbai",
   description:
-    "Looking for home-style food, healthy food or a tiffin service near you in Mumbai? Thepla House cooks fresh, 100% vegetarian ghar ka khana — whole-wheat theplas, thalis, sabzis and farsan — delivered hot like a tiffin, any day. Jain & vegan options.",
+    "Looking for home-style food, healthy food or a tiffin service near you in Mumbai? Thepla House by Tejal's Kitchen cooks fresh, 100% vegetarian ghar ka khana — whole-wheat theplas, thalis, sabzis and farsan — delivered hot like a tiffin, any day. Jain & vegan options.",
   path: PATH,
 });
 
@@ -98,7 +98,7 @@ export default function TiffinServicePage() {
                 Home-style food &amp; healthy vegetarian tiffin, across Mumbai
               </h1>
               <p style={{ fontFamily: "var(--font-body)", color: "var(--ink-600)", fontSize: "var(--fs-body-lg)", lineHeight: 1.62, margin: "0 0 24px", maxWidth: 560 }}>
-                Craving real ghar ka khana instead of another greasy takeaway? Thepla House is the
+                Craving real ghar ka khana instead of another greasy takeaway? Thepla House by Tejal&apos;s Kitchen is the
                 home-style, healthy alternative to a tiffin service — 100% vegetarian Gujarati food
                 cooked fresh to order with whole-wheat atta, sunflower oil and no preservatives, then
                 delivered hot to your door. No fixed dabba, no lock-in: order a home-cooked meal any day.
@@ -182,7 +182,7 @@ export default function TiffinServicePage() {
               Seven kitchens across Mumbai, Thane &amp; Navi Mumbai
             </h2>
             <p style={{ fontFamily: "var(--font-body)", color: "var(--ink-600)", fontSize: "var(--fs-body-lg)", lineHeight: 1.62 }}>
-              Whichever side of the city you're on, there's a Thepla House kitchen nearby cooking fresh
+              Whichever side of the city you're on, there's a Thepla House by Tejal's Kitchen kitchen nearby cooking fresh
               home-style food for delivery. Tap your area to see timings and order.
             </p>
           </div>

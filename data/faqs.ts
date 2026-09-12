@@ -2,7 +2,7 @@
 export const HOME_FAQS = [
   {
     q: "Is everything 100% vegetarian?",
-    a: "Yes — Thepla House is a fully vegetarian kitchen, no exceptions. We also cook with sunflower oil only, never palm oil.",
+    a: "Yes — Thepla House by Tejal's Kitchen is a fully vegetarian kitchen, no exceptions. We also cook with sunflower oil only, never palm oil.",
   },
   {
     q: "Do you have Jain and vegan options?",

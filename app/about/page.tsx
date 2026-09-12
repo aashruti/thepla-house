@@ -16,7 +16,7 @@ import { img } from "@/data/images";
 const OUTLET_COUNT = KITCHENS.length;
 
 export const metadata: Metadata = pageMetadata({
-  title: "Our story — from 5 kg of atta to a multi-crore food brand | Thepla House",
+  title: "Our story — Tejal Shah & Thepla House by Tejal's Kitchen",
   description:
     "The story of Tejal Shah and Thepla House by Tejal's Kitchen — started in 2018 with 5 kg of atta and one belief, now a multi-crore food business with 250+ offerings across Mumbai. \u201cJunk the Junk Food.\u201d",
   path: "/about",
@@ -50,7 +50,7 @@ const PHILOSOPHY = [
  */
 const MILESTONES = [
   { year: "2018", title: "It starts at home", text: "Tejal's Kitchen begins from Tejal's own kitchen, and the first outlet opens in Andheri." },
-  { year: "2019", title: "Thepla House is named", text: "Tejal's Kitchen becomes Thepla House by Tejal's Kitchen, with its first professionally equipped commercial kitchen in Andheri." },
+  { year: "2019", title: "The brand is named", text: "Tejal's Kitchen becomes Thepla House by Tejal's Kitchen, with its first professionally equipped commercial kitchen in Andheri." },
   { year: "2020", title: "Santacruz", text: "A second outlet brings Gujarati and Rajasthani home cooking, with Jain options, to Santacruz." },
   { year: "2021", title: "Lower Parel + catering", text: "Salads, juices and corporate catering launch, and the third outlet opens in Lower Parel." },
   { year: "2022", title: "Mulund + Singapore", text: "The fourth outlet opens in Mulund and the menu passes 250 dishes. Cold-blast supply to Singapore begins." },
@@ -135,7 +135,7 @@ export default function AboutPage() {
             <div style={{ borderRadius: "var(--radius-2xl)", overflow: "hidden", boxShadow: "var(--shadow-lg)", height: 440 }} className="h-64 md:h-[440px]">
               <PhotoSlot
                 subject="Founder Tejal in her kitchen, rolling theplas, warm side light, hands in frame"
-                alt="Tejal, founder of Thepla House, rolling theplas"
+                alt="Tejal, founder of Thepla House by Tejal's Kitchen, rolling theplas"
                 src={img("founder-tejal")}
                 position="top"
                 priority
@@ -353,26 +353,26 @@ export default function AboutPage() {
                 key: "team:tejal",
                 name: "Tejal Shah",
                 role: "Founder & MD",
-                subject: "Portrait of Tejal Shah, Founder & MD of Thepla House",
-                alt: "Tejal Shah, Founder & MD of Thepla House",
-                bio: "Tejal started Thepla House from her own Mumbai kitchen in 2018 with one belief: eating out shouldn't mean eating junk. She still tastes and signs off on the home-style recipes behind every thepla, thali and farsan.",
+                subject: "Portrait of Tejal Shah, Founder & MD of Thepla House by Tejal's Kitchen",
+                alt: "Tejal Shah, Founder & MD of Thepla House by Tejal's Kitchen",
+                bio: "Tejal started Thepla House by Tejal's Kitchen from her own Mumbai kitchen in 2018 with one belief: eating out shouldn't mean eating junk. She still tastes and signs off on the home-style recipes behind every thepla, thali and farsan.",
                 linkedin: "https://www.linkedin.com/in/tejal-shah-18893a189/",
               },
               {
                 key: "team:dhaval",
                 name: "Dhaval Shah",
                 role: "Co-Founder & CEO",
-                subject: "Portrait of Dhaval Shah, Co-Founder & CEO of Thepla House",
-                alt: "Dhaval Shah, Co-Founder & CEO of Thepla House",
-                bio: "Dhaval drives Thepla House's growth, opening new kitchens, dine-in outlets and franchise partnerships that bring Tejal's home-style food to more neighbourhoods across Mumbai and beyond.",
+                subject: "Portrait of Dhaval Shah, Co-Founder & CEO of Thepla House by Tejal's Kitchen",
+                alt: "Dhaval Shah, Co-Founder & CEO of Thepla House by Tejal's Kitchen",
+                bio: "Dhaval drives Thepla House by Tejal's Kitchen's growth, opening new kitchens, dine-in outlets and franchise partnerships that bring Tejal's home-style food to more neighbourhoods across Mumbai and beyond.",
                 linkedin: "https://www.linkedin.com/in/dhaval-shah-064482a/",
               },
               {
                 key: "team:shravan",
                 name: "Chef Shravan Mali",
                 role: "Head Chef",
-                subject: "Portrait of Chef Shravan Mali, Head Chef at Thepla House",
-                alt: "Chef Shravan Mali, Head Chef at Thepla House",
+                subject: "Portrait of Chef Shravan Mali, Head Chef at Thepla House by Tejal's Kitchen",
+                alt: "Chef Shravan Mali, Head Chef at Thepla House by Tejal's Kitchen",
                 bio: "For Shravan, cooking is about more than food. It's about bringing people together through honest, comforting flavours. He leads our kitchen with a focus on quality, preparing every dish with whole wheat, sunflower oil and carefully selected ingredients that reflect the warmth of a homemade meal.",
                 linkedin: "https://www.linkedin.com/in/shravan-mali-32472b274/",
               },
