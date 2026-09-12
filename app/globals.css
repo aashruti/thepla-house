@@ -90,6 +90,68 @@ body {
   }
 }
 
+/* ---- About: brand-evolution timeline ----
+   Vertical so it takes any number of milestones. The rail is drawn on the list
+   itself, not absolutely positioned inside a fixed-height box, so it always
+   spans exactly the entries that exist. */
+.th-timeline {
+  position: relative;
+  max-width: 940px;
+  margin: 0 auto;
+}
+.th-timeline::before {
+  content: "";
+  position: absolute;
+  top: 8px;
+  bottom: 8px;
+  left: 9px;
+  width: 2px;
+  background: var(--gold-400);
+  border-radius: 2px;
+}
+.th-timeline-item {
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  gap: 14px;
+  padding-bottom: 22px;
+}
+.th-timeline-dot {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--gold-400);
+  border: 3px solid var(--cream-100);
+  box-shadow: 0 0 0 1.5px var(--gold-500);
+  margin-top: 3px;
+}
+@media (min-width: 768px) {
+  .th-timeline::before {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .th-timeline-item {
+    grid-template-columns: 1fr 48px 1fr;
+    gap: 0;
+    padding-bottom: 26px;
+  }
+  .th-timeline-dot {
+    grid-column: 2;
+    justify-self: center;
+  }
+  /* Odd milestones sit left of the rail, even ones right. */
+  .th-timeline-card {
+    grid-column: 1;
+    margin-right: 24px;
+    text-align: right;
+  }
+  .th-timeline-item:nth-child(even) .th-timeline-card {
+    grid-column: 3;
+    margin-right: 0;
+    margin-left: 24px;
+    text-align: left;
+  }
+}
+
 /* ---- Locations hub: map becomes a sticky rail on desktop ----
    Portrait on purpose: the outlets run north-south, Lower Parel up to Thane,
    so a tall frame holds the cluster at a closer zoom than a square one can. */

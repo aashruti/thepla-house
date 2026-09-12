@@ -254,58 +254,23 @@ export default function AboutPage() {
             </p>
           </div>
 
-          {/* Desktop alternating timeline.
-              Scrolls horizontally rather than dividing the container by the
-              number of milestones: at nine entries an even split leaves ~65px
-              a card, which the copy overflows. A floor on the column width
-              keeps every card readable however many milestones there are. */}
-          <div className="hidden md:block" style={{ overflowX: "auto", paddingBottom: 10 }}>
-            {/* No max-content here: it would stop the card text wrapping and
-                blow each column out to the width of its longest line. The
-                minmax() floor below is what creates the overflow to scroll. */}
-            <div style={{ position: "relative", height: 460 }}>
-              <div aria-hidden="true" style={{ position: "absolute", left: 0, right: 0, top: "50%", height: 3, background: "var(--gold-400)", transform: "translateY(-50%)", zIndex: 0 }} />
-              <div style={{ display: "grid", gridTemplateColumns: `repeat(${MILESTONES.length}, minmax(186px, 1fr))`, height: "100%" }}>
-              {MILESTONES.map((m, i) => {
-                const above = i % 2 === 0;
-                const card = (
-                  <div style={{ width: "100%", textAlign: "center", background: "var(--color-surface-container)", border: "1px solid var(--color-outline-variant)", borderRadius: "var(--radius-lg)", boxShadow: "var(--shadow-sm)", padding: "12px 11px" }}>
-                    <div style={{ fontFamily: "var(--font-display)", color: "var(--gold-700)", fontSize: "1.25rem", fontWeight: 600, lineHeight: 1 }}>{m.year}</div>
-                    <div style={{ fontFamily: "var(--font-body)", color: "var(--color-headline)", fontWeight: 600, fontSize: "0.875rem", margin: "5px 0 3px" }}>{m.title}</div>
-                    <div style={{ fontFamily: "var(--font-body)", color: "var(--ink-600)", fontSize: "0.78rem", lineHeight: 1.4 }}>{m.text}</div>
-                  </div>
-                );
-                const connector = <span aria-hidden="true" style={{ width: 0, borderLeft: "1.5px dashed var(--color-outline-strong)", height: 18 }} />;
-                return (
-                  <div key={m.year} style={{ display: "grid", gridTemplateRows: "1fr auto 1fr", justifyItems: "center", padding: "0 7px" }}>
-                    <div style={{ gridRow: 1, alignSelf: "end", display: "flex", flexDirection: "column", alignItems: "center", width: "100%" }}>
-                      {above && card}
-                      {above && connector}
-                    </div>
-                    <span aria-hidden="true" style={{ gridRow: 2, zIndex: 2, width: 20, height: 20, borderRadius: "50%", background: "var(--gold-400)", border: "3px solid var(--cream-50)", boxShadow: "0 0 0 1.5px var(--gold-500)" }} />
-                    <div style={{ gridRow: 3, alignSelf: "start", display: "flex", flexDirection: "column", alignItems: "center", width: "100%" }}>
-                      {!above && connector}
-                      {!above && card}
-                    </div>
-                  </div>
-                  );
-                })}
-              </div>
-            </div>
-          </div>
-
-          {/* Mobile vertical timeline */}
-          <div className="flex flex-col md:hidden" style={{ maxWidth: 480, margin: "0 auto" }}>
-            {MILESTONES.map((m, i) => (
-              <div key={m.year} style={{ display: "flex", gap: 14 }}>
-                <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-                  <span aria-hidden="true" style={{ width: 14, height: 14, borderRadius: "50%", background: "var(--maroon-600)", border: "3px solid var(--cream-100)", boxShadow: "0 0 0 1px var(--maroon-600)" }} />
-                  {i < MILESTONES.length - 1 && <span aria-hidden="true" style={{ flex: 1, width: 2, background: "var(--color-outline)" }} />}
-                </div>
-                <div style={{ paddingBottom: 20 }}>
-                  <div style={{ fontFamily: "var(--font-display)", color: "var(--gold-700)", fontSize: "1.25rem", fontWeight: 600 }}>{m.year}</div>
-                  <div style={{ fontFamily: "var(--font-body)", color: "var(--color-headline)", fontWeight: 600, fontSize: "1rem", margin: "2px 0 3px" }}>{m.title}</div>
-                  <div style={{ fontFamily: "var(--font-body)", color: "var(--ink-600)", fontSize: "0.875rem", lineHeight: 1.5 }}>{m.text}</div>
+          {/* Vertical alternating timeline. Was a horizontal rail, which broke
+              once the milestones outgrew the container: the rail is absolutely
+              positioned to its parent, so it spanned the visible width while the
+              cards scrolled past it — the line simply stopped mid-timeline. This
+              grows downward instead, so it holds any number of entries without
+              scrolling or clipping. */}
+          <div className="th-timeline">
+            {MILESTONES.map((m) => (
+              <div className="th-timeline-item" key={m.year}>
+                <span aria-hidden="true" className="th-timeline-dot" />
+                <div
+                  className="th-timeline-card"
+                  style={{ background: "var(--color-surface-container)", border: "1px solid var(--color-outline-variant)", borderRadius: "var(--radius-lg)", boxShadow: "var(--shadow-sm)", padding: "16px 18px" }}
+                >
+                  <div style={{ fontFamily: "var(--font-display)", color: "var(--gold-700)", fontSize: "1.375rem", fontWeight: 600, lineHeight: 1 }}>{m.year}</div>
+                  <div style={{ fontFamily: "var(--font-body)", color: "var(--color-headline)", fontWeight: 600, fontSize: "1rem", margin: "6px 0 4px" }}>{m.title}</div>
+                  <div style={{ fontFamily: "var(--font-body)", color: "var(--ink-600)", fontSize: "0.9375rem", lineHeight: 1.55 }}>{m.text}</div>
                 </div>
               </div>
             ))}
