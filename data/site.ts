@@ -35,7 +35,7 @@ export const SITE = {
 //
 // Expect a URL of the form https://www.google.com/maps/d/embed?mid=...
 // While this is empty, the hub map falls back to a single pin on the flagship.
-export const LOCATIONS_MAP_EMBED = "";
+export const LOCATIONS_MAP_EMBED = "https://www.google.com/maps/d/embed?mid=1XkN7dyYIq2WMmKX4iFrpdGtp-p0RzI4";
 
 // ---- Contacts -------------------------------------------------------------
 export const ORDER_PHONE = "+91 98195 55065";
