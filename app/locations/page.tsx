@@ -24,7 +24,7 @@ const LOCATION_FAQS = [
   },
   {
     q: "Which Thepla House location has dine-in?",
-    a: "Our Kandivali West outlet offers dine-in and takeaway. The other Mumbai kitchens serve delivery and takeaway, and our Navi Mumbai International Airport counter is takeaway only, inside the departures terminal.",
+    a: "Two of them: Kandivali West, and Dadoji Konddev Stadium in Thane West — which also has a banquet hall seating up to 250 guests. The other kitchens serve delivery and takeaway, and our Navi Mumbai International Airport counter is takeaway only, inside the departures terminal.",
   },
   {
     q: "Can I order Gujarati thali and thepla for home delivery?",
@@ -71,7 +71,7 @@ export default function LocationsPage() {
             Fresh thepla near you across Mumbai
           </h1>
           <p style={{ fontFamily: "var(--font-body)", color: "var(--ink-600)", fontSize: "var(--fs-body-lg)", lineHeight: 1.6, maxWidth: 680, margin: 0 }}>
-            Looking for thepla near you? Choose from eight Thepla House locations across Mumbai, Thane and Navi Mumbai. Order fresh, home-style Gujarati food from the nearest kitchen, or dine in at Kandivali West.
+            Looking for thepla near you? Choose from eight Thepla House locations across Mumbai, Thane and Navi Mumbai. Order fresh, home-style Gujarati food from the nearest kitchen, or dine in at Kandivali West and Dadoji Konddev Stadium, Thane.
           </p>
         </div>
       </section>

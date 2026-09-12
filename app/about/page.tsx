@@ -41,15 +41,23 @@ const PHILOSOPHY = [
   "Customization based on customer requirements",
 ];
 
+/**
+ * Taken from the brand-evolution deck. The years there run a year later than
+ * the timeline this page used to carry (Santacruz 2020 not 2019, Lower Parel
+ * 2021 not 2020, Mulund 2022 not 2021). The deck's own 2022 appears twice —
+ * Mulund and the Singapore supply line — so they share one entry here rather
+ * than duplicating the year on the rail.
+ */
 const MILESTONES = [
-  { year: "2018", title: "First outlet, Andheri", text: "Thepla House opens its very first outlet in Andheri." },
-  { year: "2019", title: "Santacruz branch", text: "Santacruz opens — Gujarati, Rajasthani & Jain menus." },
-  { year: "2020", title: "Catering + Lower Parel", text: "Our catering vertical launches and the Lower Parel branch opens." },
-  { year: "2021", title: "Mulund + 250 dishes", text: "Mulund branch opens and the menu grows to 250+ items." },
-  { year: "2022", title: "International supply", text: "Singapore cold-blast supply begins." },
-  { year: "2023", title: "Corporate catering", text: "Corporate catering partnership with Golden Legend." },
-  { year: "2024", title: "Thane branch", text: "Manpada, Thane branch added." },
-  { year: "2025", title: "Airport + dine-in", text: "Navi Mumbai Airport franchise and Kandivali dine-in open." },
+  { year: "2018", title: "It starts at home", text: "Tejal's Kitchen begins from Tejal's own kitchen, and the first outlet opens in Andheri." },
+  { year: "2019", title: "Thepla House is named", text: "Tejal's Kitchen becomes Thepla House by Tejal's Kitchen, with its first professionally equipped commercial kitchen in Andheri." },
+  { year: "2020", title: "Santacruz", text: "A second outlet brings Gujarati and Rajasthani home cooking, with Jain options, to Santacruz." },
+  { year: "2021", title: "Lower Parel + catering", text: "Salads, juices and corporate catering launch, and the third outlet opens in Lower Parel." },
+  { year: "2022", title: "Mulund + Singapore", text: "The fourth outlet opens in Mulund and the menu passes 250 dishes. Cold-blast supply to Singapore begins." },
+  { year: "2023", title: "Thane", text: "A new branch opens, serving Thane." },
+  { year: "2024", title: "Dadoji Konddev Stadium", text: "A second Thane branch opens at the stadium with dine-in and banquet service, and the catering business expands." },
+  { year: "2025", title: "Kandivali dine-in", text: "Kandivali opens with a full dine-in menu of Gujarati and Rajasthani food." },
+  { year: "2026", title: "Navi Mumbai Airport", text: "Our first franchise outlet opens at Navi Mumbai International Airport, with Semolina Kitchens Limited, a group company of the Adani Group." },
 ];
 
 const GROWTH = [
@@ -199,6 +207,40 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* Motto & vision */}
+      <section style={{ background: "var(--green-700)", position: "relative", overflow: "hidden" }}>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src="/motifs/leaf-left.png" alt="" aria-hidden="true" style={{ position: "absolute", top: -18, right: -20, width: 170, opacity: 0.25, transform: "scaleX(-1)" }} />
+        <div className="th-container" style={{ position: "relative", paddingTop: 56, paddingBottom: 56 }}>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-14" style={{ maxWidth: 1040, margin: "0 auto" }}>
+            <div>
+              <div className="seglabel" style={{ color: "var(--gold-300)" }}>Our motto</div>
+              <h2 style={{ fontFamily: "var(--font-display)", color: "var(--cream-50)", fontSize: "1.875rem", lineHeight: 1.2, margin: "8px 0 16px" }}>
+                Embrace the change: junk the junk food
+              </h2>
+              <p style={{ fontFamily: "var(--font-body)", color: "var(--green-200)", fontSize: "1.0625rem", lineHeight: 1.7, margin: "0 0 14px" }}>
+                Healthy, homemade meals from Thepla House by Tejal&apos;s Kitchen — 100% quality and freshness in every bite.
+              </p>
+              <p style={{ fontFamily: "var(--font-body)", color: "var(--green-200)", fontSize: "1.0625rem", lineHeight: 1.7, margin: 0 }}>
+                From humble beginnings in a house kitchen, we have grown to {OUTLET_COUNT} locations across Mumbai. Our unwavering motto is to champion healthy homemade food, and to uphold the highest standards of quality and freshness.
+              </p>
+            </div>
+            <div>
+              <div className="seglabel" style={{ color: "var(--gold-300)" }}>Our vision</div>
+              <h2 style={{ fontFamily: "var(--font-display)", color: "var(--cream-50)", fontSize: "1.875rem", lineHeight: 1.2, margin: "8px 0 16px" }}>
+                Home-cooked food, everywhere
+              </h2>
+              <p style={{ fontFamily: "var(--font-body)", color: "var(--green-200)", fontSize: "1.0625rem", lineHeight: 1.7, margin: "0 0 14px" }}>
+                A passion for serving home-cooked food, promoting healthy living, and giving back to the neighbourhood.
+              </p>
+              <p style={{ fontFamily: "var(--font-body)", color: "var(--green-200)", fontSize: "1.0625rem", lineHeight: 1.7, margin: 0 }}>
+                We aim to globalise the concept and the brand — bringing wholesome food to the masses, guiding them away from junk food and towards a year-round healthy eating lifestyle.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Timeline */}
       <section style={{ background: "var(--cream-100)" }}>
         <div className="th-container" style={{ paddingTop: 56, paddingBottom: 56 }}>
@@ -212,10 +254,18 @@ export default function AboutPage() {
             </p>
           </div>
 
-          {/* Desktop alternating timeline */}
-          <div className="hidden md:block" style={{ position: "relative", height: 460 }}>
-            <div aria-hidden="true" style={{ position: "absolute", left: 0, right: 0, top: "50%", height: 3, background: "var(--gold-400)", transform: "translateY(-50%)", zIndex: 0 }} />
-            <div style={{ display: "grid", gridTemplateColumns: `repeat(${MILESTONES.length}, 1fr)`, height: "100%" }}>
+          {/* Desktop alternating timeline.
+              Scrolls horizontally rather than dividing the container by the
+              number of milestones: at nine entries an even split leaves ~65px
+              a card, which the copy overflows. A floor on the column width
+              keeps every card readable however many milestones there are. */}
+          <div className="hidden md:block" style={{ overflowX: "auto", paddingBottom: 10 }}>
+            {/* No max-content here: it would stop the card text wrapping and
+                blow each column out to the width of its longest line. The
+                minmax() floor below is what creates the overflow to scroll. */}
+            <div style={{ position: "relative", height: 460 }}>
+              <div aria-hidden="true" style={{ position: "absolute", left: 0, right: 0, top: "50%", height: 3, background: "var(--gold-400)", transform: "translateY(-50%)", zIndex: 0 }} />
+              <div style={{ display: "grid", gridTemplateColumns: `repeat(${MILESTONES.length}, minmax(186px, 1fr))`, height: "100%" }}>
               {MILESTONES.map((m, i) => {
                 const above = i % 2 === 0;
                 const card = (
@@ -238,8 +288,9 @@ export default function AboutPage() {
                       {!above && card}
                     </div>
                   </div>
-                );
-              })}
+                  );
+                })}
+              </div>
             </div>
           </div>
 

@@ -223,7 +223,11 @@ export const KITCHENS: Kitchen[] = [
     slug: "thane-stadium",
     title: "Thane Stadium",
     area: "Dadoji Konddev Stadium · Naupada",
-    note: "Our Naupada kitchen inside the Dadoji Konddev Stadium canteen — evening orders across Thane West.",
+    // Dine-in + banquet per the brand's own deck and website brief. Note the
+    // Zomato listing still says "Delivery only, no seating" — worth correcting
+    // there, since that is what most customers will check first.
+    dineIn: true,
+    note: "Dine-in, takeaway and delivery at Dadoji Konddev Stadium, Naupada — with a banquet hall seating up to 250.",
     // Split shift: the aggregator listings only ever show the evening one.
     hours: "Mon–Sun · 8am–3pm & 5pm–10pm",
     openingHours: [
@@ -244,8 +248,25 @@ export const KITCHENS: Kitchen[] = [
     areasServed: ["Naupada", "Panchpakhadi", "Tembhi Naka", "Khopat", "Jambli Naka", "Thane Station"],
     popular: DEFAULT_POPULAR,
     localCopy:
-      "Thepla House Thane Stadium cooks from the Dadoji Konddev Stadium canteen at Jambli Naka, Naupada — whole-wheat theplas, thalis and farsan delivered across Thane West, 100% vegetarian with Jain and vegan options. Open daily 8am to 3pm and 5pm to 10pm.",
-    faqs: defaultFaqs("Thane Stadium", "Naupada", "Naupada, Panchpakhadi, Tembhi Naka, Khopat and Thane Station", "Open every day 8am to 3pm and again 5pm to 10pm"),
+      "Thepla House at Dadoji Konddev Stadium, Jambli Naka, Naupada is our Thane dine-in outlet — eat in, take away, or get whole-wheat theplas, thalis and farsan delivered across Thane West. It also has a banquet hall seating up to 250 guests for family functions, celebrations and corporate events. 100% vegetarian, with Jain and vegan options. Open daily 8am to 3pm and 5pm to 10pm.",
+    faqs: [
+      {
+        q: "Can I dine in at Thepla House Dadoji Konddev Stadium?",
+        a: "Yes. This is a dine-in outlet at the stadium in Naupada, Thane West, near Thane railway station — eat in, take away, or order delivery across Thane West.",
+      },
+      {
+        q: "Do you have a banquet hall in Thane?",
+        a: "Yes — the Dadoji Konddev Stadium outlet has a banquet hall seating up to 250 guests, suitable for family functions, celebrations, corporate gatherings and community events. Call us to check dates and plan the menu.",
+      },
+      {
+        q: "What are the Thane Stadium timings?",
+        a: "Open every day, 8am to 3pm and again 5pm to 10pm.",
+      },
+      {
+        q: "Is everything vegetarian, with Jain and vegan options?",
+        a: "Always. We're a 100% vegetarian kitchen, cooking with whole-wheat atta and sunflower oil — never maida or palm oil — with no preservatives. Jain and vegan dishes are clearly tagged.",
+      },
+    ],
   },
   {
     slug: "navi-mumbai",
