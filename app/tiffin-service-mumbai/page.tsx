@@ -36,7 +36,7 @@ const FAQS = [
   },
   {
     q: "Do you deliver home-style food near me?",
-    a: "We run seven kitchens across Mumbai, Thane and Navi Mumbai — Chandivali, Kalina, Lower Parel, Mulund, Thane (Manpada), Navi Mumbai Airport and a Kandivali dine-in outlet — so there's usually one close by. Find your nearest on our locations page.",
+    a: "We run eight kitchens across Mumbai, Thane and Navi Mumbai — Chandivali, Kalina, Lower Parel, Mulund, Thane (Manpada), Thane Stadium (Naupada), Navi Mumbai Airport and a Kandivali dine-in outlet — so there's usually one close by. Find your nearest on our locations page.",
   },
   {
     q: "Can I order home-style lunch every day?",

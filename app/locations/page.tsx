@@ -11,7 +11,7 @@ import { AREAS } from "@/data/areas";
 import { ORDER_PHONE, LOCATIONS_MAP_EMBED } from "@/data/site";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Thepla Near Me in Mumbai — 7 Thepla House Locations",
+  title: "Thepla Near Me in Mumbai — 8 Thepla House Locations",
   description:
     "Looking for fresh thepla near you? Find the nearest Thepla House in Chandivali, Kalina, Lower Parel, Mulund, Thane, Navi Mumbai or Kandivali.",
   path: "/locations",
@@ -20,7 +20,7 @@ export const metadata: Metadata = pageMetadata({
 const LOCATION_FAQS = [
   {
     q: "Where can I find fresh thepla near me in Mumbai?",
-    a: "Thepla House has seven Mumbai-area locations: Chandivali in Andheri East, Kalina in Santacruz East, Lower Parel, Mulund West, Manpada in Thane, Kandivali West and Navi Mumbai International Airport. Choose the closest location below for its address, timings and delivery area.",
+    a: "Thepla House has eight Mumbai-area locations: Chandivali in Andheri East, Kalina in Santacruz East, Lower Parel, Mulund West, Manpada in Thane, the Dadoji Konddev Stadium kitchen at Naupada in Thane West, Kandivali West and Navi Mumbai International Airport. Choose the closest location below for its address, timings and delivery area.",
   },
   {
     q: "Which Thepla House location has dine-in?",
@@ -71,7 +71,7 @@ export default function LocationsPage() {
             Fresh thepla near you across Mumbai
           </h1>
           <p style={{ fontFamily: "var(--font-body)", color: "var(--ink-600)", fontSize: "var(--fs-body-lg)", lineHeight: 1.6, maxWidth: 680, margin: 0 }}>
-            Looking for thepla near you? Choose from seven Thepla House locations across Mumbai, Thane and Navi Mumbai. Order fresh, home-style Gujarati food from the nearest kitchen, or dine in at Kandivali West.
+            Looking for thepla near you? Choose from eight Thepla House locations across Mumbai, Thane and Navi Mumbai. Order fresh, home-style Gujarati food from the nearest kitchen, or dine in at Kandivali West.
           </p>
         </div>
       </section>
@@ -95,6 +95,8 @@ export default function LocationsPage() {
                     detailHref={`/locations/${k.slug}`}
                     directionsHref={k.mapsUrl || `https://www.google.com/maps?q=${encodeURIComponent(k.mapQuery)}`}
                     orderHref="/menu"
+                    swiggyHref={k.swiggyUrl}
+                    zomatoHref={k.zomatoUrl}
                   />
                 ))}
               </div>

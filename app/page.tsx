@@ -80,7 +80,7 @@ export default function HomePage() {
             <div>
               <div className="seglabel">Find us</div>
               <h2 style={{ fontFamily: "var(--font-display)", color: "var(--color-headline)", fontSize: "var(--fs-h2)", margin: "6px 0 0" }}>
-                Fresh thepla near you at 7 Mumbai locations
+                Fresh thepla near you at 8 Mumbai locations
               </h2>
             </div>
             <Link href="/locations" style={{ fontFamily: "var(--font-body)", fontWeight: 600, color: "var(--color-primary)", textDecoration: "none", whiteSpace: "nowrap" }}>
@@ -89,7 +89,7 @@ export default function HomePage() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
             {homeKitchens.map((k) => (
-              <KitchenCard key={k.slug} title={k.title} area={k.area} note={k.address} hours={k.hours} detailHref={`/locations/${k.slug}`} directionsHref={k.mapsUrl || `https://www.google.com/maps?q=${encodeURIComponent(k.mapQuery)}`} orderHref="/menu" />
+              <KitchenCard key={k.slug} title={k.title} area={k.area} note={k.address} hours={k.hours} detailHref={`/locations/${k.slug}`} directionsHref={k.mapsUrl || `https://www.google.com/maps?q=${encodeURIComponent(k.mapQuery)}`} orderHref="/menu" swiggyHref={k.swiggyUrl} zomatoHref={k.zomatoUrl} />
             ))}
           </div>
           <p style={{ fontFamily: "var(--font-body)", color: "var(--ink-500)", fontSize: "0.9375rem", margin: "20px 0 0" }}>

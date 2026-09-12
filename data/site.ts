@@ -51,9 +51,16 @@ export const FRANCHISE_CONTACT = {
   email: "Dhaval@theplahouse.com",
 } as const;
 
-// External ordering aggregators (placeholders for the brand's real listings).
-export const SWIGGY_LINK = "https://www.swiggy.com";
-export const ZOMATO_LINK = "https://www.zomato.com";
+// External ordering aggregators — brand-level listings, NOT the bare homepages.
+// These are what every "Order on Swiggy / Zomato" chip points at, so they must
+// land on Thepla House, not on the aggregator's front page.
+//
+// Zomato: the chain page Zomato itself links to from each outlet ("See all N
+// Thepla House By Tejal's Kitchen outlets in Mumbai") and declares as canonical.
+export const ZOMATO_LINK = "https://www.zomato.com/mumbai/restaurants/thepla-house-by-tejals-kitchen";
+// Swiggy has no chain page, so this is its brand search — location-aware, and it
+// surfaces the customer's nearest outlet rather than a fixed one.
+export const SWIGGY_LINK = "https://www.swiggy.com/search?query=Thepla%20House%20by%20Tejal%27s%20Kitchen";
 
 // ---- Ordering channels ----------------------------------------------------
 export interface OrderChannel {

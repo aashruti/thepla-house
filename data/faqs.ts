@@ -14,7 +14,7 @@ export const HOME_FAQS = [
   },
   {
     q: "Which areas do you deliver to?",
-    a: "We cook from 7 kitchens across Mumbai — Chandivali (Andheri East), Kalina, Lower Parel, Mulund, Thane and Navi Mumbai — plus a Kandivali dine-in outlet. Order on Swiggy, Zomato or WhatsApp.",
+    a: "We cook from 8 kitchens across Mumbai — Chandivali (Andheri East), Kalina, Lower Parel, Mulund, Thane (Manpada), Thane Stadium (Naupada) and Navi Mumbai — plus a Kandivali dine-in outlet. Order on Swiggy, Zomato or WhatsApp.",
   },
   {
     q: "Can I take theplas outside Mumbai?",

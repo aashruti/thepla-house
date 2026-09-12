@@ -28,6 +28,9 @@ export interface Kitchen {
   lng?: number;
   /** dine-in outlet (adds eat-in / reservation signals) */
   dineIn?: boolean;
+  /** Outlet trading hours as 24h "HH:MM", for openingHoursSpecification. Default 09:00–22:00. */
+  opens?: string;
+  closes?: string;
   /**
    * Canonical Google Business Profile / Maps listing URL for this outlet.
    * PASTE THE REAL VERIFIED LISTING URL HERE (Maps → your listing → Share → Copy link,
@@ -117,6 +120,7 @@ export const KITCHENS: Kitchen[] = [
   },
   {
     slug: "lower-parel",
+    closes: "21:00",
     title: "Lower Parel",
     area: "Senapati Bapat Marg",
     note: "Weekday lunches and farsan for the Lower Parel and Worli office crowd.",
@@ -162,13 +166,44 @@ export const KITCHENS: Kitchen[] = [
     lat: 19.2333642,
     lng: 72.9748825,
     zomatoUrl: "https://www.zomato.com/mumbai/thepla-house-by-tejals-kitchen-manpada-thane-west-thane",
-    // ⚠️ Swiggy labels this "Thane Panchpakhadi" while the outlet address is Manpada — same brand & city; confirm it's this kitchen.
-    swiggyUrl: "https://www.swiggy.com/city/mumbai/thepla-house-by-tejals-kitchen-thane-panchpakhadi-rest1316580",
+    // Verified via Swiggy's own outlet switcher: this Manpada kitchen is listed as
+    // "Bhavani Nagar, Thane" (4.5, 3.8K+ ratings), matching the address below.
+    // The "Thane Panchpakhadi" listing that used to sit here is a DIFFERENT outlet
+    // — it belongs to the Dadoji Konddev Stadium kitchen further down.
+    swiggyUrl: "https://www.swiggy.com/city/mumbai/thepla-house-by-tejals-kitchen-bhavani-nagar-thane-rest915463",
     areasServed: ["Thane West", "Manpada", "Kasarvadavali", "Majiwada", "Vartak Nagar", "Hiranandani Estate"],
     popular: DEFAULT_POPULAR,
     localCopy:
       "Thepla House Thane delivers fresh, home-style Gujarati food across Thane from our Manpada kitchen — whole-wheat theplas, thalis and farsan, 100% vegetarian with Jain and vegan options. Open daily 9am–10pm.",
     faqs: defaultFaqs("Thane", "Manpada", "Thane West, Manpada, Kasarvadavali, Majiwada and Hiranandani Estate", "Open Monday to Sunday, 9am to 10pm"),
+  },
+  {
+    slug: "thane-stadium",
+    title: "Thane Stadium",
+    area: "Dadoji Konddev Stadium · Naupada",
+    note: "Our Naupada kitchen inside the Dadoji Konddev Stadium canteen — evening orders across Thane West.",
+    // ⚠️ PROVISIONAL CLOSING TIME. Opening (5pm) is confirmed by both the Zomato and
+    // Swiggy listings; neither publishes a closing time. Confirm with the outlet and
+    // correct `closes` + `hours` — the schema currently states 22:00.
+    hours: "Mon–Sun · from 5pm",
+    opens: "17:00",
+    closes: "22:00",
+    address: "Canteen Dadoji, Kondev Stadium, Jambil Naka, Zone 1, Old Muncipal Road, Naupada, Thane West, Thane, Maharashtra 400601",
+    mapQuery: "19.191686,72.979006",
+    lat: 19.191686,
+    lng: 72.979006,
+    phone: "+91 90044 06296",
+    zomatoUrl: "https://www.zomato.com/mumbai/thepla-house-by-tejals-kitchen-naupada-thane-west-thane",
+    // Swiggy lists this outlet as "Thane Panchpakhadi" (the locality next to Naupada).
+    // Confirmed the same outlet as the Zomato listing above: both open at 5pm, and
+    // Swiggy's outlet switcher puts it 1.4 km from Naupada with Manpada listed
+    // separately as "Bhavani Nagar, Thane".
+    swiggyUrl: "https://www.swiggy.com/city/mumbai/thepla-house-by-tejals-kitchen-thane-panchpakhadi-rest1316580",
+    areasServed: ["Naupada", "Panchpakhadi", "Tembhi Naka", "Khopat", "Jambli Naka", "Thane Station"],
+    popular: DEFAULT_POPULAR,
+    localCopy:
+      "Thepla House Thane Stadium cooks from the Dadoji Konddev Stadium canteen at Jambli Naka, Naupada — whole-wheat theplas, thalis and farsan delivered across Thane West, 100% vegetarian with Jain and vegan options. Open daily from 5pm.",
+    faqs: defaultFaqs("Thane Stadium", "Naupada", "Naupada, Panchpakhadi, Tembhi Naka, Khopat and Thane Station", "Open Monday to Sunday, from 5pm"),
   },
   {
     slug: "navi-mumbai",
@@ -188,6 +223,8 @@ export const KITCHENS: Kitchen[] = [
   },
   {
     slug: "kandivali",
+    opens: "08:00",
+    closes: "22:30",
     title: "Kandivali",
     area: "Kandivali West · Dine-in",
     note: "Our dine-in outlet — eat it fresh, hot off the tawa, or take away.",

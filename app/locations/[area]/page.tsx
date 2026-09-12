@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import type { CSSProperties } from "react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { MenuRow } from "@/components/blocks/MenuRow";
@@ -10,6 +11,24 @@ import { pageMetadata, restaurantLd, faqPageLd, breadcrumbLd } from "@/lib/seo";
 import { KITCHENS, getKitchen } from "@/data/kitchens";
 import { tagsFor } from "@/data/menu";
 import { ORDER_PHONE, ORDER_PHONE_TEL, INSTAGRAM_LINK } from "@/data/site";
+
+const OUTLET_ORDER_LINK: CSSProperties = {
+  display: "inline-flex",
+  alignItems: "center",
+  gap: 9,
+  minHeight: 46,
+  padding: "11px 20px",
+  fontFamily: "var(--font-body)",
+  fontSize: "0.9375rem",
+  fontWeight: 600,
+  color: "var(--ink-700)",
+  background: "var(--color-surface-container)",
+  border: "1px solid var(--color-outline-variant)",
+  borderRadius: "var(--radius-md)",
+  textDecoration: "none",
+};
+
+const OUTLET_ORDER_DOT: CSSProperties = { width: 9, height: 9, borderRadius: "50%", flexShrink: 0 };
 
 export function generateStaticParams() {
   return KITCHENS.map((k) => ({ area: k.slug }));
@@ -45,6 +64,10 @@ export default async function KitchenAreaPage({ params }: { params: Promise<{ ar
   // Prefer the verified GBP listing so directions clicks land on (and engage)
   // OUR listing; fall back to a precise coordinate/place query otherwise.
   const directions = k.mapsUrl || `https://www.google.com/maps?q=${encodeURIComponent(k.mapQuery)}`;
+  // Outlets with their own listed number show it, so the page matches that
+  // outlet's Google Business Profile; the rest fall back to the central line.
+  const outletPhone = k.phone || ORDER_PHONE;
+  const outletPhoneTel = k.phone ? `tel:${k.phone.replace(/[^+\d]/g, "")}` : ORDER_PHONE_TEL;
 
   return (
     <>
@@ -60,8 +83,8 @@ export default async function KitchenAreaPage({ params }: { params: Promise<{ ar
             longitude: k.lng,
             dineIn: k.dineIn,
             areaServed: k.areasServed,
-            opens: k.slug === "kandivali" ? "08:00" : undefined,
-            closes: k.slug === "kandivali" ? "22:30" : k.slug === "lower-parel" ? "21:00" : undefined,
+            opens: k.opens,
+            closes: k.closes,
             mapsUrl: k.mapsUrl || undefined,
             telephone: k.phone,
             // Only REAL, outlet-matching profiles belong in sameAs (the GBP mapsUrl is
@@ -99,7 +122,7 @@ export default async function KitchenAreaPage({ params }: { params: Promise<{ ar
             <div>
               <div style={{ display: "inline-flex", alignItems: "center", gap: 7, background: "var(--leaf-100)", color: "var(--leaf-700)", fontFamily: "var(--font-body)", fontSize: "0.8125rem", fontWeight: 700, padding: "5px 12px", borderRadius: "999px", marginBottom: 12 }}>
                 <span style={{ width: 8, height: 8, borderRadius: "50%", background: "var(--leaf-500)" }} />
-                Open daily · till 10pm
+                {k.hours}
               </div>
               <h1 style={{ fontFamily: "var(--font-display)", color: "var(--color-headline)", fontSize: "var(--fs-display-lg)", lineHeight: 1.06, margin: "0 0 10px" }}>
                 Thepla House {k.title}
@@ -115,6 +138,27 @@ export default async function KitchenAreaPage({ params }: { params: Promise<{ ar
                   Get directions
                 </a>
               </div>
+              {(k.swiggyUrl || k.zomatoUrl) && (
+                <div style={{ marginTop: 16 }}>
+                  <div style={{ fontFamily: "var(--font-body)", color: "var(--ink-500)", fontSize: "0.875rem", marginBottom: 8 }}>
+                    Order this kitchen direct on
+                  </div>
+                  <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
+                    {k.swiggyUrl && (
+                      <a href={k.swiggyUrl} target="_blank" rel="noopener noreferrer" style={OUTLET_ORDER_LINK}>
+                        <span aria-hidden="true" style={{ ...OUTLET_ORDER_DOT, background: "var(--gold-500)" }} />
+                        Swiggy
+                      </a>
+                    )}
+                    {k.zomatoUrl && (
+                      <a href={k.zomatoUrl} target="_blank" rel="noopener noreferrer" style={OUTLET_ORDER_LINK}>
+                        <span aria-hidden="true" style={{ ...OUTLET_ORDER_DOT, background: "var(--maroon-600)" }} />
+                        Zomato
+                      </a>
+                    )}
+                  </div>
+                </div>
+              )}
             </div>
             <div style={{ borderRadius: "var(--radius-2xl)", overflow: "hidden", boxShadow: "var(--shadow-lg)", height: 320 }}>
               <MapSlot label={`Map: Thepla House ${k.title}, ${k.area}`} query={k.mapQuery} />
@@ -136,7 +180,7 @@ export default async function KitchenAreaPage({ params }: { params: Promise<{ ar
           </div>
           <div style={{ flex: 1, minWidth: 170 }}>
             <div className="seglabel" style={{ color: "var(--gold-300)" }}>Order line</div>
-            <a href={ORDER_PHONE_TEL} style={{ fontFamily: "var(--font-body)", color: "var(--cream-50)", fontSize: "1.0625rem", marginTop: 4, display: "block", textDecoration: "none" }}>{ORDER_PHONE}</a>
+            <a href={outletPhoneTel} style={{ fontFamily: "var(--font-body)", color: "var(--cream-50)", fontSize: "1.0625rem", marginTop: 4, display: "block", textDecoration: "none" }}>{outletPhone}</a>
           </div>
         </div>
       </section>
