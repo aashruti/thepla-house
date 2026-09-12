@@ -3,6 +3,12 @@ import path from "node:path";
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
+  // A verification build would otherwise overwrite .next underneath a running
+  // `next dev`, leaving the dev server serving a half-deleted build (the page
+  // loads without CSS, or 500s on a missing manifest). Set NEXT_DIST_DIR to
+  // build into a scratch directory instead:
+  //   NEXT_DIST_DIR=.next-verify npm run build
+  distDir: process.env.NEXT_DIST_DIR || ".next",
   // Pin the file-tracing root to this project (a stray lockfile lives higher up).
   outputFileTracingRoot: path.join(__dirname),
   images: {
