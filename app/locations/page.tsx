@@ -68,10 +68,10 @@ export default function LocationsPage() {
         <div className="th-container" style={{ position: "relative", paddingTop: 48, paddingBottom: 36 }}>
           <div className="seglabel">Find us</div>
           <h1 style={{ fontFamily: "var(--font-display)", color: "var(--color-headline)", fontSize: "var(--fs-display-lg)", lineHeight: 1.08, margin: "10px 0 14px" }}>
-            Fresh thepla near you across Mumbai
+            Find a Thepla House by Tejal&apos;s Kitchen near you in Mumbai
           </h1>
           <p style={{ fontFamily: "var(--font-body)", color: "var(--ink-600)", fontSize: "var(--fs-body-lg)", lineHeight: 1.6, maxWidth: 680, margin: 0 }}>
-            Looking for thepla near you? Choose from eight Thepla House by Tejal's Kitchen locations across Mumbai, Thane and Navi Mumbai. Order fresh, home-style Gujarati food from the nearest kitchen, or dine in at Kandivali West and Dadoji Konddev Stadium, Thane.
+            Looking for authentic Gujarati, Rajasthani and Marwadi food in Mumbai? Thepla House by Tejal&apos;s Kitchen brings wholesome, traditional flavours closer to you through eight locations across Mumbai and Navi Mumbai.
           </p>
         </div>
       </section>
