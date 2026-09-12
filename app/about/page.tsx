@@ -185,7 +185,7 @@ export default function AboutPage() {
               This philosophy became the foundation of the brand — bringing the comfort and goodness of <em>ghar ka khana</em> into a professional food-service environment.
             </p>
           </div>
-          <ul style={{ listStyle: "none", display: "flex", flexWrap: "wrap", justifyContent: "center", gap: 10, padding: 0, margin: "0 0 28px", maxWidth: 860, marginInline: "auto" }}>
+          <ul style={{ listStyle: "none", display: "flex", flexWrap: "wrap", justifyContent: "center", gap: 10, padding: 0, margin: 0, maxWidth: 860, marginInline: "auto" }}>
             {PHILOSOPHY.map((item) => (
               <li
                 key={item}
@@ -196,9 +196,6 @@ export default function AboutPage() {
               </li>
             ))}
           </ul>
-          <p style={{ fontFamily: "var(--font-body)", color: "var(--ink-600)", fontSize: "var(--fs-body-lg)", lineHeight: 1.7, margin: 0, maxWidth: 760, marginInline: "auto", textAlign: "center" }}>
-            The emphasis is on food that feels familiar, wholesome and home-style — delivered with the consistency and efficiency of a professionally managed food business.
-          </p>
         </div>
       </section>
 
