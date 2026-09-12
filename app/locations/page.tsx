@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { KitchenCard } from "@/components/blocks/KitchenCard";
 import { MapSlot } from "@/components/blocks/MapSlot";
+import { GharKaKhana } from "@/components/blocks/GharKaKhana";
+import { OrderChannels } from "@/components/blocks/OrderChannels";
 import { Accordion } from "@/components/ds/Accordion";
 import { CTABanner } from "@/components/ds/CTABanner";
 import { TrimBorder } from "@/components/ds/TrimBorder";
@@ -9,7 +11,7 @@ import { JsonLd } from "@/components/JsonLd";
 import { pageMetadata, faqPageLd, breadcrumbLd, absUrl } from "@/lib/seo";
 import { KITCHENS } from "@/data/kitchens";
 import { AREAS } from "@/data/areas";
-import { SITE, ORDER_PHONE, LOCATIONS_MAP_EMBED } from "@/data/site";
+import { SITE, ORDER_PHONE, ORDER_PHONE_TEL, LOCATIONS_MAP_EMBED } from "@/data/site";
 
 export const metadata: Metadata = pageMetadata({
   title: "Thepla Near Me — 8 Thepla House by Tejal's Kitchen Outlets",
@@ -211,6 +213,31 @@ export default function LocationsPage() {
           </h2>
           <div style={{ textAlign: "left" }}>
             <Accordion items={LOCATION_FAQS} defaultOpen={[0]} />
+          </div>
+        </div>
+      </section>
+
+      {/* The promise, in the languages our customers speak. The English line is
+          also the CTA title below, so this reads as the same sentence four ways. */}
+      <section style={{ background: "var(--green-700)", position: "relative", overflow: "hidden" }}>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src="/motifs/leaf-left.png" alt="" aria-hidden="true" style={{ position: "absolute", bottom: -22, right: -18, width: 170, opacity: 0.26, transform: "scaleX(-1)" }} />
+        <div className="th-container" style={{ position: "relative", paddingTop: 52, paddingBottom: 52 }}>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-14 items-center" style={{ maxWidth: 1040, margin: "0 auto" }}>
+            <GharKaKhana />
+            <div>
+              <h2 style={{ fontFamily: "var(--font-display)", color: "var(--cream-50)", fontSize: "var(--fs-h2)", lineHeight: 1.15, margin: "0 0 14px" }}>
+                Fresh, wholesome, home-style food — delivered to you
+              </h2>
+              <p style={{ fontFamily: "var(--font-body)", color: "var(--green-200)", fontSize: "1.0625rem", lineHeight: 1.7, margin: "0 0 20px" }}>
+                Order from your nearest Thepla House by Tejal&apos;s Kitchen on Swiggy, Zomato or WhatsApp — or simply call us at{" "}
+                <a href={ORDER_PHONE_TEL} style={{ color: "var(--gold-300)", fontWeight: 600, textDecoration: "none" }}>
+                  {ORDER_PHONE}
+                </a>
+                .
+              </p>
+              <OrderChannels label="Order on" />
+            </div>
           </div>
         </div>
       </section>
