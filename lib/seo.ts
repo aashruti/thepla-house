@@ -158,6 +158,12 @@ export interface RestaurantGeo {
   telephone?: string;
   /** Extra profiles that prove this is the same real-world business (aggregators, socials). */
   sameAs?: string[];
+  /**
+   * Counter outlet that cannot deliver — e.g. the airside franchise inside the
+   * airport departures terminal. Suppresses the delivery OrderAction so we never
+   * advertise delivery Google would then surface for an outlet that has none.
+   */
+  noDelivery?: boolean;
 }
 
 export function restaurantLd(geo: RestaurantGeo) {
@@ -212,11 +218,15 @@ export function restaurantLd(geo: RestaurantGeo) {
           ],
         }
       : {}),
-    potentialAction: {
-      "@type": "OrderAction",
-      target: WHATSAPP_LINK,
-      deliveryMethod: ["http://purl.org/goodrelations/v1#DeliveryModeOwnFleet"],
-    },
+    ...(geo.noDelivery
+      ? {}
+      : {
+          potentialAction: {
+            "@type": "OrderAction",
+            target: WHATSAPP_LINK,
+            deliveryMethod: ["http://purl.org/goodrelations/v1#DeliveryModeOwnFleet"],
+          },
+        }),
   };
 }
 

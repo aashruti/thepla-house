@@ -20,11 +20,11 @@ export const metadata: Metadata = pageMetadata({
 const LOCATION_FAQS = [
   {
     q: "Where can I find fresh thepla near me in Mumbai?",
-    a: "Thepla House has eight Mumbai-area locations: Chandivali in Andheri East, Kalina in Santacruz East, Lower Parel, Mulund West, Manpada in Thane, the Dadoji Konddev Stadium kitchen at Naupada in Thane West, Kandivali West and Navi Mumbai International Airport. Choose the closest location below for its address, timings and delivery area.",
+    a: "Thepla House has eight Mumbai-area locations: Chandivali in Andheri East, Kalina in Santacruz East, Lower Parel, Mulund West, Manpada in Thane, the Dadoji Konddev Stadium kitchen at Naupada in Thane West, Kandivali West, and a takeaway counter inside Navi Mumbai International Airport departures. Choose the closest location below for its address, timings and delivery area.",
   },
   {
     q: "Which Thepla House location has dine-in?",
-    a: "Our Kandivali West outlet offers dine-in and takeaway. The other Mumbai kitchens primarily serve delivery and takeaway orders.",
+    a: "Our Kandivali West outlet offers dine-in and takeaway. The other Mumbai kitchens serve delivery and takeaway, and our Navi Mumbai International Airport counter is takeaway only, inside the departures terminal.",
   },
   {
     q: "Can I order Gujarati thali and thepla for home delivery?",
@@ -147,9 +147,9 @@ export default function LocationsPage() {
                 </div>
                 <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
                   <a href="/menu" style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", minHeight: 48, padding: "13px 26px", fontFamily: "var(--font-body)", fontSize: "1rem", fontWeight: 600, color: "var(--color-on-secondary)", background: "var(--color-secondary)", borderRadius: "var(--radius-md)", boxShadow: "var(--shadow-md)", textDecoration: "none" }}>
-                    Order now
+                    See the menu
                   </a>
-                  <a href={`https://www.google.com/maps?q=${encodeURIComponent(airport.mapQuery)}`} target="_blank" rel="noopener noreferrer" style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", minHeight: 48, padding: "13px 24px", fontFamily: "var(--font-body)", fontSize: "1rem", fontWeight: 600, color: "var(--cream-50)", border: "1.5px solid var(--cream-100)", borderRadius: "var(--radius-md)", textDecoration: "none" }}>
+                  <a href={airport.mapsUrl || `https://www.google.com/maps?q=${encodeURIComponent(airport.mapQuery)}`} target="_blank" rel="noopener noreferrer" style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", minHeight: 48, padding: "13px 24px", fontFamily: "var(--font-body)", fontSize: "1rem", fontWeight: 600, color: "var(--cream-50)", border: "1.5px solid var(--cream-100)", borderRadius: "var(--radius-md)", textDecoration: "none" }}>
                     Get directions
                   </a>
                 </div>

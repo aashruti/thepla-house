@@ -28,6 +28,12 @@ export interface Kitchen {
   lng?: number;
   /** dine-in outlet (adds eat-in / reservation signals) */
   dineIn?: boolean;
+  /**
+   * Franchise counter inside the airport departures terminal: no delivery, and
+   * reachable only by departing passengers past security. Suppresses delivery
+   * copy, delivery areas and the delivery OrderAction.
+   */
+  airside?: boolean;
   /** Outlet trading hours as 24h "HH:MM", for openingHoursSpecification. Default 09:00–22:00. */
   opens?: string;
   closes?: string;
@@ -207,19 +213,40 @@ export const KITCHENS: Kitchen[] = [
   },
   {
     slug: "navi-mumbai",
-    title: "Navi Mumbai",
-    area: "Airport · Ulwe",
-    note: "At the new Navi Mumbai International Airport — serving Ulwe and the airport belt.",
+    title: "Navi Mumbai Airport",
+    area: "Departures · NMIA",
+    airside: true,
+    note: "Our franchise counter inside Navi Mumbai International Airport departures — takeaway for passengers, no delivery.",
     hours: "Mon–Sun · 9am–10pm",
-    address: "Navi Mumbai International Airport, Ulwe, Pargaon Dungi, Navi Mumbai, Maharashtra 410206",
-    mapQuery: "Navi Mumbai International Airport, Ulwe",
+    address: "Departures terminal, Navi Mumbai International Airport, Ulwe, Pargaon Dungi, Navi Mumbai, Maharashtra 410206",
+    // Coordinates, not a text search — a brand/place text query pulls competitors
+    // into the embed and into Google's entity understanding for this outlet.
+    mapQuery: "18.999,73.074",
     lat: 18.999,
     lng: 73.074,
-    areasServed: ["Ulwe", "Dronagiri", "Panvel", "Kharghar", "Nerul", "Vashi"],
+    // No areasServed: this counter is airside and delivers nowhere.
+    areasServed: [],
     popular: DEFAULT_POPULAR,
     localCopy:
-      "Thepla House Navi Mumbai is at the new Navi Mumbai International Airport in Ulwe, serving the airport belt with fresh, home-style Gujarati food — whole-wheat theplas, thalis and farsan, 100% vegetarian with Jain and vegan options. Open daily 9am–10pm.",
-    faqs: defaultFaqs("Navi Mumbai", "Ulwe", "Ulwe, Dronagiri, Panvel, Kharghar and Nerul", "Open Monday to Sunday, 9am to 10pm"),
+      "Thepla House at Navi Mumbai International Airport is a franchise counter inside the departures terminal — fresh, home-style Gujarati food to take on board, whole-wheat theplas, thalis and farsan, 100% vegetarian with Jain and vegan options. Takeaway for departing passengers only; this outlet does not deliver.",
+    faqs: [
+      {
+        q: "Where exactly is Thepla House at Navi Mumbai airport?",
+        a: "Inside the departures terminal at Navi Mumbai International Airport, Ulwe. It is past security, so it is reachable only by passengers departing from NMIA — not from the landside pick-up area.",
+      },
+      {
+        q: "Does the airport outlet deliver?",
+        a: "No. This is a takeaway counter for departing passengers and does not deliver, so it is not on Swiggy or Zomato. For delivery across Navi Mumbai, order from your nearest Thepla House kitchen on our locations page.",
+      },
+      {
+        q: "Can I order ahead or collect from the airport counter?",
+        a: "Orders are taken at the counter itself. Because it sits past security, collection is only possible if you are already flying out of the departures terminal.",
+      },
+      {
+        q: "Is everything vegetarian, with Jain and vegan options?",
+        a: "Always. It is a 100% vegetarian counter cooking with whole-wheat atta and sunflower oil — never maida or palm oil — with Jain and vegan choices clearly tagged.",
+      },
+    ],
   },
   {
     slug: "kandivali",

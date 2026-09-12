@@ -119,8 +119,10 @@ export const FOOTER_COLUMNS = [
       { label: "Chandivali · Andheri East", href: "/locations/chandivali" },
       { label: "Lower Parel", href: "/locations/lower-parel" },
       { label: "Mulund", href: "/locations/mulund" },
-      { label: "Thane", href: "/locations/thane" },
+      { label: "Thane · Manpada", href: "/locations/thane" },
+      { label: "Thane · Stadium", href: "/locations/thane-stadium" },
       { label: "Kandivali (dine-in)", href: "/locations/kandivali" },
+      { label: "Navi Mumbai Airport", href: "/locations/navi-mumbai" },
     ],
   },
   {
