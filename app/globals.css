@@ -90,15 +90,19 @@ body {
   }
 }
 
-/* ---- Locations hub: map becomes a sticky rail on desktop ---- */
+/* ---- Locations hub: map becomes a sticky rail on desktop ----
+   Portrait on purpose: the outlets run north-south, Lower Parel up to Thane,
+   so a tall frame holds the cluster at a closer zoom than a square one can. */
 .locations-map {
-  height: 280px;
+  height: 420px;
 }
 @media (min-width: 1024px) {
   .locations-map {
     position: sticky;
     top: 84px;
-    height: 520px;
+    /* Tall, but never taller than the viewport — it has to stay fully visible
+       while the card column scrolls past it. */
+    height: clamp(520px, calc(100vh - 140px), 800px);
   }
 }
 
