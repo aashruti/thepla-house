@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { CSSProperties } from "react";
 import { AggregatorLink } from "./AggregatorLink";
+import { externalLinkProps } from "@/lib/links";
 
 /**
  * KitchenCard — location card: area, name, note, hours, directions + order.
@@ -86,6 +87,7 @@ export function KitchenCard({
         </Link>
         <Link
           href={orderHref}
+          {...externalLinkProps(orderHref)}
           style={{ flex: 1, textAlign: "center", fontFamily: "var(--font-body)", fontSize: "0.8125rem", fontWeight: 600, color: "var(--color-on-primary)", background: "var(--color-primary)", borderRadius: "var(--radius-md)", padding: "9px 10px", textDecoration: "none" }}
         >
           Order
