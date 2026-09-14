@@ -88,11 +88,13 @@ export interface OrderChannel {
   href: string;
   dot: string; // brand-colour dot
   external?: boolean;
+  /** Set for Swiggy/Zomato — rendered by AggregatorLink with the brand's own look. */
+  aggregator?: "swiggy" | "zomato";
 }
 
 export const ORDER_CHANNELS: OrderChannel[] = [
-  { label: "Swiggy", href: SWIGGY_LINK, dot: "var(--gold-500)", external: true },
-  { label: "Zomato", href: ZOMATO_LINK, dot: "var(--maroon-600)", external: true },
+  { label: "Swiggy", href: SWIGGY_LINK, dot: "var(--gold-500)", external: true, aggregator: "swiggy" },
+  { label: "Zomato", href: ZOMATO_LINK, dot: "var(--maroon-600)", external: true, aggregator: "zomato" },
   { label: "WhatsApp", href: WHATSAPP_LINK, dot: "var(--leaf-500)", external: true },
 ];
 

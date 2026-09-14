@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import type { CSSProperties } from "react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { MenuRow } from "@/components/blocks/MenuRow";
@@ -12,24 +11,7 @@ import { KITCHENS, getKitchen } from "@/data/kitchens";
 import { tagsFor } from "@/data/menu";
 import { SITE, ORDER_PHONE, ORDER_PHONE_TEL, INSTAGRAM_LINK, ORDER_NOW_LINK } from "@/data/site";
 import { externalLinkProps } from "@/lib/links";
-
-const OUTLET_ORDER_LINK: CSSProperties = {
-  display: "inline-flex",
-  alignItems: "center",
-  gap: 9,
-  minHeight: 46,
-  padding: "11px 20px",
-  fontFamily: "var(--font-body)",
-  fontSize: "0.9375rem",
-  fontWeight: 600,
-  color: "var(--ink-700)",
-  background: "var(--color-surface-container)",
-  border: "1px solid var(--color-outline-variant)",
-  borderRadius: "var(--radius-md)",
-  textDecoration: "none",
-};
-
-const OUTLET_ORDER_DOT: CSSProperties = { width: 9, height: 9, borderRadius: "50%", flexShrink: 0 };
+import { AggregatorLink } from "@/components/blocks/AggregatorLink";
 
 export function generateStaticParams() {
   return KITCHENS.map((k) => ({ area: k.slug }));
@@ -163,18 +145,8 @@ export default async function KitchenAreaPage({ params }: { params: Promise<{ ar
                     Order this kitchen direct on
                   </div>
                   <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
-                    {k.swiggyUrl && (
-                      <a href={k.swiggyUrl} target="_blank" rel="noopener noreferrer" style={OUTLET_ORDER_LINK}>
-                        <span aria-hidden="true" style={{ ...OUTLET_ORDER_DOT, background: "var(--gold-500)" }} />
-                        Swiggy
-                      </a>
-                    )}
-                    {k.zomatoUrl && (
-                      <a href={k.zomatoUrl} target="_blank" rel="noopener noreferrer" style={OUTLET_ORDER_LINK}>
-                        <span aria-hidden="true" style={{ ...OUTLET_ORDER_DOT, background: "var(--maroon-600)" }} />
-                        Zomato
-                      </a>
-                    )}
+                    {k.swiggyUrl && <AggregatorLink service="swiggy" href={k.swiggyUrl} size="lg" />}
+                    {k.zomatoUrl && <AggregatorLink service="zomato" href={k.zomatoUrl} size="lg" />}
                   </div>
                 </div>
               )}

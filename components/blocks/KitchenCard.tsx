@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { CSSProperties } from "react";
+import { AggregatorLink } from "./AggregatorLink";
 
 /**
  * KitchenCard — location card: area, name, note, hours, directions + order.
@@ -18,31 +19,6 @@ export interface KitchenCardProps {
   style?: CSSProperties;
   className?: string;
 }
-
-const AGGREGATOR_LINK: CSSProperties = {
-  flex: 1,
-  display: "inline-flex",
-  alignItems: "center",
-  justifyContent: "center",
-  gap: 7,
-  minHeight: 38,
-  fontFamily: "var(--font-body)",
-  fontSize: "0.8125rem",
-  fontWeight: 600,
-  color: "var(--ink-700)",
-  background: "var(--cream-50)",
-  border: "1px solid var(--color-outline-variant)",
-  borderRadius: "var(--radius-md)",
-  padding: "8px 10px",
-  textDecoration: "none",
-};
-
-const AGGREGATOR_DOT: CSSProperties = {
-  width: 8,
-  height: 8,
-  borderRadius: "50%",
-  flexShrink: 0,
-};
 
 export function KitchenCard({
   title,
@@ -117,28 +93,8 @@ export function KitchenCard({
       </div>
       {(swiggyHref || zomatoHref) && (
         <div style={{ display: "flex", gap: 8 }}>
-          {swiggyHref && (
-            <a
-              href={swiggyHref}
-              target="_blank"
-              rel="noopener noreferrer"
-              style={AGGREGATOR_LINK}
-            >
-              <span aria-hidden="true" style={{ ...AGGREGATOR_DOT, background: "var(--gold-500)" }} />
-              Swiggy
-            </a>
-          )}
-          {zomatoHref && (
-            <a
-              href={zomatoHref}
-              target="_blank"
-              rel="noopener noreferrer"
-              style={AGGREGATOR_LINK}
-            >
-              <span aria-hidden="true" style={{ ...AGGREGATOR_DOT, background: "var(--maroon-600)" }} />
-              Zomato
-            </a>
-          )}
+          {swiggyHref && <AggregatorLink service="swiggy" href={swiggyHref} size="sm" fill />}
+          {zomatoHref && <AggregatorLink service="zomato" href={zomatoHref} size="sm" fill />}
         </div>
       )}
     </div>
