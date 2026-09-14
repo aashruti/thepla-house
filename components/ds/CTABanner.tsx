@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { externalLinkProps } from "@/lib/links";
 import type { CSSProperties, ReactNode } from "react";
 
 /**
@@ -152,11 +153,11 @@ export function CTABanner({
           // instead of the second button overflowing and being clipped.
           style={{ display: "flex", gap: 12, flexWrap: "wrap", justifyContent: "center", flexShrink: 0, maxWidth: "100%" }}
         >
-          <Link href={primaryHref} style={primaryStyle}>
+          <Link href={primaryHref} {...externalLinkProps(primaryHref)} style={primaryStyle}>
             {primaryLabel}
           </Link>
           {secondaryLabel && (
-            <Link href={secondaryHref} style={secondaryStyle}>
+            <Link href={secondaryHref} {...externalLinkProps(secondaryHref)} style={secondaryStyle}>
               {secondaryLabel}
             </Link>
           )}

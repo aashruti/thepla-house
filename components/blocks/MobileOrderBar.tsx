@@ -1,4 +1,5 @@
 import { WHATSAPP_LINK, ORDER_PHONE_TEL } from "@/data/site";
+import { externalLinkProps } from "@/lib/links";
 
 /**
  * MobileOrderBar — persistent bottom order bar, mobile only. Replaced by the
@@ -13,6 +14,7 @@ export function MobileOrderBar({ orderHref = "/menu" }: MobileOrderBarProps) {
     <div className="mobile-order-bar" role="region" aria-label="Order now">
       <a
         href={orderHref}
+        {...externalLinkProps(orderHref)}
         style={{ flex: 1, textAlign: "center", padding: 13, fontFamily: "var(--font-body)", fontSize: "1rem", fontWeight: 700, color: "var(--color-on-secondary)", background: "var(--color-secondary)", borderRadius: "var(--radius-md)", textDecoration: "none" }}
       >
         Order now
