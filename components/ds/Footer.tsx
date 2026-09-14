@@ -52,13 +52,11 @@ export function Footer({
   return (
     <footer style={{ background: "var(--green-800)", color: "var(--cream-100)", fontFamily: "var(--font-body)" }}>
       <div
+        className="footer-grid"
         style={{
           maxWidth: "var(--container-xl)",
           margin: "0 auto",
           padding: "56px 20px 28px",
-          display: "grid",
-          gridTemplateColumns: "minmax(220px, 1.4fr) repeat(auto-fit, minmax(140px, 1fr))",
-          gap: 40,
         }}
       >
         <div>

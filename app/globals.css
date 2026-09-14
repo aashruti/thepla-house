@@ -92,6 +92,30 @@ body {
   }
 }
 
+/* ---- Footer columns ----
+   Mobile: brand block full width, link columns two-up beneath it. The desktop
+   template can't be used there — its first track alone demands 220px plus a
+   140px column and the gap, 400px of fixed tracks on a 335px content area, and
+   the overflow widened the whole page on phones (pushing the fixed order bar's
+   Call button off-screen). */
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 32px 20px;
+}
+.footer-grid > :first-child {
+  grid-column: 1 / -1;
+}
+@media (min-width: 768px) {
+  .footer-grid {
+    grid-template-columns: minmax(220px, 1.4fr) repeat(auto-fit, minmax(140px, 1fr));
+    gap: 40px;
+  }
+  .footer-grid > :first-child {
+    grid-column: auto;
+  }
+}
+
 /* ---- About: brand-evolution timeline ----
    Vertical so it takes any number of milestones. The rail is drawn on the list
    itself, not absolutely positioned inside a fixed-height box, so it always
