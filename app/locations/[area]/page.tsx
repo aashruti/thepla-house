@@ -10,7 +10,8 @@ import { JsonLd } from "@/components/JsonLd";
 import { pageMetadata, restaurantLd, faqPageLd, breadcrumbLd } from "@/lib/seo";
 import { KITCHENS, getKitchen } from "@/data/kitchens";
 import { tagsFor } from "@/data/menu";
-import { SITE, ORDER_PHONE, ORDER_PHONE_TEL, INSTAGRAM_LINK } from "@/data/site";
+import { SITE, ORDER_PHONE, ORDER_PHONE_TEL, INSTAGRAM_LINK, ORDER_NOW_LINK } from "@/data/site";
+import { externalLinkProps } from "@/lib/links";
 
 const OUTLET_ORDER_LINK: CSSProperties = {
   display: "inline-flex",
@@ -74,6 +75,9 @@ export default async function KitchenAreaPage({ params }: { params: Promise<{ ar
   const directions = k.mapsUrl || `https://www.google.com/maps?q=${encodeURIComponent(k.mapQuery)}`;
   // Outlets with their own listed number show it, so the page matches that
   // outlet's Google Business Profile; the rest fall back to the central line.
+  // Order this outlet specifically where it has its own Swiggy listing; the
+  // airside counter takes no remote orders, so its button stays on the menu.
+  const orderHref = k.airside ? "/menu" : k.swiggyUrl || ORDER_NOW_LINK;
   const outletPhone = k.phone || ORDER_PHONE;
   const outletPhoneTel = k.phone ? `tel:${k.phone.replace(/[^+\d]/g, "")}` : ORDER_PHONE_TEL;
 
@@ -146,7 +150,7 @@ export default async function KitchenAreaPage({ params }: { params: Promise<{ ar
                   : `Home-style Gujarati food in ${k.area} — theplas, thalis, farsan and sweets, made fresh with whole-wheat atta, sunflower oil and no preservatives.`}
               </p>
               <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
-                <Link href="/menu" style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", minHeight: 52, padding: "14px 28px", fontFamily: "var(--font-body)", fontSize: "1.0625rem", fontWeight: 600, color: "var(--color-on-primary)", background: "var(--color-primary)", borderRadius: "var(--radius-md)", boxShadow: "var(--shadow-sm)", textDecoration: "none" }}>
+                <Link href={orderHref} {...externalLinkProps(orderHref)} style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", minHeight: 52, padding: "14px 28px", fontFamily: "var(--font-body)", fontSize: "1.0625rem", fontWeight: 600, color: "var(--color-on-primary)", background: "var(--color-primary)", borderRadius: "var(--radius-md)", boxShadow: "var(--shadow-sm)", textDecoration: "none" }}>
                   {k.airside ? "See the menu" : "Order now"}
                 </Link>
                 <a href={directions} target="_blank" rel="noopener noreferrer" style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", minHeight: 52, padding: "14px 26px", fontFamily: "var(--font-body)", fontSize: "1.0625rem", fontWeight: 600, color: "var(--color-primary)", border: "1.5px solid var(--color-outline)", borderRadius: "var(--radius-md)", textDecoration: "none" }}>
@@ -301,7 +305,7 @@ export default async function KitchenAreaPage({ params }: { params: Promise<{ ar
                 : `Delivery on Swiggy, Zomato or WhatsApp — or call ${ORDER_PHONE}.`
             }
             primaryLabel={k.airside ? "See the menu" : "Order now"}
-            primaryHref="/menu"
+            primaryHref={orderHref}
             secondaryLabel={k.airside ? "Find a delivery kitchen" : "See the menu"}
             secondaryHref={k.airside ? "/locations" : "/menu"}
           />
