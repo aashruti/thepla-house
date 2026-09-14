@@ -5,7 +5,7 @@ import { MenuExplorer } from "@/components/blocks/MenuExplorer";
 import { CTABanner } from "@/components/ds/CTABanner";
 import { JsonLd } from "@/components/JsonLd";
 import { pageMetadata, menuLd, breadcrumbLd } from "@/lib/seo";
-import { MENU_CATEGORIES, tagsFor } from "@/data/menu";
+import { MENU_CATEGORIES, HOMELY_HEALTHY, tagsFor } from "@/data/menu";
 import { MenuItemCard } from "@/components/blocks/MenuItemCard";
 import { ORDER_PHONE, WHATSAPP_LINK, ORDER_NOW_LINK } from "@/data/site";
 import menuExtracted from "@/data/menu-extracted.json";
@@ -109,6 +109,25 @@ export default function MenuPage() {
             Our most-ordered dishes, by category. Filter for best-sellers, upvas dishes or whole wheat. For prices, see the menu above.
           </p>
           <MenuExplorer />
+        </div>
+      </section>
+
+      {/* Homely & Healthy is a separate line from the same kitchens, so it gets
+          its own section rather than a tab among the Thepla House categories. */}
+      <section id="homely-healthy" style={{ background: "var(--green-700)", position: "relative", overflow: "hidden" }}>
+        <div className="th-container" style={{ position: "relative", paddingTop: 52, paddingBottom: 56 }}>
+          <div className="seglabel" style={{ color: "var(--gold-300)" }}>Also from our kitchens</div>
+          <h2 style={{ fontFamily: "var(--font-display)", color: "var(--cream-50)", fontSize: "var(--fs-title)", lineHeight: 1.12, margin: "8px 0 10px" }}>
+            Homely &amp; Healthy
+          </h2>
+          <p style={{ fontFamily: "var(--font-body)", color: "var(--green-200)", fontSize: "var(--fs-body-lg)", lineHeight: 1.6, maxWidth: 720, margin: "0 0 26px" }}>
+            Complete thalis and meals, cooked in the same kitchens.
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {HOMELY_HEALTHY.map((d) => (
+              <MenuItemCard key={d.title} title={d.title} desc={d.desc} subject={d.subject} alt={d.alt} tags={tagsFor(d.keys)} src={d.image} />
+            ))}
+          </div>
         </div>
       </section>
 
