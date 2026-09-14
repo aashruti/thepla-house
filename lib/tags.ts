@@ -14,4 +14,5 @@ export const TAGS = {
   jain: { label: "Jain", bg: "var(--color-jain-bg)", fg: "var(--color-jain)" },
   vegan: { label: "🌿 Vegan", bg: "var(--color-vegan-bg)", fg: "var(--color-vegan)" },
   nopalm: { label: "No palm oil", bg: "var(--green-100)", fg: "var(--green-700)" },
+  upvas: { label: "Upvas / fasting", bg: "var(--cream-200)", fg: "var(--green-800)" },
 } satisfies Record<string, DishTag>;
