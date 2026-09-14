@@ -75,20 +75,20 @@ export function MenuExplorer() {
           {/* Mobile: compact rows */}
           <div className="md:hidden" style={{ display: "flex", flexDirection: "column", gap: 12, paddingTop: 20 }}>
             {filtered.map((d) => (
-              <MenuRow key={d.title} title={d.title} desc={d.desc} subject={d.subject} alt={d.alt} tags={tagsFor(d.keys)} />
+              <MenuRow key={d.title} title={d.title} desc={d.desc} subject={d.subject} alt={d.alt} tags={tagsFor(d.keys)} src={d.image} />
             ))}
           </div>
           {/* Tablet/desktop: card grid */}
           <div className="hidden md:grid grid-cols-2 lg:grid-cols-3 gap-6" style={{ paddingTop: 28 }}>
             {filtered.map((d) => (
-              <MenuItemCard key={d.title} title={d.title} desc={d.desc} subject={d.subject} alt={d.alt} tags={tagsFor(d.keys)} />
+              <MenuItemCard key={d.title} title={d.title} desc={d.desc} subject={d.subject} alt={d.alt} tags={tagsFor(d.keys)} src={d.image} />
             ))}
           </div>
         </>
       )}
 
       <p style={{ fontFamily: "var(--font-body)", color: "var(--ink-500)", fontSize: "0.9375rem", margin: "28px 0 0" }}>
-        This is a representative selection — the full kitchen runs to 250+ dishes across theplas, thalis, farsan, sweets and seasonal specials.
+        These are our 44 most-ordered dishes. The full menu runs to 250+ — see it in full in the menu above, or on Swiggy and Zomato.
       </p>
     </>
   );
