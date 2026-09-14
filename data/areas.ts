@@ -1,12 +1,7 @@
-import type { TagKey } from "./menu";
+import { POPULAR_DISHES, type Dish } from "./menu";
 
-export interface AreaDish {
-  title: string;
-  desc: string;
-  subject: string;
-  alt: string;
-  keys: TagKey[];
-}
+/** Same shape as a menu dish, so area pages can show the real photos. */
+export type AreaDish = Dish;
 
 export interface Area {
   slug: string; // -> /gujarati-food-delivery-[slug]
@@ -21,13 +16,10 @@ export interface Area {
   faqs: { q: string; a: string }[];
 }
 
-function popularFor(area: string): AreaDish[] {
-  return [
-    { title: "Methi Thepla", desc: `Whole-wheat thepla with fresh fenugreek — ${area}'s favourite.`, subject: "Methi theplas on a brass plate", alt: "Methi theplas", keys: ["ww", "best"] },
-    { title: "Gujarati Thali", desc: "A full home-style spread, delivered hot.", subject: "Gujarati thali, top-down", alt: "Gujarati thali", keys: ["best", "jain"] },
-    { title: "Khaman Dhokla", desc: "Steamed and tempered — a teatime regular.", subject: "Khaman dhokla squares", alt: "Khaman dhokla", keys: ["vegan"] },
-    { title: "Sabudana Khichdi", desc: "Light sago with peanuts — popular on fasting days.", subject: "Bowl of sabudana khichdi", alt: "Sabudana khichdi", keys: ["jain", "vegan"] },
-  ];
+// Chain-wide top sellers: the sales data doesn't break down by area, so no
+// dish is presented as a particular neighbourhood's favourite.
+function popularFor(_area: string): AreaDish[] {
+  return POPULAR_DISHES.slice(0, 4);
 }
 
 function geoFaqs(area: string, kitchen: string, served: string, hours = "every day, 7:30am to 10:30pm"): { q: string; a: string }[] {

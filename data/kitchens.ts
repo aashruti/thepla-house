@@ -1,12 +1,7 @@
-import type { TagKey } from "./menu";
+import { POPULAR_DISHES, type Dish } from "./menu";
 
-export interface KitchenDish {
-  title: string;
-  desc: string;
-  subject: string;
-  alt: string;
-  keys: TagKey[];
-}
+/** Same shape as a menu dish, so outlet pages can show the real photos. */
+export type KitchenDish = Dish;
 
 export interface Kitchen {
   slug: string;
@@ -92,12 +87,9 @@ const shortDayOn = (day: Weekday): OpeningHours[] => [
   { days: [day], opens: "07:30", closes: "15:00" },
 ];
 
-const DEFAULT_POPULAR: KitchenDish[] = [
-  { title: "Methi Thepla", desc: "Soft whole-wheat flatbread with fresh fenugreek — the local favourite.", subject: "Methi theplas on a brass plate", alt: "Methi theplas", keys: ["ww", "best"] },
-  { title: "Gujarati Thali", desc: "A full home-style spread, cooked fresh through the day.", subject: "Gujarati thali, top-down", alt: "Gujarati thali", keys: ["best", "jain"] },
-  { title: "Khaman Dhokla", desc: "Steamed and tempered — a teatime regular.", subject: "Khaman dhokla squares", alt: "Khaman dhokla", keys: ["vegan"] },
-  { title: "Sabudana Khichdi", desc: "Light sago with peanuts — a popular fasting-day order.", subject: "Bowl of sabudana khichdi", alt: "Sabudana khichdi", keys: ["jain", "vegan"] },
-];
+// The sales data is chain-wide, not per outlet, so every outlet shows the same
+// top sellers rather than claiming a local favourite nothing measured.
+const DEFAULT_POPULAR: KitchenDish[] = POPULAR_DISHES.slice(0, 4);
 
 function defaultFaqs(name: string, area: string, served: string, hours: string): { q: string; a: string }[] {
   return [
@@ -124,12 +116,7 @@ export const KITCHENS: Kitchen[] = [
     swiggyUrl: "https://www.swiggy.com/city/mumbai/thepla-house-by-tejals-kitchen-powai-andheri-east-rest59034",
     flagship: true,
     areasServed: ["Powai", "Saki Naka", "Marol", "JB Nagar", "Chakala", "Andheri East", "Sakinaka Metro", "Kurla West"],
-    popular: [
-      { title: "Methi Thepla", desc: "Soft whole-wheat flatbread with fresh fenugreek — the Chandivali favourite.", subject: "Methi theplas on a brass plate", alt: "Methi theplas", keys: ["ww", "best"] },
-      { title: "Gujarati Thali", desc: "A full home-style spread, cooked fresh through the day.", subject: "Gujarati thali, top-down", alt: "Gujarati thali", keys: ["best", "jain"] },
-      { title: "Khaman Dhokla", desc: "Steamed and tempered — a teatime regular for the Powai crowd.", subject: "Khaman dhokla squares", alt: "Khaman dhokla", keys: ["vegan"] },
-      { title: "Sabudana Khichdi", desc: "Light sago with peanuts — a popular fasting-day order here.", subject: "Bowl of sabudana khichdi", alt: "Sabudana khichdi", keys: ["jain", "vegan"] },
-    ],
+    popular: DEFAULT_POPULAR,
     localCopy:
       "Looking for Gujarati food delivery in Chandivali or Andheri East? Thepla House by Tejal's Kitchen Chandivali is a 100% vegetarian kitchen serving home-style theplas, thalis, farsan and sweets — whole wheat, sunflower oil and no preservatives — with Jain and vegan options, open daily 7:30am to 10:30pm.",
     faqs: [

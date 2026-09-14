@@ -183,11 +183,11 @@ export default async function KitchenAreaPage({ params }: { params: Promise<{ ar
         <div className="th-container" style={{ paddingTop: 56, paddingBottom: 56 }}>
           <div className="grid grid-cols-1 lg:grid-cols-[1.3fr_0.7fr] gap-12 items-start">
             <div>
-              <div className="seglabel">Popular here</div>
-              <h2 style={{ fontFamily: "var(--font-display)", color: "var(--color-headline)", fontSize: "1.875rem", margin: "6px 0 20px" }}>Loved in {k.title}</h2>
+              <div className="seglabel">Most ordered</div>
+              <h2 style={{ fontFamily: "var(--font-display)", color: "var(--color-headline)", fontSize: "1.875rem", margin: "6px 0 20px" }}>Our best-sellers</h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {k.popular.map((d) => (
-                  <MenuRow key={d.title} title={d.title} desc={d.desc} subject={d.subject} alt={d.alt} tags={tagsFor(d.keys)} />
+                  <MenuRow key={d.title} title={d.title} desc={d.desc} subject={d.subject} alt={d.alt} tags={tagsFor(d.keys)} src={d.image} />
                 ))}
               </div>
             </div>
