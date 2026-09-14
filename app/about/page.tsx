@@ -91,7 +91,7 @@ const VALUES = [
   { t: "100% whole wheat", s: "Every roti and thepla is whole-wheat atta — no maida, ever." },
   { t: "Sunflower oil only", s: "We never cook with palm oil." },
   { t: "Zero preservatives", s: "No artificial colours or additives, made fresh after every order." },
-  { t: "Jain & vegan, by design", s: "Inclusive menus, clearly tagged, cooked with care." },
+  { t: "Jain & vegan, by design", s: "Jain and vegan options, cooked with care." },
 ];
 
 const aboutPageLd = {

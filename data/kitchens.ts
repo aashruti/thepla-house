@@ -103,7 +103,7 @@ function defaultFaqs(name: string, area: string, served: string, hours: string):
   return [
     { q: `Which areas does the ${name} kitchen deliver to?`, a: `We deliver across ${served} via Swiggy, Zomato and WhatsApp.` },
     { q: `What are the ${name} timings?`, a: `${hours}. Order before 11am for same-day lunch.` },
-    { q: "Do you have Jain and vegan options here?", a: "Yes — a wide range of Jain (no onion, garlic or root vegetables) and vegan dishes, all clearly tagged on the menu." },
+    { q: "Do you have Jain and vegan options here?", a: "Yes — a wide range of Jain (no onion, garlic or root vegetables) and vegan dishes are available — just ask when you order." },
     { q: "Is everything vegetarian and made without maida?", a: "Always. We're a 100% vegetarian kitchen, cooking with whole-wheat atta and sunflower oil — never maida or palm oil — with no preservatives." },
   ];
 }
@@ -135,7 +135,7 @@ export const KITCHENS: Kitchen[] = [
     faqs: [
       { q: "Which areas does the Chandivali kitchen deliver to?", a: "We deliver across Andheri East — Powai, Saki Naka, Marol, JB Nagar, Chakala and Kurla West — via Swiggy, Zomato and WhatsApp." },
       { q: "What are the Chandivali timings?", a: "Open Monday to Sunday, 9:00am to 10:00pm. Order before 11am for same-day lunch." },
-      { q: "Do you have Jain and vegan options here?", a: "Yes — a wide range of Jain (no onion, garlic or root vegetables) and vegan dishes, all clearly tagged on the menu." },
+      { q: "Do you have Jain and vegan options here?", a: "Yes — a wide range of Jain (no onion, garlic or root vegetables) and vegan dishes are available — just ask when you order." },
       { q: "Can I order catering or travel packs from Chandivali?", a: "Absolutely. Chandivali is our flagship kitchen — it handles event and pooja catering with full Jain menus, and our vacuum-packed methi-thepla travel packs." },
     ],
   },
@@ -264,7 +264,7 @@ export const KITCHENS: Kitchen[] = [
       },
       {
         q: "Is everything vegetarian, with Jain and vegan options?",
-        a: "Always. We're a 100% vegetarian kitchen, cooking with whole-wheat atta and sunflower oil — never maida or palm oil — with no preservatives. Jain and vegan dishes are clearly tagged.",
+        a: "Always. We're a 100% vegetarian kitchen, cooking with whole-wheat atta and sunflower oil — never maida or palm oil — with no preservatives. Jain and vegan dishes are available.",
       },
     ],
   },
@@ -303,7 +303,7 @@ export const KITCHENS: Kitchen[] = [
       },
       {
         q: "Is everything vegetarian, with Jain and vegan options?",
-        a: "Always. It is a 100% vegetarian counter cooking with whole-wheat atta and sunflower oil — never maida or palm oil — with Jain and vegan choices clearly tagged.",
+        a: "Always. It is a 100% vegetarian counter cooking with whole-wheat atta and sunflower oil — never maida or palm oil — with Jain and vegan choices available.",
       },
     ],
   },
@@ -329,7 +329,7 @@ export const KITCHENS: Kitchen[] = [
       "Fresh home-style Gujarati theplas, thalis & farsan — dine in, take away or order in Kandivali West (near Mahavir Nagar). 100% vegetarian, whole wheat, Jain & vegan. Open daily 7:30am to 10:30pm.",
     seoParagraphs: [
       "Looking for fresh thepla in Kandivali West? Thepla House by Tejal's Kitchen is a 100% vegetarian, home-style Gujarati dine-in outlet in Kandivali West, a short walk from Mahavir Nagar and the MHADA Colony. Eat in hot off the tawa, take away, or order delivery — we serve methi theplas, full Gujarati thalis, farsan and sweets, all made with whole-wheat atta and sunflower oil, never maida or palm oil.",
-      "Our Kandivali outlet keeps the longest hours of any Thepla House by Tejal's Kitchen — daily from 8am to 10:30pm — so you can grab a thepla-and-chai breakfast, a wholesome thali for lunch, or farsan and sweets through the evening. We're a neighbourhood favourite for ghar ka khana across Kandivali West, Kandivali East, Charkop, Borivali and Malad, with Jain and vegan options clearly tagged on every dish.",
+      "Our Kandivali outlet keeps the longest hours of any Thepla House by Tejal's Kitchen — daily from 8am to 10:30pm — so you can grab a thepla-and-chai breakfast, a wholesome thali for lunch, or farsan and sweets through the evening. We're a neighbourhood favourite for ghar ka khana across Kandivali West, Kandivali East, Charkop, Borivali and Malad, with Jain and vegan options available.",
       "Whether you want to sit down with family, pick up a stack of theplas on the way home, or order a Gujarati thali to your door, Thepla House by Tejal's Kitchen Kandivali serves honest, home-style Gujarati food made fresh every day. Junk the junk food — eat real ghar ka khana instead.",
     ],
     areasServed: ["Kandivali West", "Kandivali East", "Borivali", "Malad", "Charkop", "Poisar"],
@@ -341,7 +341,7 @@ export const KITCHENS: Kitchen[] = [
       { q: "Where can I get the best thepla in Kandivali West?", a: "Thepla House by Tejal's Kitchen serves fresh, home-style methi theplas, thalis and farsan in Kandivali West — 100% vegetarian, 100% whole wheat, no maida and no palm oil. Dine in hot off the tawa, take away, or order delivery." },
       { q: "Is Kandivali a dine-in outlet?", a: "Yes — Kandivali West is our dine-in and takeaway outlet. Eat fresh off the tawa, take away, or order delivery on Swiggy, Zomato and WhatsApp." },
       { q: "What are the Kandivali timings?", a: "Open Monday to Sunday, 8:00am to 10:30pm — the longest hours of any Thepla House by Tejal's Kitchen kitchen." },
-      { q: "Do you have Jain and vegan options here?", a: "Yes — Jain (no onion, garlic or root vegetables) and vegan dishes are clearly tagged across the menu." },
+      { q: "Do you have Jain and vegan options here?", a: "Yes — Jain (no onion, garlic or root vegetables) and vegan dishes are available — just ask when you order." },
       { q: "Is everything vegetarian and made without maida?", a: "Always. 100% vegetarian, whole-wheat atta and sunflower oil — never maida or palm oil — with no preservatives." },
     ],
   },

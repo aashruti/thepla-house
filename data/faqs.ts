@@ -6,7 +6,7 @@ export const HOME_FAQS = [
   },
   {
     q: "Do you have Jain and vegan options?",
-    a: "We do. Many dishes are Jain (no onion, garlic or root vegetables) and a wide range is vegan — both are clearly tagged on the menu.",
+    a: "We do. Jain (no onion, garlic or root vegetables) and vegan options are both available — mention it when you order and the kitchen will point you to them.",
   },
   {
     q: "Is the food really made with whole wheat?",
