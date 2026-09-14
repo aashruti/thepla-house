@@ -84,18 +84,15 @@ export const ORDER_NOW_LINK = SWIGGY_LINK;
 
 // ---- Ordering channels ----------------------------------------------------
 export interface OrderChannel {
-  label: string;
   href: string;
-  dot: string; // brand-colour dot
-  external?: boolean;
-  /** Set for Swiggy/Zomato — rendered by AggregatorLink with the brand's own look. */
-  aggregator?: "swiggy" | "zomato";
+  /** Rendered by AggregatorLink with the service's official mark and colour. */
+  aggregator: "swiggy" | "zomato" | "whatsapp";
 }
 
 export const ORDER_CHANNELS: OrderChannel[] = [
-  { label: "Swiggy", href: SWIGGY_LINK, dot: "var(--gold-500)", external: true, aggregator: "swiggy" },
-  { label: "Zomato", href: ZOMATO_LINK, dot: "var(--maroon-600)", external: true, aggregator: "zomato" },
-  { label: "WhatsApp", href: WHATSAPP_LINK, dot: "var(--leaf-500)", external: true },
+  { href: SWIGGY_LINK, aggregator: "swiggy" },
+  { href: ZOMATO_LINK, aggregator: "zomato" },
+  { href: WHATSAPP_LINK, aggregator: "whatsapp" },
 ];
 
 // ---- Navigation -----------------------------------------------------------
