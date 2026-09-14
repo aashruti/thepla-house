@@ -1,23 +1,30 @@
 import type { CSSProperties } from "react";
 
 /**
- * AggregatorLink — the one way this site links out to Swiggy or Zomato.
+ * AggregatorLink — the one way this site links out to Swiggy, Zomato or
+ * WhatsApp.
  *
- * Every "order on Swiggy / Zomato" affordance renders through here — the
- * OrderChannels chips, the outlet cards and the outlet page — so the brands'
- * look is defined once.
+ * Every "order on …" affordance renders through here — the OrderChannels
+ * chips, the outlet cards and the outlet page — so each brand's look is
+ * defined once.
+ *
+ * The official mark carries the brand colour; the name beside it is set in
+ * ink rather than in that colour. Swiggy's orange against white is 2.5:1, well
+ * under readable contrast for text, whereas a logo is exempt — so the colour
+ * lives in the logo and the words stay legible.
  */
-export type Aggregator = "swiggy" | "zomato";
+export type Aggregator = "swiggy" | "zomato" | "whatsapp";
 
-export const AGGREGATORS: Record<Aggregator, { name: string; dot: string }> = {
-  swiggy: { name: "Swiggy", dot: "var(--gold-500)" },
-  zomato: { name: "Zomato", dot: "var(--maroon-600)" },
+export const AGGREGATORS: Record<Aggregator, { name: string; logo: string; color: string }> = {
+  swiggy: { name: "Swiggy", logo: "/brands/swiggy.svg", color: "#FF5200" },
+  zomato: { name: "Zomato", logo: "/brands/zomato.svg", color: "#CC202E" },
+  whatsapp: { name: "WhatsApp", logo: "/brands/whatsapp.svg", color: "#25D366" },
 };
 
 const SIZES = {
-  sm: { padding: "8px 13px", fontSize: "0.8125rem", gap: 7, dot: 8, minHeight: 38 },
-  md: { padding: "9px 15px", fontSize: "0.875rem", gap: 7, dot: 8, minHeight: 40 },
-  lg: { padding: "11px 20px", fontSize: "0.9375rem", gap: 9, dot: 9, minHeight: 46 },
+  sm: { padding: "6px 12px 6px 6px", fontSize: "0.8125rem", gap: 8, logo: 22, minHeight: 38 },
+  md: { padding: "6px 14px 6px 6px", fontSize: "0.875rem", gap: 8, logo: 24, minHeight: 40 },
+  lg: { padding: "8px 18px 8px 8px", fontSize: "0.9375rem", gap: 10, logo: 28, minHeight: 46 },
 };
 
 export interface AggregatorLinkProps {
@@ -45,7 +52,7 @@ export function AggregatorLink({ service, href, size = "md", fill = false, style
         minHeight: s.minHeight,
         padding: s.padding,
         background: "var(--white)",
-        border: "1.5px solid var(--color-outline)",
+        border: `1.5px solid ${brand.color}`,
         borderRadius: "999px",
         fontFamily: "var(--font-body)",
         fontSize: s.fontSize,
@@ -55,7 +62,15 @@ export function AggregatorLink({ service, href, size = "md", fill = false, style
         ...style,
       }}
     >
-      <span aria-hidden="true" style={{ width: s.dot, height: s.dot, borderRadius: "50%", background: brand.dot, flexShrink: 0 }} />
+      {/* eslint-disable-next-line @next/next/no-img-element -- tiny static SVG; next/image adds nothing here */}
+      <img
+        src={brand.logo}
+        alt=""
+        aria-hidden="true"
+        width={s.logo}
+        height={s.logo}
+        style={{ display: "block", width: s.logo, height: s.logo, borderRadius: Math.round(s.logo * 0.26), flexShrink: 0 }}
+      />
       {brand.name}
     </a>
   );
