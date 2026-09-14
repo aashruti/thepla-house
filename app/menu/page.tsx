@@ -6,7 +6,7 @@ import { CTABanner } from "@/components/ds/CTABanner";
 import { JsonLd } from "@/components/JsonLd";
 import { pageMetadata, menuLd, breadcrumbLd } from "@/lib/seo";
 import { MENU_CATEGORIES } from "@/data/menu";
-import { ORDER_PHONE, WHATSAPP_LINK } from "@/data/site";
+import { ORDER_PHONE, WHATSAPP_LINK, ORDER_NOW_LINK } from "@/data/site";
 import menuExtracted from "@/data/menu-extracted.json";
 
 export const metadata: Metadata = pageMetadata({
@@ -144,7 +144,7 @@ export default function MenuPage() {
             title="Order our best-sellers"
             body={`Pick a delivery partner and we'll roll it fresh — or call ${ORDER_PHONE}.`}
             primaryLabel="Order now"
-            primaryHref="/menu"
+            primaryHref={ORDER_NOW_LINK}
             secondaryLabel="WhatsApp us"
             secondaryHref={WHATSAPP_LINK}
           />

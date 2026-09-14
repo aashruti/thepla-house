@@ -4,7 +4,8 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { NAV_LINKS, SITE } from "@/data/site";
+import { NAV_LINKS, SITE, ORDER_NOW_LINK } from "@/data/site";
+import { externalLinkProps } from "@/lib/links";
 
 /**
  * SiteHeader — the production responsive navbar (sticky). Inline links + CTA on
@@ -61,7 +62,8 @@ export function SiteHeader() {
 
         <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
           <Link
-            href="/menu"
+            href={ORDER_NOW_LINK}
+            {...externalLinkProps(ORDER_NOW_LINK)}
             className="nav-cta"
             style={{
               display: "inline-flex",

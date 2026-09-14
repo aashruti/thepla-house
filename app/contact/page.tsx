@@ -4,15 +4,7 @@ import { MapSlot } from "@/components/blocks/MapSlot";
 import { CTABanner } from "@/components/ds/CTABanner";
 import { JsonLd } from "@/components/JsonLd";
 import { pageMetadata, breadcrumbLd, absUrl } from "@/lib/seo";
-import {
-  SITE,
-  ORDER_PHONE,
-  ORDER_PHONE_TEL,
-  WHATSAPP_LINK,
-  INSTAGRAM_HANDLE,
-  INSTAGRAM_LINK,
-  FRANCHISE_CONTACT,
-} from "@/data/site";
+import { SITE, ORDER_PHONE, ORDER_PHONE_TEL, WHATSAPP_LINK, INSTAGRAM_HANDLE, INSTAGRAM_LINK, FRANCHISE_CONTACT, ORDER_NOW_LINK } from "@/data/site";
 
 export const metadata: Metadata = pageMetadata({
   title: "Contact Thepla House by Tejal's Kitchen — Mumbai",
@@ -317,7 +309,7 @@ export default function ContactPage() {
             title="Skip the form — just order"
             body={`Order on Swiggy, Zomato or WhatsApp — or call ${ORDER_PHONE}.`}
             primaryLabel="Order now"
-            primaryHref="/menu"
+            primaryHref={ORDER_NOW_LINK}
             secondaryLabel="See the menu"
             secondaryHref="/menu"
           />

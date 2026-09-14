@@ -77,6 +77,11 @@ export const ZOMATO_LINK = "https://www.zomato.com/mumbai/restaurants/thepla-hou
 // surfaces the customer's nearest outlet rather than a fixed one.
 export const SWIGGY_LINK = "https://www.swiggy.com/search?query=Thepla%20House%20by%20Tejal%27s%20Kitchen";
 
+// Where every "Order now" button goes. Swiggy, because it takes orders from a
+// link off our site; Zomato does not, so its chips stay as listing links only.
+// When the brand's own ordering launches, change this one line.
+export const ORDER_NOW_LINK = SWIGGY_LINK;
+
 // ---- Ordering channels ----------------------------------------------------
 export interface OrderChannel {
   label: string;
@@ -121,7 +126,7 @@ export const FOOTER_COLUMNS = [
   {
     title: "Order & services",
     links: [
-      { label: "Order now", href: "/menu" },
+      { label: "Order now", href: ORDER_NOW_LINK },
       { label: "Home-style food & tiffin", href: "/tiffin-service-mumbai" },
       { label: "Catering", href: "/catering" },
       { label: "Travel packs", href: "/travel-packs" },

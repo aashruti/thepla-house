@@ -10,7 +10,7 @@ import { JsonLd } from "@/components/JsonLd";
 import { pageMetadata, faqPageLd, breadcrumbLd, absUrl } from "@/lib/seo";
 import { KITCHENS } from "@/data/kitchens";
 import { AREAS } from "@/data/areas";
-import { SITE, ORDER_PHONE, LOCATIONS_MAP_EMBED } from "@/data/site";
+import { SITE, ORDER_PHONE, LOCATIONS_MAP_EMBED, ORDER_NOW_LINK } from "@/data/site";
 
 export const metadata: Metadata = pageMetadata({
   title: "Thepla Near Me — 8 Thepla House by Tejal's Kitchen Outlets",
@@ -225,7 +225,7 @@ export default function LocationsPage() {
             title={<GharKaKhana />}
             body={`Order delivery on Swiggy, Zomato or WhatsApp from your nearest kitchen — or call ${ORDER_PHONE}.`}
             primaryLabel="Order now"
-            primaryHref="/menu"
+            primaryHref={ORDER_NOW_LINK}
             secondaryLabel="See the menu"
             secondaryHref="/menu"
           />

@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { externalLinkProps } from "@/lib/links";
+import { ORDER_NOW_LINK } from "@/data/site";
 import Link from "next/link";
 import { PromiseStrip } from "@/components/blocks/PromiseStrip";
 import { MenuItemCard } from "@/components/blocks/MenuItemCard";
@@ -104,7 +106,7 @@ export default function TiffinServicePage() {
                 delivered hot to your door. No fixed dabba, no lock-in: order a home-cooked meal any day.
               </p>
               <div style={{ display: "flex", gap: 12, alignItems: "center", flexWrap: "wrap", marginBottom: 18 }}>
-                <Link href="/menu" style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", minHeight: 52, padding: "14px 28px", fontFamily: "var(--font-body)", fontSize: "1.0625rem", fontWeight: 600, color: "var(--color-on-primary)", background: "var(--color-primary)", borderRadius: "var(--radius-md)", boxShadow: "var(--shadow-sm)", textDecoration: "none" }}>
+                <Link href={ORDER_NOW_LINK} {...externalLinkProps(ORDER_NOW_LINK)} style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", minHeight: 52, padding: "14px 28px", fontFamily: "var(--font-body)", fontSize: "1.0625rem", fontWeight: 600, color: "var(--color-on-primary)", background: "var(--color-primary)", borderRadius: "var(--radius-md)", boxShadow: "var(--shadow-sm)", textDecoration: "none" }}>
                   Order now
                 </Link>
                 <Link href="/locations" style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", minHeight: 52, padding: "14px 24px", fontFamily: "var(--font-body)", fontSize: "1.0625rem", fontWeight: 600, color: "var(--color-primary)", border: "1.5px solid var(--color-primary)", borderRadius: "var(--radius-md)", textDecoration: "none" }}>
@@ -220,7 +222,7 @@ export default function TiffinServicePage() {
             title="Order fresh home-style food today"
             body="Healthy, 100% vegetarian and cooked to order — delivered hot on Swiggy, Zomato or WhatsApp."
             primaryLabel="Order now"
-            primaryHref="/menu"
+            primaryHref={ORDER_NOW_LINK}
             secondaryLabel="Find a kitchen near you"
             secondaryHref="/locations"
           />

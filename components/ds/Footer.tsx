@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { externalLinkProps } from "@/lib/links";
 import Image from "next/image";
 
 /**
@@ -101,7 +102,7 @@ export function Footer({
             <ul style={{ listStyle: "none", margin: 0, padding: 0, display: "flex", flexDirection: "column", gap: 10 }}>
               {col.links.map((l) => (
                 <li key={l.label}>
-                  <Link href={l.href || "#"} style={{ color: "var(--cream-200)", textDecoration: "none", fontSize: "0.9rem" }}>
+                  <Link href={l.href || "#"} {...externalLinkProps(l.href || "#")} style={{ color: "var(--cream-200)", textDecoration: "none", fontSize: "0.9rem" }}>
                     {l.label}
                   </Link>
                 </li>

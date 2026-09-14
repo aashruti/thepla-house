@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { externalLinkProps } from "@/lib/links";
+import { ORDER_NOW_LINK } from "@/data/site";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { MenuRow } from "@/components/blocks/MenuRow";
@@ -82,7 +84,7 @@ export default async function GeoLandingPage({ params }: { params: Promise<{ geo
                 Order healthy, home-style theplas, thalis, farsan and sweets anywhere in {a.name} — 100% vegetarian, whole wheat and made fresh to order, like a home tiffin at your door. Jain and vegan options on every menu.
               </p>
               <div style={{ display: "flex", gap: 12, alignItems: "center", flexWrap: "wrap", marginBottom: 18 }}>
-                <Link href="/menu" style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", minHeight: 52, padding: "14px 28px", fontFamily: "var(--font-body)", fontSize: "1.0625rem", fontWeight: 600, color: "var(--color-on-primary)", background: "var(--color-primary)", borderRadius: "var(--radius-md)", boxShadow: "var(--shadow-sm)", textDecoration: "none" }}>
+                <Link href={ORDER_NOW_LINK} {...externalLinkProps(ORDER_NOW_LINK)} style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", minHeight: 52, padding: "14px 28px", fontFamily: "var(--font-body)", fontSize: "1.0625rem", fontWeight: 600, color: "var(--color-on-primary)", background: "var(--color-primary)", borderRadius: "var(--radius-md)", boxShadow: "var(--shadow-sm)", textDecoration: "none" }}>
                   Order now
                 </Link>
               </div>
@@ -167,7 +169,7 @@ export default async function GeoLandingPage({ params }: { params: Promise<{ geo
             title="Order ghar ka khana now"
             body="Fresh, home-style and delivered to your door — Swiggy, Zomato or WhatsApp."
             primaryLabel="Order now"
-            primaryHref="/menu"
+            primaryHref={ORDER_NOW_LINK}
             secondaryLabel="See the menu"
             secondaryHref="/menu"
           />

@@ -5,7 +5,7 @@ import { CTABanner } from "@/components/ds/CTABanner";
 import { TrimBorder } from "@/components/ds/TrimBorder";
 import { JsonLd } from "@/components/JsonLd";
 import { pageMetadata, breadcrumbLd, absUrl } from "@/lib/seo";
-import { SITE } from "@/data/site";
+import { SITE, ORDER_NOW_LINK } from "@/data/site";
 import { KITCHENS } from "@/data/kitchens";
 import { img } from "@/data/images";
 
@@ -446,7 +446,7 @@ export default function AboutPage() {
             title="Try Tejal's home-style food"
             body="Order fresh today on Swiggy, Zomato or WhatsApp — or plan a catering spread."
             primaryLabel="Order now"
-            primaryHref="/menu"
+            primaryHref={ORDER_NOW_LINK}
             secondaryLabel="See the menu"
             secondaryHref="/menu"
           />

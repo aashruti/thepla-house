@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ORDER_NOW_LINK } from "@/data/site";
 import { GalleryMasonry } from "@/components/blocks/GalleryMasonry";
 import { CTABanner } from "@/components/ds/CTABanner";
 import { JsonLd } from "@/components/JsonLd";
@@ -53,7 +54,7 @@ export default function GalleryPage() {
             title="It tastes even better"
             body="Order fresh, home-style food today — Swiggy, Zomato or WhatsApp."
             primaryLabel="Order now"
-            primaryHref="/menu"
+            primaryHref={ORDER_NOW_LINK}
             secondaryLabel="See the menu"
             secondaryHref="/menu"
           />

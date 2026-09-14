@@ -6,7 +6,7 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { MobileOrderBar } from "@/components/blocks/MobileOrderBar";
 import { JsonLd } from "@/components/JsonLd";
 import { organizationLd, websiteLd } from "@/lib/seo";
-import { SITE } from "@/data/site";
+import { SITE, ORDER_NOW_LINK } from "@/data/site";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
@@ -68,7 +68,7 @@ export default function RootLayout({
         <SiteHeader />
         <main id="main">{children}</main>
         <SiteFooter />
-        <MobileOrderBar />
+        <MobileOrderBar orderHref={ORDER_NOW_LINK} />
       </body>
     </html>
   );

@@ -13,7 +13,7 @@ import { pageMetadata, faqPageLd } from "@/lib/seo";
 import { POPULAR_DISHES, tagsFor } from "@/data/menu";
 import { KITCHENS } from "@/data/kitchens";
 import { HOME_FAQS } from "@/data/faqs";
-import { ORDER_PHONE, FRANCHISE_CONTACT } from "@/data/site";
+import { ORDER_PHONE, FRANCHISE_CONTACT, ORDER_NOW_LINK } from "@/data/site";
 import { img } from "@/data/images";
 
 export const metadata: Metadata = pageMetadata({
@@ -43,7 +43,7 @@ export default function HomePage() {
           alt: "A home-style Gujarati spread on a brass thali",
           src: img("home-hero"),
         }}
-        primaryCta={{ label: "Order now", href: "/menu" }}
+        primaryCta={{ label: "Order now", href: ORDER_NOW_LINK }}
         secondaryCta={{ label: "See the menu", href: "/menu" }}
         showChannels
       />
@@ -218,7 +218,7 @@ export default function HomePage() {
             title="Real ghar ka khana, a few taps away"
             body={`Order on Swiggy, Zomato or WhatsApp — or call ${ORDER_PHONE}.`}
             primaryLabel="Order now"
-            primaryHref="/menu"
+            primaryHref={ORDER_NOW_LINK}
             secondaryLabel="See the menu"
             secondaryHref="/menu"
           />

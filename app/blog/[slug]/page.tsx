@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ORDER_NOW_LINK } from "@/data/site";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { BlogPostCard } from "@/components/blocks/BlogPostCard";
@@ -174,7 +175,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             title="Taste the whole-wheat difference"
             body="Order fresh, home-style food today on Swiggy, Zomato or WhatsApp."
             primaryLabel="Order now"
-            primaryHref="/menu"
+            primaryHref={ORDER_NOW_LINK}
             secondaryLabel="See the menu"
             secondaryHref="/menu"
           />
