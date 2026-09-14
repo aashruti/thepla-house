@@ -73,7 +73,10 @@ export function MenuExplorer() {
       ) : (
         <>
           {/* Mobile: compact rows */}
-          <div className="md:hidden" style={{ display: "flex", flexDirection: "column", gap: 12, paddingTop: 20 }}>
+          {/* flex lives in the class list, not an inline style: an inline display
+              always beats md:hidden, which had this list rendering on desktop
+              underneath the card grid. */}
+          <div className="flex flex-col gap-3 md:hidden" style={{ paddingTop: 20 }}>
             {filtered.map((d) => (
               <MenuRow key={d.title} title={d.title} desc={d.desc} subject={d.subject} alt={d.alt} tags={tagsFor(d.keys)} src={d.image} />
             ))}
