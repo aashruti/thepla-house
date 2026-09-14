@@ -1,5 +1,5 @@
 import Link from "next/link";
-import type { CSSProperties } from "react";
+import type { CSSProperties, ReactNode } from "react";
 
 /**
  * Thepla House — CTABanner
@@ -8,7 +8,8 @@ import type { CSSProperties } from "react";
  */
 export interface CTABannerProps {
   eyebrow?: string;
-  title?: string;
+  /** Usually a string; a node allows animated or multilingual headlines. */
+  title?: ReactNode;
   body?: string;
   primaryLabel?: string;
   primaryHref?: string;

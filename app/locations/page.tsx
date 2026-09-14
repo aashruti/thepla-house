@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { KitchenCard } from "@/components/blocks/KitchenCard";
 import { MapSlot } from "@/components/blocks/MapSlot";
+import { GharKaKhana } from "@/components/blocks/GharKaKhana";
 import { Accordion } from "@/components/ds/Accordion";
 import { CTABanner } from "@/components/ds/CTABanner";
 import { TrimBorder } from "@/components/ds/TrimBorder";
@@ -221,7 +222,7 @@ export default function LocationsPage() {
             tone="maroon"
             align="split"
             eyebrow="Can't get to us?"
-            title="We'll bring ghar ka khana to your door"
+            title={<GharKaKhana />}
             body={`Order delivery on Swiggy, Zomato or WhatsApp from your nearest kitchen — or call ${ORDER_PHONE}.`}
             primaryLabel="Order now"
             primaryHref="/menu"
