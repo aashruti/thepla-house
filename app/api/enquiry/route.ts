@@ -140,7 +140,7 @@ function emailShell(innerHtml: string): string {
         &middot; <a href="mailto:${escapeHtml(CONTACT_EMAIL)}" style="color:#F3B53C;text-decoration:none;">${escapeHtml(CONTACT_EMAIL)}</a>
       </div>
     </div>
-    <div style="max-width:600px;margin:12px auto 0;text-align:center;color:#9a8f86;font-size:11px;">8 kitchens across Mumbai, Thane &amp; Navi Mumbai &middot; 100% vegetarian</div>
+    <div style="max-width:600px;margin:12px auto 0;text-align:center;color:#9a8f86;font-size:11px;">8 locations across Mumbai, Thane &amp; Navi Mumbai &middot; 100% vegetarian</div>
   </div>`;
 }
 
