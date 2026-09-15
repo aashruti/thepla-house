@@ -26,6 +26,15 @@ const TONES = {
   green: { bg: "var(--green-700)", edge: "var(--green-900)", fg: "var(--cream-50)", eyebrow: "var(--gold-300)", btnBg: "var(--color-secondary)", btnFg: "var(--ink-900)", btn2Border: "var(--cream-100)", btn2Fg: "var(--cream-50)" },
 };
 
+/**
+ * Indian phone numbers in body copy ("+91 98195 55065") otherwise wrap at their
+ * spaces, stranding "+91" at the end of one line. Non-breaking spaces keep the
+ * number on a single line without changing how it reads.
+ */
+function keepPhoneNumbersTogether(text: string): string {
+  return text.replace(/\+91 (\d{5}) (\d{5})/g, "+91\u00A0$1\u00A0$2");
+}
+
 export function CTABanner({
   eyebrow,
   title,
@@ -143,7 +152,7 @@ export function CTABanner({
           )}
           {body && (
             <p style={{ margin: 0, color: t.fg, opacity: 0.92, fontSize: "1.0625rem", lineHeight: "var(--lh-body)", maxWidth: "46ch" }}>
-              {body}
+              {keepPhoneNumbersTogether(body)}
             </p>
           )}
         </div>
