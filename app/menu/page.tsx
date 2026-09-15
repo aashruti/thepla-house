@@ -106,7 +106,7 @@ export default function MenuPage() {
             Explore by category
           </h2>
           <p style={{ fontFamily: "var(--font-body)", color: "var(--ink-600)", fontSize: "var(--fs-body-lg)", lineHeight: 1.6, maxWidth: 680, margin: "0 0 20px" }}>
-            Our most-ordered dishes, by category. Filter for best-sellers, upvas dishes or whole wheat. For prices, see the menu above.
+            Our most-ordered dishes — see them all, or pick a category. For prices, see the menu above.
           </p>
           <MenuExplorer />
         </div>

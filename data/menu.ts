@@ -18,14 +18,6 @@ export interface MenuCategory {
   dishes: Dish[];
 }
 
-/** Filters on the Menu page. Only tags the menu data can actually vouch for. */
-export const DIET_FILTERS: { key: string; label: string }[] = [
-  { key: "all", label: "All" },
-  { key: "best", label: "Best-sellers" },
-  { key: "upvas", label: "Upvas / fasting" },
-  { key: "ww", label: "Whole wheat" },
-];
-
 const photo = (slug: string) => `/images/menu/${slug}.webp`;
 
 /**
