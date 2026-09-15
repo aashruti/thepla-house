@@ -132,7 +132,7 @@ export default function MenuPage() {
       </section>
 
       <section style={{ background: "var(--cream-50)" }}>
-        <div className="th-container" style={{ paddingBottom: 56 }}>
+        <div className="th-container" style={{ paddingTop: 56, paddingBottom: 56 }}>
           <CTABanner
             tone="maroon"
             align="split"

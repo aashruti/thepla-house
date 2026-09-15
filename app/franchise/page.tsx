@@ -550,7 +550,7 @@ export default function FranchisePage() {
 
       {/* CTA */}
       <section style={{ background: "var(--cream-50)" }}>
-        <div className="th-container" style={{ paddingTop: 8, paddingBottom: 56 }}>
+        <div className="th-container" style={{ paddingTop: 48, paddingBottom: 56 }}>
           <CTABanner
             tone="gold"
             align="split"

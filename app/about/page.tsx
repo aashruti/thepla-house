@@ -438,7 +438,7 @@ export default function AboutPage() {
 
       {/* CTA */}
       <section style={{ background: "var(--cream-50)" }}>
-        <div className="th-container" style={{ paddingTop: 8, paddingBottom: 52 }}>
+        <div className="th-container" style={{ paddingTop: 48, paddingBottom: 52 }}>
           <CTABanner
             tone="maroon"
             align="split"
