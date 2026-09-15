@@ -72,7 +72,9 @@ export function organizationLd() {
     "@type": "Organization",
     "@id": ORGANIZATION_ID,
     name: SITE.name,
-    alternateName: ["Thepla House by Tejal's Kitchen", "Tejal's Kitchen", "Thepla House by Tejal's Kitchen Mumbai"],
+    // The short forms people actually search. Deliberately NOT expanded to the
+    // full name: an alias identical to `name` tells Google nothing.
+    alternateName: ["Thepla House", "Tejal's Kitchen", "Thepla House Mumbai"],
     url: BASE,
     logo: absUrl(SITE.logo),
     image: absUrl(SITE.logo),
