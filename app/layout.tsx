@@ -7,6 +7,7 @@ import { MobileOrderBar } from "@/components/blocks/MobileOrderBar";
 import { JsonLd } from "@/components/JsonLd";
 import { organizationLd, websiteLd } from "@/lib/seo";
 import { SITE, ORDER_NOW_LINK } from "@/data/site";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
@@ -69,6 +70,8 @@ export default function RootLayout({
         <main id="main">{children}</main>
         <SiteFooter />
         <MobileOrderBar orderHref={ORDER_NOW_LINK} />
+        {/* Real-user Core Web Vitals, reported to the Vercel dashboard. */}
+        <SpeedInsights />
       </body>
     </html>
   );

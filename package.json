@@ -10,6 +10,7 @@
     "menu:extract": "node scripts/extract-menu.mjs"
   },
   "dependencies": {
+    "@vercel/speed-insights": "^2.0.0",
     "next": "15.5.9",
     "nodemailer": "^8.0.11",
     "pdfjs-dist": "^4.10.38",
