@@ -50,6 +50,9 @@ const FAQS = [
   },
 ];
 
+/** Kitchens that deliver — the airport counter is airside and takes no orders. */
+const deliveryKitchens = KITCHENS.filter((k) => !k.airside);
+
 export default function TiffinServicePage() {
   return (
     <>
@@ -181,7 +184,7 @@ export default function TiffinServicePage() {
           <div style={{ maxWidth: 720, marginBottom: 26 }}>
             <div className="seglabel">Home-style food near you</div>
             <h2 style={{ fontFamily: "var(--font-display)", color: "var(--color-headline)", fontSize: "var(--fs-h2)", margin: "6px 0 14px" }}>
-              Seven kitchens across Mumbai, Thane &amp; Navi Mumbai
+              {deliveryKitchens.length} kitchens across Mumbai &amp; Thane
             </h2>
             <p style={{ fontFamily: "var(--font-body)", color: "var(--ink-600)", fontSize: "var(--fs-body-lg)", lineHeight: 1.62 }}>
               Whichever side of the city you're on, there's a Thepla House by Tejal's Kitchen kitchen nearby cooking fresh
@@ -189,7 +192,7 @@ export default function TiffinServicePage() {
             </p>
           </div>
           <div style={{ display: "flex", flexWrap: "wrap", gap: 11 }}>
-            {KITCHENS.map((k) => (
+            {deliveryKitchens.map((k) => (
               <Link key={k.slug} href={`/locations/${k.slug}`} style={{ display: "inline-flex", flexDirection: "column", gap: 2, padding: "12px 18px", background: "var(--white)", border: "1px solid var(--color-outline-variant)", borderRadius: "var(--radius-lg)", boxShadow: "var(--shadow-sm)", textDecoration: "none" }}>
                 <span style={{ fontFamily: "var(--font-display)", color: "var(--color-headline)", fontWeight: 600, fontSize: "1.0625rem" }}>{k.title}</span>
                 <span style={{ fontFamily: "var(--font-body)", color: "var(--ink-500)", fontSize: "0.8125rem" }}>{k.area}</span>
