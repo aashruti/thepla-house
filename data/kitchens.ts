@@ -121,7 +121,7 @@ export const KITCHENS: Kitchen[] = [
       "Looking for Gujarati food delivery in Chandivali or Andheri East? Thepla House by Tejal's Kitchen Chandivali is a 100% vegetarian kitchen serving home-style theplas, thalis, farsan and sweets — whole wheat, sunflower oil and no preservatives — with Jain and vegan options, open daily 7:30am to 10:30pm.",
     faqs: [
       { q: "Which areas does the Chandivali kitchen deliver to?", a: "We deliver across Andheri East — Powai, Saki Naka, Marol, JB Nagar, Chakala and Kurla West — via Swiggy, Zomato and WhatsApp." },
-      { q: "What are the Chandivali timings?", a: "Open Monday to Sunday, 9:00am to 10:00pm. Order before 11am for same-day lunch." },
+      { q: "What are the Chandivali timings?", a: "Open every day, 7:30am to 10:30pm. Order before 11am for same-day lunch." },
       { q: "Do you have Jain and vegan options here?", a: "Yes — a wide range of Jain (no onion, garlic or root vegetables) and vegan dishes are available — just ask when you order." },
       { q: "Can I order catering or travel packs from Chandivali?", a: "Absolutely. Chandivali is our flagship kitchen — it handles event and pooja catering with full Jain menus, and our vacuum-packed methi-thepla travel packs." },
     ],
@@ -161,8 +161,8 @@ export const KITCHENS: Kitchen[] = [
     areasServed: ["Lower Parel", "Worli", "Prabhadevi", "Elphinstone", "Mahalaxmi", "Parel"],
     popular: DEFAULT_POPULAR,
     localCopy:
-      "Thepla House by Tejal's Kitchen Lower Parel keeps the Senapati Bapat Marg and Worli office crowd fed with quick, home-style weekday lunches — whole-wheat theplas, thalis and farsan, 100% vegetarian with Jain and vegan options. Open Monday to Saturday, 9am–9pm.",
-    faqs: defaultFaqs("Lower Parel", "Senapati Bapat Marg", "Lower Parel, Worli, Prabhadevi, Elphinstone and Mahalaxmi", "Open Monday to Saturday, 9am to 9pm"),
+      "Thepla House by Tejal's Kitchen Lower Parel keeps the Senapati Bapat Marg and Worli office crowd fed with quick, home-style weekday lunches — whole-wheat theplas, thalis and farsan, 100% vegetarian with Jain and vegan options. Open daily 7:30am to 10:30pm, and until 3pm on Fridays.",
+    faqs: defaultFaqs("Lower Parel", "Senapati Bapat Marg", "Lower Parel, Worli, Prabhadevi, Elphinstone and Mahalaxmi", "Open every day 7:30am to 10:30pm, and 7:30am to 3pm on Fridays"),
   },
   {
     slug: "mulund",
@@ -327,7 +327,7 @@ export const KITCHENS: Kitchen[] = [
       { q: "Where is Thepla House by Tejal's Kitchen in Kandivali?", a: "We're at Shop No 1 & 2, Shreenath Enclave, Hemukalani Cross Road No. 3, Hemu Colony, Irani Wadi, Kandivali West — close to Mahavir Nagar and the MHADA Colony, easy to reach from Kandivali East, Charkop, Borivali and Malad." },
       { q: "Where can I get the best thepla in Kandivali West?", a: "Thepla House by Tejal's Kitchen serves fresh, home-style methi theplas, thalis and farsan in Kandivali West — 100% vegetarian, 100% whole wheat, no maida and no palm oil. Dine in hot off the tawa, take away, or order delivery." },
       { q: "Is Kandivali a dine-in outlet?", a: "Yes — Kandivali West is our dine-in and takeaway outlet. Eat fresh off the tawa, take away, or order delivery on Swiggy, Zomato and WhatsApp." },
-      { q: "What are the Kandivali timings?", a: "Open Monday to Sunday, 8:00am to 10:30pm — the longest hours of any Thepla House by Tejal's Kitchen kitchen." },
+      { q: "What are the Kandivali timings?", a: "Open every day, 7:30am to 10:30pm." },
       { q: "Do you have Jain and vegan options here?", a: "Yes — Jain (no onion, garlic or root vegetables) and vegan dishes are available — just ask when you order." },
       { q: "Is everything vegetarian and made without maida?", a: "Always. 100% vegetarian, whole-wheat atta and sunflower oil — never maida or palm oil — with no preservatives." },
     ],
