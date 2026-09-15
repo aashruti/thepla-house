@@ -14,7 +14,7 @@ export const HOME_FAQS = [
   },
   {
     q: "Which areas do you deliver to?",
-    a: "We cook from 7 delivery kitchens across Mumbai — Chandivali (Andheri East), Kalina, Lower Parel, Mulund, Thane (Manpada), Thane Stadium (Naupada) — plus a Kandivali dine-in outlet, and a takeaway counter inside Navi Mumbai International Airport departures. Order on Swiggy, Zomato or WhatsApp.",
+    a: "We cook from 7 kitchens across Mumbai and Thane — Chandivali (Andheri East), Kalina, Lower Parel, Mulund, Thane (Manpada), Dadoji Konddev Stadium (Thane West) and Kandivali West — with dine-in at Kandivali and Dadoji Konddev Stadium. There's also a takeaway counter inside Navi Mumbai International Airport departures. Order on Swiggy, Zomato or WhatsApp.",
   },
   {
     q: "Can I take theplas outside Mumbai?",
