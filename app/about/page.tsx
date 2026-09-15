@@ -14,6 +14,8 @@ import { img } from "@/data/images";
  * never drift out of step with /locations the way "7 kitchens" once did.
  */
 const OUTLET_COUNT = KITCHENS.length;
+/** Kitchens only: the airport outlet is a takeaway counter, not a kitchen. */
+const KITCHEN_COUNT = KITCHENS.filter((k) => !k.airside).length;
 
 export const metadata: Metadata = pageMetadata({
   title: "Our story — Tejal Shah & Thepla House by Tejal's Kitchen",
@@ -247,7 +249,7 @@ export default function AboutPage() {
           <div style={{ textAlign: "center", marginBottom: 40 }}>
             <div className="seglabel">The journey</div>
             <h2 style={{ fontFamily: "var(--font-display)", color: "var(--color-headline)", fontSize: "var(--fs-h2)", margin: "6px 0 14px" }}>
-              From a home kitchen to {OUTLET_COUNT} commercial kitchens
+              From a home kitchen to {KITCHEN_COUNT} commercial kitchens
             </h2>
             <p style={{ fontFamily: "var(--font-body)", color: "var(--ink-600)", fontSize: "var(--fs-body-lg)", lineHeight: 1.7, margin: "0 auto", maxWidth: 720 }}>
               For the first year Tejal ran the business from home. Those profits were reinvested into the first commercial kitchen at Chandivali, Andheri — built around an open-kitchen concept — and the brand has grown one location at a time ever since.
