@@ -46,7 +46,7 @@ function ctaStyle(): CSSProperties {
 
 export function Navbar({
   logoSrc,
-  brand = "Thepla House",
+  brand = "Thepla House by Tejal's Kitchen",
   links = [],
   ctaLabel = "Order now",
   onCta,

@@ -1,5 +1,7 @@
 import Link from "next/link";
 import type { CSSProperties } from "react";
+import { AggregatorLink } from "./AggregatorLink";
+import { externalLinkProps } from "@/lib/links";
 
 /**
  * KitchenCard — location card: area, name, note, hours, directions + order.
@@ -8,10 +10,13 @@ export interface KitchenCardProps {
   title: string;
   area: string;
   note: string;
-  hours: string;
+  hours?: string;
   directionsHref?: string;
   orderHref?: string;
   detailHref?: string;
+  /** This outlet's own aggregator listings. Omitted outlets simply render no row. */
+  swiggyHref?: string;
+  zomatoHref?: string;
   style?: CSSProperties;
   className?: string;
 }
@@ -24,6 +29,8 @@ export function KitchenCard({
   directionsHref = "#",
   orderHref = "#",
   detailHref,
+  swiggyHref,
+  zomatoHref,
   style,
   className,
 }: KitchenCardProps) {
@@ -63,10 +70,12 @@ export function KitchenCard({
       <p style={{ fontFamily: "var(--font-body)", color: "var(--color-on-surface-variant)", fontSize: "0.875rem", lineHeight: 1.5, margin: 0, flex: 1 }}>
         {note}
       </p>
-      <div style={{ display: "flex", alignItems: "center", gap: 7, color: "var(--ink-600)", fontFamily: "var(--font-body)", fontSize: "0.8125rem" }}>
-        <span aria-hidden="true" style={{ width: 14, height: 14, borderRadius: "50%", border: "1.5px solid var(--ink-400)", position: "relative", display: "inline-block" }} />
-        {hours}
-      </div>
+      {hours && (
+        <div style={{ display: "flex", alignItems: "center", gap: 7, color: "var(--ink-600)", fontFamily: "var(--font-body)", fontSize: "0.8125rem" }}>
+          <span aria-hidden="true" style={{ width: 14, height: 14, borderRadius: "50%", border: "1.5px solid var(--ink-400)", position: "relative", display: "inline-block" }} />
+          {hours}
+        </div>
+      )}
       <div style={{ display: "flex", gap: 8, marginTop: 4 }}>
         <Link
           href={directionsHref}
@@ -78,11 +87,18 @@ export function KitchenCard({
         </Link>
         <Link
           href={orderHref}
+          {...externalLinkProps(orderHref)}
           style={{ flex: 1, textAlign: "center", fontFamily: "var(--font-body)", fontSize: "0.8125rem", fontWeight: 600, color: "var(--color-on-primary)", background: "var(--color-primary)", borderRadius: "var(--radius-md)", padding: "9px 10px", textDecoration: "none" }}
         >
           Order
         </Link>
       </div>
+      {(swiggyHref || zomatoHref) && (
+        <div style={{ display: "flex", gap: 8 }}>
+          {swiggyHref && <AggregatorLink service="swiggy" href={swiggyHref} size="sm" fill />}
+          {zomatoHref && <AggregatorLink service="zomato" href={zomatoHref} size="sm" fill />}
+        </div>
+      )}
     </div>
   );
 }

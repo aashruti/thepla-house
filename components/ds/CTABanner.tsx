@@ -1,5 +1,6 @@
 import Link from "next/link";
-import type { CSSProperties } from "react";
+import { externalLinkProps } from "@/lib/links";
+import type { CSSProperties, ReactNode } from "react";
 
 /**
  * Thepla House — CTABanner
@@ -8,7 +9,8 @@ import type { CSSProperties } from "react";
  */
 export interface CTABannerProps {
   eyebrow?: string;
-  title?: string;
+  /** Usually a string; a node allows animated or multilingual headlines. */
+  title?: ReactNode;
   body?: string;
   primaryLabel?: string;
   primaryHref?: string;
@@ -23,6 +25,15 @@ const TONES = {
   gold: { bg: "var(--gold-400)", edge: "var(--gold-600)", fg: "var(--ink-900)", eyebrow: "var(--maroon-700)", btnBg: "var(--color-primary)", btnFg: "var(--cream-50)", btn2Border: "var(--maroon-700)", btn2Fg: "var(--maroon-800)" },
   green: { bg: "var(--green-700)", edge: "var(--green-900)", fg: "var(--cream-50)", eyebrow: "var(--gold-300)", btnBg: "var(--color-secondary)", btnFg: "var(--ink-900)", btn2Border: "var(--cream-100)", btn2Fg: "var(--cream-50)" },
 };
+
+/**
+ * Indian phone numbers in body copy ("+91 98195 55065") otherwise wrap at their
+ * spaces, stranding "+91" at the end of one line. Non-breaking spaces keep the
+ * number on a single line without changing how it reads.
+ */
+function keepPhoneNumbersTogether(text: string): string {
+  return text.replace(/\+91 (\d{5}) (\d{5})/g, "+91\u00A0$1\u00A0$2");
+}
 
 export function CTABanner({
   eyebrow,
@@ -141,7 +152,7 @@ export function CTABanner({
           )}
           {body && (
             <p style={{ margin: 0, color: t.fg, opacity: 0.92, fontSize: "1.0625rem", lineHeight: "var(--lh-body)", maxWidth: "46ch" }}>
-              {body}
+              {keepPhoneNumbersTogether(body)}
             </p>
           )}
         </div>
@@ -151,11 +162,11 @@ export function CTABanner({
           // instead of the second button overflowing and being clipped.
           style={{ display: "flex", gap: 12, flexWrap: "wrap", justifyContent: "center", flexShrink: 0, maxWidth: "100%" }}
         >
-          <Link href={primaryHref} style={primaryStyle}>
+          <Link href={primaryHref} {...externalLinkProps(primaryHref)} style={primaryStyle}>
             {primaryLabel}
           </Link>
           {secondaryLabel && (
-            <Link href={secondaryHref} style={secondaryStyle}>
+            <Link href={secondaryHref} {...externalLinkProps(secondaryHref)} style={secondaryStyle}>
               {secondaryLabel}
             </Link>
           )}

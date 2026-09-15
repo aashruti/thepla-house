@@ -1,17 +1,19 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { PdfMenu } from "@/components/blocks/PdfMenu";
 import { MenuExplorer } from "@/components/blocks/MenuExplorer";
 import { CTABanner } from "@/components/ds/CTABanner";
 import { JsonLd } from "@/components/JsonLd";
 import { pageMetadata, menuLd, breadcrumbLd } from "@/lib/seo";
-import { MENU_CATEGORIES } from "@/data/menu";
-import { ORDER_PHONE, WHATSAPP_LINK } from "@/data/site";
+import { MENU_CATEGORIES, HOMELY_HEALTHY, tagsFor } from "@/data/menu";
+import { MenuItemCard } from "@/components/blocks/MenuItemCard";
+import { ORDER_PHONE, WHATSAPP_LINK, ORDER_NOW_LINK } from "@/data/site";
 import menuExtracted from "@/data/menu-extracted.json";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Menu — 250+ home-style Gujarati dishes",
+  title: "Thepla House by Tejal's Kitchen — Menu & Prices",
   description:
-    "Explore 250+ vegetarian, whole-wheat dishes — theplas, thalis, farsan and sweets. Jain & vegan options clearly tagged. Order on Swiggy, Zomato or WhatsApp.",
+    "See the Thepla House by Tejal's Kitchen menu and current prices for fresh thepla, Gujarati thali, farsan, sweets and upvas food. Jain and vegan options; order across Mumbai.",
   path: "/menu",
 });
 
@@ -38,6 +40,7 @@ function pricedMenuSections() {
 }
 
 export default function MenuPage() {
+  const upvasDishes = MENU_CATEGORIES.find((c) => c.id === "upvas")?.dishes ?? [];
   return (
     <>
       <JsonLd
@@ -62,10 +65,10 @@ export default function MenuPage() {
         <div className="th-container" style={{ position: "relative", paddingTop: 48, paddingBottom: 28 }}>
           <div className="seglabel">The menu</div>
           <h1 style={{ fontFamily: "var(--font-display)", color: "var(--color-headline)", fontSize: "var(--fs-display-lg)", lineHeight: 1.08, margin: "10px 0 14px" }}>
-            Our menu — 250+ home-style dishes
+            Thepla House by Tejal&apos;s Kitchen menu — 250+ home-style dishes
           </h1>
           <p style={{ fontFamily: "var(--font-body)", color: "var(--ink-600)", fontSize: "var(--fs-body-lg)", lineHeight: 1.6, maxWidth: 680, margin: 0 }}>
-            Every dish is 100% vegetarian, made with whole-wheat atta and sunflower oil — no maida, no palm oil, no preservatives. Jain and vegan options are clearly tagged throughout.
+            Every dish is 100% vegetarian, made with whole-wheat atta and sunflower oil — no maida, no palm oil, no preservatives. Jain and vegan options are available — just ask when you order.
           </p>
         </div>
       </section>
@@ -76,6 +79,26 @@ export default function MenuPage() {
         </div>
       </section>
 
+      <section id="upvas-food" style={{ background: "var(--cream-100)" }}>
+        <div className="th-container" style={{ paddingTop: 52, paddingBottom: 52 }}>
+          <div className="seglabel">Fasting favourites</div>
+          <h2 style={{ fontFamily: "var(--font-display)", color: "var(--color-headline)", fontSize: "var(--fs-title)", lineHeight: 1.12, margin: "8px 0 10px" }}>
+            Upvas food and fasting thali in Mumbai
+          </h2>
+          <p style={{ fontFamily: "var(--font-body)", color: "var(--ink-600)", fontSize: "var(--fs-body-lg)", lineHeight: 1.6, maxWidth: 760, margin: "0 0 24px" }}>
+            Looking for upvas food near you? Our current menu includes a complete Upwas Thali, sabudana favourites, rajgira puri and farali dishes. Availability can vary by kitchen and fasting day.
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {upvasDishes.map((d) => (
+              <MenuItemCard key={d.title} title={d.title} desc={d.desc} subject={d.subject} alt={d.alt} tags={tagsFor(d.keys)} src={d.image} />
+            ))}
+          </div>
+          <Link href="/locations" style={{ display: "inline-flex", marginTop: 22, fontFamily: "var(--font-body)", color: "var(--color-primary)", fontWeight: 700, textDecoration: "none" }}>
+            Find your nearest Thepla House by Tejal&apos;s Kitchen outlet →
+          </Link>
+        </div>
+      </section>
+
       <section style={{ background: "var(--cream-50)" }}>
         <div className="th-container" style={{ paddingTop: 8, paddingBottom: 56 }}>
           <div className="seglabel">Browse the dishes</div>
@@ -83,14 +106,33 @@ export default function MenuPage() {
             Explore by category
           </h2>
           <p style={{ fontFamily: "var(--font-body)", color: "var(--ink-600)", fontSize: "var(--fs-body-lg)", lineHeight: 1.6, maxWidth: 680, margin: "0 0 20px" }}>
-            Tap a category or filter for Jain, vegan and best-seller picks. For current prices, see the menu above.
+            Our most-ordered dishes — see them all, or pick a category. For prices, see the menu above.
           </p>
           <MenuExplorer />
         </div>
       </section>
 
+      {/* Homely & Healthy is a separate line from the same kitchens, so it gets
+          its own section rather than a tab among the Thepla House categories. */}
+      <section id="homely-healthy" style={{ background: "var(--green-700)", position: "relative", overflow: "hidden" }}>
+        <div className="th-container" style={{ position: "relative", paddingTop: 52, paddingBottom: 56 }}>
+          <div className="seglabel" style={{ color: "var(--gold-300)" }}>Also from our kitchens</div>
+          <h2 style={{ fontFamily: "var(--font-display)", color: "var(--cream-50)", fontSize: "var(--fs-title)", lineHeight: 1.12, margin: "8px 0 10px" }}>
+            Homely &amp; Healthy
+          </h2>
+          <p style={{ fontFamily: "var(--font-body)", color: "var(--green-200)", fontSize: "var(--fs-body-lg)", lineHeight: 1.6, maxWidth: 720, margin: "0 0 26px" }}>
+            Complete thalis and meals, cooked in the same kitchens.
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {HOMELY_HEALTHY.map((d) => (
+              <MenuItemCard key={d.title} title={d.title} desc={d.desc} subject={d.subject} alt={d.alt} tags={tagsFor(d.keys)} src={d.image} />
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section style={{ background: "var(--cream-50)" }}>
-        <div className="th-container" style={{ paddingBottom: 56 }}>
+        <div className="th-container" style={{ paddingTop: 56, paddingBottom: 56 }}>
           <CTABanner
             tone="maroon"
             align="split"
@@ -98,7 +140,7 @@ export default function MenuPage() {
             title="Order our best-sellers"
             body={`Pick a delivery partner and we'll roll it fresh — or call ${ORDER_PHONE}.`}
             primaryLabel="Order now"
-            primaryHref="/menu"
+            primaryHref={ORDER_NOW_LINK}
             secondaryLabel="WhatsApp us"
             secondaryHref={WHATSAPP_LINK}
           />

@@ -4,91 +4,54 @@ import { useState } from "react";
 import { Tabs } from "@/components/ds/Tabs";
 import { MenuItemCard } from "./MenuItemCard";
 import { MenuRow } from "./MenuRow";
-import { MENU_CATEGORIES, DIET_FILTERS, tagsFor, type TagKey } from "@/data/menu";
+import { MENU_CATEGORIES, tagsFor } from "@/data/menu";
 
 /**
- * MenuExplorer — category tabs + diet filters. Compact MenuRow list on mobile,
- * MenuItemCard grid on tablet/desktop. Client-side filtering.
+ * MenuExplorer — category tabs, led by an "All" tab that shows every dish.
+ * Compact MenuRow list on mobile, MenuItemCard grid on tablet/desktop.
  */
-export function MenuExplorer() {
-  const [cat, setCat] = useState(MENU_CATEGORIES[0].id);
-  const [diet, setDiet] = useState("all");
+const ALL_TAB = "all";
+const totalDishes = MENU_CATEGORIES.reduce((n, c) => n + c.dishes.length, 0);
 
-  const activeCategory = MENU_CATEGORIES.find((c) => c.id === cat) || MENU_CATEGORIES[0];
-  const filtered = activeCategory.dishes.filter(
-    (d) => diet === "all" || d.keys.includes(diet as TagKey),
-  );
+export function MenuExplorer() {
+  const [cat, setCat] = useState(ALL_TAB);
+
+  const dishes =
+    cat === ALL_TAB
+      ? MENU_CATEGORIES.flatMap((c) => c.dishes)
+      : (MENU_CATEGORIES.find((c) => c.id === cat) ?? MENU_CATEGORIES[0]).dishes;
 
   return (
     <>
       <div style={{ borderBottom: "1px solid var(--color-outline-variant)" }}>
         <Tabs
-          tabs={MENU_CATEGORIES.map((c) => ({ id: c.id, label: c.label, count: c.dishes.length }))}
+          tabs={[
+            { id: ALL_TAB, label: "All", count: totalDishes },
+            ...MENU_CATEGORIES.map((c) => ({ id: c.id, label: c.label, count: c.dishes.length })),
+          ]}
           value={cat}
           onChange={setCat}
         />
       </div>
 
-      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 16, padding: "20px 0 4px", flexWrap: "wrap" }}>
-        <div style={{ display: "flex", gap: 9, flexWrap: "wrap" }}>
-          {DIET_FILTERS.map((f) => {
-            const active = f.key === diet;
-            return (
-              <button
-                key={f.key}
-                onClick={() => setDiet(f.key)}
-                aria-pressed={active}
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: 6,
-                  whiteSpace: "nowrap",
-                  minHeight: 40,
-                  padding: "9px 16px",
-                  fontFamily: "var(--font-body)",
-                  fontSize: "0.875rem",
-                  fontWeight: 600,
-                  borderRadius: "999px",
-                  cursor: "pointer",
-                  transition: "var(--transition-colors)",
-                  background: active ? "var(--color-primary)" : "var(--white)",
-                  color: active ? "var(--color-on-primary)" : "var(--ink-700)",
-                  border: `1.5px solid ${active ? "var(--color-primary)" : "var(--color-outline)"}`,
-                }}
-              >
-                {f.label}
-              </button>
-            );
-          })}
-        </div>
-        <span style={{ fontFamily: "var(--font-body)", fontSize: "0.9375rem", color: "var(--ink-500)" }}>
-          {activeCategory.label} · showing {filtered.length}
-        </span>
+      {/* Mobile: compact rows */}
+      {/* flex lives in the class list, not an inline style: an inline display
+          always beats md:hidden, which had this list rendering on desktop
+          underneath the card grid. */}
+      <div className="flex flex-col gap-3 md:hidden" style={{ paddingTop: 20 }}>
+        {dishes.map((d) => (
+          <MenuRow key={d.title} title={d.title} desc={d.desc} subject={d.subject} alt={d.alt} tags={tagsFor(d.keys)} src={d.image} />
+        ))}
+      </div>
+      {/* Tablet/desktop: card grid */}
+      <div className="hidden md:grid grid-cols-2 lg:grid-cols-3 gap-6" style={{ paddingTop: 28 }}>
+        {dishes.map((d) => (
+          <MenuItemCard key={d.title} title={d.title} desc={d.desc} subject={d.subject} alt={d.alt} tags={tagsFor(d.keys)} src={d.image} />
+        ))}
       </div>
 
-      {filtered.length === 0 ? (
-        <div style={{ textAlign: "center", padding: "48px 10px", color: "var(--ink-500)", fontFamily: "var(--font-body)", fontSize: "1.0625rem" }}>
-          No dishes match that filter in this category — try another.
-        </div>
-      ) : (
-        <>
-          {/* Mobile: compact rows */}
-          <div className="md:hidden" style={{ display: "flex", flexDirection: "column", gap: 12, paddingTop: 20 }}>
-            {filtered.map((d) => (
-              <MenuRow key={d.title} title={d.title} desc={d.desc} subject={d.subject} alt={d.alt} tags={tagsFor(d.keys)} />
-            ))}
-          </div>
-          {/* Tablet/desktop: card grid */}
-          <div className="hidden md:grid grid-cols-2 lg:grid-cols-3 gap-6" style={{ paddingTop: 28 }}>
-            {filtered.map((d) => (
-              <MenuItemCard key={d.title} title={d.title} desc={d.desc} subject={d.subject} alt={d.alt} tags={tagsFor(d.keys)} />
-            ))}
-          </div>
-        </>
-      )}
-
       <p style={{ fontFamily: "var(--font-body)", color: "var(--ink-500)", fontSize: "0.9375rem", margin: "28px 0 0" }}>
-        This is a representative selection — the full kitchen runs to 250+ dishes across theplas, thalis, farsan, sweets and seasonal specials.
+        These are our {totalDishes} most-ordered dishes. The full menu runs to 250+ — see it in full in the menu above, or on Swiggy and Zomato.
       </p>
     </>
   );

@@ -13,13 +13,13 @@ import { pageMetadata, faqPageLd } from "@/lib/seo";
 import { POPULAR_DISHES, tagsFor } from "@/data/menu";
 import { KITCHENS } from "@/data/kitchens";
 import { HOME_FAQS } from "@/data/faqs";
-import { ORDER_PHONE, FRANCHISE_CONTACT } from "@/data/site";
+import { ORDER_PHONE, FRANCHISE_CONTACT, ORDER_NOW_LINK } from "@/data/site";
 import { img } from "@/data/images";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Thepla House Mumbai — Fresh Thepla, Gujarati Thali & Tiffin",
+  title: "Thepla House by Tejal's Kitchen — Thepla & Gujarati Thali",
   description:
-    "Find fresh thepla, Gujarati thali and vegetarian tiffin near you at seven Thepla House locations across Mumbai. Whole-wheat, Jain and vegan options; order online.",
+    "Find fresh thepla, Gujarati thali and vegetarian tiffin near you at eight Thepla House by Tejal's Kitchen locations across Mumbai. Whole-wheat, Jain and vegan options; order online.",
   path: "/",
 });
 
@@ -43,7 +43,7 @@ export default function HomePage() {
           alt: "A home-style Gujarati spread on a brass thali",
           src: img("home-hero"),
         }}
-        primaryCta={{ label: "Order now", href: "/menu" }}
+        primaryCta={{ label: "Order now", href: ORDER_NOW_LINK }}
         secondaryCta={{ label: "See the menu", href: "/menu" }}
         showChannels
       />
@@ -67,7 +67,7 @@ export default function HomePage() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {POPULAR_DISHES.map((d) => (
-              <MenuItemCard key={d.title} title={d.title} desc={d.desc} subject={d.subject} alt={d.alt} tags={tagsFor(d.keys)} />
+              <MenuItemCard key={d.title} title={d.title} desc={d.desc} subject={d.subject} alt={d.alt} tags={tagsFor(d.keys)} src={d.image} />
             ))}
           </div>
         </div>
@@ -80,16 +80,16 @@ export default function HomePage() {
             <div>
               <div className="seglabel">Find us</div>
               <h2 style={{ fontFamily: "var(--font-display)", color: "var(--color-headline)", fontSize: "var(--fs-h2)", margin: "6px 0 0" }}>
-                7 kitchens across Mumbai
+                Fresh thepla near you at 8 Mumbai locations
               </h2>
             </div>
             <Link href="/locations" style={{ fontFamily: "var(--font-body)", fontWeight: 600, color: "var(--color-primary)", textDecoration: "none", whiteSpace: "nowrap" }}>
-              All locations →
+              Find thepla near me →
             </Link>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
             {homeKitchens.map((k) => (
-              <KitchenCard key={k.slug} title={k.title} area={k.area} note={k.address} hours={k.hours} detailHref={`/locations/${k.slug}`} directionsHref={`https://www.google.com/maps?q=${encodeURIComponent(k.mapQuery)}`} orderHref="/menu" />
+              <KitchenCard key={k.slug} title={k.title} area={k.area} note={k.address} hours={k.hours} detailHref={`/locations/${k.slug}`} directionsHref={k.mapsUrl || `https://www.google.com/maps?q=${encodeURIComponent(k.mapQuery)}`} orderHref={k.swiggyUrl || ORDER_NOW_LINK} swiggyHref={k.swiggyUrl} zomatoHref={k.zomatoUrl} />
             ))}
           </div>
           <p style={{ fontFamily: "var(--font-body)", color: "var(--ink-500)", fontSize: "0.9375rem", margin: "20px 0 0" }}>
@@ -144,7 +144,7 @@ export default function HomePage() {
                 Made by Tejal, like she makes it at home
               </h2>
               <p style={{ fontFamily: "var(--font-body)", color: "var(--ink-600)", fontSize: "1.0625rem", lineHeight: 1.65, margin: "0 0 14px", maxWidth: 560 }}>
-                Thepla House started in Tejal&apos;s Mumbai kitchen in 2018 with one belief: eating out shouldn&apos;t mean eating junk. Every dish is still cooked the way she&apos;d make it for her own family — whole wheat, sunflower oil, no shortcuts.
+                Thepla House by Tejal&apos;s Kitchen started in Tejal&apos;s Mumbai kitchen in 2018 with one belief: eating out shouldn&apos;t mean eating junk. Every dish is still cooked the way she&apos;d make it for her own family — whole wheat, sunflower oil, no shortcuts.
               </p>
               <div style={{ fontFamily: "var(--font-script)", color: "var(--color-primary)", fontSize: "2.25rem", lineHeight: 1, marginBottom: 18 }}>
                 — Tejal Shah
@@ -178,11 +178,11 @@ export default function HomePage() {
             </article>
             <article style={{ background: "var(--color-surface)", border: "1px solid var(--color-outline-variant)", borderRadius: "var(--radius-xl)", boxShadow: "var(--shadow-sm)", overflow: "hidden" }}>
               <div style={{ height: 160 }}>
-                <PhotoSlot subject="A bright Thepla House dine-in counter / storefront" alt="Thepla House outlet counter" src={img("franchise")} style={{ height: 160, width: "100%" }} />
+                <PhotoSlot subject="A bright Thepla House by Tejal's Kitchen dine-in counter / storefront" alt="Thepla House by Tejal's Kitchen outlet counter" src={img("franchise")} style={{ height: 160, width: "100%" }} />
               </div>
               <div style={{ padding: 24 }}>
                 <div className="seglabel">Franchise</div>
-                <h3 style={{ fontFamily: "var(--font-display)", color: "var(--color-headline)", fontSize: "1.5rem", margin: "6px 0 8px" }}>Open a Thepla House franchise</h3>
+                <h3 style={{ fontFamily: "var(--font-display)", color: "var(--color-headline)", fontSize: "1.5rem", margin: "6px 0 8px" }}>Open a Thepla House by Tejal&apos;s Kitchen franchise</h3>
                 <p style={{ fontFamily: "var(--font-body)", color: "var(--ink-600)", fontSize: "0.9375rem", lineHeight: 1.55, margin: "0 0 14px" }}>
                   Bring Tejal&apos;s kitchen to your city. Tell us about your city, site and investment in a short application — {FRANCHISE_CONTACT.name} and the team read every one.
                 </p>
@@ -218,7 +218,7 @@ export default function HomePage() {
             title="Real ghar ka khana, a few taps away"
             body={`Order on Swiggy, Zomato or WhatsApp — or call ${ORDER_PHONE}.`}
             primaryLabel="Order now"
-            primaryHref="/menu"
+            primaryHref={ORDER_NOW_LINK}
             secondaryLabel="See the menu"
             secondaryHref="/menu"
           />

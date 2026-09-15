@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ORDER_NOW_LINK } from "@/data/site";
 import { GalleryMasonry } from "@/components/blocks/GalleryMasonry";
 import { CTABanner } from "@/components/ds/CTABanner";
 import { JsonLd } from "@/components/JsonLd";
@@ -16,7 +17,7 @@ export default function GalleryPage() {
     <>
       <JsonLd
         data={[
-          { "@context": "https://schema.org", "@type": "ImageGallery", name: "Thepla House gallery", url: absUrl("/gallery") },
+          { "@context": "https://schema.org", "@type": "ImageGallery", name: "Thepla House by Tejal's Kitchen gallery", url: absUrl("/gallery") },
           breadcrumbLd([
             { name: "Home", path: "/" },
             { name: "Gallery", path: "/gallery" },
@@ -53,7 +54,7 @@ export default function GalleryPage() {
             title="It tastes even better"
             body="Order fresh, home-style food today — Swiggy, Zomato or WhatsApp."
             primaryLabel="Order now"
-            primaryHref="/menu"
+            primaryHref={ORDER_NOW_LINK}
             secondaryLabel="See the menu"
             secondaryHref="/menu"
           />

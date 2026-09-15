@@ -268,7 +268,7 @@ export function EnquiryForm({ kind, fields, steps, submitLabel = "Send enquiry",
         </h3>
         <p style={{ fontFamily: "var(--font-body)", color: "var(--ink-700)", margin: 0, lineHeight: 1.6 }}>
           {successNote ??
-            "The Thepla House team will get back to you shortly. For anything urgent, call +91 98195 55065."}
+            "The Thepla House by Tejal's Kitchen team will get back to you shortly. For anything urgent, call +91 98195 55065."}
         </p>
       </div>
     );

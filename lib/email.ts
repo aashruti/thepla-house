@@ -35,7 +35,7 @@ export const sendEmail = async ({ to, subject, html, replyTo, attachments }: Ema
     },
   });
 
-  const from = process.env.EMAIL_FROM || '"Thepla House" <noreply@theplahouse.com>';
+  const from = process.env.EMAIL_FROM || `"Thepla House by Tejal's Kitchen" <noreply@theplahouse.com>`;
 
   const info = await transporter.sendMail({
     from,

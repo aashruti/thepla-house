@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { externalLinkProps } from "@/lib/links";
+import { ORDER_NOW_LINK } from "@/data/site";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { MenuRow } from "@/components/blocks/MenuRow";
@@ -7,7 +9,7 @@ import { OrderChannels } from "@/components/blocks/OrderChannels";
 import { Accordion } from "@/components/ds/Accordion";
 import { CTABanner } from "@/components/ds/CTABanner";
 import { JsonLd } from "@/components/JsonLd";
-import { pageMetadata, restaurantLd, faqPageLd, breadcrumbLd } from "@/lib/seo";
+import { pageMetadata, serviceLd, faqPageLd, breadcrumbLd } from "@/lib/seo";
 import { AREAS, getArea } from "@/data/areas";
 import { tagsFor } from "@/data/menu";
 import { img, dishImage } from "@/data/images";
@@ -45,10 +47,12 @@ export default async function GeoLandingPage({ params }: { params: Promise<{ geo
     <>
       <JsonLd
         data={[
-          restaurantLd({
-            name: `Thepla House — ${a.servingKitchenName.replace("Thepla House ", "")}`,
-            url: `/${geo}`,
-            locality: a.name,
+          serviceLd({
+            name: `Gujarati food delivery in ${a.name} from ${a.servingKitchenName}`,
+            description: a.localCopy,
+            path: `/${geo}`,
+            serviceType: "Home-style Gujarati food delivery",
+            areaServed: a.areasServed,
           }),
           faqPageLd(a.faqs),
           breadcrumbLd([
@@ -80,7 +84,7 @@ export default async function GeoLandingPage({ params }: { params: Promise<{ geo
                 Order healthy, home-style theplas, thalis, farsan and sweets anywhere in {a.name} — 100% vegetarian, whole wheat and made fresh to order, like a home tiffin at your door. Jain and vegan options on every menu.
               </p>
               <div style={{ display: "flex", gap: 12, alignItems: "center", flexWrap: "wrap", marginBottom: 18 }}>
-                <Link href="/menu" style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", minHeight: 52, padding: "14px 28px", fontFamily: "var(--font-body)", fontSize: "1.0625rem", fontWeight: 600, color: "var(--color-on-primary)", background: "var(--color-primary)", borderRadius: "var(--radius-md)", boxShadow: "var(--shadow-sm)", textDecoration: "none" }}>
+                <Link href={ORDER_NOW_LINK} {...externalLinkProps(ORDER_NOW_LINK)} style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", minHeight: 52, padding: "14px 28px", fontFamily: "var(--font-body)", fontSize: "1.0625rem", fontWeight: 600, color: "var(--color-on-primary)", background: "var(--color-primary)", borderRadius: "var(--radius-md)", boxShadow: "var(--shadow-sm)", textDecoration: "none" }}>
                   Order now
                 </Link>
               </div>
@@ -111,11 +115,11 @@ export default async function GeoLandingPage({ params }: { params: Promise<{ geo
         <div className="th-container" style={{ paddingTop: 56, paddingBottom: 56 }}>
           <div className="grid grid-cols-1 lg:grid-cols-[1.3fr_0.7fr] gap-12 items-start">
             <div>
-              <div className="seglabel">Popular in {a.name}</div>
-              <h2 style={{ fontFamily: "var(--font-display)", color: "var(--color-headline)", fontSize: "1.875rem", margin: "6px 0 20px" }}>Most-ordered here</h2>
+              <div className="seglabel">Most ordered</div>
+              <h2 style={{ fontFamily: "var(--font-display)", color: "var(--color-headline)", fontSize: "1.875rem", margin: "6px 0 20px" }}>Our best-sellers</h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {a.popular.map((d) => (
-                  <MenuRow key={d.title} title={d.title} desc={d.desc} subject={d.subject} alt={d.alt} tags={tagsFor(d.keys)} />
+                  <MenuRow key={d.title} title={d.title} desc={d.desc} subject={d.subject} alt={d.alt} tags={tagsFor(d.keys)} src={d.image} />
                 ))}
               </div>
             </div>
@@ -165,7 +169,7 @@ export default async function GeoLandingPage({ params }: { params: Promise<{ geo
             title="Order ghar ka khana now"
             body="Fresh, home-style and delivered to your door — Swiggy, Zomato or WhatsApp."
             primaryLabel="Order now"
-            primaryHref="/menu"
+            primaryHref={ORDER_NOW_LINK}
             secondaryLabel="See the menu"
             secondaryHref="/menu"
           />

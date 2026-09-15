@@ -20,6 +20,8 @@
 :root {
   --font-display: var(--font-eczar), "Georgia", serif;
   --font-body: var(--font-mukta), system-ui, -apple-system, "Segoe UI", sans-serif;
+  /* Gujarati script — Mukta has no Gujarati glyphs, Mukta Vaani is its counterpart. */
+  --font-gujarati: var(--font-mukta-vaani), var(--font-mukta), system-ui, sans-serif;
   --font-script: var(--font-caveat), "Segoe Script", cursive;
 }
 
@@ -90,15 +92,105 @@ body {
   }
 }
 
-/* ---- Locations hub: map becomes a sticky rail on desktop ---- */
+/* ---- Footer columns ----
+   Mobile: brand block full width, link columns two-up beneath it. The desktop
+   template can't be used there — its first track alone demands 220px plus a
+   140px column and the gap, 400px of fixed tracks on a 335px content area, and
+   the overflow widened the whole page on phones (pushing the fixed order bar's
+   Call button off-screen). */
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 32px 20px;
+}
+.footer-grid > :first-child {
+  grid-column: 1 / -1;
+}
+@media (min-width: 768px) {
+  .footer-grid {
+    grid-template-columns: minmax(220px, 1.4fr) repeat(auto-fit, minmax(140px, 1fr));
+    gap: 40px;
+  }
+  .footer-grid > :first-child {
+    grid-column: auto;
+  }
+}
+
+/* ---- About: brand-evolution timeline ----
+   Vertical so it takes any number of milestones. The rail is drawn on the list
+   itself, not absolutely positioned inside a fixed-height box, so it always
+   spans exactly the entries that exist. */
+.th-timeline {
+  position: relative;
+  max-width: 940px;
+  margin: 0 auto;
+}
+.th-timeline::before {
+  content: "";
+  position: absolute;
+  top: 8px;
+  bottom: 8px;
+  left: 9px;
+  width: 2px;
+  background: var(--gold-400);
+  border-radius: 2px;
+}
+.th-timeline-item {
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  gap: 14px;
+  padding-bottom: 22px;
+}
+.th-timeline-dot {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--gold-400);
+  border: 3px solid var(--cream-100);
+  box-shadow: 0 0 0 1.5px var(--gold-500);
+  margin-top: 3px;
+}
+@media (min-width: 768px) {
+  .th-timeline::before {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .th-timeline-item {
+    grid-template-columns: 1fr 48px 1fr;
+    gap: 0;
+    padding-bottom: 26px;
+  }
+  .th-timeline-dot {
+    grid-column: 2;
+    justify-self: center;
+  }
+  /* Odd milestones sit left of the rail, even ones right. */
+  .th-timeline-card {
+    grid-column: 1;
+    margin-right: 24px;
+    text-align: right;
+  }
+  .th-timeline-item:nth-child(even) .th-timeline-card {
+    grid-column: 3;
+    margin-right: 0;
+    margin-left: 24px;
+    text-align: left;
+  }
+}
+
+/* ---- Locations hub: map becomes a sticky rail on desktop ----
+   Portrait on purpose: the outlets run north-south, Lower Parel up to Thane,
+   so a tall frame holds the cluster at a closer zoom than a square one can. */
 .locations-map {
-  height: 280px;
+  height: 420px;
 }
 @media (min-width: 1024px) {
   .locations-map {
     position: sticky;
     top: 84px;
-    height: 520px;
+    /* Tall, but never taller than the viewport — it has to stay fully visible
+       while the card column scrolls past it. */
+    height: clamp(520px, calc(100vh - 140px), 800px);
   }
 }
 

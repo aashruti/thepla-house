@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { externalLinkProps } from "@/lib/links";
 import Image from "next/image";
 
 /**
@@ -42,7 +43,7 @@ function SocialGlyph({ label }: { label: string }) {
 
 export function Footer({
   logoSrc,
-  brand = "Thepla House",
+  brand = "Thepla House by Tejal's Kitchen",
   tagline = "Junk the Junk Food.",
   columns = [],
   socials = [],
@@ -51,13 +52,11 @@ export function Footer({
   return (
     <footer style={{ background: "var(--green-800)", color: "var(--cream-100)", fontFamily: "var(--font-body)" }}>
       <div
+        className="footer-grid"
         style={{
           maxWidth: "var(--container-xl)",
           margin: "0 auto",
           padding: "56px 20px 28px",
-          display: "grid",
-          gridTemplateColumns: "minmax(220px, 1.4fr) repeat(auto-fit, minmax(140px, 1fr))",
-          gap: 40,
         }}
       >
         <div>
@@ -101,7 +100,7 @@ export function Footer({
             <ul style={{ listStyle: "none", margin: 0, padding: 0, display: "flex", flexDirection: "column", gap: 10 }}>
               {col.links.map((l) => (
                 <li key={l.label}>
-                  <Link href={l.href || "#"} style={{ color: "var(--cream-200)", textDecoration: "none", fontSize: "0.9rem" }}>
+                  <Link href={l.href || "#"} {...externalLinkProps(l.href || "#")} style={{ color: "var(--cream-200)", textDecoration: "none", fontSize: "0.9rem" }}>
                     {l.label}
                   </Link>
                 </li>

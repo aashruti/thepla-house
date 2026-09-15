@@ -10,7 +10,7 @@ import { FRANCHISE_CONTACT } from "@/data/site";
 import { img } from "@/data/images";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Open a Thepla House franchise — Tejal's Kitchen | Franchise opportunity",
+  title: "Franchise a Thepla House by Tejal's Kitchen outlet",
   description:
     "Partner with Thepla House by Tejal's Kitchen — a proven 100% vegetarian, founder-led cloud-kitchen brand from Mumbai. Explore franchise formats, investment and support, and apply online.",
   path: "/franchise",
@@ -253,7 +253,7 @@ const FRANCHISE_STEPS: EnquiryStep[] = [
     fields: [
       {
         name: "whyTheplaHouse",
-        label: "Why Thepla House, and why this city?",
+        label: "Why Thepla House by Tejal's Kitchen, and why this city?",
         type: "textarea",
         required: true,
         minLength: 120,
@@ -284,7 +284,7 @@ const FRANCHISE_STEPS: EnquiryStep[] = [
         options: [
           "Google search",
           "Instagram",
-          "Ate at a Thepla House kitchen",
+          "Ate at a Thepla House by Tejal's Kitchen outlet",
           "Swiggy / Zomato",
           "Word of mouth",
           "A franchise portal or consultant",
@@ -331,7 +331,7 @@ const WE_LOOK_FOR = [
 const FRANCHISE_FAQS = [
   {
     q: "What franchise formats are available?",
-    a: "Thepla House offers a delivery-first cloud-kitchen format as well as dine-in outlets. You can also start with a combination — tell us your city and we'll talk through what fits best.",
+    a: "Thepla House by Tejal's Kitchen offers a delivery-first cloud-kitchen format as well as dine-in outlets. You can also start with a combination — tell us your city and we'll talk through what fits best.",
   },
   {
     q: "Which cities are you expanding to?",
@@ -357,7 +357,7 @@ export default function FranchisePage() {
       <JsonLd
         data={[
           serviceLd({
-            name: "Thepla House franchise opportunity",
+            name: "Thepla House by Tejal's Kitchen franchise opportunity",
             description:
               "Partner with Thepla House by Tejal's Kitchen — a proven 100% vegetarian, founder-led cloud-kitchen brand from Mumbai. Explore franchise formats, support and the path to launch.",
             path: "/franchise",
@@ -375,7 +375,7 @@ export default function FranchisePage() {
             <div>
               <div className="seglabel">Franchise opportunity</div>
               <h1 style={{ fontFamily: "var(--font-display)", color: "var(--color-headline)", fontSize: "var(--fs-display-lg)", lineHeight: 1.08, margin: "12px 0 18px" }}>
-                Open a Thepla House franchise
+                Open a Thepla House by Tejal&apos;s Kitchen franchise
               </h1>
               <p style={{ fontFamily: "var(--font-body)", color: "var(--ink-600)", fontSize: "var(--fs-body-lg)", lineHeight: 1.65, margin: "0 0 24px", maxWidth: 520 }}>
                 Bring Tejal&apos;s kitchen to your city. Partner with a proven, founder-led 100% vegetarian cloud-kitchen brand that&apos;s been winning Mumbai&apos;s trust since 2018 — with a 250+ dish menu and a health-first story that sells.
@@ -391,8 +391,8 @@ export default function FranchisePage() {
             </div>
             <div style={{ borderRadius: "var(--radius-2xl)", overflow: "hidden", boxShadow: "var(--shadow-lg)", height: 420 }}>
               <PhotoSlot
-                subject="A bright Thepla House outlet counter / cloud-kitchen interior, branded"
-                alt="Thepla House outlet counter"
+                subject="A bright Thepla House by Tejal's Kitchen outlet counter / cloud-kitchen interior, branded"
+                alt="Thepla House by Tejal's Kitchen outlet counter"
                 src={img("franchise")}
                 style={{ height: "100%", width: "100%" }}
               />
@@ -513,7 +513,7 @@ export default function FranchisePage() {
             <div>
               <div className="seglabel">Franchise application</div>
               <h2 style={{ fontFamily: "var(--font-display)", color: "var(--color-headline)", fontSize: "var(--fs-h2)", margin: "6px 0 16px" }}>
-                Apply to open a Thepla House
+                Apply to open a Thepla House by Tejal&apos;s Kitchen
               </h2>
               <p style={{ fontFamily: "var(--font-body)", color: "var(--ink-600)", fontSize: "1.0625rem", lineHeight: 1.65, margin: "0 0 16px" }}>
                 Five short steps, about five minutes. It covers your city and site, what you&apos;re ready to invest, your background and why this brand — the same ground we&apos;d cover on a first call.
@@ -550,7 +550,7 @@ export default function FranchisePage() {
 
       {/* CTA */}
       <section style={{ background: "var(--cream-50)" }}>
-        <div className="th-container" style={{ paddingTop: 8, paddingBottom: 56 }}>
+        <div className="th-container" style={{ paddingTop: 48, paddingBottom: 56 }}>
           <CTABanner
             tone="gold"
             align="split"

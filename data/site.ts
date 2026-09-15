@@ -5,6 +5,11 @@
 
 export const SITE = {
   name: "Thepla House by Tejal's Kitchen",
+  // Short form, used ONLY as the title-tag suffix the root layout appends and as
+  // the home-screen app label. Not a leftover: the suffix sits at the end of every
+  // title, and the full name there costs 34 characters — enough to push most
+  // titles past what Google shows, cutting the brand off entirely. Everything a
+  // reader actually sees uses `name`.
   shortName: "Thepla House",
   tagline: "Junk the Junk Food.",
   founder: "Tejal Shah",
@@ -21,11 +26,21 @@ export const SITE = {
 } as const;
 
 // ---- Maps -----------------------------------------------------------------
-// Google "My Maps" embed URL for the /locations hub map — shows ONLY our own
-// outlets (no competitors, no stale Google listings). Create a My Map with a
-// pin per outlet, then Share → Embed on my site and paste the iframe `src` here.
-// Leave empty ("") to fall back to the stylised placeholder map.
-export const LOCATIONS_MAP_EMBED = "";
+// Google "My Maps" embed URL for the /locations hub map — the only way to show
+// every outlet on one map: a keyless Google embed renders a single place, and a
+// text query (?q=Thepla House Mumbai) renders Google's SEARCH RESULTS, i.e. our
+// competitors, on our own locations page.
+//
+// To fill this in:
+//   1. google.com/mymaps → Create a new map, name it "Thepla House — Outlets"
+//   2. Add one pin per outlet (paste each address, then correct the pin to the
+//      exact coordinates in data/kitchens.ts if Google drops it loosely)
+//   3. Share → "Anyone with the link" (the embed is blank if it stays private)
+//   4. ⋮ → Embed on my site → copy ONLY the src="..." value from the iframe
+//
+// Expect a URL of the form https://www.google.com/maps/d/embed?mid=...
+// While this is empty, the hub map falls back to a single pin on the flagship.
+export const LOCATIONS_MAP_EMBED = "https://www.google.com/maps/d/embed?mid=1XkN7dyYIq2WMmKX4iFrpdGtp-p0RzI4";
 
 // ---- Contacts -------------------------------------------------------------
 export const ORDER_PHONE = "+91 98195 55065";
@@ -51,22 +66,33 @@ export const FRANCHISE_CONTACT = {
   email: "Dhaval@theplahouse.com",
 } as const;
 
-// External ordering aggregators (placeholders for the brand's real listings).
-export const SWIGGY_LINK = "https://www.swiggy.com";
-export const ZOMATO_LINK = "https://www.zomato.com";
+// External ordering aggregators — brand-level listings, NOT the bare homepages.
+// These are what every "Order on Swiggy / Zomato" chip points at, so they must
+// land on Thepla House, not on the aggregator's front page.
+//
+// Zomato: the chain page Zomato itself links to from each outlet ("See all N
+// Thepla House By Tejal's Kitchen outlets in Mumbai") and declares as canonical.
+export const ZOMATO_LINK = "https://www.zomato.com/mumbai/restaurants/thepla-house-by-tejals-kitchen";
+// Swiggy has no chain page, so this is its brand search — location-aware, and it
+// surfaces the customer's nearest outlet rather than a fixed one.
+export const SWIGGY_LINK = "https://www.swiggy.com/search?query=Thepla%20House%20by%20Tejal%27s%20Kitchen";
+
+// Where every "Order now" button goes. Swiggy, because it takes orders from a
+// link off our site; Zomato does not, so its chips stay as listing links only.
+// When the brand's own ordering launches, change this one line.
+export const ORDER_NOW_LINK = SWIGGY_LINK;
 
 // ---- Ordering channels ----------------------------------------------------
 export interface OrderChannel {
-  label: string;
   href: string;
-  dot: string; // brand-colour dot
-  external?: boolean;
+  /** Rendered by AggregatorLink with the service's official mark and colour. */
+  aggregator: "swiggy" | "zomato" | "whatsapp";
 }
 
 export const ORDER_CHANNELS: OrderChannel[] = [
-  { label: "Swiggy", href: SWIGGY_LINK, dot: "var(--gold-500)", external: true },
-  { label: "Zomato", href: ZOMATO_LINK, dot: "var(--maroon-600)", external: true },
-  { label: "WhatsApp", href: WHATSAPP_LINK, dot: "var(--leaf-500)", external: true },
+  { href: SWIGGY_LINK, aggregator: "swiggy" },
+  { href: ZOMATO_LINK, aggregator: "zomato" },
+  { href: WHATSAPP_LINK, aggregator: "whatsapp" },
 ];
 
 // ---- Navigation -----------------------------------------------------------
@@ -99,7 +125,7 @@ export const FOOTER_COLUMNS = [
   {
     title: "Order & services",
     links: [
-      { label: "Order now", href: "/menu" },
+      { label: "Order now", href: ORDER_NOW_LINK },
       { label: "Home-style food & tiffin", href: "/tiffin-service-mumbai" },
       { label: "Catering", href: "/catering" },
       { label: "Travel packs", href: "/travel-packs" },
@@ -112,8 +138,10 @@ export const FOOTER_COLUMNS = [
       { label: "Chandivali · Andheri East", href: "/locations/chandivali" },
       { label: "Lower Parel", href: "/locations/lower-parel" },
       { label: "Mulund", href: "/locations/mulund" },
-      { label: "Thane", href: "/locations/thane" },
+      { label: "Thane · Manpada", href: "/locations/thane" },
+      { label: "Thane · Stadium", href: "/locations/thane-stadium" },
       { label: "Kandivali (dine-in)", href: "/locations/kandivali" },
+      { label: "Navi Mumbai Airport", href: "/locations/navi-mumbai" },
     ],
   },
   {

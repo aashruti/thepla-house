@@ -4,20 +4,12 @@ import { MapSlot } from "@/components/blocks/MapSlot";
 import { CTABanner } from "@/components/ds/CTABanner";
 import { JsonLd } from "@/components/JsonLd";
 import { pageMetadata, breadcrumbLd, absUrl } from "@/lib/seo";
-import {
-  SITE,
-  ORDER_PHONE,
-  ORDER_PHONE_TEL,
-  WHATSAPP_LINK,
-  INSTAGRAM_HANDLE,
-  INSTAGRAM_LINK,
-  FRANCHISE_CONTACT,
-} from "@/data/site";
+import { SITE, ORDER_PHONE, ORDER_PHONE_TEL, WHATSAPP_LINK, INSTAGRAM_HANDLE, INSTAGRAM_LINK, FRANCHISE_CONTACT, ORDER_NOW_LINK } from "@/data/site";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Contact us — order line, kitchens & enquiries | Thepla House",
+  title: "Contact Thepla House by Tejal's Kitchen — Mumbai",
   description:
-    "Get in touch with Thepla House by Tejal's Kitchen — order line +91 98195 55065, WhatsApp, catering and franchise enquiries. Seven kitchens across Mumbai.",
+    "Get in touch with Thepla House by Tejal's Kitchen — order line +91 98195 55065, WhatsApp, catering and franchise enquiries. Eight locations across Mumbai, Thane and Navi Mumbai.",
   path: "/contact",
 });
 
@@ -266,7 +258,7 @@ export default function ContactPage() {
                 }}
               >
                 <MapSlot
-                  label="Map: Thepla House flagship kitchen, Chandivali (Andheri East)"
+                  label="Map: Thepla House by Tejal's Kitchen flagship kitchen, Chandivali (Andheri East)"
                   lat={19.1145}
                   lng={72.8889}
                 />
@@ -290,7 +282,7 @@ export default function ContactPage() {
                     margin: "8px 0 4px",
                   }}
                 >
-                  Mon–Sun · 9am – 10pm
+                  Mon–Sun · 7:30am – 10:30pm
                 </div>
                 <div
                   style={{
@@ -299,7 +291,7 @@ export default function ContactPage() {
                     color: "var(--green-200)",
                   }}
                 >
-                  Order before 11am for same-day lunch. Kandivali dine-in opens 8am.
+                  Order before 11am for same-day lunch. Some kitchens close at 3pm one day a week — check your outlet's page for its timings.
                 </div>
               </div>
             </div>
@@ -317,7 +309,7 @@ export default function ContactPage() {
             title="Skip the form — just order"
             body={`Order on Swiggy, Zomato or WhatsApp — or call ${ORDER_PHONE}.`}
             primaryLabel="Order now"
-            primaryHref="/menu"
+            primaryHref={ORDER_NOW_LINK}
             secondaryLabel="See the menu"
             secondaryHref="/menu"
           />

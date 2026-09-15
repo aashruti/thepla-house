@@ -22,11 +22,23 @@ export interface MapSlotProps {
   lng?: number;
   /** A full embed URL (e.g. a Google My Maps "embed" iframe src) — takes precedence over lat/lng and query */
   embedSrc?: string;
+  /**
+   * Pixels to clip off the top of the frame. A My Maps embed renders a header
+   * strip carrying the map title and THE MAP OWNER'S PERSONAL NAME, which we
+   * don't want on a business page and which My Maps gives no option to hide.
+   * Clipping is the only lever from our side. Google's own attribution sits at
+   * the BOTTOM of the map and is deliberately left visible.
+   * Defaults to MY_MAPS_HEADER_PX for My Maps embeds; pass 0 to keep the header.
+   */
+  cropTop?: number;
   style?: CSSProperties;
   className?: string;
 }
 
-export function MapSlot({ label, query, lat, lng, embedSrc, style, className }: MapSlotProps) {
+/** Height of the title/owner strip on a Google My Maps embed. */
+const MY_MAPS_HEADER_PX = 64;
+
+export function MapSlot({ label, query, lat, lng, embedSrc, cropTop, style, className }: MapSlotProps) {
   // Precedence: explicit embed → precise coordinate pin → text query → placeholder.
   const src = embedSrc
     ? embedSrc
@@ -36,15 +48,30 @@ export function MapSlot({ label, query, lat, lng, embedSrc, style, className }: 
         ? `https://www.google.com/maps?q=${encodeURIComponent(query)}&output=embed`
         : undefined;
   if (src) {
-    return (
+    const isMyMaps = Boolean(embedSrc && embedSrc.includes("/maps/d/embed"));
+    const crop = cropTop ?? (isMyMaps ? MY_MAPS_HEADER_PX : 0);
+    const frame = (
       <iframe
         title={label}
-        className={className}
+        className={crop ? undefined : className}
         src={src}
         loading="lazy"
         referrerPolicy="no-referrer-when-downgrade"
-        style={{ border: 0, width: "100%", height: "100%", minHeight: 120, display: "block", ...style }}
+        style={
+          crop
+            ? // Grown by the crop height and pulled up by the same amount, so the
+              // header lands outside the clipping parent and the visible map still
+              // fills the slot exactly.
+              { border: 0, position: "absolute", top: -crop, left: 0, width: "100%", height: `calc(100% + ${crop}px)`, display: "block" }
+            : { border: 0, width: "100%", height: "100%", minHeight: 120, display: "block", ...style }
+        }
       />
+    );
+    if (!crop) return frame;
+    return (
+      <div className={className} style={{ position: "relative", overflow: "hidden", width: "100%", height: "100%", minHeight: 120, ...style }}>
+        {frame}
+      </div>
     );
   }
   return (

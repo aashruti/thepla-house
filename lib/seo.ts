@@ -72,6 +72,8 @@ export function organizationLd() {
     "@type": "Organization",
     "@id": ORGANIZATION_ID,
     name: SITE.name,
+    // The short forms people actually search. Deliberately NOT expanded to the
+    // full name: an alias identical to `name` tells Google nothing.
     alternateName: ["Thepla House", "Tejal's Kitchen", "Thepla House Mumbai"],
     url: BASE,
     logo: absUrl(SITE.logo),
@@ -146,8 +148,11 @@ export interface RestaurantGeo {
   dineIn?: boolean;
   /** localities served, for areaServed */
   areaServed?: string[];
-  opens?: string;
-  closes?: string;
+  /**
+   * One entry per distinct trading pattern — a weekday that closes early, or a
+   * split shift, needs more than one. Omit to publish no hours at all.
+   */
+  openingHours?: { days: string[]; opens: string; closes: string }[];
   /**
    * Canonical Google Maps / Business Profile listing URL for THIS outlet.
    * Emitted as `hasMap` + added to `sameAs` so Google reconciles this page's
@@ -158,6 +163,12 @@ export interface RestaurantGeo {
   telephone?: string;
   /** Extra profiles that prove this is the same real-world business (aggregators, socials). */
   sameAs?: string[];
+  /**
+   * Counter outlet that cannot deliver — e.g. the airside franchise inside the
+   * airport departures terminal. Suppresses the delivery OrderAction so we never
+   * advertise delivery Google would then surface for an outlet that has none.
+   */
+  noDelivery?: boolean;
 }
 
 export function restaurantLd(geo: RestaurantGeo) {
@@ -194,14 +205,16 @@ export function restaurantLd(geo: RestaurantGeo) {
     ...(geo.areaServed && geo.areaServed.length
       ? { areaServed: geo.areaServed.map((a) => ({ "@type": "Place", name: a })) }
       : {}),
-    openingHoursSpecification: [
-      {
-        "@type": "OpeningHoursSpecification",
-        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-        opens: geo.opens || "09:00",
-        closes: geo.closes || "22:00",
-      },
-    ],
+    ...(geo.openingHours && geo.openingHours.length
+      ? {
+          openingHoursSpecification: geo.openingHours.map((h) => ({
+            "@type": "OpeningHoursSpecification",
+            dayOfWeek: h.days,
+            opens: h.opens,
+            closes: h.closes,
+          })),
+        }
+      : {}),
     ...(geo.dineIn
       ? {
           amenityFeature: [
@@ -212,11 +225,15 @@ export function restaurantLd(geo: RestaurantGeo) {
           ],
         }
       : {}),
-    potentialAction: {
-      "@type": "OrderAction",
-      target: WHATSAPP_LINK,
-      deliveryMethod: ["http://purl.org/goodrelations/v1#DeliveryModeOwnFleet"],
-    },
+    ...(geo.noDelivery
+      ? {}
+      : {
+          potentialAction: {
+            "@type": "OrderAction",
+            target: WHATSAPP_LINK,
+            deliveryMethod: ["http://purl.org/goodrelations/v1#DeliveryModeOwnFleet"],
+          },
+        }),
   };
 }
 

@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { externalLinkProps } from "@/lib/links";
+import { ORDER_NOW_LINK } from "@/data/site";
 import Link from "next/link";
 import { PromiseStrip } from "@/components/blocks/PromiseStrip";
 import { MenuItemCard } from "@/components/blocks/MenuItemCard";
@@ -17,7 +19,7 @@ const PATH = "/tiffin-service-mumbai";
 export const metadata: Metadata = pageMetadata({
   title: "Home-style food & healthy vegetarian tiffin in Mumbai",
   description:
-    "Looking for home-style food, healthy food or a tiffin service near you in Mumbai? Thepla House cooks fresh, 100% vegetarian ghar ka khana — whole-wheat theplas, thalis, sabzis and farsan — delivered hot like a tiffin, any day. Jain & vegan options.",
+    "Looking for home-style food, healthy food or a tiffin service near you in Mumbai? Thepla House by Tejal's Kitchen cooks fresh, 100% vegetarian ghar ka khana — whole-wheat theplas, thalis, sabzis and farsan — delivered hot like a tiffin, any day. Jain & vegan options.",
   path: PATH,
 });
 
@@ -36,17 +38,20 @@ const FAQS = [
   },
   {
     q: "Do you deliver home-style food near me?",
-    a: "We run seven kitchens across Mumbai, Thane and Navi Mumbai — Chandivali, Kalina, Lower Parel, Mulund, Thane (Manpada), Navi Mumbai Airport and a Kandivali dine-in outlet — so there's usually one close by. Find your nearest on our locations page.",
+    a: "We run seven delivery kitchens across Mumbai and Thane — Chandivali, Kalina, Lower Parel, Mulund, Thane (Manpada), plus dine-in outlets at Dadoji Konddev Stadium in Thane and Kandivali — so there's usually one close by. (Our eighth location, inside Navi Mumbai International Airport departures, is takeaway only.) Find your nearest on our locations page.",
   },
   {
     q: "Can I order home-style lunch every day?",
-    a: "Of course. Order before 11am for same-day lunch delivery, as often as you like. Most kitchens are open Monday to Sunday, 9am to 10pm.",
+    a: "Of course. Order before 11am for same-day lunch delivery, as often as you like. Most kitchens are open every day, 7:30am to 10:30pm — a few close at 3pm on one weekday, so check your nearest outlet's page.",
   },
   {
     q: "Is the food fully vegetarian, Jain and vegan friendly?",
     a: "100% vegetarian, always. Jain (no onion, garlic or root vegetables) and vegan dishes are clearly marked on every menu.",
   },
 ];
+
+/** Kitchens that deliver — the airport counter is airside and takes no orders. */
+const deliveryKitchens = KITCHENS.filter((k) => !k.airside);
 
 export default function TiffinServicePage() {
   return (
@@ -98,13 +103,13 @@ export default function TiffinServicePage() {
                 Home-style food &amp; healthy vegetarian tiffin, across Mumbai
               </h1>
               <p style={{ fontFamily: "var(--font-body)", color: "var(--ink-600)", fontSize: "var(--fs-body-lg)", lineHeight: 1.62, margin: "0 0 24px", maxWidth: 560 }}>
-                Craving real ghar ka khana instead of another greasy takeaway? Thepla House is the
+                Craving real ghar ka khana instead of another greasy takeaway? Thepla House by Tejal&apos;s Kitchen is the
                 home-style, healthy alternative to a tiffin service — 100% vegetarian Gujarati food
                 cooked fresh to order with whole-wheat atta, sunflower oil and no preservatives, then
                 delivered hot to your door. No fixed dabba, no lock-in: order a home-cooked meal any day.
               </p>
               <div style={{ display: "flex", gap: 12, alignItems: "center", flexWrap: "wrap", marginBottom: 18 }}>
-                <Link href="/menu" style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", minHeight: 52, padding: "14px 28px", fontFamily: "var(--font-body)", fontSize: "1.0625rem", fontWeight: 600, color: "var(--color-on-primary)", background: "var(--color-primary)", borderRadius: "var(--radius-md)", boxShadow: "var(--shadow-sm)", textDecoration: "none" }}>
+                <Link href={ORDER_NOW_LINK} {...externalLinkProps(ORDER_NOW_LINK)} style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", minHeight: 52, padding: "14px 28px", fontFamily: "var(--font-body)", fontSize: "1.0625rem", fontWeight: 600, color: "var(--color-on-primary)", background: "var(--color-primary)", borderRadius: "var(--radius-md)", boxShadow: "var(--shadow-sm)", textDecoration: "none" }}>
                   Order now
                 </Link>
                 <Link href="/locations" style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", minHeight: 52, padding: "14px 24px", fontFamily: "var(--font-body)", fontSize: "1.0625rem", fontWeight: 600, color: "var(--color-primary)", border: "1.5px solid var(--color-primary)", borderRadius: "var(--radius-md)", textDecoration: "none" }}>
@@ -167,7 +172,7 @@ export default function TiffinServicePage() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {POPULAR_DISHES.map((d) => (
-              <MenuItemCard key={d.title} title={d.title} desc={d.desc} subject={d.subject} alt={d.alt} tags={tagsFor(d.keys)} />
+              <MenuItemCard key={d.title} title={d.title} desc={d.desc} subject={d.subject} alt={d.alt} tags={tagsFor(d.keys)} src={d.image} />
             ))}
           </div>
         </div>
@@ -179,15 +184,15 @@ export default function TiffinServicePage() {
           <div style={{ maxWidth: 720, marginBottom: 26 }}>
             <div className="seglabel">Home-style food near you</div>
             <h2 style={{ fontFamily: "var(--font-display)", color: "var(--color-headline)", fontSize: "var(--fs-h2)", margin: "6px 0 14px" }}>
-              Seven kitchens across Mumbai, Thane &amp; Navi Mumbai
+              {deliveryKitchens.length} kitchens across Mumbai &amp; Thane
             </h2>
             <p style={{ fontFamily: "var(--font-body)", color: "var(--ink-600)", fontSize: "var(--fs-body-lg)", lineHeight: 1.62 }}>
-              Whichever side of the city you're on, there's a Thepla House kitchen nearby cooking fresh
+              Whichever side of the city you're on, there's a Thepla House by Tejal's Kitchen outlet nearby cooking fresh
               home-style food for delivery. Tap your area to see timings and order.
             </p>
           </div>
           <div style={{ display: "flex", flexWrap: "wrap", gap: 11 }}>
-            {KITCHENS.map((k) => (
+            {deliveryKitchens.map((k) => (
               <Link key={k.slug} href={`/locations/${k.slug}`} style={{ display: "inline-flex", flexDirection: "column", gap: 2, padding: "12px 18px", background: "var(--white)", border: "1px solid var(--color-outline-variant)", borderRadius: "var(--radius-lg)", boxShadow: "var(--shadow-sm)", textDecoration: "none" }}>
                 <span style={{ fontFamily: "var(--font-display)", color: "var(--color-headline)", fontWeight: 600, fontSize: "1.0625rem" }}>{k.title}</span>
                 <span style={{ fontFamily: "var(--font-body)", color: "var(--ink-500)", fontSize: "0.8125rem" }}>{k.area}</span>
@@ -220,7 +225,7 @@ export default function TiffinServicePage() {
             title="Order fresh home-style food today"
             body="Healthy, 100% vegetarian and cooked to order — delivered hot on Swiggy, Zomato or WhatsApp."
             primaryLabel="Order now"
-            primaryHref="/menu"
+            primaryHref={ORDER_NOW_LINK}
             secondaryLabel="Find a kitchen near you"
             secondaryHref="/locations"
           />

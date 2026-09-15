@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { externalLinkProps } from "@/lib/links";
 import type { CSSProperties } from "react";
 import { PhotoSlot } from "./PhotoSlot";
 import { OrderChannels } from "./OrderChannels";
@@ -58,6 +59,7 @@ export function Hero({
               {primaryCta && (
                 <Link
                   href={primaryCta.href}
+                  {...externalLinkProps(primaryCta.href)}
                   style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", gap: 8, minHeight: 52, padding: "14px 30px", fontFamily: "var(--font-body)", fontSize: "1.0625rem", fontWeight: 600, color: "var(--color-on-primary)", background: "var(--color-primary)", border: "none", borderRadius: "var(--radius-md)", boxShadow: "var(--shadow-sm)", textDecoration: "none" }}
                 >
                   {primaryCta.label}
@@ -66,6 +68,7 @@ export function Hero({
               {secondaryCta && (
                 <Link
                   href={secondaryCta.href}
+                  {...externalLinkProps(secondaryCta.href)}
                   style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", gap: 8, minHeight: 52, padding: "14px 28px", fontFamily: "var(--font-body)", fontSize: "1.0625rem", fontWeight: 600, color: "var(--color-primary)", background: "transparent", border: "1.5px solid var(--color-outline)", borderRadius: "var(--radius-md)", textDecoration: "none" }}
                 >
                   {secondaryCta.label}

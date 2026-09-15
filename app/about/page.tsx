@@ -1,42 +1,99 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { PhotoSlot } from "@/components/blocks/PhotoSlot";
 import { CTABanner } from "@/components/ds/CTABanner";
 import { TrimBorder } from "@/components/ds/TrimBorder";
 import { JsonLd } from "@/components/JsonLd";
 import { pageMetadata, breadcrumbLd, absUrl } from "@/lib/seo";
-import { SITE } from "@/data/site";
+import { SITE, ORDER_NOW_LINK } from "@/data/site";
+import { KITCHENS } from "@/data/kitchens";
 import { img } from "@/data/images";
 
+/**
+ * Counted from the kitchen data rather than hardcoded, so the story copy can
+ * never drift out of step with /locations the way "7 kitchens" once did.
+ */
+const OUTLET_COUNT = KITCHENS.length;
+/** Kitchens only: the airport outlet is a takeaway counter, not a kitchen. */
+const KITCHEN_COUNT = KITCHENS.filter((k) => !k.airside).length;
+
 export const metadata: Metadata = pageMetadata({
-  title: "Our story — Tejal's Kitchen, since 2018 | Thepla House",
+  title: "Our story — Tejal Shah & Thepla House by Tejal's Kitchen",
   description:
-    "Thepla House by Tejal's Kitchen began in Mumbai in 2018 with one belief — eating out shouldn't mean eating junk. Meet the founder and the food philosophy behind 100% whole-wheat, preservative-free home-style cooking.",
+    "The story of Tejal Shah and Thepla House by Tejal's Kitchen — started in 2018 with 5 kg of atta and one belief, now a multi-crore food business with 250+ offerings across Mumbai. \u201cJunk the Junk Food.\u201d",
   path: "/about",
 });
 
 const STATS = [
+  { n: "5 kg", l: "Of atta, where it began" },
   { n: "2018", l: "Founder-led, since" },
-  { n: "7", l: "Kitchens across Mumbai" },
-  { n: "250+", l: "Home-style dishes" },
-  { n: "100%", l: "Vegetarian & whole wheat" },
+  { n: `${OUTLET_COUNT}`, l: "Locations across Mumbai" },
+  { n: "250+", l: "Food offerings" },
 ];
 
+/** "Junk the Junk Food" — the food philosophy, in the founder's own words. */
+const PHILOSOPHY = [
+  "100% wheat flour",
+  "No preservatives",
+  "No artificial colours",
+  "100% natural ingredients",
+  "Sunflower oil",
+  "Fresh preparation",
+  "Made to order",
+  "Customization based on customer requirements",
+];
+
+/**
+ * Taken from the brand-evolution deck. The years there run a year later than
+ * the timeline this page used to carry (Santacruz 2020 not 2019, Lower Parel
+ * 2021 not 2020, Mulund 2022 not 2021). The deck's own 2022 appears twice —
+ * Mulund and the Singapore supply line — so they share one entry here rather
+ * than duplicating the year on the rail.
+ */
 const MILESTONES = [
-  { year: "2018", title: "First outlet, Andheri", text: "Thepla House opens its very first outlet in Andheri." },
-  { year: "2019", title: "Santacruz branch", text: "Santacruz opens — Gujarati, Rajasthani & Jain menus." },
-  { year: "2020", title: "Catering + Lower Parel", text: "Our catering vertical launches and the Lower Parel branch opens." },
-  { year: "2021", title: "Mulund + 250 dishes", text: "Mulund branch opens and the menu grows to 250+ items." },
-  { year: "2022", title: "International supply", text: "Singapore cold-blast supply begins." },
-  { year: "2023", title: "Corporate catering", text: "Corporate catering partnership with Golden Legend." },
-  { year: "2024", title: "Thane branch", text: "Manpada, Thane branch added." },
-  { year: "2025", title: "Airport + dine-in", text: "Navi Mumbai Airport franchise and Kandivali dine-in open." },
+  { year: "2018", title: "It starts at home", text: "Tejal's Kitchen begins from Tejal's own kitchen, and the first outlet opens in Andheri." },
+  { year: "2019", title: "The brand is named", text: "Tejal's Kitchen becomes Thepla House by Tejal's Kitchen, with its first professionally equipped commercial kitchen in Andheri." },
+  { year: "2020", title: "Santacruz", text: "A second outlet brings Gujarati and Rajasthani home cooking, with Jain options, to Santacruz." },
+  { year: "2021", title: "Lower Parel + catering", text: "Salads, juices and corporate catering launch, and the third outlet opens in Lower Parel." },
+  { year: "2022", title: "Mulund + Singapore", text: "The fourth outlet opens in Mulund and the menu passes 250 dishes. Cold-blast supply to Singapore begins." },
+  { year: "2023", title: "Thane", text: "A new branch opens, serving Thane." },
+  { year: "2024", title: "Dadoji Konddev Stadium", text: "A second Thane branch opens at the stadium with dine-in and banquet service, and the catering business expands." },
+  { year: "2025", title: "Kandivali dine-in", text: "Kandivali opens with a full dine-in menu of Gujarati and Rajasthani food." },
+  { year: "2026", title: "Navi Mumbai Airport", text: "Our first franchise outlet opens at Navi Mumbai International Airport, with Semolina Kitchens Limited, a group company of the Adani Group." },
+];
+
+const GROWTH = [
+  {
+    stat: "250+",
+    title: "From one product to 250+ offerings",
+    paras: [
+      "What began with handcrafted theplas has grown into a portfolio of 250+ food items, serving customers from breakfast and snacks through to lunch, dinner and catering.",
+      "The menu has expanded to meet changing preferences while keeping its original focus on home-style food.",
+    ],
+  },
+  {
+    stat: "200+",
+    title: "One system, every kitchen",
+    paras: [
+      "Buying, sourcing and the kitchens themselves all run on one system. Every kitchen can see what it has and what it needs, instead of each one keeping its own count on paper.",
+      "The kitchens get through 200+ raw materials, and they come from a deliberately short list of suppliers we trust. Each kitchen orders what it is about to cook, rather than sitting on a storeroom of stock.",
+    ],
+  },
+  {
+    stat: "5 kg",
+    title: "A brand built on reinvestment",
+    paras: [
+      "The business started with 5 kg of atta. The first year's profits went straight back in, to establish the first commercial kitchen.",
+      "From there it kept growing the same way — reinvesting into people, kitchens, technology, sourcing systems and new locations.",
+    ],
+  },
 ];
 
 const VALUES = [
   { t: "100% whole wheat", s: "Every roti and thepla is whole-wheat atta — no maida, ever." },
   { t: "Sunflower oil only", s: "We never cook with palm oil." },
   { t: "Zero preservatives", s: "No artificial colours or additives, made fresh after every order." },
-  { t: "Jain & vegan, by design", s: "Inclusive menus, clearly tagged, cooked with care." },
+  { t: "Jain & vegan, by design", s: "Jain and vegan options, cooked with care." },
 ];
 
 const aboutPageLd = {
@@ -45,7 +102,7 @@ const aboutPageLd = {
   name: "Our story — Thepla House by Tejal's Kitchen",
   url: absUrl("/about"),
   description:
-    "The founder-led brand story of Thepla House by Tejal's Kitchen — Mumbai, since 2018 — and the food philosophy behind \"Junk the Junk Food.\"",
+    "The founder-led brand story of Thepla House by Tejal's Kitchen — from 5 kg of atta in Tejal Shah's home kitchen in 2018 to a multi-crore Mumbai food business with 250+ offerings — and the food philosophy behind \"Junk the Junk Food.\"",
   about: { "@id": `${SITE.url}/#organization` },
 };
 
@@ -69,18 +126,18 @@ export default function AboutPage() {
         <div className="th-container" style={{ position: "relative", paddingTop: 48, paddingBottom: 48 }}>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-12 items-center">
             <div>
-              <div className="seglabel">Our story</div>
+              <div className="seglabel">The story of Tejal Shah</div>
               <h1 style={{ fontFamily: "var(--font-display)", color: "var(--color-headline)", fontSize: "var(--fs-display-lg)", lineHeight: 1.08, margin: "12px 0 16px" }}>
-                Made by Tejal, like she makes it at home
+                From 5 kg of atta to a multi-crore food brand
               </h1>
               <p style={{ fontFamily: "var(--font-body)", color: "var(--ink-600)", fontSize: "var(--fs-body-lg)", lineHeight: 1.65, margin: 0, maxWidth: 520 }}>
-                Thepla House by Tejal&apos;s Kitchen began in Mumbai in 2018 with one belief — eating out shouldn&apos;t mean eating junk. Every dish is still cooked the way Tejal would make it for her own family.
+                What started in 2018 with 5 kg of atta and a simple idea has grown into a multi-crore food business — {OUTLET_COUNT} locations across Mumbai and 250+ food offerings.
               </p>
             </div>
             <div style={{ borderRadius: "var(--radius-2xl)", overflow: "hidden", boxShadow: "var(--shadow-lg)", height: 440 }} className="h-64 md:h-[440px]">
               <PhotoSlot
                 subject="Founder Tejal in her kitchen, rolling theplas, warm side light, hands in frame"
-                alt="Tejal, founder of Thepla House, rolling theplas"
+                alt="Tejal, founder of Thepla House by Tejal's Kitchen, rolling theplas"
                 src={img("founder-tejal")}
                 position="top"
                 priority
@@ -95,14 +152,14 @@ export default function AboutPage() {
       <section style={{ background: "var(--cream-50)" }}>
         <div style={{ maxWidth: 820, margin: "0 auto", padding: "56px 20px", textAlign: "center" }}>
           <p style={{ fontFamily: "var(--font-body)", color: "var(--ink-700)", fontSize: "var(--fs-body-lg)", lineHeight: 1.75, margin: "0 0 20px" }}>
-            It started with just 5 kg of atta in Tejal&apos;s home kitchen. Theplas were rolled by hand and shared with friends who kept asking for more, and what they loved wasn&apos;t only the taste; it was knowing exactly what went in: 100% whole-wheat atta, sunflower oil, and not a trace of maida or preservatives.
+            Founded by Tejal Shah, Thepla House by Tejal&apos;s Kitchen was born from a simple belief: healthy, wholesome, home-cooked food should be accessible beyond our homes.
+          </p>
+          <p style={{ fontFamily: "var(--font-body)", color: "var(--ink-700)", fontSize: "var(--fs-body-lg)", lineHeight: 1.75, margin: "0 0 20px" }}>
+            Tejal started the business from her own home, initially preparing and selling just one product — the humble, handcrafted thepla, one of Gujarat&apos;s most loved everyday foods.
           </p>
           <p style={{ fontFamily: "var(--font-body)", color: "var(--ink-700)", fontSize: "var(--fs-body-lg)", lineHeight: 1.75, margin: "0 0 24px" }}>
-            From those 5 kilos, it has grown into seven kitchens across Mumbai and a menu of 250+ dishes, and the promise hasn&apos;t changed one bit.
+            The objective was never just to sell theplas. It was to formalize the concept of home-cooked food, and make fresh, wholesome meals available to people looking for a healthier alternative to conventional fast food.
           </p>
-          <div style={{ fontFamily: "var(--font-script)", color: "var(--color-primary)", fontSize: "2.5rem", lineHeight: 1 }}>
-            — Tejal Shah
-          </div>
         </div>
       </section>
 
@@ -126,61 +183,123 @@ export default function AboutPage() {
         <TrimBorder pattern="bandhani" color="var(--gold-400)" size={16} flip />
       </section>
 
+      {/* Philosophy */}
+      <section style={{ background: "var(--cream-50)" }}>
+        <div className="th-container" style={{ paddingTop: 56, paddingBottom: 56 }}>
+          <div style={{ textAlign: "center", maxWidth: 760, margin: "0 auto 36px" }}>
+            <div className="seglabel">The philosophy</div>
+            <h2 style={{ fontFamily: "var(--font-display)", color: "var(--color-headline)", fontSize: "var(--fs-h2)", margin: "6px 0 16px" }}>
+              &ldquo;Junk the Junk Food&rdquo;
+            </h2>
+            <p style={{ fontFamily: "var(--font-body)", color: "var(--ink-700)", fontSize: "var(--fs-body-lg)", lineHeight: 1.75, margin: 0 }}>
+              That belief became the whole brand: cook the <em>ghar ka khana</em> people grew up on, and cook it the same way every day, in every kitchen.
+            </p>
+          </div>
+          <ul style={{ listStyle: "none", display: "flex", flexWrap: "wrap", justifyContent: "center", gap: 10, padding: 0, margin: 0, maxWidth: 860, marginInline: "auto" }}>
+            {PHILOSOPHY.map((item) => (
+              <li
+                key={item}
+                style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "var(--color-surface-container)", border: "1px solid var(--color-outline-variant)", borderRadius: 999, padding: "9px 16px", fontFamily: "var(--font-body)", color: "var(--color-headline)", fontWeight: 600, fontSize: "0.9375rem" }}
+              >
+                <span aria-hidden="true" style={{ flexShrink: 0, display: "inline-block", width: 7, height: 12, border: "solid var(--color-primary)", borderWidth: "0 2px 2px 0", transform: "rotate(45deg)", marginBottom: 3 }} />
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* Motto & vision */}
+      <section style={{ background: "var(--green-700)", position: "relative", overflow: "hidden" }}>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src="/motifs/leaf-left.png" alt="" aria-hidden="true" style={{ position: "absolute", top: -18, right: -20, width: 170, opacity: 0.25, transform: "scaleX(-1)" }} />
+        <div className="th-container" style={{ position: "relative", paddingTop: 56, paddingBottom: 56 }}>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-14" style={{ maxWidth: 1040, margin: "0 auto" }}>
+            <div>
+              <div className="seglabel" style={{ color: "var(--gold-300)" }}>Our motto</div>
+              <h2 style={{ fontFamily: "var(--font-display)", color: "var(--cream-50)", fontSize: "1.875rem", lineHeight: 1.2, margin: "8px 0 16px" }}>
+                Embrace the change: junk the junk food
+              </h2>
+              <p style={{ fontFamily: "var(--font-body)", color: "var(--green-200)", fontSize: "1.0625rem", lineHeight: 1.7, margin: "0 0 14px" }}>
+                Healthy, homemade meals from Thepla House by Tejal&apos;s Kitchen — 100% quality and freshness in every bite.
+              </p>
+              <p style={{ fontFamily: "var(--font-body)", color: "var(--green-200)", fontSize: "1.0625rem", lineHeight: 1.7, margin: 0 }}>
+                From humble beginnings in a house kitchen, we have grown to {OUTLET_COUNT} locations across Mumbai. Our unwavering motto is to champion healthy homemade food, and to uphold the highest standards of quality and freshness.
+              </p>
+            </div>
+            <div>
+              <div className="seglabel" style={{ color: "var(--gold-300)" }}>Our vision</div>
+              <h2 style={{ fontFamily: "var(--font-display)", color: "var(--cream-50)", fontSize: "1.875rem", lineHeight: 1.2, margin: "8px 0 16px" }}>
+                Home-cooked food, everywhere
+              </h2>
+              <p style={{ fontFamily: "var(--font-body)", color: "var(--green-200)", fontSize: "1.0625rem", lineHeight: 1.7, margin: "0 0 14px" }}>
+                A passion for serving home-cooked food, promoting healthy living, and giving back to the neighbourhood.
+              </p>
+              <p style={{ fontFamily: "var(--font-body)", color: "var(--green-200)", fontSize: "1.0625rem", lineHeight: 1.7, margin: 0 }}>
+                We aim to globalise the concept and the brand — bringing wholesome food to the masses, guiding them away from junk food and towards a year-round healthy eating lifestyle.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Timeline */}
       <section style={{ background: "var(--cream-100)" }}>
         <div className="th-container" style={{ paddingTop: 56, paddingBottom: 56 }}>
           <div style={{ textAlign: "center", marginBottom: 40 }}>
             <div className="seglabel">The journey</div>
-            <h2 style={{ fontFamily: "var(--font-display)", color: "var(--color-headline)", fontSize: "var(--fs-h2)", margin: "6px 0 0" }}>
-              From one kitchen to seven
+            <h2 style={{ fontFamily: "var(--font-display)", color: "var(--color-headline)", fontSize: "var(--fs-h2)", margin: "6px 0 14px" }}>
+              From a home kitchen to {KITCHEN_COUNT} commercial kitchens
             </h2>
+            <p style={{ fontFamily: "var(--font-body)", color: "var(--ink-600)", fontSize: "var(--fs-body-lg)", lineHeight: 1.7, margin: "0 auto", maxWidth: 720 }}>
+              For the first year Tejal ran the business from home. Those profits were reinvested into the first commercial kitchen at Chandivali, Andheri — built around an open-kitchen concept — and the brand has grown one location at a time ever since.
+            </p>
           </div>
 
-          {/* Desktop alternating timeline */}
-          <div className="hidden md:block" style={{ position: "relative", height: 460 }}>
-            <div aria-hidden="true" style={{ position: "absolute", left: 0, right: 0, top: "50%", height: 3, background: "var(--gold-400)", transform: "translateY(-50%)", zIndex: 0 }} />
-            <div style={{ display: "grid", gridTemplateColumns: `repeat(${MILESTONES.length}, 1fr)`, height: "100%" }}>
-              {MILESTONES.map((m, i) => {
-                const above = i % 2 === 0;
-                const card = (
-                  <div style={{ width: "100%", textAlign: "center", background: "var(--color-surface-container)", border: "1px solid var(--color-outline-variant)", borderRadius: "var(--radius-lg)", boxShadow: "var(--shadow-sm)", padding: "12px 11px" }}>
-                    <div style={{ fontFamily: "var(--font-display)", color: "var(--gold-700)", fontSize: "1.25rem", fontWeight: 600, lineHeight: 1 }}>{m.year}</div>
-                    <div style={{ fontFamily: "var(--font-body)", color: "var(--color-headline)", fontWeight: 600, fontSize: "0.875rem", margin: "5px 0 3px" }}>{m.title}</div>
-                    <div style={{ fontFamily: "var(--font-body)", color: "var(--ink-600)", fontSize: "0.78rem", lineHeight: 1.4 }}>{m.text}</div>
-                  </div>
-                );
-                const connector = <span aria-hidden="true" style={{ width: 0, borderLeft: "1.5px dashed var(--color-outline-strong)", height: 18 }} />;
-                return (
-                  <div key={m.year} style={{ display: "grid", gridTemplateRows: "1fr auto 1fr", justifyItems: "center", padding: "0 7px" }}>
-                    <div style={{ gridRow: 1, alignSelf: "end", display: "flex", flexDirection: "column", alignItems: "center", width: "100%" }}>
-                      {above && card}
-                      {above && connector}
-                    </div>
-                    <span aria-hidden="true" style={{ gridRow: 2, zIndex: 2, width: 20, height: 20, borderRadius: "50%", background: "var(--gold-400)", border: "3px solid var(--cream-50)", boxShadow: "0 0 0 1.5px var(--gold-500)" }} />
-                    <div style={{ gridRow: 3, alignSelf: "start", display: "flex", flexDirection: "column", alignItems: "center", width: "100%" }}>
-                      {!above && connector}
-                      {!above && card}
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-
-          {/* Mobile vertical timeline */}
-          <div className="flex flex-col md:hidden" style={{ maxWidth: 480, margin: "0 auto" }}>
-            {MILESTONES.map((m, i) => (
-              <div key={m.year} style={{ display: "flex", gap: 14 }}>
-                <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-                  <span aria-hidden="true" style={{ width: 14, height: 14, borderRadius: "50%", background: "var(--maroon-600)", border: "3px solid var(--cream-100)", boxShadow: "0 0 0 1px var(--maroon-600)" }} />
-                  {i < MILESTONES.length - 1 && <span aria-hidden="true" style={{ flex: 1, width: 2, background: "var(--color-outline)" }} />}
-                </div>
-                <div style={{ paddingBottom: 20 }}>
-                  <div style={{ fontFamily: "var(--font-display)", color: "var(--gold-700)", fontSize: "1.25rem", fontWeight: 600 }}>{m.year}</div>
-                  <div style={{ fontFamily: "var(--font-body)", color: "var(--color-headline)", fontWeight: 600, fontSize: "1rem", margin: "2px 0 3px" }}>{m.title}</div>
-                  <div style={{ fontFamily: "var(--font-body)", color: "var(--ink-600)", fontSize: "0.875rem", lineHeight: 1.5 }}>{m.text}</div>
+          {/* Vertical alternating timeline. Was a horizontal rail, which broke
+              once the milestones outgrew the container: the rail is absolutely
+              positioned to its parent, so it spanned the visible width while the
+              cards scrolled past it — the line simply stopped mid-timeline. This
+              grows downward instead, so it holds any number of entries without
+              scrolling or clipping. */}
+          <div className="th-timeline">
+            {MILESTONES.map((m) => (
+              <div className="th-timeline-item" key={m.year}>
+                <span aria-hidden="true" className="th-timeline-dot" />
+                <div
+                  className="th-timeline-card"
+                  style={{ background: "var(--color-surface-container)", border: "1px solid var(--color-outline-variant)", borderRadius: "var(--radius-lg)", boxShadow: "var(--shadow-sm)", padding: "16px 18px" }}
+                >
+                  <div style={{ fontFamily: "var(--font-display)", color: "var(--gold-700)", fontSize: "1.375rem", fontWeight: 600, lineHeight: 1 }}>{m.year}</div>
+                  <div style={{ fontFamily: "var(--font-body)", color: "var(--color-headline)", fontWeight: 600, fontSize: "1rem", margin: "6px 0 4px" }}>{m.title}</div>
+                  <div style={{ fontFamily: "var(--font-body)", color: "var(--ink-600)", fontSize: "0.9375rem", lineHeight: 1.55 }}>{m.text}</div>
                 </div>
               </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* How it scaled */}
+      <section style={{ background: "var(--gold-50)" }}>
+        <div className="th-container" style={{ paddingTop: 56, paddingBottom: 56 }}>
+          <div style={{ textAlign: "center", marginBottom: 36 }}>
+            <div className="seglabel">How it scaled</div>
+            <h2 style={{ fontFamily: "var(--font-display)", color: "var(--color-headline)", fontSize: "var(--fs-h2)", margin: "6px 0 0" }}>
+              Built one reinvestment at a time
+            </h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6" style={{ maxWidth: 1080, margin: "0 auto" }}>
+            {GROWTH.map((g) => (
+              <article key={g.title} style={{ background: "var(--color-surface-container)", border: "1px solid var(--color-outline-variant)", borderRadius: "var(--radius-xl)", boxShadow: "var(--shadow-sm)", padding: "26px 24px" }}>
+                <div style={{ fontFamily: "var(--font-display)", color: "var(--gold-700)", fontSize: "2rem", fontWeight: 600, lineHeight: 1 }}>{g.stat}</div>
+                <h3 style={{ fontFamily: "var(--font-display)", color: "var(--color-headline)", fontSize: "1.25rem", margin: "10px 0 8px" }}>{g.title}</h3>
+                {g.paras.map((t) => (
+                  <p key={t.slice(0, 24)} style={{ fontFamily: "var(--font-body)", color: "var(--ink-600)", fontSize: "0.9375rem", lineHeight: 1.65, margin: "0 0 10px" }}>
+                    {t}
+                  </p>
+                ))}
+              </article>
             ))}
           </div>
         </div>
@@ -201,26 +320,26 @@ export default function AboutPage() {
                 key: "team:tejal",
                 name: "Tejal Shah",
                 role: "Founder & MD",
-                subject: "Portrait of Tejal Shah, Founder & MD of Thepla House",
-                alt: "Tejal Shah, Founder & MD of Thepla House",
-                bio: "Tejal started Thepla House from her own Mumbai kitchen in 2018 with one belief: eating out shouldn't mean eating junk. She still tastes and signs off on the home-style recipes behind every thepla, thali and farsan.",
+                subject: "Portrait of Tejal Shah, Founder & MD of Thepla House by Tejal's Kitchen",
+                alt: "Tejal Shah, Founder & MD of Thepla House by Tejal's Kitchen",
+                bio: "Tejal started Thepla House by Tejal's Kitchen from her own Mumbai kitchen in 2018 with one belief: eating out shouldn't mean eating junk. She still tastes and signs off on the home-style recipes behind every thepla, thali and farsan.",
                 linkedin: "https://www.linkedin.com/in/tejal-shah-18893a189/",
               },
               {
                 key: "team:dhaval",
                 name: "Dhaval Shah",
                 role: "Co-Founder & CEO",
-                subject: "Portrait of Dhaval Shah, Co-Founder & CEO of Thepla House",
-                alt: "Dhaval Shah, Co-Founder & CEO of Thepla House",
-                bio: "Dhaval drives Thepla House's growth, opening new kitchens, dine-in outlets and franchise partnerships that bring Tejal's home-style food to more neighbourhoods across Mumbai and beyond.",
+                subject: "Portrait of Dhaval Shah, Co-Founder & CEO of Thepla House by Tejal's Kitchen",
+                alt: "Dhaval Shah, Co-Founder & CEO of Thepla House by Tejal's Kitchen",
+                bio: "Dhaval drives Thepla House by Tejal's Kitchen's growth, opening new kitchens, dine-in outlets and franchise partnerships that bring Tejal's home-style food to more neighbourhoods across Mumbai and beyond.",
                 linkedin: "https://www.linkedin.com/in/dhaval-shah-064482a/",
               },
               {
                 key: "team:shravan",
                 name: "Chef Shravan Mali",
                 role: "Head Chef",
-                subject: "Portrait of Chef Shravan Mali, Head Chef at Thepla House",
-                alt: "Chef Shravan Mali, Head Chef at Thepla House",
+                subject: "Portrait of Chef Shravan Mali, Head Chef at Thepla House by Tejal's Kitchen",
+                alt: "Chef Shravan Mali, Head Chef at Thepla House by Tejal's Kitchen",
                 bio: "For Shravan, cooking is about more than food. It's about bringing people together through honest, comforting flavours. He leads our kitchen with a focus on quality, preparing every dish with whole wheat, sunflower oil and carefully selected ingredients that reflect the warmth of a homemade meal.",
                 linkedin: "https://www.linkedin.com/in/shravan-mali-32472b274/",
               },
@@ -281,9 +400,47 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* Next chapter */}
+      <section style={{ background: "var(--cream-100)" }}>
+        <div style={{ maxWidth: 820, margin: "0 auto", padding: "56px 20px", textAlign: "center" }}>
+          <div className="seglabel">The next chapter</div>
+          <h2 style={{ fontFamily: "var(--font-display)", color: "var(--color-headline)", fontSize: "var(--fs-h2)", margin: "6px 0 18px" }}>
+            From Mumbai to India
+          </h2>
+          <p style={{ fontFamily: "var(--font-body)", color: "var(--ink-700)", fontSize: "var(--fs-body-lg)", lineHeight: 1.75, margin: "0 0 18px" }}>
+            With a strong presence established across Mumbai, Thepla House by Tejal&apos;s Kitchen is entering its next phase of growth — partnering with experienced business groups outside Mumbai who understand hospitality and food service, and have the financial and operational capability to build the brand in new markets.
+          </p>
+          <p style={{ fontFamily: "var(--font-body)", color: "var(--ink-700)", fontSize: "var(--fs-body-lg)", lineHeight: 1.75, margin: "0 0 26px" }}>
+            The franchise model is intended for partners who share the brand&apos;s philosophy of quality, consistency, operational discipline and healthy home-style food.
+          </p>
+          <Link
+            href="/franchise"
+            style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", minHeight: 48, padding: "13px 26px", background: "var(--color-primary)", color: "var(--cream-50)", borderRadius: "var(--radius-md)", fontFamily: "var(--font-body)", fontSize: "1rem", fontWeight: 600, textDecoration: "none" }}
+          >
+            Explore franchise partnerships
+          </Link>
+
+          <div style={{ marginTop: 44, paddingTop: 32, borderTop: "1px solid var(--color-outline-variant)" }}>
+            <p style={{ fontFamily: "var(--font-display)", color: "var(--color-headline)", fontSize: "1.5rem", lineHeight: 1.45, margin: "0 0 18px" }}>
+              From 5 kg of atta to {OUTLET_COUNT} locations.
+              <br />
+              From one thepla to 250+ offerings.
+              <br />
+              From a home kitchen to a growing food brand.
+            </p>
+            <p style={{ fontFamily: "var(--font-body)", color: "var(--ink-600)", fontSize: "var(--fs-body-lg)", lineHeight: 1.7, margin: "0 0 20px" }}>
+              A story of entrepreneurship, reinvestment, consistency and a simple belief — that good food can be both delicious and healthy. And this is only the beginning.
+            </p>
+            <div style={{ fontFamily: "var(--font-script)", color: "var(--color-primary)", fontSize: "2.25rem", lineHeight: 1 }}>
+              — Tejal Shah
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* CTA */}
       <section style={{ background: "var(--cream-50)" }}>
-        <div className="th-container" style={{ paddingTop: 8, paddingBottom: 52 }}>
+        <div className="th-container" style={{ paddingTop: 48, paddingBottom: 52 }}>
           <CTABanner
             tone="maroon"
             align="split"
@@ -291,7 +448,7 @@ export default function AboutPage() {
             title="Try Tejal's home-style food"
             body="Order fresh today on Swiggy, Zomato or WhatsApp — or plan a catering spread."
             primaryLabel="Order now"
-            primaryHref="/menu"
+            primaryHref={ORDER_NOW_LINK}
             secondaryLabel="See the menu"
             secondaryHref="/menu"
           />

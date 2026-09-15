@@ -1,4 +1,6 @@
 import { WHATSAPP_LINK, ORDER_PHONE_TEL } from "@/data/site";
+import { AGGREGATORS } from "./AggregatorLink";
+import { externalLinkProps } from "@/lib/links";
 
 /**
  * MobileOrderBar — persistent bottom order bar, mobile only. Replaced by the
@@ -13,6 +15,7 @@ export function MobileOrderBar({ orderHref = "/menu" }: MobileOrderBarProps) {
     <div className="mobile-order-bar" role="region" aria-label="Order now">
       <a
         href={orderHref}
+        {...externalLinkProps(orderHref)}
         style={{ flex: 1, textAlign: "center", padding: 13, fontFamily: "var(--font-body)", fontSize: "1rem", fontWeight: 700, color: "var(--color-on-secondary)", background: "var(--color-secondary)", borderRadius: "var(--radius-md)", textDecoration: "none" }}
       >
         Order now
@@ -21,8 +24,10 @@ export function MobileOrderBar({ orderHref = "/menu" }: MobileOrderBarProps) {
         href={WHATSAPP_LINK}
         target="_blank"
         rel="noopener noreferrer"
-        style={{ padding: "13px 16px", fontFamily: "var(--font-body)", fontSize: "0.9rem", fontWeight: 600, color: "var(--cream-100)", background: "rgba(255,255,255,0.14)", borderRadius: "var(--radius-md)", textDecoration: "none" }}
+        style={{ display: "inline-flex", alignItems: "center", gap: 7, padding: "13px 14px 13px 11px", fontFamily: "var(--font-body)", fontSize: "0.9rem", fontWeight: 600, color: "var(--cream-100)", background: "rgba(255,255,255,0.14)", borderRadius: "var(--radius-md)", textDecoration: "none" }}
       >
+        {/* eslint-disable-next-line @next/next/no-img-element -- tiny static SVG */}
+        <img src={AGGREGATORS.whatsapp.logo} alt="" aria-hidden="true" width={20} height={20} style={{ display: "block", borderRadius: 5 }} />
         WhatsApp
       </a>
       <a
