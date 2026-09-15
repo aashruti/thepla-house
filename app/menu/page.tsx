@@ -94,7 +94,7 @@ export default function MenuPage() {
             ))}
           </div>
           <Link href="/locations" style={{ display: "inline-flex", marginTop: 22, fontFamily: "var(--font-body)", color: "var(--color-primary)", fontWeight: 700, textDecoration: "none" }}>
-            Find your nearest Thepla House by Tejal&apos;s Kitchen kitchen →
+            Find your nearest Thepla House by Tejal&apos;s Kitchen outlet →
           </Link>
         </div>
       </section>

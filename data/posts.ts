@@ -89,7 +89,7 @@ export const POSTS: Post[] = [
       { type: "h2", text: "A taste of home, anywhere" },
       { type: "p", text: "That keeping quality is why our vacuum-packed methi thepla travel packs have become a quiet favourite — students heading to hostels, families travelling, and Gujaratis carrying a taste of home abroad. They're made to travel — pick them up at any kitchen and they stay as good as the morning they were made, days into your journey." },
       { type: "quote", text: "The best preservative was never a chemical. It's care, whole wheat and a tight seal." },
-      { type: "p", text: "Order travel packs from any Thepla House by Tejal's Kitchen kitchen in Mumbai — and send a little home wherever you're going." },
+      { type: "p", text: "Order travel packs from any Thepla House by Tejal's Kitchen outlet in Mumbai — and send a little home wherever you're going." },
     ],
   },
   {

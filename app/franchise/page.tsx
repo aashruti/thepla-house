@@ -284,7 +284,7 @@ const FRANCHISE_STEPS: EnquiryStep[] = [
         options: [
           "Google search",
           "Instagram",
-          "Ate at a Thepla House by Tejal's Kitchen kitchen",
+          "Ate at a Thepla House by Tejal's Kitchen outlet",
           "Swiggy / Zomato",
           "Word of mouth",
           "A franchise portal or consultant",

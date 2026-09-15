@@ -187,7 +187,7 @@ export default function TiffinServicePage() {
               {deliveryKitchens.length} kitchens across Mumbai &amp; Thane
             </h2>
             <p style={{ fontFamily: "var(--font-body)", color: "var(--ink-600)", fontSize: "var(--fs-body-lg)", lineHeight: 1.62 }}>
-              Whichever side of the city you're on, there's a Thepla House by Tejal's Kitchen kitchen nearby cooking fresh
+              Whichever side of the city you're on, there's a Thepla House by Tejal's Kitchen outlet nearby cooking fresh
               home-style food for delivery. Tap your area to see timings and order.
             </p>
           </div>

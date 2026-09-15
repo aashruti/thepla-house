@@ -282,7 +282,7 @@ export const KITCHENS: Kitchen[] = [
       },
       {
         q: "Does the airport outlet deliver?",
-        a: "No. This is a takeaway counter for departing passengers and does not deliver, so it is not on Swiggy or Zomato. For delivery across Navi Mumbai, order from your nearest Thepla House by Tejal's Kitchen kitchen on our locations page.",
+        a: "No. This is a takeaway counter for departing passengers and does not deliver, so it is not on Swiggy or Zomato. For delivery across Navi Mumbai, order from your nearest Thepla House by Tejal's Kitchen outlet on our locations page.",
       },
       {
         q: "Can I order ahead or collect from the airport counter?",
