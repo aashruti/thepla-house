@@ -11,6 +11,7 @@ import { MENU_CATEGORIES, tagsFor } from "@/data/menu";
  * Compact MenuRow list on mobile, MenuItemCard grid on tablet/desktop.
  */
 const ALL_TAB = "all";
+const totalDishes = MENU_CATEGORIES.reduce((n, c) => n + c.dishes.length, 0);
 
 export function MenuExplorer() {
   const [cat, setCat] = useState(ALL_TAB);
@@ -25,7 +26,7 @@ export function MenuExplorer() {
       <div style={{ borderBottom: "1px solid var(--color-outline-variant)" }}>
         <Tabs
           tabs={[
-            { id: ALL_TAB, label: "All", count: MENU_CATEGORIES.reduce((n, c) => n + c.dishes.length, 0) },
+            { id: ALL_TAB, label: "All", count: totalDishes },
             ...MENU_CATEGORIES.map((c) => ({ id: c.id, label: c.label, count: c.dishes.length })),
           ]}
           value={cat}
@@ -50,7 +51,7 @@ export function MenuExplorer() {
       </div>
 
       <p style={{ fontFamily: "var(--font-body)", color: "var(--ink-500)", fontSize: "0.9375rem", margin: "28px 0 0" }}>
-        These are our 44 most-ordered dishes. The full menu runs to 250+ — see it in full in the menu above, or on Swiggy and Zomato.
+        These are our {totalDishes} most-ordered dishes. The full menu runs to 250+ — see it in full in the menu above, or on Swiggy and Zomato.
       </p>
     </>
   );
