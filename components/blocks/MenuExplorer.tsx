@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import posthog from "posthog-js";
 import { Tabs } from "@/components/ds/Tabs";
 import { MenuItemCard } from "./MenuItemCard";
 import { MenuRow } from "./MenuRow";
@@ -30,7 +31,16 @@ export function MenuExplorer() {
             ...MENU_CATEGORIES.map((c) => ({ id: c.id, label: c.label, count: c.dishes.length })),
           ]}
           value={cat}
-          onChange={setCat}
+          onChange={(categoryId) => {
+            setCat(categoryId);
+            if (process.env.NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN) {
+              const category = MENU_CATEGORIES.find((item) => item.id === categoryId);
+              posthog.capture("menu_category_selected", {
+                category_id: categoryId,
+                dish_count: category?.dishes.length ?? totalDishes,
+              });
+            }
+          }}
         />
       </div>
 

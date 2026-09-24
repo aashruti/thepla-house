@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import posthog from "posthog-js";
 import * as pdfjsLib from "pdfjs-dist";
 import type { PDFDocumentProxy, RenderTask } from "pdfjs-dist";
 import { Button } from "@/components/ds/Button";
@@ -134,11 +135,32 @@ export function PdfMenu() {
           marginBottom: 20,
         }}
       >
-        <Button as="a" href={PDF_URL} download={DOWNLOAD_NAME} variant="primary">
+        <Button
+          as="a"
+          href={PDF_URL}
+          download={DOWNLOAD_NAME}
+          variant="primary"
+          onClick={() => {
+            if (process.env.NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN) {
+              posthog.capture("menu_pdf_opened", { action: "download" });
+            }
+          }}
+        >
           <span aria-hidden="true" style={{ marginRight: 8 }}>⤓</span>
           Download menu (PDF)
         </Button>
-        <Button as="a" href={PDF_URL} target="_blank" rel="noopener" variant="ghost">
+        <Button
+          as="a"
+          href={PDF_URL}
+          target="_blank"
+          rel="noopener"
+          variant="ghost"
+          onClick={() => {
+            if (process.env.NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN) {
+              posthog.capture("menu_pdf_opened", { action: "new_tab" });
+            }
+          }}
+        >
           Open in new tab
         </Button>
       </div>
@@ -161,7 +183,18 @@ export function PdfMenu() {
             <p style={{ margin: "0 0 14px" }}>
               We couldn&rsquo;t preview the menu here. You can still open or download it:
             </p>
-            <Button as="a" href={PDF_URL} target="_blank" rel="noopener" variant="primary">
+            <Button
+              as="a"
+              href={PDF_URL}
+              target="_blank"
+              rel="noopener"
+              variant="primary"
+              onClick={() => {
+                if (process.env.NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN) {
+                  posthog.capture("menu_pdf_opened", { action: "preview_fallback" });
+                }
+              }}
+            >
               Open the menu (PDF)
             </Button>
           </div>

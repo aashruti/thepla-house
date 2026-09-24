@@ -1,4 +1,7 @@
+"use client";
+
 import type { CSSProperties } from "react";
+import posthog from "posthog-js";
 
 /**
  * AggregatorLink — the one way this site links out to Swiggy, Zomato or
@@ -44,6 +47,15 @@ export function AggregatorLink({ service, href, size = "md", fill = false, style
       href={href}
       target="_blank"
       rel="noopener noreferrer"
+      onClick={() => {
+        if (process.env.NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN) {
+          posthog.capture("order_link_clicked", {
+            order_channel: service,
+            link_size: size,
+            fills_row: fill,
+          });
+        }
+      }}
       style={{
         ...(fill ? { flex: 1, justifyContent: "center" } : {}),
         display: "inline-flex",

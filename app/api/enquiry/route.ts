@@ -1,6 +1,9 @@
+import { SeverityNumber } from "@opentelemetry/api-logs";
 import { NextResponse } from "next/server";
+import { loggerProvider, posthogLogger } from "@/instrumentation";
 import { sendEmail, isEmailConfigured } from "@/lib/email";
 import { absUrl } from "@/lib/seo";
+import { getPostHogClient } from "@/lib/posthog-server";
 import { SITE, ORDER_PHONE, INSTAGRAM_HANDLE, CONTACT_EMAIL } from "@/data/site";
 
 export const runtime = "nodejs";
@@ -238,9 +241,35 @@ export async function POST(request: Request) {
   const userEmail = findValue(data, "email");
   const subject = `${KIND_LABEL[kind] || "Website enquiry"}${name ? ` — ${name}` : ""}`;
   const to = recipients();
+  const posthog = getPostHogClient();
+  const distinctId = request.headers.get("x-posthog-distinct-id") || crypto.randomUUID();
+  const sessionId = request.headers.get("x-posthog-session-id");
+  const analyticsProperties = {
+    enquiry_kind: kind,
+    ...(sessionId ? { $session_id: sessionId } : {}),
+  };
 
   if (!isEmailConfigured()) {
     console.warn(`[enquiry:${kind}] SMTP not configured; logging only`, data);
+    posthog?.capture({
+      distinctId,
+      event: "enquiry_submitted",
+      properties: { ...analyticsProperties, delivery_mode: "log_only" },
+    });
+    posthogLogger?.emit({
+      body: "enquiry request completed",
+      severityNumber: SeverityNumber.INFO,
+      severityText: "INFO",
+      attributes: {
+        event: "enquiry.request",
+        status: "accepted",
+        delivery_mode: "log_only",
+        enquiry_kind: kind,
+        posthogDistinctId: distinctId,
+        ...(sessionId ? { sessionId } : {}),
+      },
+    });
+    await Promise.all([posthog?.flush(), loggerProvider?.forceFlush()]);
     return NextResponse.json({ ok: true });
   }
 
@@ -249,6 +278,29 @@ export async function POST(request: Request) {
     await sendEmail({ to, subject, html: renderNotification(kind, data, userEmail), replyTo: userEmail });
   } catch (err) {
     console.error(`[enquiry:${kind}] notification send failed`, err);
+    posthog?.capture({
+      distinctId,
+      event: "enquiry_submission_failed",
+      properties: { ...analyticsProperties, failure_stage: "notification_email" },
+    });
+    posthog?.captureException(err, distinctId, {
+      ...analyticsProperties,
+      failure_stage: "notification_email",
+    });
+    posthogLogger?.emit({
+      body: "enquiry request completed",
+      severityNumber: SeverityNumber.ERROR,
+      severityText: "ERROR",
+      attributes: {
+        event: "enquiry.request",
+        status: "failed",
+        failure_stage: "notification_email",
+        enquiry_kind: kind,
+        posthogDistinctId: distinctId,
+        ...(sessionId ? { sessionId } : {}),
+      },
+    });
+    await Promise.all([posthog?.flush(), loggerProvider?.forceFlush()]);
     return NextResponse.json(
       { ok: false, error: "Sorry, we couldn't send your enquiry. Please try again or call us." },
       { status: 502 },
@@ -266,8 +318,38 @@ export async function POST(request: Request) {
       });
     } catch (err) {
       console.error(`[enquiry:${kind}] confirmation send failed`, err);
+      posthog?.captureException(err, distinctId, {
+        ...analyticsProperties,
+        failure_stage: "confirmation_email",
+      });
     }
   }
+
+  const confirmationRequested = Boolean(userEmail && userEmail.includes("@"));
+  posthog?.capture({
+    distinctId,
+    event: "enquiry_submitted",
+    properties: {
+      ...analyticsProperties,
+      delivery_mode: "email",
+      confirmation_requested: confirmationRequested,
+    },
+  });
+  posthogLogger?.emit({
+    body: "enquiry request completed",
+    severityNumber: SeverityNumber.INFO,
+    severityText: "INFO",
+    attributes: {
+      event: "enquiry.request",
+      status: "accepted",
+      delivery_mode: "email",
+      enquiry_kind: kind,
+      confirmation_requested: confirmationRequested,
+      posthogDistinctId: distinctId,
+      ...(sessionId ? { sessionId } : {}),
+    },
+  });
+  await Promise.all([posthog?.flush(), loggerProvider?.forceFlush()]);
 
   return NextResponse.json({ ok: true });
 }
