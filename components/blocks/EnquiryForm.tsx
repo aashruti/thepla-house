@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef, useMemo, type FormEvent } from "react";
+import posthog from "posthog-js";
 import { Input } from "@/components/ds/Input";
 import { Select } from "@/components/ds/Select";
 import { Textarea } from "@/components/ds/Textarea";
@@ -194,6 +195,14 @@ export function EnquiryForm({ kind, fields, steps, submitLabel = "Send enquiry",
 
   const goNext = () => {
     if (!commitErrors(validateFields(resolvedSteps[stepIndex].fields))) return;
+    if (process.env.NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN) {
+      posthog.capture("enquiry_form_advanced", {
+        enquiry_kind: kind,
+        from_step: stepIndex + 1,
+        to_step: stepIndex + 2,
+        total_steps: resolvedSteps.length,
+      });
+    }
     setStepIndex((i) => Math.min(i + 1, resolvedSteps.length - 1));
     topRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
@@ -232,16 +241,24 @@ export function EnquiryForm({ kind, fields, steps, submitLabel = "Send enquiry",
     }
 
     try {
+      const analyticsHeaders: Record<string, string> = {};
+      if (process.env.NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN) {
+        analyticsHeaders["X-POSTHOG-DISTINCT-ID"] = posthog.get_distinct_id();
+        analyticsHeaders["X-POSTHOG-SESSION-ID"] = posthog.get_session_id();
+      }
       const res = await fetch("/api/enquiry", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json", ...analyticsHeaders },
         body: JSON.stringify({ kind, data: { ...ordered, company: honeypot, turnstileToken: captchaToken } }),
       });
       if (!res.ok) throw new Error("Request failed");
       setStatus("success");
       setValues({});
       resetCaptcha();
-    } catch {
+    } catch (error) {
+      if (process.env.NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN) {
+        posthog.captureException(error);
+      }
       // The server consumes the Turnstile token before it can fail (e.g. the mail send
       // dies), and tokens are single-use. Without a reset here the retry re-sends a spent
       // token, gets a 403 every time, and the applicant is stuck with no way back except

@@ -1,5 +1,8 @@
+"use client";
+
 import Link from "next/link";
 import type { CSSProperties } from "react";
+import posthog from "posthog-js";
 import { AggregatorLink } from "./AggregatorLink";
 import { externalLinkProps } from "@/lib/links";
 
@@ -81,6 +84,14 @@ export function KitchenCard({
           href={directionsHref}
           target={directionsHref.startsWith("http") ? "_blank" : undefined}
           rel={directionsHref.startsWith("http") ? "noopener noreferrer" : undefined}
+          onClick={() => {
+            if (process.env.NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN) {
+              posthog.capture("kitchen_action_clicked", {
+                action: "directions",
+                kitchen_area: area,
+              });
+            }
+          }}
           style={{ flex: 1, textAlign: "center", fontFamily: "var(--font-body)", fontSize: "0.8125rem", fontWeight: 600, color: "var(--color-primary)", border: "1.5px solid var(--color-outline)", borderRadius: "var(--radius-md)", padding: "9px 10px", textDecoration: "none" }}
         >
           Directions
@@ -88,6 +99,14 @@ export function KitchenCard({
         <Link
           href={orderHref}
           {...externalLinkProps(orderHref)}
+          onClick={() => {
+            if (process.env.NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN) {
+              posthog.capture("kitchen_action_clicked", {
+                action: "order",
+                kitchen_area: area,
+              });
+            }
+          }}
           style={{ flex: 1, textAlign: "center", fontFamily: "var(--font-body)", fontSize: "0.8125rem", fontWeight: 600, color: "var(--color-on-primary)", background: "var(--color-primary)", borderRadius: "var(--radius-md)", padding: "9px 10px", textDecoration: "none" }}
         >
           Order
