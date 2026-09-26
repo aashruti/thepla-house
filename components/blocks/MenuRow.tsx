@@ -1,10 +1,16 @@
+"use client";
+
 import type { CSSProperties } from "react";
+import Link from "next/link";
+import posthog from "posthog-js";
 import { PhotoSlot } from "./PhotoSlot";
 import { dishImage } from "@/data/images";
+import { externalLinkProps } from "@/lib/links";
 import type { DishTag } from "@/lib/tags";
 
 /**
  * MenuRow — compact list row: thumbnail, name, description, diet tags.
+ * The whole row links to `href`, so every part of it answers a tap.
  */
 export interface MenuRowProps {
   title: string;
@@ -13,14 +19,22 @@ export interface MenuRowProps {
   alt: string;
   tags?: DishTag[];
   src?: string;
+  href: string;
   style?: CSSProperties;
   className?: string;
 }
 
-export function MenuRow({ title, desc, subject, alt, tags = [], src, style, className }: MenuRowProps) {
+export function MenuRow({ title, desc, subject, alt, tags = [], src, href, style, className }: MenuRowProps) {
   return (
-    <div
+    <Link
+      href={href}
+      {...externalLinkProps(href)}
       className={className}
+      onClick={() => {
+        if (process.env.NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN) {
+          posthog.capture("menu_dish_clicked", { dish: title, href });
+        }
+      }}
       style={{
         display: "flex",
         gap: 13,
@@ -30,6 +44,8 @@ export function MenuRow({ title, desc, subject, alt, tags = [], src, style, clas
         borderRadius: "var(--radius-lg)",
         boxShadow: "var(--shadow-xs)",
         padding: "11px 13px",
+        color: "inherit",
+        textDecoration: "none",
         ...style,
       }}
     >
@@ -79,7 +95,7 @@ export function MenuRow({ title, desc, subject, alt, tags = [], src, style, clas
       <span aria-hidden="true" style={{ flexShrink: 0, alignSelf: "center", color: "var(--color-primary)", fontSize: "1.3rem", fontWeight: 700 }}>
         ›
       </span>
-    </div>
+    </Link>
   );
 }
 

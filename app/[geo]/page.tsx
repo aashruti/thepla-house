@@ -119,7 +119,7 @@ export default async function GeoLandingPage({ params }: { params: Promise<{ geo
               <h2 style={{ fontFamily: "var(--font-display)", color: "var(--color-headline)", fontSize: "1.875rem", margin: "6px 0 20px" }}>Our best-sellers</h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {a.popular.map((d) => (
-                  <MenuRow key={d.title} title={d.title} desc={d.desc} subject={d.subject} alt={d.alt} tags={tagsFor(d.keys)} src={d.image} />
+                  <MenuRow key={d.title} title={d.title} desc={d.desc} subject={d.subject} alt={d.alt} tags={tagsFor(d.keys)} src={d.image} href={ORDER_NOW_LINK} />
                 ))}
               </div>
             </div>
