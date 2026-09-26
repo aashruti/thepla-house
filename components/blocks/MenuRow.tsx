@@ -10,8 +10,7 @@ import type { DishTag } from "@/lib/tags";
 
 /**
  * MenuRow — compact list row: thumbnail, name, description, diet tags.
- * With `href` the whole row is a link and shows the › chevron; without it the
- * row is plain content, so it has no chevron to invite a tap that does nothing.
+ * The whole row links to `href`, so every part of it answers a tap.
  */
 export interface MenuRowProps {
   title: string;
@@ -20,26 +19,36 @@ export interface MenuRowProps {
   alt: string;
   tags?: DishTag[];
   src?: string;
-  href?: string;
+  href: string;
   style?: CSSProperties;
   className?: string;
 }
 
 export function MenuRow({ title, desc, subject, alt, tags = [], src, href, style, className }: MenuRowProps) {
-  const rowStyle: CSSProperties = {
-    display: "flex",
-    gap: 13,
-    alignItems: "center",
-    background: "var(--color-surface-container)",
-    border: "1px solid var(--color-outline-variant)",
-    borderRadius: "var(--radius-lg)",
-    boxShadow: "var(--shadow-xs)",
-    padding: "11px 13px",
-    ...style,
-  };
-
-  const content = (
-    <>
+  return (
+    <Link
+      href={href}
+      {...externalLinkProps(href)}
+      className={className}
+      onClick={() => {
+        if (process.env.NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN) {
+          posthog.capture("menu_dish_clicked", { dish: title, href });
+        }
+      }}
+      style={{
+        display: "flex",
+        gap: 13,
+        alignItems: "center",
+        background: "var(--color-surface-container)",
+        border: "1px solid var(--color-outline-variant)",
+        borderRadius: "var(--radius-lg)",
+        boxShadow: "var(--shadow-xs)",
+        padding: "11px 13px",
+        color: "inherit",
+        textDecoration: "none",
+        ...style,
+      }}
+    >
       <div style={{ flexShrink: 0, width: 74, height: 74, borderRadius: "var(--radius-md)", overflow: "hidden" }}>
         <PhotoSlot subject={subject} alt={alt} src={src ?? dishImage(title)} sizes="74px" style={{ height: 74, width: 74 }} />
       </div>
@@ -83,35 +92,9 @@ export function MenuRow({ title, desc, subject, alt, tags = [], src, href, style
           ))}
         </div>
       </div>
-      {href && (
-        <span aria-hidden="true" style={{ flexShrink: 0, alignSelf: "center", color: "var(--color-primary)", fontSize: "1.3rem", fontWeight: 700 }}>
-          ›
-        </span>
-      )}
-    </>
-  );
-
-  if (!href) {
-    return (
-      <div className={className} style={rowStyle}>
-        {content}
-      </div>
-    );
-  }
-
-  return (
-    <Link
-      href={href}
-      {...externalLinkProps(href)}
-      className={className}
-      style={{ ...rowStyle, color: "inherit", textDecoration: "none" }}
-      onClick={() => {
-        if (process.env.NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN) {
-          posthog.capture("menu_dish_clicked", { dish: title, href });
-        }
-      }}
-    >
-      {content}
+      <span aria-hidden="true" style={{ flexShrink: 0, alignSelf: "center", color: "var(--color-primary)", fontSize: "1.3rem", fontWeight: 700 }}>
+        ›
+      </span>
     </Link>
   );
 }
