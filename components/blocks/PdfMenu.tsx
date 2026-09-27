@@ -220,22 +220,37 @@ export function PdfMenu() {
         ) : (
           <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
             {Array.from({ length: numPages }, (_, i) => (
-              <canvas
+              // Visitors tap the page to read it closer, so the tap opens the
+              // full PDF at that page instead of doing nothing.
+              <a
                 key={i + 1}
-                data-page={i + 1}
-                aria-label={`Menu page ${i + 1} of ${numPages}`}
-                role="img"
-                style={{
-                  display: "block",
-                  width: "100%",
-                  height: "auto",
-                  aspectRatio: "842 / 595",
-                  borderRadius: "var(--radius-md)",
-                  border: "1px solid var(--color-outline-variant)",
-                  boxShadow: "var(--shadow-md)",
-                  background: "var(--color-surface)",
+                href={`${PDF_URL}#page=${i + 1}`}
+                target="_blank"
+                rel="noopener"
+                aria-label={`Open menu page ${i + 1} of ${numPages} (PDF)`}
+                style={{ display: "block", cursor: "zoom-in" }}
+                onClick={() => {
+                  if (process.env.NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN) {
+                    posthog.capture("menu_pdf_opened", { action: "page_tap", page: i + 1 });
+                  }
                 }}
-              />
+              >
+                <canvas
+                  data-page={i + 1}
+                  aria-label={`Menu page ${i + 1} of ${numPages}`}
+                  role="img"
+                  style={{
+                    display: "block",
+                    width: "100%",
+                    height: "auto",
+                    aspectRatio: "842 / 595",
+                    borderRadius: "var(--radius-md)",
+                    border: "1px solid var(--color-outline-variant)",
+                    boxShadow: "var(--shadow-md)",
+                    background: "var(--color-surface)",
+                  }}
+                />
+              </a>
             ))}
           </div>
         )}

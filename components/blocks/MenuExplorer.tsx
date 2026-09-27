@@ -6,6 +6,7 @@ import { Tabs } from "@/components/ds/Tabs";
 import { MenuItemCard } from "./MenuItemCard";
 import { MenuRow } from "./MenuRow";
 import { MENU_CATEGORIES, tagsFor } from "@/data/menu";
+import { ORDER_NOW_LINK } from "@/data/site";
 
 /**
  * MenuExplorer — category tabs, led by an "All" tab that shows every dish.
@@ -50,7 +51,7 @@ export function MenuExplorer() {
           underneath the card grid. */}
       <div className="flex flex-col gap-3 md:hidden" style={{ paddingTop: 20 }}>
         {dishes.map((d) => (
-          <MenuRow key={d.title} title={d.title} desc={d.desc} subject={d.subject} alt={d.alt} tags={tagsFor(d.keys)} src={d.image} />
+          <MenuRow key={d.title} title={d.title} desc={d.desc} subject={d.subject} alt={d.alt} tags={tagsFor(d.keys)} src={d.image} href={ORDER_NOW_LINK} />
         ))}
       </div>
       {/* Tablet/desktop: card grid */}
