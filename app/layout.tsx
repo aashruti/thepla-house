@@ -39,6 +39,10 @@ export const metadata: Metadata = {
     "vegan Gujarati thali",
   ],
   appleWebApp: { capable: true, title: SITE.shortName, statusBarStyle: "default" },
+  // Safari wraps plain-text phone numbers, addresses and dates in its own <a>
+  // tags before React hydrates, so the DOM no longer matches the server HTML
+  // (React #418). Phone numbers that should be tappable use explicit tel: links.
+  formatDetection: { telephone: false, date: false, address: false, email: false },
   robots: {
     index: true,
     follow: true,
