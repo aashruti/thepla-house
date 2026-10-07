@@ -1,5 +1,5 @@
 import type { CSSProperties } from "react";
-import { ORDER_CHANNELS, ORDER_PHONE } from "@/data/site";
+import { ORDER_CHANNELS, ORDER_PHONE, ORDER_PHONE_TEL } from "@/data/site";
 import { AggregatorLink } from "./AggregatorLink";
 
 /**
@@ -29,7 +29,12 @@ export function OrderChannels({ label = "Order on", showCall = false, size = "md
         ))}
       </div>
       {showCall && (
-        <span style={{ fontFamily: "var(--font-body)", fontSize, color: "var(--ink-500)" }}>or call {ORDER_PHONE}</span>
+        <span style={{ fontFamily: "var(--font-body)", fontSize, color: "var(--ink-500)" }}>
+          or call{" "}
+          <a href={ORDER_PHONE_TEL} style={{ color: "inherit", whiteSpace: "nowrap" }}>
+            {ORDER_PHONE}
+          </a>
+        </span>
       )}
     </div>
   );
