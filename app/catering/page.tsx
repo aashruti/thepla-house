@@ -172,7 +172,6 @@ export default function CateringPage() {
                 alt={o.alt}
                 src={img(o.img)}
                 occasion={o.occasion}
-                formId="cater-form"
               />
             ))}
           </div>

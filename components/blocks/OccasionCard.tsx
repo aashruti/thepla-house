@@ -17,14 +17,12 @@ export interface OccasionCardProps {
   src?: string;
   /** Value to set on the form's `occasion` field. */
   occasion: string;
-  /** Id of the section that holds the enquiry form. */
-  formId: string;
 }
 
-export function OccasionCard({ title, desc, subject, alt, src, occasion, formId }: OccasionCardProps) {
+export function OccasionCard({ title, desc, subject, alt, src, occasion }: OccasionCardProps) {
   return (
     <Link
-      href={`#${formId}`}
+      href="#cater-form"
       onClick={() => {
         prefillEnquiry("catering", { occasion });
         if (process.env.NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN) {
