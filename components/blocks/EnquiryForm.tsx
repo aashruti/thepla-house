@@ -53,6 +53,17 @@ const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const URL_RE = /^(https?:\/\/)?[\w-]+(\.[\w-]+)+([/?#][^\s]*)?$/i;
 const TURNSTILE_SITE_KEY = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
 const TURNSTILE_SCRIPT = "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit";
+const PREFILL_EVENT = "enquiry:prefill";
+
+interface PrefillDetail {
+  kind: string;
+  values: Record<string, string>;
+}
+
+/** Fill fields of the `kind` enquiry form on this page from elsewhere on the page (e.g. a card click). */
+export function prefillEnquiry(kind: string, values: Record<string, string>) {
+  window.dispatchEvent(new CustomEvent<PrefillDetail>(PREFILL_EVENT, { detail: { kind, values } }));
+}
 
 declare global {
   interface Window {
@@ -136,6 +147,21 @@ export function EnquiryForm({ kind, fields, steps, submitLabel = "Send enquiry",
       }
     };
   }, [isLast]);
+
+  useEffect(() => {
+    const onPrefill = (e: Event) => {
+      const { detail } = e as CustomEvent<PrefillDetail>;
+      if (detail.kind !== kind) return;
+      setValues((v) => ({ ...v, ...detail.values }));
+      setErrors((errs) => {
+        const next = { ...errs };
+        for (const name of Object.keys(detail.values)) delete next[name];
+        return next;
+      });
+    };
+    window.addEventListener(PREFILL_EVENT, onPrefill);
+    return () => window.removeEventListener(PREFILL_EVENT, onPrefill);
+  }, [kind]);
 
   /** Drop the used/failed Turnstile token and re-arm the widget for another attempt. */
   const resetCaptcha = () => {
