@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { PhotoSlot } from "@/components/blocks/PhotoSlot";
+import { OccasionCard } from "@/components/blocks/OccasionCard";
 import { EnquiryForm, type EnquiryField } from "@/components/blocks/EnquiryForm";
 import { CTABanner } from "@/components/ds/CTABanner";
 import { JsonLd } from "@/components/JsonLd";
@@ -18,6 +19,7 @@ export const metadata: Metadata = pageMetadata({
 const OCCASIONS = [
   {
     t: "Poojas & festivals",
+    occasion: "Pooja / festival",
     s: "Satvik and full Jain menus for home ceremonies and festivals.",
     subject: "Satvik pooja thali spread on a banana leaf",
     alt: "Pooja catering spread",
@@ -25,6 +27,7 @@ const OCCASIONS = [
   },
   {
     t: "Weddings & functions",
+    occasion: "Wedding / function",
     s: "Generous Gujarati spreads that scale to a full hall.",
     subject: "Large wedding buffet of Gujarati dishes",
     alt: "Wedding catering buffet",
@@ -32,6 +35,7 @@ const OCCASIONS = [
   },
   {
     t: "Corporate & office",
+    occasion: "Corporate / office",
     s: "Wholesome boxed thalis and snack platters for teams.",
     subject: "Boxed office thalis stacked neatly",
     alt: "Corporate thali boxes",
@@ -39,6 +43,7 @@ const OCCASIONS = [
   },
   {
     t: "House parties",
+    occasion: "House party",
     s: "Farsan, chaat and live counters for get-togethers.",
     subject: "Farsan and chaat platters for a house party",
     alt: "House party farsan platters",
@@ -68,7 +73,7 @@ const CATERING_FIELDS: EnquiryField[] = [
     label: "Occasion",
     type: "select",
     placeholder: "Select an occasion",
-    options: ["Pooja / festival", "Wedding / function", "Corporate / office", "House party", "Other"],
+    options: [...OCCASIONS.map((o) => o.occasion), "Other"],
   },
   { name: "eventDate", label: "Event date", type: "text", placeholder: "e.g. 12 Aug 2026" },
   {
@@ -159,18 +164,15 @@ export default function CateringPage() {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {OCCASIONS.map((o) => (
-              <div
+              <OccasionCard
                 key={o.t}
-                style={{ background: "var(--color-surface-container)", border: "1px solid var(--color-outline-variant)", borderRadius: "var(--radius-xl)", boxShadow: "var(--shadow-sm)", overflow: "hidden" }}
-              >
-                <div style={{ height: 150 }}>
-                  <PhotoSlot subject={o.subject} alt={o.alt} src={img(o.img)} style={{ height: "100%", width: "100%" }} />
-                </div>
-                <div style={{ padding: 18 }}>
-                  <div style={{ fontFamily: "var(--font-display)", color: "var(--color-headline)", fontWeight: 600, fontSize: "1.25rem" }}>{o.t}</div>
-                  <div style={{ fontFamily: "var(--font-body)", color: "var(--ink-600)", fontSize: "0.9375rem", lineHeight: 1.5, marginTop: 4 }}>{o.s}</div>
-                </div>
-              </div>
+                title={o.t}
+                desc={o.s}
+                subject={o.subject}
+                alt={o.alt}
+                src={img(o.img)}
+                occasion={o.occasion}
+              />
             ))}
           </div>
         </div>
