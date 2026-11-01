@@ -1,10 +1,16 @@
+"use client";
+
 import type { CSSProperties } from "react";
+import Link from "next/link";
+import posthog from "posthog-js";
 import { PhotoSlot } from "./PhotoSlot";
 import { dishImage } from "@/data/images";
+import { externalLinkProps } from "@/lib/links";
 import type { DishTag } from "@/lib/tags";
 
 /**
  * MenuItemCard — product card: photo, name, description, diet tags.
+ * The whole card links to `href`, so every part of it answers a tap.
  */
 export interface MenuItemCardProps {
   title: string;
@@ -13,14 +19,22 @@ export interface MenuItemCardProps {
   alt: string;
   tags?: DishTag[];
   src?: string;
+  href: string;
   style?: CSSProperties;
   className?: string;
 }
 
-export function MenuItemCard({ title, desc, subject, alt, tags = [], src, style, className }: MenuItemCardProps) {
+export function MenuItemCard({ title, desc, subject, alt, tags = [], src, href, style, className }: MenuItemCardProps) {
   return (
-    <div
+    <Link
+      href={href}
+      {...externalLinkProps(href)}
       className={className}
+      onClick={() => {
+        if (process.env.NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN) {
+          posthog.capture("menu_dish_clicked", { dish: title, href });
+        }
+      }}
       style={{
         display: "flex",
         flexDirection: "column",
@@ -30,6 +44,8 @@ export function MenuItemCard({ title, desc, subject, alt, tags = [], src, style,
         boxShadow: "var(--shadow-sm)",
         overflow: "hidden",
         height: "100%",
+        color: "inherit",
+        textDecoration: "none",
         ...style,
       }}
     >
@@ -62,7 +78,7 @@ export function MenuItemCard({ title, desc, subject, alt, tags = [], src, style,
           ))}
         </div>
       </div>
-    </div>
+    </Link>
   );
 }
 
