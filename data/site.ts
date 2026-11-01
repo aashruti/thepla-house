@@ -127,6 +127,8 @@ export const FOOTER_COLUMNS = [
     links: [
       { label: "Order now", href: ORDER_NOW_LINK },
       { label: "Home-style food & tiffin", href: "/tiffin-service-mumbai" },
+      { label: "Gujarati thali", href: "/gujarati-thali-mumbai" },
+      { label: "Upvas food", href: "/upvas-food-mumbai" },
       { label: "Catering", href: "/catering" },
       { label: "Travel packs", href: "/travel-packs" },
       { label: "Franchise", href: "/franchise" },
@@ -136,6 +138,7 @@ export const FOOTER_COLUMNS = [
     title: "Visit",
     links: [
       { label: "Chandivali · Andheri East", href: "/locations/chandivali" },
+      { label: "Kalina · Santacruz East", href: "/locations/kalina" },
       { label: "Lower Parel", href: "/locations/lower-parel" },
       { label: "Mulund", href: "/locations/mulund" },
       { label: "Thane · Manpada", href: "/locations/thane" },
