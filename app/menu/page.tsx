@@ -93,9 +93,14 @@ export default function MenuPage() {
               <MenuItemCard key={d.title} title={d.title} desc={d.desc} subject={d.subject} alt={d.alt} tags={tagsFor(d.keys)} src={d.image} />
             ))}
           </div>
-          <Link href="/locations" style={{ display: "inline-flex", marginTop: 22, fontFamily: "var(--font-body)", color: "var(--color-primary)", fontWeight: 700, textDecoration: "none" }}>
-            Find your nearest Thepla House by Tejal&apos;s Kitchen outlet →
-          </Link>
+          <div style={{ display: "flex", flexWrap: "wrap", gap: "8px 28px", marginTop: 22 }}>
+            <Link href="/upvas-food-mumbai" style={{ fontFamily: "var(--font-body)", color: "var(--color-primary)", fontWeight: 700, textDecoration: "none" }}>
+              More on our upvas food →
+            </Link>
+            <Link href="/locations" style={{ fontFamily: "var(--font-body)", color: "var(--color-primary)", fontWeight: 700, textDecoration: "none" }}>
+              Find your nearest Thepla House by Tejal&apos;s Kitchen outlet →
+            </Link>
+          </div>
         </div>
       </section>
 
@@ -121,7 +126,8 @@ export default function MenuPage() {
             Homely &amp; Healthy
           </h2>
           <p style={{ fontFamily: "var(--font-body)", color: "var(--green-200)", fontSize: "var(--fs-body-lg)", lineHeight: 1.6, maxWidth: 720, margin: "0 0 26px" }}>
-            Complete thalis and meals, cooked in the same kitchens.
+            Complete thalis and meals, cooked in the same kitchens.{" "}
+            <Link href="/gujarati-thali-mumbai" style={{ color: "var(--gold-300)", fontWeight: 600 }}>All our thalis →</Link>
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {HOMELY_HEALTHY.map((d) => (

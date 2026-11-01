@@ -15,6 +15,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/menu",
     "/locations",
     "/tiffin-service-mumbai",
+    "/gujarati-thali-mumbai",
+    "/upvas-food-mumbai",
     "/about",
     "/catering",
     "/travel-packs",
