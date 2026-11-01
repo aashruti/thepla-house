@@ -213,10 +213,10 @@ export default async function KitchenAreaPage({ params }: { params: Promise<{ ar
                   <h2 style={{ fontFamily: "var(--font-display)", color: "var(--color-headline)", fontSize: "1.875rem", margin: "6px 0 18px" }}>Areas served</h2>
                   <div style={{ display: "flex", flexWrap: "wrap", gap: 9 }}>
                     {k.areasServed.map((a) => (
-                      <span key={a} style={{ display: "inline-flex", alignItems: "center", gap: 7, padding: "9px 15px", background: "var(--white)", border: "1px solid var(--color-outline-variant)", borderRadius: "999px", fontFamily: "var(--font-body)", fontSize: "0.9375rem", fontWeight: 600, color: "var(--ink-700)" }}>
+                      <Link key={a} href={orderHref} {...externalLinkProps(orderHref)} aria-label={`Order to ${a} from our ${k.title} kitchen`} style={{ display: "inline-flex", alignItems: "center", gap: 7, padding: "9px 15px", background: "var(--white)", border: "1px solid var(--color-outline-variant)", borderRadius: "999px", fontFamily: "var(--font-body)", fontSize: "0.9375rem", fontWeight: 600, color: "var(--ink-700)", textDecoration: "none" }}>
                         <span style={{ width: 7, height: 7, borderRadius: "50%", background: "var(--green-500)" }} />
                         {a}
-                      </span>
+                      </Link>
                     ))}
                   </div>
                 </>

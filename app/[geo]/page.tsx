@@ -128,10 +128,10 @@ export default async function GeoLandingPage({ params }: { params: Promise<{ geo
               <h2 style={{ fontFamily: "var(--font-display)", color: "var(--color-headline)", fontSize: "1.875rem", margin: "6px 0 18px" }}>{a.name} &amp; nearby</h2>
               <div style={{ display: "flex", flexWrap: "wrap", gap: 9, marginBottom: 20 }}>
                 {a.areasServed.map((x) => (
-                  <span key={x} style={{ display: "inline-flex", alignItems: "center", gap: 7, padding: "9px 15px", background: "var(--white)", border: "1px solid var(--color-outline-variant)", borderRadius: "999px", fontFamily: "var(--font-body)", fontSize: "0.9375rem", fontWeight: 600, color: "var(--ink-700)" }}>
+                  <Link key={x} href={ORDER_NOW_LINK} {...externalLinkProps(ORDER_NOW_LINK)} aria-label={`Order to ${x}`} style={{ display: "inline-flex", alignItems: "center", gap: 7, padding: "9px 15px", background: "var(--white)", border: "1px solid var(--color-outline-variant)", borderRadius: "999px", fontFamily: "var(--font-body)", fontSize: "0.9375rem", fontWeight: 600, color: "var(--ink-700)", textDecoration: "none" }}>
                     <span style={{ width: 7, height: 7, borderRadius: "50%", background: "var(--green-500)" }} />
                     {x}
-                  </span>
+                  </Link>
                 ))}
               </div>
               <Link href={`/locations/${a.servingKitchenSlug}`} style={{ display: "flex", gap: 13, alignItems: "center", textDecoration: "none", background: "var(--color-surface-container)", border: "1px solid var(--color-outline-variant)", borderRadius: "var(--radius-xl)", boxShadow: "var(--shadow-sm)", padding: 18 }}>

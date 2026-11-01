@@ -57,7 +57,7 @@ export function MenuExplorer() {
       {/* Tablet/desktop: card grid */}
       <div className="hidden md:grid grid-cols-2 lg:grid-cols-3 gap-6" style={{ paddingTop: 28 }}>
         {dishes.map((d) => (
-          <MenuItemCard key={d.title} title={d.title} desc={d.desc} subject={d.subject} alt={d.alt} tags={tagsFor(d.keys)} src={d.image} />
+          <MenuItemCard key={d.title} title={d.title} desc={d.desc} subject={d.subject} alt={d.alt} tags={tagsFor(d.keys)} src={d.image} href={ORDER_NOW_LINK} />
         ))}
       </div>
 
