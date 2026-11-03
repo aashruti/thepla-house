@@ -18,9 +18,9 @@ const PATH = "/upvas-food-mumbai";
 // "navratri thali near me" and "sabudana khichdi near me" with ~900 impressions
 // a quarter and almost no clicks — only a section on /menu covered them.
 export const metadata: Metadata = pageMetadata({
-  title: "Upvas food & upwas thali near you in Mumbai — Navratri fasting",
+  title: "Upvas food & upwas thali near you in Mumbai",
   description:
-    "Upwas thali, sabudana khichdi, sabudana vada and rajgira puri for Navratri, Ekadashi and every fasting day. Fresh, 100% vegetarian upvas food from Thepla House by Tejal's Kitchen across Mumbai & Thane — order on Swiggy, Zomato or WhatsApp.",
+    "Upwas thali, sabudana khichdi, vada and rajgira puri for Navratri, Ekadashi and every fast. 100% veg upvas food across Mumbai & Thane from Thepla House.",
   path: PATH,
 });
 

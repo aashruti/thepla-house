@@ -19,7 +19,7 @@ import { img } from "@/data/images";
 export const metadata: Metadata = pageMetadata({
   title: "Thepla House by Tejal's Kitchen — Thepla & Gujarati Thali",
   description:
-    "Find fresh thepla, Gujarati thali and vegetarian tiffin near you at eight Thepla House by Tejal's Kitchen locations across Mumbai. Whole-wheat, Jain and vegan options; order online.",
+    "Fresh thepla, Gujarati thali and veg tiffin near you at 8 Thepla House by Tejal's Kitchen locations across Mumbai. Whole wheat, Jain & vegan. Order online.",
   path: "/",
 });
 

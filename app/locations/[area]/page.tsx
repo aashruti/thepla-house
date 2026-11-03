@@ -30,8 +30,8 @@ export async function generateMetadata({ params }: { params: Promise<{ area: str
     description:
       k.seoDescription ||
       (k.airside
-        ? `Home-style Gujarati food at ${SITE.name} inside ${k.title} departures — theplas, thalis, farsan, Jain & vegan, to take on board. Takeaway only, no delivery.`
-        : `Order home-style Gujarati food in ${k.title}, ${k.area} — theplas, thalis, farsan, Jain & vegan. Delivery via Swiggy, Zomato & WhatsApp.${k.hours ? ` ${k.hours}.` : ""}`),
+        ? `Gujarati food inside ${k.title} departures: theplas, thalis & farsan to take on board, Jain & vegan. Takeaway only past security, no delivery.`
+        : `Home-style Gujarati food in ${k.title}, ${k.area}: theplas, thalis & farsan, Jain & vegan. Order on Swiggy, Zomato or WhatsApp.`),
     path: `/locations/${k.slug}`,
   });
   meta.keywords = [

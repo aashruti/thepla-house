@@ -45,9 +45,9 @@ export const POSTS: Post[] = [
     read: "6 min read",
     subject: "Whole-wheat atta, a rolling pin and fresh theplas on a wooden board, warm light",
     alt: "Whole-wheat atta and rolling pin",
-    seoTitle: "Why we'll never use maida — the whole-wheat thepla difference",
+    seoTitle: "Why we never use maida in our theplas",
     seoDescription:
-      "Maida vs whole-wheat atta: what refined flour strips out, why 100% whole wheat matters, and why every Thepla House by Tejal's Kitchen thepla in Mumbai is made without maida or palm oil.",
+      "Maida vs whole-wheat atta: what refined flour strips out, why 100% whole wheat matters, and why our theplas are made without maida or palm oil.",
     keywords: ["maida vs whole wheat", "whole wheat thepla", "no maida food Mumbai", "whole-wheat atta benefits", "healthy thepla", "Gujarati food whole wheat"],
     body: [
       { type: "lead", text: "Ask anyone what makes a roti feel light and fluffy at a restaurant, and the honest answer is often the same: maida. Refined white flour is cheap, soft and forgiving. It's also stripped of the bran and germ — the parts of the wheat that actually do you good." },
@@ -75,9 +75,9 @@ export const POSTS: Post[] = [
     read: "5 min read",
     subject: "Vacuum-sealed methi thepla pack beside fresh theplas",
     alt: "Methi thepla freshness",
-    seoTitle: "How methi thepla stays fresh for 7 days — without preservatives",
+    seoTitle: "How methi thepla stays fresh for 7 days",
     seoDescription:
-      "The science behind methi thepla that travels: low moisture, whole-wheat atta, sunflower oil and vacuum packing. Buy travel packs to carry with you across India or abroad.",
+      "The science behind methi thepla that travels: low moisture, whole-wheat atta, sunflower oil and vacuum packing, with no preservatives. Buy travel packs.",
     keywords: ["methi thepla travel packs", "vacuum-packed thepla", "send thepla abroad", "thepla shelf life", "methi thepla Mumbai", "thepla for travel"],
     body: [
       { type: "lead", text: "A good methi thepla is built to travel. Rolled thin, cooked dry and packed with care, it can stay fresh for 7 days or more — with no preservatives at all. The secret isn't chemistry from a lab; it's technique from a home kitchen." },
@@ -103,9 +103,9 @@ export const POSTS: Post[] = [
     read: "7 min read",
     subject: "A full Gujarati thali, top-down on brass",
     alt: "Gujarati thali guide",
-    seoTitle: "Gujarati thali, explained — what's on the plate and how to eat it",
+    seoTitle: "Gujarati thali, explained: what's on the plate",
     seoDescription:
-      "A beginner's guide to the Gujarati thali: dal, kadhi, shaak, rotli, rice, farsan and sweets — the sweet-savoury balance, plus Jain and vegan thali options in Mumbai.",
+      "A beginner's guide to the Gujarati thali: dal, kadhi, shaak, rotli, rice, farsan and sweets, plus Jain and vegan thali options in Mumbai.",
     keywords: ["Gujarati thali", "what is in a Gujarati thali", "Gujarati thali Mumbai", "Jain thali", "vegan thali", "home-style thali"],
     body: [
       { type: "lead", text: "A Gujarati thali is a whole meal in miniature — sweet, salty, spicy and tangy, all on one brass plate. To a first-timer it can look like a dozen little bowls with no instructions. Here's how the pieces fit together." },
@@ -132,9 +132,9 @@ export const POSTS: Post[] = [
     read: "6 min read",
     subject: "Jain thali with labelled bowls",
     alt: "Jain cooking",
-    seoTitle: "Jain food, explained — no onion, no garlic, endless flavour",
+    seoTitle: "Jain food, explained: no onion, no garlic",
     seoDescription:
-      "What makes food Jain, why root vegetables are left out, and how Jain cooking builds deep flavour without onion or garlic. Order clearly-tagged Jain thalis in Mumbai.",
+      "What makes food Jain, why root vegetables are left out, and how Jain cooking builds deep flavour without onion or garlic. Order Jain thalis in Mumbai.",
     keywords: ["Jain food", "Jain thali Mumbai", "no onion no garlic food", "Jain Gujarati food", "satvik food", "Jain catering Mumbai"],
     body: [
       { type: "lead", text: "Jain cooking leaves out onion, garlic and anything that grows underground — and proves that flavour was never hiding there in the first place. For many first-timers, that sounds like cooking with one hand tied behind your back. It isn't." },
@@ -160,7 +160,7 @@ export const POSTS: Post[] = [
     read: "5 min read",
     subject: "Thepla rolls and chaat made from leftovers",
     alt: "Leftover thepla ideas",
-    seoTitle: "5 easy leftover thepla recipes — rolls, chaat & more",
+    seoTitle: "5 easy leftover thepla recipes",
     seoDescription:
       "Five quick ways to use leftover theplas: veggie rolls, thepla chaat, crispy croutons, a thepla pizza and a chai-time snack. Simple home recipes, zero waste.",
     keywords: ["leftover thepla recipes", "thepla roll recipe", "thepla chaat", "what to do with leftover thepla", "easy thepla snacks", "quick Gujarati recipes"],
@@ -193,7 +193,7 @@ export const POSTS: Post[] = [
     alt: "Undhiyu",
     seoTitle: "Undhiyu: the Surti winter classic, explained",
     seoDescription:
-      "What goes into undhiyu — surti papdi, purple yam, baby potato and muthiya, slow-cooked Surti style. The story of Gujarat's great winter dish, made fresh in Mumbai in season.",
+      "What goes into undhiyu: surti papdi, purple yam, baby potato and muthiya, slow-cooked Surti style. The story of Gujarat's great winter dish.",
     keywords: ["undhiyu", "Surti undhiyu", "what is undhiyu", "winter Gujarati food", "undhiyu Mumbai", "seasonal Gujarati dishes"],
     body: [
       { type: "lead", text: "Undhiyu is what a Gujarati winter tastes like — surti papdi, purple yam, baby potatoes, sweet potato and muthiya, slow-cooked together until everything melts into everything else. It only happens once a year, and that's exactly why it's special." },
@@ -218,9 +218,9 @@ export const POSTS: Post[] = [
     read: "5 min read",
     subject: "Bottle of sunflower oil beside fresh ingredients",
     alt: "Sunflower oil",
-    seoTitle: "Sunflower oil vs palm oil — why we cook with sunflower only",
+    seoTitle: "Sunflower vs palm oil: why we use sunflower",
     seoDescription:
-      "Why Thepla House by Tejal's Kitchen cooks every dish in sunflower oil and never palm oil — the difference for your health, your food's taste, and the planet. No palm oil, no preservatives.",
+      "Why Thepla House by Tejal's Kitchen cooks every dish in sunflower oil, never palm oil: the difference for your health, your food's taste and the planet.",
     keywords: ["sunflower oil vs palm oil", "no palm oil food", "healthy cooking oil", "palm oil free Mumbai", "sunflower oil cooking", "clean Gujarati food"],
     body: [
       { type: "lead", text: "Oil is the ingredient nobody talks about — and the one that quietly decides how a dish sits with you afterwards. We cook with sunflower oil only, never palm. Here's why that one choice matters more than it looks." },

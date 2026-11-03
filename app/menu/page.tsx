@@ -13,7 +13,7 @@ import menuExtracted from "@/data/menu-extracted.json";
 export const metadata: Metadata = pageMetadata({
   title: "Thepla House by Tejal's Kitchen — Menu & Prices",
   description:
-    "See the Thepla House by Tejal's Kitchen menu and current prices for fresh thepla, Gujarati thali, farsan, sweets and upvas food. Jain and vegan options; order across Mumbai.",
+    "Thepla House by Tejal's Kitchen menu and prices: fresh thepla, Gujarati thali, farsan, sweets and upvas food. Jain and vegan options. Order across Mumbai.",
   path: "/menu",
 });
 
