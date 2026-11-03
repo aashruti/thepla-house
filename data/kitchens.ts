@@ -55,6 +55,8 @@ export interface Kitchen {
   profiles?: string[];
   /** Name in the page heading, when people search for the outlet by a wider locality. */
   heading?: string;
+  /** Place named in the outlet's thali section, when it differs from `title`. */
+  thaliArea?: string;
   /** per-kitchen SEO overrides */
   seoTitle?: string;
   seoDescription?: string;
@@ -107,6 +109,7 @@ export const KITCHENS: Kitchen[] = [
     slug: "chandivali",
     title: "Chandivali",
     heading: "Chandivali, Andheri East",
+    thaliArea: "Andheri East",
     seoTitle: "Thepla House by Tejal's Kitchen, Andheri East (Chandivali)",
     area: "Andheri East",
     note: "Our flagship kitchen — full menu, catering and travel packs. Serves Powai, Saki Naka and Marol.",
@@ -136,6 +139,7 @@ export const KITCHENS: Kitchen[] = [
     slug: "kalina",
     title: "Kalina",
     heading: "Kalina, Santacruz East",
+    thaliArea: "Santacruz East",
     seoTitle: "Thepla House by Tejal's Kitchen, Kalina (Santacruz East)",
     area: "Santacruz East",
     note: "Quick lunches and full thalis for the Kalina–Vakola–Santacruz belt.",
@@ -225,6 +229,7 @@ export const KITCHENS: Kitchen[] = [
   {
     slug: "thane-stadium",
     title: "Thane Stadium",
+    thaliArea: "Naupada, Thane",
     area: "Dadoji Konddev Stadium · Naupada",
     // Dine-in + banquet per the brand's own deck and website brief. Note the
     // Zomato listing still says "Delivery only, no seating" — worth correcting
@@ -313,6 +318,7 @@ export const KITCHENS: Kitchen[] = [
   {
     slug: "kandivali",
     title: "Kandivali",
+    thaliArea: "Kandivali West",
     area: "Kandivali West · Dine-in",
     note: "Our dine-in outlet — eat it fresh, hot off the tawa, or take away.",
     hours: "Mon–Sun · 7:30am–10:30pm",

@@ -226,6 +226,29 @@ export default async function KitchenAreaPage({ params }: { params: Promise<{ ar
         </div>
       </section>
 
+      {/* Thalis — the airside counter takes no remote orders, so it links elsewhere */}
+      {!k.airside && (
+        <section style={{ background: "var(--cream-100)" }}>
+          <div className="th-container" style={{ paddingTop: 48, paddingBottom: 48 }}>
+            <div className="seglabel">Full meals</div>
+            <h2 style={{ fontFamily: "var(--font-display)", color: "var(--color-headline)", fontSize: "1.875rem", margin: "6px 0 12px" }}>
+              Gujarati thali in {k.thaliArea || k.title}
+            </h2>
+            <p style={{ fontFamily: "var(--font-body)", color: "var(--ink-600)", fontSize: "var(--fs-body-lg)", lineHeight: 1.6, maxWidth: 720, margin: "0 0 18px" }}>
+              Want a full meal? Our {k.title} kitchen cooks home-style thalis fresh to order — 100% vegetarian, with whole-wheat atta, sunflower oil and no preservatives.
+            </p>
+            <div style={{ display: "flex", flexWrap: "wrap", gap: "8px 28px" }}>
+              <Link href="/gujarati-thali-mumbai" style={{ fontFamily: "var(--font-body)", color: "var(--color-primary)", fontWeight: 700, textDecoration: "none" }}>
+                See our Gujarati thalis →
+              </Link>
+              <Link href="/upvas-food-mumbai" style={{ fontFamily: "var(--font-body)", color: "var(--color-primary)", fontWeight: 700, textDecoration: "none" }}>
+                Upwas thali for fasting days →
+              </Link>
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* Local SEO copy band */}
       <section style={{ background: "var(--green-700)", position: "relative", overflow: "hidden" }}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
