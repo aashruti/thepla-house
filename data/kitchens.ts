@@ -53,6 +53,8 @@ export interface Kitchen {
   swiggyUrl?: string;
   /** Other real profiles for this outlet (Justdial, Facebook, …) → added to `sameAs`. */
   profiles?: string[];
+  /** Name in the page heading, when people search for the outlet by a wider locality. */
+  heading?: string;
   /** per-kitchen SEO overrides */
   seoTitle?: string;
   seoDescription?: string;
@@ -104,6 +106,8 @@ export const KITCHENS: Kitchen[] = [
   {
     slug: "chandivali",
     title: "Chandivali",
+    heading: "Chandivali, Andheri East",
+    seoTitle: "Thepla House by Tejal's Kitchen, Andheri East (Chandivali)",
     area: "Andheri East",
     note: "Our flagship kitchen — full menu, catering and travel packs. Serves Powai, Saki Naka and Marol.",
     hours: "Mon–Sun · 7:30am–10:30pm",
@@ -131,6 +135,8 @@ export const KITCHENS: Kitchen[] = [
   {
     slug: "kalina",
     title: "Kalina",
+    heading: "Kalina, Santacruz East",
+    seoTitle: "Thepla House by Tejal's Kitchen, Kalina (Santacruz East)",
     area: "Santacruz East",
     note: "Quick lunches and full thalis for the Kalina–Vakola–Santacruz belt.",
     hours: "Mon–Sun · 7:30am–10:30pm · Wed till 3pm",

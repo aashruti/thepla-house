@@ -124,7 +124,7 @@ export default async function KitchenAreaPage({ params }: { params: Promise<{ ar
                 </div>
               )}
               <h1 style={{ fontFamily: "var(--font-display)", color: "var(--color-headline)", fontSize: "var(--fs-display-lg)", lineHeight: 1.06, margin: "0 0 10px" }}>
-                {SITE.name} — {k.title}
+                {SITE.name} — {k.heading || k.title}
               </h1>
               <p style={{ fontFamily: "var(--font-body)", color: "var(--ink-600)", fontSize: "var(--fs-body-lg)", lineHeight: 1.6, maxWidth: 540, margin: "0 0 22px" }}>
                 {k.airside
