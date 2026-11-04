@@ -12,7 +12,7 @@ import { img } from "@/data/images";
 export const metadata: Metadata = pageMetadata({
   title: "Franchise a Thepla House by Tejal's Kitchen outlet",
   description:
-    "Partner with Thepla House by Tejal's Kitchen — a proven 100% vegetarian, founder-led cloud-kitchen brand from Mumbai. Explore franchise formats, investment and support, and apply online.",
+    "Partner with Thepla House by Tejal's Kitchen, a founder-led, 100% vegetarian cloud-kitchen brand from Mumbai. See formats and support; apply online.",
   path: "/franchise",
 });
 

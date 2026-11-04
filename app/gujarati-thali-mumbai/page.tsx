@@ -21,7 +21,7 @@ const PATH = "/gujarati-thali-mumbai";
 export const metadata: Metadata = pageMetadata({
   title: "Gujarati thali in Mumbai — veg thali near you",
   description:
-    "Looking for a Gujarati thali near you? Thepla House by Tejal's Kitchen serves home-style veg thalis — Gujarati, Punjabi, paneer, pulao and dal bati — from 7 kitchens across Mumbai & Thane. Whole wheat, no maida, Jain & vegan options. Order on Swiggy, Zomato or WhatsApp.",
+    "Gujarati thali near you: home-style veg thalis from Thepla House by Tejal's Kitchen at 7 kitchens across Mumbai & Thane. Whole wheat, Jain & vegan options.",
   path: PATH,
 });
 

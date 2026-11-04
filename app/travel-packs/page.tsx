@@ -12,7 +12,7 @@ import { img } from "@/data/images";
 export const metadata: Metadata = pageMetadata({
   title: "Methi thepla travel packs — fresh 7+ days",
   description:
-    "Vacuum-packed methi thepla travel packs — 100% whole wheat, no preservatives, fresh for 7+ days. Made to carry on any journey. Buy at any Thepla House by Tejal's Kitchen outlet in Mumbai.",
+    "Vacuum-packed methi thepla travel packs: 100% whole wheat, no preservatives, fresh for 7+ days. Buy at any Thepla House by Tejal's Kitchen outlet in Mumbai.",
   path: "/travel-packs",
 });
 
