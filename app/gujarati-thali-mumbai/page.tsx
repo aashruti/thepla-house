@@ -12,6 +12,7 @@ import { JsonLd } from "@/components/JsonLd";
 import { pageMetadata, serviceLd, faqPageLd, breadcrumbLd } from "@/lib/seo";
 import { MENU_CATEGORIES, HOMELY_HEALTHY, tagsFor, type Dish } from "@/data/menu";
 import { KITCHENS } from "@/data/kitchens";
+import { img } from "@/data/images";
 
 const PATH = "/gujarati-thali-mumbai";
 
@@ -140,7 +141,7 @@ export default function GujaratiThaliPage() {
               <OrderChannels label="Order on" />
             </div>
             <div style={{ borderRadius: "var(--radius-2xl)", overflow: "hidden", boxShadow: "var(--shadow-lg)", height: 340 }}>
-              <PhotoSlot subject="Gujarati mini thali in a tray" alt="Home-style Gujarati thali in Mumbai" src={THALIS[0].image} priority sizes="(max-width: 1024px) 100vw, 45vw" style={{ height: 340, width: "100%" }} />
+              <PhotoSlot subject="Gujarati mini thali in a tray" alt="Gujarati mini thali with roti, rice, dal, two sabzis and gulab jamun" src={img("gujarati-mini-thali-hero")} priority sizes="(max-width: 1024px) 100vw, 45vw" style={{ height: 340, width: "100%" }} />
             </div>
           </div>
         </div>

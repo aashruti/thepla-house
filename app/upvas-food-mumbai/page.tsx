@@ -11,6 +11,7 @@ import { JsonLd } from "@/components/JsonLd";
 import { pageMetadata, serviceLd, faqPageLd, breadcrumbLd } from "@/lib/seo";
 import { MENU_CATEGORIES, HOMELY_HEALTHY, tagsFor } from "@/data/menu";
 import { KITCHENS } from "@/data/kitchens";
+import { img } from "@/data/images";
 
 const PATH = "/upvas-food-mumbai";
 
@@ -106,7 +107,7 @@ export default function UpvasFoodPage() {
               <OrderChannels label="Order on" />
             </div>
             <div style={{ borderRadius: "var(--radius-2xl)", overflow: "hidden", boxShadow: "var(--shadow-lg)", height: 340 }}>
-              <PhotoSlot subject={UPVAS_DISHES[0].subject} alt="Upwas thali for fasting days in Mumbai" src={UPVAS_DISHES[0].image} priority sizes="(max-width: 1024px) 100vw, 45vw" style={{ height: 340, width: "100%" }} />
+              <PhotoSlot subject="Upwas thali in a tray" alt="Upwas thali with sabudana khichdi, vadas, rajgira puris, potatoes, curd and sheera" src={img("upvas-thali-hero")} priority sizes="(max-width: 1024px) 100vw, 45vw" style={{ height: 340, width: "100%" }} />
             </div>
           </div>
         </div>
