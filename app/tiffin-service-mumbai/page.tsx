@@ -17,9 +17,9 @@ import { img } from "@/data/images";
 const PATH = "/tiffin-service-mumbai";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Home-style food & healthy vegetarian tiffin in Mumbai",
+  title: "Healthy veg tiffin & home-style food, Mumbai",
   description:
-    "Looking for home-style food, healthy food or a tiffin service near you in Mumbai? Thepla House by Tejal's Kitchen cooks fresh, 100% vegetarian ghar ka khana — whole-wheat theplas, thalis, sabzis and farsan — delivered hot like a tiffin, any day. Jain & vegan options.",
+    "Healthy, home-style tiffin near you in Mumbai: fresh, 100% vegetarian ghar ka khana from Thepla House by Tejal's Kitchen, delivered hot. Jain & vegan options.",
   path: PATH,
 });
 

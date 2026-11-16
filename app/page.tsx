@@ -19,7 +19,7 @@ import { img } from "@/data/images";
 export const metadata: Metadata = pageMetadata({
   title: "Thepla House by Tejal's Kitchen — Thepla & Gujarati Thali",
   description:
-    "Find fresh thepla, Gujarati thali and vegetarian tiffin near you at eight Thepla House by Tejal's Kitchen locations across Mumbai. Whole-wheat, Jain and vegan options; order online.",
+    "Fresh thepla, Gujarati thali and veg tiffin near you at 8 Thepla House by Tejal's Kitchen locations across Mumbai. Whole wheat, Jain & vegan. Order online.",
   path: "/",
 });
 
@@ -52,7 +52,7 @@ export default function HomePage() {
       <PromiseStrip />
 
       {/* Popular dishes */}
-      <section style={{ background: "var(--cream-50)" }}>
+      <section id="most-loved" style={{ background: "var(--cream-50)", scrollMarginTop: 72 }}>
         <div className="th-container" style={{ paddingTop: 56, paddingBottom: 56 }}>
           <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: 20, marginBottom: 28, flexWrap: "wrap" }}>
             <div>
@@ -68,6 +68,20 @@ export default function HomePage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {POPULAR_DISHES.map((d) => (
               <MenuItemCard key={d.title} title={d.title} desc={d.desc} subject={d.subject} alt={d.alt} tags={tagsFor(d.keys)} src={d.image} href={ORDER_NOW_LINK} />
+            ))}
+          </div>
+          <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: 10, marginTop: 28 }}>
+            <span style={{ fontFamily: "var(--font-body)", color: "var(--ink-500)", fontSize: "0.9375rem", fontWeight: 600 }}>Craving something specific?</span>
+            {[
+              { label: "Gujarati thali", href: "/gujarati-thali-mumbai" },
+              { label: "Upvas food", href: "/upvas-food-mumbai" },
+              { label: "Undhiyu (in season)", href: "/undhiyu-mumbai" },
+              { label: "Home-style tiffin", href: "/tiffin-service-mumbai" },
+              { label: "Travel packs", href: "/travel-packs" },
+            ].map((l) => (
+              <Link key={l.href} href={l.href} style={{ display: "inline-flex", alignItems: "center", minHeight: 40, padding: "8px 16px", background: "var(--white)", border: "1px solid var(--color-outline-variant)", borderRadius: "999px", fontFamily: "var(--font-body)", fontSize: "0.9375rem", fontWeight: 600, color: "var(--color-primary)", textDecoration: "none" }}>
+                {l.label}
+              </Link>
             ))}
           </div>
         </div>

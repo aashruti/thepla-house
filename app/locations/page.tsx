@@ -13,9 +13,9 @@ import { AREAS } from "@/data/areas";
 import { SITE, ORDER_PHONE, LOCATIONS_MAP_EMBED, ORDER_NOW_LINK } from "@/data/site";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Thepla Near Me — 8 Thepla House by Tejal's Kitchen Outlets",
+  title: "Thepla Near Me — 8 Outlets in Mumbai & Thane | Thepla House",
   description:
-    "Looking for fresh thepla near you? Find the nearest Thepla House by Tejal's Kitchen in Chandivali, Kalina, Lower Parel, Mulund, Thane, Navi Mumbai or Kandivali.",
+    "Fresh methi thepla near you: find your nearest Thepla House by Tejal's Kitchen in Andheri, Santacruz, Lower Parel, Mulund, Thane or Kandivali.",
   path: "/locations",
 });
 
@@ -134,7 +134,7 @@ export default function LocationsPage() {
                     hours={k.hours}
                     detailHref={`/locations/${k.slug}`}
                     directionsHref={k.mapsUrl || `https://www.google.com/maps?q=${encodeURIComponent(k.mapQuery)}`}
-                    orderHref={k.swiggyUrl || ORDER_NOW_LINK}
+                    orderHref={ORDER_NOW_LINK}
                     swiggyHref={k.swiggyUrl}
                     zomatoHref={k.zomatoUrl}
                   />

@@ -11,7 +11,7 @@ import { img } from "@/data/images";
 export const metadata: Metadata = pageMetadata({
   title: "Gujarati catering, Mumbai | Thepla House by Tejal's Kitchen",
   description:
-    "Home-style Gujarati catering in Mumbai for poojas, weddings, corporate events and house parties. Full Jain menus, 100% vegetarian, cooked fresh. Plan your order with Thepla House by Tejal's Kitchen.",
+    "Home-style Gujarati catering in Mumbai for poojas, weddings, corporate events and house parties. Full Jain menus, 100% vegetarian, cooked fresh.",
   path: "/catering",
 });
 
