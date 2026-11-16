@@ -72,8 +72,10 @@ export function OwnlyActions() {
         <a
           href={OWNLY_LINK}
           onClick={() => track("open_app", platform ?? "desktop")}
-          style={{ ...button, color: "var(--color-on-primary)", background: "var(--color-primary)", boxShadow: "var(--shadow-sm)" }}
+          style={{ ...button, gap: 8, color: "var(--color-on-primary)", background: "var(--color-primary)", boxShadow: "var(--shadow-sm)" }}
         >
+          {/* eslint-disable-next-line @next/next/no-img-element -- local vector brand mark */}
+          <img src="/brands/ownly.svg" alt="" width={24} height={24} style={{ background: "var(--white)", borderRadius: 6, flexShrink: 0 }} />
           {onPhone ? "Open in Ownly" : "Already on your phone? Open in Ownly"}
         </a>
         {stores.map((s) => (

@@ -52,7 +52,7 @@ export default function HomePage() {
       <PromiseStrip />
 
       {/* Popular dishes */}
-      <section style={{ background: "var(--cream-50)" }}>
+      <section id="most-loved" style={{ background: "var(--cream-50)", scrollMarginTop: 72 }}>
         <div className="th-container" style={{ paddingTop: 56, paddingBottom: 56 }}>
           <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: 20, marginBottom: 28, flexWrap: "wrap" }}>
             <div>

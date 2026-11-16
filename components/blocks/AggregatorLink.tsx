@@ -21,9 +21,7 @@ import { externalLinkProps } from "@/lib/links";
 export type Aggregator = "ownly" | "swiggy" | "zomato" | "whatsapp";
 
 export const AGGREGATORS: Record<Aggregator, { name: string; logo: string; color: string; note?: string }> = {
-  // No official Ownly mark in the repo yet, so a generic phone glyph stands in;
-  // swap in Ownly's logo at /brands/ownly.svg when they supply it.
-  ownly: { name: "Ownly app", logo: "/brands/phone-app.svg", color: "var(--color-primary)", note: `${OWNLY_SAVING} less` },
+  ownly: { name: "Ownly app", logo: "/brands/ownly.svg", color: "#FF297D", note: `${OWNLY_SAVING} less` },
   swiggy: { name: "Swiggy", logo: "/brands/swiggy.svg", color: "#FF5200" },
   zomato: { name: "Zomato", logo: "/brands/zomato.svg", color: "#CC202E" },
   whatsapp: { name: "WhatsApp", logo: "/brands/whatsapp.svg", color: "#25D366" },
