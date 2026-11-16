@@ -9,7 +9,7 @@ import { SITE, ORDER_PHONE, ORDER_PHONE_TEL, WHATSAPP_LINK, INSTAGRAM_HANDLE, IN
 export const metadata: Metadata = pageMetadata({
   title: "Contact Thepla House by Tejal's Kitchen — Mumbai",
   description:
-    "Get in touch with Thepla House by Tejal's Kitchen — order line +91 98195 55065, WhatsApp, catering and franchise enquiries. Eight locations across Mumbai, Thane and Navi Mumbai.",
+    "Order line +91 98195 55065, WhatsApp, catering and franchise enquiries for Thepla House by Tejal's Kitchen. 8 locations across Mumbai, Thane and Navi Mumbai.",
   path: "/contact",
 });
 

@@ -53,6 +53,10 @@ export interface Kitchen {
   swiggyUrl?: string;
   /** Other real profiles for this outlet (Justdial, Facebook, …) → added to `sameAs`. */
   profiles?: string[];
+  /** Name in the page heading, when people search for the outlet by a wider locality. */
+  heading?: string;
+  /** Place named in the outlet's thali section, when it differs from `title`. */
+  thaliArea?: string;
   /** per-kitchen SEO overrides */
   seoTitle?: string;
   seoDescription?: string;
@@ -104,14 +108,19 @@ export const KITCHENS: Kitchen[] = [
   {
     slug: "chandivali",
     title: "Chandivali",
+    heading: "Chandivali, Andheri East",
+    thaliArea: "Andheri East",
+    seoTitle: "Thepla House by Tejal's Kitchen, Andheri East (Chandivali)",
     area: "Andheri East",
     note: "Our flagship kitchen — full menu, catering and travel packs. Serves Powai, Saki Naka and Marol.",
     hours: "Mon–Sun · 7:30am–10:30pm",
     openingHours: FULL_WEEK,
     address: "Gala No 6, Haria Shree Guppy Industrial Estate, Saki Vihar Rd, Ganesh Nagar, Chandivali, Andheri East, Mumbai, Maharashtra 400072",
-    mapQuery: "Chandivali Industrial Estate, Andheri East, Mumbai",
-    lat: 19.1145,
-    lng: 72.8889,
+    mapQuery: "19.1119318,72.8880372",
+    lat: 19.1119318,
+    lng: 72.8880372,
+    // Verified GBP listing → "Thepla House by Tejal's Kitchen - Andheri".
+    mapsUrl: "https://www.google.com/maps?cid=4011849406905407719",
     zomatoUrl: "https://www.zomato.com/mumbai/thepla-house-by-tejals-kitchen-chandivali",
     swiggyUrl: "https://www.swiggy.com/city/mumbai/thepla-house-by-tejals-kitchen-powai-andheri-east-rest59034",
     flagship: true,
@@ -129,6 +138,9 @@ export const KITCHENS: Kitchen[] = [
   {
     slug: "kalina",
     title: "Kalina",
+    heading: "Kalina, Santacruz East",
+    thaliArea: "Santacruz East",
+    seoTitle: "Thepla House by Tejal's Kitchen, Kalina (Santacruz East)",
     area: "Santacruz East",
     note: "Quick lunches and full thalis for the Kalina–Vakola–Santacruz belt.",
     hours: "Mon–Sun · 7:30am–10:30pm · Wed till 3pm",
@@ -137,6 +149,8 @@ export const KITCHENS: Kitchen[] = [
     mapQuery: "19.0815338,72.8565508",
     lat: 19.0815338,
     lng: 72.8565508,
+    // Verified GBP listing → "Thepla house by tejal's kitchen - Kalina Branch".
+    mapsUrl: "https://www.google.com/maps?cid=835381288085366093",
     zomatoUrl: "https://www.zomato.com/mumbai/thepla-house-by-tejals-kitchen-santacruz-east",
     swiggyUrl: "https://www.swiggy.com/city/mumbai/thepla-house-by-tejals-kitchen-next-to-raj-auto-garage-yashwant-nagar-kalina-santacruz-east-rest324194",
     areasServed: ["Kalina", "Vakola", "Santacruz East", "Vidyanagari", "Kurla West", "BKC"],
@@ -156,6 +170,8 @@ export const KITCHENS: Kitchen[] = [
     mapQuery: "19.0054158,72.8364362",
     lat: 19.0054158,
     lng: 72.8364362,
+    // Verified GBP listing → "Thepla House by Tejal's Kitchen - Lower Parel".
+    mapsUrl: "https://www.google.com/maps?cid=4304222064632421971",
     zomatoUrl: "https://www.zomato.com/mumbai/thepla-house-by-tejals-kitchen-parel",
     swiggyUrl: "https://www.swiggy.com/city/mumbai/thepla-house-by-tejals-kitchen-elphinstone-bridge-road-parel-rest427766",
     areasServed: ["Lower Parel", "Worli", "Prabhadevi", "Elphinstone", "Mahalaxmi", "Parel"],
@@ -175,6 +191,8 @@ export const KITCHENS: Kitchen[] = [
     mapQuery: "19.1651303,72.9417104",
     lat: 19.1651303,
     lng: 72.9417104,
+    // Verified GBP listing → "Thepla House By Tejal's kitchen - Mulund".
+    mapsUrl: "https://www.google.com/maps?cid=5511599566097666090",
     zomatoUrl: "https://www.zomato.com/mumbai/thepla-house-by-tejals-kitchen-mulund-west",
     swiggyUrl: "https://www.swiggy.com/city/mumbai/thepla-house-by-tejals-kitchen-mulund-raja-industrial-estate-rest605792",
     areasServed: ["Mulund West", "Mulund East", "Bhandup", "Nahur", "Airoli", "Vikhroli"],
@@ -194,6 +212,8 @@ export const KITCHENS: Kitchen[] = [
     mapQuery: "19.2333642,72.9748825",
     lat: 19.2333642,
     lng: 72.9748825,
+    // Verified GBP listing → "Thepla House by Tejal's kitchen - Thane".
+    mapsUrl: "https://www.google.com/maps?cid=5774594057189405440",
     zomatoUrl: "https://www.zomato.com/mumbai/thepla-house-by-tejals-kitchen-manpada-thane-west-thane",
     // Verified via Swiggy's own outlet switcher: this Manpada kitchen is listed as
     // "Bhavani Nagar, Thane" (4.5, 3.8K+ ratings), matching the address below.
@@ -209,6 +229,7 @@ export const KITCHENS: Kitchen[] = [
   {
     slug: "thane-stadium",
     title: "Thane Stadium",
+    thaliArea: "Naupada, Thane",
     area: "Dadoji Konddev Stadium · Naupada",
     // Dine-in + banquet per the brand's own deck and website brief. Note the
     // Zomato listing still says "Delivery only, no seating" — worth correcting
@@ -297,6 +318,7 @@ export const KITCHENS: Kitchen[] = [
   {
     slug: "kandivali",
     title: "Kandivali",
+    thaliArea: "Kandivali West",
     area: "Kandivali West · Dine-in",
     note: "Our dine-in outlet — eat it fresh, hot off the tawa, or take away.",
     hours: "Mon–Sun · 7:30am–10:30pm",
@@ -313,7 +335,7 @@ export const KITCHENS: Kitchen[] = [
     swiggyUrl: "https://www.swiggy.com/city/mumbai/thepla-house-by-tejals-kitchen-west-kandivali-rest1193204",
     seoTitle: "Thepla House by Tejal's Kitchen, Kandivali — Dine-in",
     seoDescription:
-      "Fresh home-style Gujarati theplas, thalis & farsan — dine in, take away or order in Kandivali West (near Mahavir Nagar). 100% vegetarian, whole wheat, Jain & vegan. Open daily 7:30am to 10:30pm.",
+      "Fresh Gujarati theplas, thalis & farsan in Kandivali West, near Mahavir Nagar. Dine in, take away or order. 100% veg, whole wheat, Jain & vegan.",
     seoParagraphs: [
       "Looking for fresh thepla in Kandivali West? Thepla House by Tejal's Kitchen is a 100% vegetarian, home-style Gujarati dine-in outlet in Kandivali West, a short walk from Mahavir Nagar and the MHADA Colony. Eat in hot off the tawa, take away, or order delivery — we serve methi theplas, full Gujarati thalis, farsan and sweets, all made with whole-wheat atta and sunflower oil, never maida or palm oil.",
       "Our Kandivali outlet is open daily from 7:30am to 10:30pm, so you can grab a thepla-and-chai breakfast, a wholesome thali for lunch, or farsan and sweets through the evening. We're a neighbourhood favourite for ghar ka khana across Kandivali West, Kandivali East, Charkop, Borivali and Malad, with Jain and vegan options available.",

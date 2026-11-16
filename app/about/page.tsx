@@ -20,7 +20,7 @@ const KITCHEN_COUNT = KITCHENS.filter((k) => !k.airside).length;
 export const metadata: Metadata = pageMetadata({
   title: "Our story — Tejal Shah & Thepla House by Tejal's Kitchen",
   description:
-    "The story of Tejal Shah and Thepla House by Tejal's Kitchen — started in 2018 with 5 kg of atta and one belief, now a multi-crore food business with 250+ offerings across Mumbai. \u201cJunk the Junk Food.\u201d",
+    "The story of Tejal Shah and Thepla House by Tejal's Kitchen: started in 2018 with 5 kg of atta and one belief, now 250+ offerings across Mumbai.",
   path: "/about",
 });
 

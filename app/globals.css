@@ -348,3 +348,8 @@ body {
     scroll-behavior: auto;
   }
 }
+
+/* The Ownly QR code is for desktop visitors; a phone opens the app directly. */
+@media (max-width: 767px) {
+  .ownly-qr { display: none; }
+}

@@ -30,8 +30,8 @@ export async function generateMetadata({ params }: { params: Promise<{ area: str
     description:
       k.seoDescription ||
       (k.airside
-        ? `Home-style Gujarati food at ${SITE.name} inside ${k.title} departures — theplas, thalis, farsan, Jain & vegan, to take on board. Takeaway only, no delivery.`
-        : `Order home-style Gujarati food in ${k.title}, ${k.area} — theplas, thalis, farsan, Jain & vegan. Delivery via Swiggy, Zomato & WhatsApp.${k.hours ? ` ${k.hours}.` : ""}`),
+        ? `Gujarati food inside ${k.title} departures: theplas, thalis & farsan to take on board, Jain & vegan. Takeaway only past security, no delivery.`
+        : `Home-style Gujarati food in ${k.title}, ${k.area}: theplas, thalis & farsan, Jain & vegan. Order on Swiggy, Zomato or WhatsApp.`),
     path: `/locations/${k.slug}`,
   });
   meta.keywords = [
@@ -57,9 +57,9 @@ export default async function KitchenAreaPage({ params }: { params: Promise<{ ar
   const directions = k.mapsUrl || `https://www.google.com/maps?q=${encodeURIComponent(k.mapQuery)}`;
   // Outlets with their own listed number show it, so the page matches that
   // outlet's Google Business Profile; the rest fall back to the central line.
-  // Order this outlet specifically where it has its own Swiggy listing; the
-  // airside counter takes no remote orders, so its button stays on the menu.
-  const orderHref = k.airside ? "/menu" : k.swiggyUrl || ORDER_NOW_LINK;
+  // Every delivery kitchen takes Ownly orders, so the main button goes there;
+  // the airside counter takes no remote orders, so its button stays on the menu.
+  const orderHref = k.airside ? "/menu" : ORDER_NOW_LINK;
   const outletPhone = k.phone || ORDER_PHONE;
   const outletPhoneTel = k.phone ? `tel:${k.phone.replace(/[^+\d]/g, "")}` : ORDER_PHONE_TEL;
 
@@ -124,7 +124,7 @@ export default async function KitchenAreaPage({ params }: { params: Promise<{ ar
                 </div>
               )}
               <h1 style={{ fontFamily: "var(--font-display)", color: "var(--color-headline)", fontSize: "var(--fs-display-lg)", lineHeight: 1.06, margin: "0 0 10px" }}>
-                {SITE.name} — {k.title}
+                {SITE.name} — {k.heading || k.title}
               </h1>
               <p style={{ fontFamily: "var(--font-body)", color: "var(--ink-600)", fontSize: "var(--fs-body-lg)", lineHeight: 1.6, maxWidth: 540, margin: "0 0 22px" }}>
                 {k.airside
@@ -139,12 +139,13 @@ export default async function KitchenAreaPage({ params }: { params: Promise<{ ar
                   Get directions
                 </a>
               </div>
-              {(k.swiggyUrl || k.zomatoUrl) && (
+              {!k.airside && (
                 <div style={{ marginTop: 16 }}>
                   <div style={{ fontFamily: "var(--font-body)", color: "var(--ink-500)", fontSize: "0.875rem", marginBottom: 8 }}>
-                    Order this kitchen direct on
+                    Order this kitchen on
                   </div>
                   <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
+                    <AggregatorLink service="ownly" href={ORDER_NOW_LINK} size="lg" />
                     {k.swiggyUrl && <AggregatorLink service="swiggy" href={k.swiggyUrl} size="lg" />}
                     {k.zomatoUrl && <AggregatorLink service="zomato" href={k.zomatoUrl} size="lg" />}
                   </div>
@@ -213,10 +214,10 @@ export default async function KitchenAreaPage({ params }: { params: Promise<{ ar
                   <h2 style={{ fontFamily: "var(--font-display)", color: "var(--color-headline)", fontSize: "1.875rem", margin: "6px 0 18px" }}>Areas served</h2>
                   <div style={{ display: "flex", flexWrap: "wrap", gap: 9 }}>
                     {k.areasServed.map((a) => (
-                      <span key={a} style={{ display: "inline-flex", alignItems: "center", gap: 7, padding: "9px 15px", background: "var(--white)", border: "1px solid var(--color-outline-variant)", borderRadius: "999px", fontFamily: "var(--font-body)", fontSize: "0.9375rem", fontWeight: 600, color: "var(--ink-700)" }}>
+                      <Link key={a} href={orderHref} {...externalLinkProps(orderHref)} aria-label={`Order to ${a} from our ${k.title} kitchen`} style={{ display: "inline-flex", alignItems: "center", gap: 7, padding: "9px 15px", background: "var(--white)", border: "1px solid var(--color-outline-variant)", borderRadius: "999px", fontFamily: "var(--font-body)", fontSize: "0.9375rem", fontWeight: 600, color: "var(--ink-700)", textDecoration: "none" }}>
                         <span style={{ width: 7, height: 7, borderRadius: "50%", background: "var(--green-500)" }} />
                         {a}
-                      </span>
+                      </Link>
                     ))}
                   </div>
                 </>
@@ -225,6 +226,29 @@ export default async function KitchenAreaPage({ params }: { params: Promise<{ ar
           </div>
         </div>
       </section>
+
+      {/* Thalis — the airside counter takes no remote orders, so it links elsewhere */}
+      {!k.airside && (
+        <section style={{ background: "var(--cream-100)" }}>
+          <div className="th-container" style={{ paddingTop: 48, paddingBottom: 48 }}>
+            <div className="seglabel">Full meals</div>
+            <h2 style={{ fontFamily: "var(--font-display)", color: "var(--color-headline)", fontSize: "1.875rem", margin: "6px 0 12px" }}>
+              Gujarati thali in {k.thaliArea || k.title}
+            </h2>
+            <p style={{ fontFamily: "var(--font-body)", color: "var(--ink-600)", fontSize: "var(--fs-body-lg)", lineHeight: 1.6, maxWidth: 720, margin: "0 0 18px" }}>
+              Want a full meal? Our {k.title} kitchen cooks home-style thalis fresh to order — 100% vegetarian, with whole-wheat atta, sunflower oil and no preservatives.
+            </p>
+            <div style={{ display: "flex", flexWrap: "wrap", gap: "8px 28px" }}>
+              <Link href="/gujarati-thali-mumbai" style={{ fontFamily: "var(--font-body)", color: "var(--color-primary)", fontWeight: 700, textDecoration: "none" }}>
+                See our Gujarati thalis →
+              </Link>
+              <Link href="/upvas-food-mumbai" style={{ fontFamily: "var(--font-body)", color: "var(--color-primary)", fontWeight: 700, textDecoration: "none" }}>
+                Upwas thali for fasting days →
+              </Link>
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Local SEO copy band */}
       <section style={{ background: "var(--green-700)", position: "relative", overflow: "hidden" }}>

@@ -1,3 +1,4 @@
+import { img } from "@/data/images";
 import { TAGS, type DishTag } from "@/lib/tags";
 
 export type TagKey = keyof typeof TAGS;
@@ -8,7 +9,7 @@ export interface Dish {
   subject: string;
   alt: string;
   keys: TagKey[];
-  /** Real photo from the brand's shoot, under public/images/menu. */
+  /** Editorial image used by menu cards and dish listings. */
   image?: string;
 }
 
@@ -18,7 +19,7 @@ export interface MenuCategory {
   dishes: Dish[];
 }
 
-const photo = (slug: string) => `/images/menu/${slug}.webp`;
+const photo = (slug: string) => `/images/menu/editorial/${slug}.webp`;
 
 /**
  * The menu page's dishes: the brand's top 50 items by sales, grouped for
@@ -36,7 +37,7 @@ export const MENU_CATEGORIES: MenuCategory[] = [
     id: "theplas",
     label: "Theplas & rotis",
     dishes: [
-      { title: "Methi Thepla", desc: "Soft whole-wheat thepla rolled with fresh fenugreek. Our most-ordered dish.", subject: "Methi theplas on a black plate", alt: "Methi thepla", keys: ["best", "ww"], image: photo("methi-thepla") },
+      { title: "Methi Thepla", desc: "Soft whole-wheat thepla rolled with fresh fenugreek. Our most-ordered dish.", subject: "Methi theplas on a plate", alt: "Methi thepla", keys: ["best", "ww"], image: photo("methi-thepla") },
       { title: "Wheat Roti", desc: "Plain whole-wheat rotis, made fresh.", subject: "Wheat rotis on a plate", alt: "Wheat roti", keys: ["best", "ww"], image: photo("wheat-roti") },
       { title: "Garlic Thepla", desc: "Whole-wheat thepla with garlic.", subject: "Garlic theplas on a plate", alt: "Garlic thepla", keys: ["ww"], image: photo("garlic-thepla") },
       { title: "Methi Thepla — Vacuum Pack of 5", desc: "Five methi theplas, vacuum-packed to carry on a journey.", subject: "Vacuum-packed methi theplas", alt: "Vacuum pack of methi theplas", keys: ["ww"], image: photo("methi-thepla-vacuum-pack") },
@@ -44,7 +45,7 @@ export const MENU_CATEGORIES: MenuCategory[] = [
       { title: "Lauki Thepla", desc: "Whole-wheat thepla made with grated bottle gourd.", subject: "Lauki theplas on a plate", alt: "Lauki thepla", keys: ["ww"], image: photo("lauki-thepla") },
       { title: "Plain Thepla", desc: "Everyday whole-wheat thepla — good with chai or pickle.", subject: "Plain theplas on a plate", alt: "Plain thepla", keys: ["ww"], image: photo("plain-thepla") },
       { title: "Plain Puri", desc: "Puffed, deep-fried puris.", subject: "Plain puris on a plate", alt: "Plain puri", keys: [], image: photo("plain-puri") },
-      { title: "Wheat Phulka Roti (1 pc)", desc: "A single soft whole-wheat phulka.", subject: "Wheat phulka roti", alt: "Wheat phulka roti", keys: ["ww"] },
+      { title: "Wheat Phulka Roti (1 pc)", desc: "A single soft whole-wheat phulka.", subject: "Wheat phulka roti", alt: "Wheat phulka roti", keys: ["ww"], image: photo("phulka-roti") },
     ],
   },
   {
@@ -65,7 +66,7 @@ export const MENU_CATEGORIES: MenuCategory[] = [
       { title: "Steam Muthia with Green Chutney", desc: "Steamed Gujarati muthia with green chutney.", subject: "Steamed muthia with green chutney", alt: "Steam muthia with green chutney", keys: ["best"], image: photo("steam-muthia") },
       { title: "Kanda Poha", desc: "Flattened rice tempered with onion.", subject: "Bowl of kanda poha", alt: "Kanda poha", keys: [], image: photo("kanda-poha") },
       { title: "White Dhokla", desc: "Soft steamed white dhokla.", subject: "White dhokla pieces", alt: "White dhokla", keys: [], image: photo("white-dhokla") },
-      { title: "Moong Dal Bhajiya", desc: "Crisp moong dal pakoda.", subject: "Moong dal bhajiya", alt: "Moong dal bhajiya", keys: [] },
+      { title: "Moong Dal Bhajiya", desc: "Crisp moong dal pakoda.", subject: "Moong dal bhajiya", alt: "Moong dal bhajiya", keys: [], image: photo("moong-dal-bhajiya") },
       { title: "Methi Thepla Combo", desc: "Three methi theplas and two koki parathas.", subject: "Methi theplas and koki parathas", alt: "Methi thepla combo", keys: [], image: photo("methi-thepla-combo") },
       { title: "Dabeli", desc: "Kutchi dabeli — spiced potato in a pav.", subject: "Dabeli on a plate", alt: "Dabeli", keys: [], image: photo("dabeli") },
       { title: "Mumbai Vada Pav", desc: "Batata vada in a pav, with chutney.", subject: "Vada pav with chutney", alt: "Mumbai vada pav", keys: [], image: photo("mumbai-vada-pav") },
@@ -73,7 +74,7 @@ export const MENU_CATEGORIES: MenuCategory[] = [
       { title: "Puri Bhaji", desc: "Puris with potato bhaji.", subject: "Puris with bhaji", alt: "Puri bhaji", keys: [], image: photo("puri-bhaji") },
       { title: "Khaman Dhokla", desc: "Spongy steamed khaman, tempered and topped with chutney.", subject: "Khaman dhokla pieces", alt: "Khaman dhokla", keys: [], image: photo("khaman-dhokla") },
       { title: "Methi Gota", desc: "Fenugreek fritters — a Gujarati teatime snack.", subject: "Methi gota fritters", alt: "Methi gota", keys: [], image: photo("methi-gota") },
-      { title: "Batata Bhajiya", desc: "Crisp potato-slice pakoda.", subject: "Batata bhajiya", alt: "Batata bhajiya", keys: [] },
+      { title: "Batata Bhajiya", desc: "Crisp potato-slice pakoda.", subject: "Batata bhajiya", alt: "Batata bhajiya", keys: [], image: photo("batata-bhajiya") },
       { title: "Idlis with Chutney & Sambar", desc: "Steamed idlis with coconut chutney and sambar.", subject: "Idlis with chutney and sambar", alt: "Idlis with chutney and sambar", keys: [], image: photo("idli-sambar") },
       { title: "Dabeli (single)", desc: "One dabeli.", subject: "Single dabeli", alt: "Single dabeli", keys: [], image: photo("dabeli-single") },
       { title: "Vada Pav (single)", desc: "One vada pav.", subject: "Single vada pav", alt: "Single vada pav", keys: [], image: photo("vada-pav-single") },
@@ -83,7 +84,7 @@ export const MENU_CATEGORIES: MenuCategory[] = [
     id: "meals",
     label: "Thalis, dal & khichdi",
     dishes: [
-      { title: "Gujarati Mini Thali", desc: "A compact Gujarati thali.", subject: "Gujarati mini thali in a tray", alt: "Gujarati mini thali", keys: ["best"], image: photo("gujarati-mini-thali") },
+      { title: "Gujarati Mini Thali", desc: "A compact Gujarati thali.", subject: "Gujarati mini thali in a tray", alt: "Gujarati mini thali", keys: ["best"], image: img("gujarati-mini-thali-hero") },
       { title: "Punjabi Mini Thali", desc: "A compact Punjabi thali.", subject: "Punjabi mini thali in a tray", alt: "Punjabi mini thali", keys: ["best"], image: photo("punjabi-mini-thali") },
       { title: "Rajasthani Dal Bati Churma", desc: "Dal, baked bati and sweet churma.", subject: "Dal bati churma in bowls", alt: "Rajasthani dal bati churma", keys: [], image: photo("dal-bati-churma") },
       { title: "Dal Dhokli", desc: "Gujarati dal with wheat dhokli simmered in it.", subject: "Bowl of dal dhokli", alt: "Dal dhokli", keys: [], image: photo("dal-dhokli") },
@@ -96,11 +97,11 @@ export const MENU_CATEGORIES: MenuCategory[] = [
     id: "upvas",
     label: "Upvas / fasting",
     dishes: [
-      { title: "Tejal's Kitchen Special Upwas Thali", desc: "A full thali for fasting days.", subject: "Upwas thali in a tray", alt: "Tejal's Kitchen special upwas thali", keys: ["best", "upvas"], image: photo("upwas-thali") },
+      { title: "Tejal's Kitchen Special Upwas Thali", desc: "A full thali for fasting days.", subject: "Upwas thali in a tray", alt: "Tejal's Kitchen special upwas thali", keys: ["best", "upvas"], image: img("upvas-thali-hero") },
       { title: "Sabudana Khichdi", desc: "Sago khichdi — a fasting-day staple.", subject: "Bowl of sabudana khichdi", alt: "Sabudana khichdi", keys: ["best", "upvas"], image: photo("sabudana-khichdi") },
       { title: "Sabudana Vada", desc: "Crisp sago and potato vadas.", subject: "Sabudana vadas with chutney", alt: "Sabudana vada", keys: ["upvas"], image: photo("sabudana-vada") },
       { title: "Aloo Sabji with Rajgira Puri", desc: "Fasting-day aloo sabji with rajgira puris.", subject: "Aloo sabji with rajgira puris", alt: "Aloo sabji with rajgira puri", keys: ["upvas"], image: photo("aloo-sabji-rajgira-puri") },
-      { title: "Sabudana Khichdi & Sabudana Vada", desc: "Sabudana khichdi with two sabudana vadas.", subject: "Sabudana khichdi and vadas", alt: "Sabudana khichdi and sabudana vada", keys: ["upvas"] },
+      { title: "Sabudana Khichdi & Sabudana Vada", desc: "Sabudana khichdi with two sabudana vadas.", subject: "Sabudana khichdi and vadas", alt: "Sabudana khichdi and sabudana vada", keys: ["upvas"], image: photo("sabudana-khichdi-vada") },
     ],
   },
   {
@@ -124,7 +125,7 @@ export const HOMELY_HEALTHY: Dish[] = [
   { title: "Fasting Thali", desc: "A thali for fasting days.", subject: "Fasting thali in a tray", alt: "Fasting thali", keys: ["upvas"], image: photo("fasting-thali") },
   { title: "Regular Thali", desc: "The everyday thali.", subject: "Regular thali in a tray", alt: "Regular thali", keys: [], image: photo("regular-thali") },
   { title: "Regular Paneer Thali", desc: "The everyday thali, with paneer.", subject: "Regular paneer thali in a tray", alt: "Regular paneer thali", keys: [], image: photo("regular-paneer-thali") },
-  { title: "Phulka Roti (1 pc)", desc: "A single phulka roti.", subject: "Phulka roti", alt: "Phulka roti", keys: [] },
+  { title: "Phulka Roti (1 pc)", desc: "A single phulka roti.", subject: "Phulka roti", alt: "Phulka roti", keys: [], image: photo("phulka-roti") },
 ];
 
 /** Resolve a dish's tag keys to chip objects. */
