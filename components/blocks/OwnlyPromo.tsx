@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import posthog from "posthog-js";
 import { ORDER_NOW_LINK, OWNLY_SAVING } from "@/data/site";
@@ -111,8 +112,7 @@ export function OwnlyPromo() {
         ×
       </button>
       <div style={{ display: "flex", gap: 12, alignItems: "center", paddingRight: 24 }}>
-        {/* eslint-disable-next-line @next/next/no-img-element -- local vector brand mark */}
-        <img src="/brands/ownly.svg" alt="" width={44} height={44} style={{ flexShrink: 0, background: "var(--white)", borderRadius: 12, border: "1px solid var(--color-outline-variant)" }} />
+        <Image src="/images/marketing/ownly-promo-thumb.webp" alt="" width={76} height={76} style={{ flexShrink: 0, borderRadius: 12 }} />
         <div>
           <p id="ownly-promo-title" style={{ fontFamily: "var(--font-display)", color: "var(--color-headline)", fontWeight: 600, fontSize: "1.125rem", lineHeight: 1.25, margin: 0 }}>
             Order on Ownly, pay {OWNLY_SAVING} less

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import QRCode from "qrcode";
 import { OwnlyActions } from "@/components/blocks/OwnlyActions";
@@ -62,16 +63,27 @@ export default async function OrderPage() {
               </p>
               <OwnlyActions />
             </div>
-            <div className="ownly-qr" style={{ justifySelf: "center", textAlign: "center", background: "var(--white)", border: "1px solid var(--color-outline-variant)", borderRadius: "var(--radius-2xl)", boxShadow: "var(--shadow-lg)", padding: 24, maxWidth: 320 }}>
-              <div
-                role="img"
-                aria-label="QR code that opens Thepla House by Tejal's Kitchen in the Ownly app"
-                style={{ width: 240, height: 240, margin: "0 auto" }}
-                dangerouslySetInnerHTML={{ __html: qrSvg }}
+            <div>
+              <Image
+                src="/images/marketing/ownly-x-thepla-hero.webp"
+                alt="Ownly × Thepla House — methi theplas and masala chai beside a phone"
+                width={1600}
+                height={900}
+                sizes="(min-width: 1024px) 45vw, 100vw"
+                priority
+                style={{ width: "100%", height: "auto", borderRadius: "var(--radius-xl)" }}
               />
-              <p style={{ fontFamily: "var(--font-body)", color: "var(--ink-700)", fontWeight: 600, margin: "14px 0 0" }}>
-                Scan with your phone camera
-              </p>
+              <div className="ownly-qr">
+                <div
+                  role="img"
+                  aria-label="QR code that opens Thepla House by Tejal's Kitchen in the Ownly app"
+                  style={{ width: 144, height: 144, flexShrink: 0 }}
+                  dangerouslySetInnerHTML={{ __html: qrSvg }}
+                />
+                <p style={{ fontFamily: "var(--font-body)", color: "var(--ink-700)", fontWeight: 600, margin: 0 }}>
+                  Scan with your phone camera
+                </p>
+              </div>
             </div>
           </div>
         </div>
