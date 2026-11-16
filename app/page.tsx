@@ -70,6 +70,20 @@ export default function HomePage() {
               <MenuItemCard key={d.title} title={d.title} desc={d.desc} subject={d.subject} alt={d.alt} tags={tagsFor(d.keys)} src={d.image} />
             ))}
           </div>
+          <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: 10, marginTop: 28 }}>
+            <span style={{ fontFamily: "var(--font-body)", color: "var(--ink-500)", fontSize: "0.9375rem", fontWeight: 600 }}>Craving something specific?</span>
+            {[
+              { label: "Gujarati thali", href: "/gujarati-thali-mumbai" },
+              { label: "Upvas food", href: "/upvas-food-mumbai" },
+              { label: "Undhiyu (in season)", href: "/undhiyu-mumbai" },
+              { label: "Home-style tiffin", href: "/tiffin-service-mumbai" },
+              { label: "Travel packs", href: "/travel-packs" },
+            ].map((l) => (
+              <Link key={l.href} href={l.href} style={{ display: "inline-flex", alignItems: "center", minHeight: 40, padding: "8px 16px", background: "var(--white)", border: "1px solid var(--color-outline-variant)", borderRadius: "999px", fontFamily: "var(--font-body)", fontSize: "0.9375rem", fontWeight: 600, color: "var(--color-primary)", textDecoration: "none" }}>
+                {l.label}
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
 

@@ -195,6 +195,7 @@ export const POSTS: Post[] = [
     seoDescription:
       "What goes into undhiyu: surti papdi, purple yam, baby potato and muthiya, slow-cooked Surti style. The story of Gujarat's great winter dish.",
     keywords: ["undhiyu", "Surti undhiyu", "what is undhiyu", "winter Gujarati food", "undhiyu Mumbai", "seasonal Gujarati dishes"],
+    relatedLocation: { href: "/undhiyu-mumbai", label: "our seasonal undhiyu page" },
     body: [
       { type: "lead", text: "Undhiyu is what a Gujarati winter tastes like — surti papdi, purple yam, baby potatoes, sweet potato and muthiya, slow-cooked together until everything melts into everything else. It only happens once a year, and that's exactly why it's special." },
       { type: "h2", text: "A dish named after how it's cooked" },
