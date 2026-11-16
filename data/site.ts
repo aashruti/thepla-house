@@ -129,6 +129,7 @@ export const FOOTER_COLUMNS = [
       { label: "Home-style food & tiffin", href: "/tiffin-service-mumbai" },
       { label: "Gujarati thali", href: "/gujarati-thali-mumbai" },
       { label: "Upvas food", href: "/upvas-food-mumbai" },
+      { label: "Undhiyu (seasonal)", href: "/undhiyu-mumbai" },
       { label: "Catering", href: "/catering" },
       { label: "Travel packs", href: "/travel-packs" },
       { label: "Franchise", href: "/franchise" },
