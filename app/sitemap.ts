@@ -18,6 +18,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/gujarati-thali-mumbai",
     "/upvas-food-mumbai",
     "/undhiyu-mumbai",
+    "/ownly",
     "/about",
     "/catering",
     "/travel-packs",
