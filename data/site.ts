@@ -77,19 +77,29 @@ export const ZOMATO_LINK = "https://www.zomato.com/mumbai/restaurants/thepla-hou
 // surfaces the customer's nearest outlet rather than a fixed one.
 export const SWIGGY_LINK = "https://www.swiggy.com/search?query=Thepla%20House%20by%20Tejal%27s%20Kitchen";
 
-// Where every "Order now" button goes. Swiggy, because it takes orders from a
-// link off our site; Zomato does not, so its chips stay as listing links only.
-// When the brand's own ordering launches, change this one line.
-export const ORDER_NOW_LINK = SWIGGY_LINK;
+// Ownly — commission-free ordering, with prices 15–20% below the other apps.
+// It works only in Ownly's iOS and Android apps: on a phone this brand link
+// opens Thepla House in the app (or hands off to the store); on a computer it
+// lands on Ownly's generic city page, so desktop visitors go to /order instead.
+export const OWNLY_LINK = "https://ownly.food/app/brand/BR15676";
+export const OWNLY_IOS_LINK = "https://apps.apple.com/in/app/ownly-food-delivery/id6747476494";
+export const OWNLY_ANDROID_LINK = "https://play.google.com/store/apps/details?id=com.ownly.customer";
+/** How much less Thepla House costs on Ownly than on the other delivery apps. */
+export const OWNLY_SAVING = "15–20%";
+
+// Where every "Order now" button goes. /order sends phones straight to Ownly
+// and shows desktop visitors a QR code and the app-store links.
+export const ORDER_NOW_LINK = "/order";
 
 // ---- Ordering channels ----------------------------------------------------
 export interface OrderChannel {
   href: string;
   /** Rendered by AggregatorLink with the service's official mark and colour. */
-  aggregator: "swiggy" | "zomato" | "whatsapp";
+  aggregator: "ownly" | "swiggy" | "zomato" | "whatsapp";
 }
 
 export const ORDER_CHANNELS: OrderChannel[] = [
+  { href: ORDER_NOW_LINK, aggregator: "ownly" },
   { href: SWIGGY_LINK, aggregator: "swiggy" },
   { href: ZOMATO_LINK, aggregator: "zomato" },
   { href: WHATSAPP_LINK, aggregator: "whatsapp" },

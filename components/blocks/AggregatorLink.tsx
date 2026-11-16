@@ -2,10 +2,12 @@
 
 import type { CSSProperties } from "react";
 import posthog from "posthog-js";
+import { OWNLY_SAVING } from "@/data/site";
+import { externalLinkProps } from "@/lib/links";
 
 /**
- * AggregatorLink — the one way this site links out to Swiggy, Zomato or
- * WhatsApp.
+ * AggregatorLink — the one way this site links out to Ownly, Swiggy, Zomato
+ * or WhatsApp.
  *
  * Every "order on …" affordance renders through here — the OrderChannels
  * chips, the outlet cards and the outlet page — so each brand's look is
@@ -16,9 +18,12 @@ import posthog from "posthog-js";
  * under readable contrast for text, whereas a logo is exempt — so the colour
  * lives in the logo and the words stay legible.
  */
-export type Aggregator = "swiggy" | "zomato" | "whatsapp";
+export type Aggregator = "ownly" | "swiggy" | "zomato" | "whatsapp";
 
-export const AGGREGATORS: Record<Aggregator, { name: string; logo: string; color: string }> = {
+export const AGGREGATORS: Record<Aggregator, { name: string; logo: string; color: string; note?: string }> = {
+  // No official Ownly mark in the repo yet, so a generic phone glyph stands in;
+  // swap in Ownly's logo at /brands/ownly.svg when they supply it.
+  ownly: { name: "Ownly app", logo: "/brands/phone-app.svg", color: "var(--color-primary)", note: `${OWNLY_SAVING} less` },
   swiggy: { name: "Swiggy", logo: "/brands/swiggy.svg", color: "#FF5200" },
   zomato: { name: "Zomato", logo: "/brands/zomato.svg", color: "#CC202E" },
   whatsapp: { name: "WhatsApp", logo: "/brands/whatsapp.svg", color: "#25D366" },
@@ -45,8 +50,7 @@ export function AggregatorLink({ service, href, size = "md", fill = false, style
   return (
     <a
       href={href}
-      target="_blank"
-      rel="noopener noreferrer"
+      {...externalLinkProps(href)}
       onClick={() => {
         if (process.env.NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN) {
           posthog.capture("order_link_clicked", {
@@ -84,6 +88,11 @@ export function AggregatorLink({ service, href, size = "md", fill = false, style
         style={{ display: "block", width: s.logo, height: s.logo, borderRadius: Math.round(s.logo * 0.26), flexShrink: 0 }}
       />
       {brand.name}
+      {brand.note && (
+        <span style={{ marginLeft: 2, padding: "2px 8px", borderRadius: "999px", background: "var(--leaf-100)", color: "var(--leaf-700)", fontSize: "0.75rem", fontWeight: 700, whiteSpace: "nowrap" }}>
+          {brand.note}
+        </span>
+      )}
     </a>
   );
 }
