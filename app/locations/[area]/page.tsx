@@ -57,9 +57,9 @@ export default async function KitchenAreaPage({ params }: { params: Promise<{ ar
   const directions = k.mapsUrl || `https://www.google.com/maps?q=${encodeURIComponent(k.mapQuery)}`;
   // Outlets with their own listed number show it, so the page matches that
   // outlet's Google Business Profile; the rest fall back to the central line.
-  // Order this outlet specifically where it has its own Swiggy listing; the
-  // airside counter takes no remote orders, so its button stays on the menu.
-  const orderHref = k.airside ? "/menu" : k.swiggyUrl || ORDER_NOW_LINK;
+  // Every delivery kitchen takes Ownly orders, so the main button goes there;
+  // the airside counter takes no remote orders, so its button stays on the menu.
+  const orderHref = k.airside ? "/menu" : ORDER_NOW_LINK;
   const outletPhone = k.phone || ORDER_PHONE;
   const outletPhoneTel = k.phone ? `tel:${k.phone.replace(/[^+\d]/g, "")}` : ORDER_PHONE_TEL;
 
@@ -139,12 +139,13 @@ export default async function KitchenAreaPage({ params }: { params: Promise<{ ar
                   Get directions
                 </a>
               </div>
-              {(k.swiggyUrl || k.zomatoUrl) && (
+              {!k.airside && (
                 <div style={{ marginTop: 16 }}>
                   <div style={{ fontFamily: "var(--font-body)", color: "var(--ink-500)", fontSize: "0.875rem", marginBottom: 8 }}>
-                    Order this kitchen direct on
+                    Order this kitchen on
                   </div>
                   <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
+                    <AggregatorLink service="ownly" href={ORDER_NOW_LINK} size="lg" />
                     {k.swiggyUrl && <AggregatorLink service="swiggy" href={k.swiggyUrl} size="lg" />}
                     {k.zomatoUrl && <AggregatorLink service="zomato" href={k.zomatoUrl} size="lg" />}
                   </div>

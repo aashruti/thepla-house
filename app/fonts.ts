@@ -1,4 +1,5 @@
-import { Eczar, Mukta, Mukta_Vaani, Caveat } from "next/font/google";
+import { Eczar, Mukta, Mukta_Vaani } from "next/font/google";
+import localFont from "next/font/local";
 
 /**
  * Brand webfonts, self-hosted by next/font (replaces the design system's
@@ -32,9 +33,13 @@ export const muktaVaani = Mukta_Vaani({
   display: "swap",
 });
 
-export const caveat = Caveat({
-  subsets: ["latin"],
-  weight: ["500", "600", "700"],
+// Shipped with the site rather than fetched from Google at build time: Google
+// started answering Vercel's build servers with a Caveat file URL that
+// next/font/google cannot parse, which failed every deploy. This is Caveat's
+// Latin variable font (wght 400–700) from fonts.gstatic.com, SIL OFL.
+export const caveat = localFont({
+  src: "./font-files/caveat-latin-variable.woff2",
+  weight: "400 700",
   variable: "--font-caveat",
   display: "swap",
 });
