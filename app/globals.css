@@ -353,3 +353,47 @@ body {
 @media (max-width: 767px) {
   .ownly-qr { display: none; }
 }
+
+/* ---- OwnlyPromo: corner card, never a full-screen interstitial ---- */
+.ownly-promo {
+  position: fixed;
+  z-index: 45;
+  left: 12px;
+  right: 12px;
+  /* Sit above the mobile order bar. */
+  bottom: calc(84px + env(safe-area-inset-bottom));
+  padding: 16px;
+  background: var(--white);
+  border: 1px solid var(--color-outline-variant);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
+  animation: ownly-promo-in 260ms ease-out;
+}
+.ownly-promo-close {
+  position: absolute;
+  top: 6px;
+  right: 8px;
+  width: 36px;
+  height: 36px;
+  border: 0;
+  background: transparent;
+  color: var(--ink-500);
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+}
+@media (min-width: 768px) {
+  .ownly-promo {
+    left: auto;
+    right: 24px;
+    bottom: 24px;
+    width: 360px;
+  }
+}
+@keyframes ownly-promo-in {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ownly-promo { animation: none; }
+}

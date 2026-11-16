@@ -4,6 +4,7 @@ import { fontVariables } from "./fonts";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { MobileOrderBar } from "@/components/blocks/MobileOrderBar";
+import { OwnlyPromo } from "@/components/blocks/OwnlyPromo";
 import { JsonLd } from "@/components/JsonLd";
 import { organizationLd, websiteLd } from "@/lib/seo";
 import { SITE, ORDER_NOW_LINK } from "@/data/site";
@@ -75,6 +76,7 @@ export default function RootLayout({
         <main id="main">{children}</main>
         <SiteFooter />
         <MobileOrderBar orderHref={ORDER_NOW_LINK} />
+        <OwnlyPromo />
         {/* Page views (Analytics) and real-user Core Web Vitals (Speed Insights),
             reported to the Vercel dashboard. */}
         <Analytics />
