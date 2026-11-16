@@ -103,7 +103,7 @@ export default function HomePage() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
             {homeKitchens.map((k) => (
-              <KitchenCard key={k.slug} title={k.title} area={k.area} note={k.address} hours={k.hours} detailHref={`/locations/${k.slug}`} directionsHref={k.mapsUrl || `https://www.google.com/maps?q=${encodeURIComponent(k.mapQuery)}`} orderHref={k.swiggyUrl || ORDER_NOW_LINK} swiggyHref={k.swiggyUrl} zomatoHref={k.zomatoUrl} />
+              <KitchenCard key={k.slug} title={k.title} area={k.area} note={k.address} hours={k.hours} detailHref={`/locations/${k.slug}`} directionsHref={k.mapsUrl || `https://www.google.com/maps?q=${encodeURIComponent(k.mapQuery)}`} orderHref={ORDER_NOW_LINK} ownlyHref={ORDER_NOW_LINK} swiggyHref={k.swiggyUrl} zomatoHref={k.zomatoUrl} />
             ))}
           </div>
           <p style={{ fontFamily: "var(--font-body)", color: "var(--ink-500)", fontSize: "0.9375rem", margin: "20px 0 0" }}>

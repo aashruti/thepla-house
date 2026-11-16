@@ -135,6 +135,7 @@ export default function LocationsPage() {
                     detailHref={`/locations/${k.slug}`}
                     directionsHref={k.mapsUrl || `https://www.google.com/maps?q=${encodeURIComponent(k.mapQuery)}`}
                     orderHref={ORDER_NOW_LINK}
+                    ownlyHref={ORDER_NOW_LINK}
                     swiggyHref={k.swiggyUrl}
                     zomatoHref={k.zomatoUrl}
                   />

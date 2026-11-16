@@ -17,6 +17,8 @@ export interface KitchenCardProps {
   directionsHref?: string;
   orderHref?: string;
   detailHref?: string;
+  /** Ownly order link (brand-level: the app picks the kitchen from the address). */
+  ownlyHref?: string;
   /** This outlet's own aggregator listings. Omitted outlets simply render no row. */
   swiggyHref?: string;
   zomatoHref?: string;
@@ -32,6 +34,7 @@ export function KitchenCard({
   directionsHref = "#",
   orderHref = "#",
   detailHref,
+  ownlyHref,
   swiggyHref,
   zomatoHref,
   style,
@@ -112,6 +115,11 @@ export function KitchenCard({
           Order
         </Link>
       </div>
+      {ownlyHref && (
+        <div style={{ display: "flex" }}>
+          <AggregatorLink service="ownly" href={ownlyHref} size="sm" fill />
+        </div>
+      )}
       {(swiggyHref || zomatoHref) && (
         <div style={{ display: "flex", gap: 8 }}>
           {swiggyHref && <AggregatorLink service="swiggy" href={swiggyHref} size="sm" fill />}
