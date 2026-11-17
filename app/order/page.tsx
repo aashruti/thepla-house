@@ -119,7 +119,8 @@ export default async function OrderPage() {
             <AggregatorLink service="whatsapp" href={WHATSAPP_LINK} size="lg" />
           </div>
           <p style={{ fontFamily: "var(--font-body)", color: "var(--ink-500)", fontSize: "0.9375rem", margin: "16px 0 0" }}>
-            Or browse the <Link href="/menu" style={{ color: "var(--color-primary)", fontWeight: 600 }}>full menu</Link> first.
+            Or browse the <Link href="/menu" style={{ color: "var(--color-primary)", fontWeight: 600 }}>full menu</Link> first, or read{" "}
+            <Link href="/ownly" style={{ color: "var(--color-primary)", fontWeight: 600 }}>why we&apos;re on Ownly</Link>.
           </p>
         </div>
       </section>

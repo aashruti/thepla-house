@@ -136,6 +136,7 @@ export const FOOTER_COLUMNS = [
     title: "Order & services",
     links: [
       { label: "Order now", href: ORDER_NOW_LINK },
+      { label: `Order on Ownly (${OWNLY_SAVING} less)`, href: "/ownly" },
       { label: "Home-style food & tiffin", href: "/tiffin-service-mumbai" },
       { label: "Gujarati thali", href: "/gujarati-thali-mumbai" },
       { label: "Upvas food", href: "/upvas-food-mumbai" },

@@ -15,7 +15,7 @@ const SNOOZE_KEY = "ownly-promo-snooze-until";
 const SESSION_KEY = "ownly-promo-shown";
 
 // Pages where the prompt would get in the way or repeat itself.
-const SKIP_PATHS = ["/order", "/privacy-policy", "/delete-account", "/franchise"];
+const SKIP_PATHS = ["/order", "/ownly", "/privacy-policy", "/delete-account", "/franchise"];
 const BOT_UA = /bot|crawl|spider|slurp|lighthouse|headless|preview/i;
 
 // Storage can throw (private mode, blocked site data); the prompt then just
