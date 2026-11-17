@@ -8,9 +8,11 @@ import { ORDER_NOW_LINK, OWNLY_SAVING } from "@/data/site";
 
 /** How long a visitor reads a page before the prompt appears. */
 const DELAY_MS = 6000;
-/** Close it, and it stays away this long; order through it, longer. */
+/**
+ * Close it, and it stays away this long. Order through it, and it stays away
+ * only for the rest of the visit: it is shown at most once per session anyway.
+ */
 const SNOOZE_DISMISSED_MS = 7 * 24 * 60 * 60 * 1000;
-const SNOOZE_CLICKED_MS = 30 * 24 * 60 * 60 * 1000;
 const SNOOZE_KEY = "ownly-promo-snooze-until";
 const SESSION_KEY = "ownly-promo-shown";
 
@@ -125,10 +127,7 @@ export function OwnlyPromo() {
       <div style={{ display: "flex", gap: 8, marginTop: 14 }}>
         <a
           href={ORDER_NOW_LINK}
-          onClick={() => {
-            write(() => localStorage, SNOOZE_KEY, String(Date.now() + SNOOZE_CLICKED_MS));
-            track("ownly_promo_clicked", pathname);
-          }}
+          onClick={() => track("ownly_promo_clicked", pathname)}
           style={{ flex: 1, display: "inline-flex", alignItems: "center", justifyContent: "center", minHeight: 44, padding: "10px 16px", fontFamily: "var(--font-body)", fontSize: "0.9375rem", fontWeight: 700, color: "var(--color-on-primary)", background: "var(--color-primary)", borderRadius: "var(--radius-md)", textDecoration: "none" }}
         >
           Order on Ownly
